@@ -152,6 +152,1127 @@ following repository:
 
 <https://github.com/paezha/covid19-environmental-correlates>
 
+## Context, Data, and Methods
+
+### Covid-19 in Spain
+
+When was the first case reported? When did the country close
+international arrivals? When did initial measures of social distancing
+were implemented? The lockdown?
+
+### Selection of Variables
+
+Explain the rationale for selecting the variables.
+
+For example: The literature about COVID-19 suggested that population
+density is the one of the most important proliferate cause of these
+viscous, however this ill spread with different intensity at big cities
+of the world. Controlling for socioeconomic characteristics the
+objective of this paper is observe the effect of clime on COVID-19
+proliferation.
+
+Some questions are important to point out. Is not evident present a
+diary association between the temprature (resp. humidity) with declarate
+case. There is evidences (ref) that a time lag is necessary between the
+day that the individuo inffect and the case is diagnosticate
+
+### Sources of Data
+
+Our dataset includes information about the daily number of cases of
+COVID-19 reported in Spain  at the provincial level (NUTIII in eurostat
+terminology) from March 13th to April 11th (30 days and 50 spatial
+units). The Spanish National Government publishes periodic updates at
+the regional level (NUTII) and the information is also released at the
+provincial level as part of a collaborative project. This information is
+compiled from several sources, mainly the official web pages of the
+Spanish regional goverments. In addition, we consider two sets of
+explanatory variables. The first one, and the focus of this research, is
+set of two environmental variables, namely temperature and humidity. The
+second set provides some relevant controls for multivariate analysis,
+and refers to economic and demographic attributes of the province. Table
+ shows the descriptive statistics and the provencance of the data.
+
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+
+<caption>
+
+Descriptive statistics
+
+</caption>
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+Variable
+
+</th>
+
+<th style="text-align:left;">
+
+Note
+
+</th>
+
+<th style="text-align:right;">
+
+Min
+
+</th>
+
+<th style="text-align:right;">
+
+Mean
+
+</th>
+
+<th style="text-align:right;">
+
+Max
+
+</th>
+
+<th style="text-align:right;">
+
+SD
+
+</th>
+
+<th style="text-align:left;">
+
+Source
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+COVID-19 Incidence
+
+</td>
+
+<td style="text-align:left;">
+
+Incidence in reported cases of SARS-19 per 100,000 people
+
+</td>
+
+<td style="text-align:right;">
+
+0.38
+
+</td>
+
+<td style="text-align:right;">
+
+153.61
+
+</td>
+
+<td style="text-align:right;">
+
+1149.36
+
+</td>
+
+<td style="text-align:right;">
+
+186.23
+
+</td>
+
+<td style="text-align:left;">
+
+Montera34
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+GDPpc
+
+</td>
+
+<td style="text-align:left;">
+
+GDP per capita in €1,000s
+
+</td>
+
+<td style="text-align:right;">
+
+16.67
+
+</td>
+
+<td style="text-align:right;">
+
+22.51
+
+</td>
+
+<td style="text-align:right;">
+
+36.00
+
+</td>
+
+<td style="text-align:right;">
+
+4.77
+
+</td>
+
+<td style="text-align:left;">
+
+INE
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Older
+
+</td>
+
+<td style="text-align:left;">
+
+Percentage of people aged 65 and older in the province
+
+</td>
+
+<td style="text-align:right;">
+
+15.16
+
+</td>
+
+<td style="text-align:right;">
+
+21.03
+
+</td>
+
+<td style="text-align:right;">
+
+31.36
+
+</td>
+
+<td style="text-align:right;">
+
+3.95
+
+</td>
+
+<td style="text-align:left;">
+
+INE
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Population Density
+
+</td>
+
+<td style="text-align:left;">
+
+Population density in the province in people per sq.km
+
+</td>
+
+<td style="text-align:right;">
+
+8.60
+
+</td>
+
+<td style="text-align:right;">
+
+140.04
+
+</td>
+
+<td style="text-align:right;">
+
+829.76
+
+</td>
+
+<td style="text-align:right;">
+
+181.25
+
+</td>
+
+<td style="text-align:left;">
+
+INE
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Mean Temperature
+
+</td>
+
+<td style="text-align:left;">
+
+Mean temperature in province by date, in C
+
+</td>
+
+<td style="text-align:right;">
+
+1.00
+
+</td>
+
+<td style="text-align:right;">
+
+12.18
+
+</td>
+
+<td style="text-align:right;">
+
+23.20
+
+</td>
+
+<td style="text-align:right;">
+
+3.67
+
+</td>
+
+<td style="text-align:left;">
+
+AEMET
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Humidity
+
+</td>
+
+<td style="text-align:left;">
+
+Relative humidity in province by date
+
+</td>
+
+<td style="text-align:right;">
+
+2.00
+
+</td>
+
+<td style="text-align:right;">
+
+77.82
+
+</td>
+
+<td style="text-align:right;">
+
+100.00
+
+</td>
+
+<td style="text-align:right;">
+
+10.37
+
+</td>
+
+<td style="text-align:left;">
+
+MAPA
+
+</td>
+
+</tr>
+
+</tbody>
+
+<tfoot>
+
+<tr>
+
+<td style="padding: 0; border: 0;" colspan="100%">
+
+<span style="font-style: italic;">Note: </span>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding: 0; border: 0;" colspan="100%">
+
+<sup></sup> Montera34:
+<https://code.montera34.com:4443/numeroteca/covid19/-/blob/master/README_providencialdata19.md>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding: 0; border: 0;" colspan="100%">
+
+<sup></sup> INE (Instituto Nacional de Estadistica):
+<https://www.ine.es/>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding: 0; border: 0;" colspan="100%">
+
+<sup></sup> AEMET (Agencia Estatal de Meteorologia):
+<http://eportal.mapa.gob.es>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding: 0; border: 0;" colspan="100%">
+
+<sup></sup> MAPA (Ministerio de Agricultura, Pesca y Alimentacion):
+<http://eportal.mapa.gob.es>
+
+</td>
+
+</tr>
+
+</tfoot>
+
+</table>
+
+### Methods: Spatial SUR
+
+Seemingly Unrelated Regressions are used in the context of…
+
+The classical SUR model without spatial effects (from here, SUR-SIM) is
+a stack of equations as follows:
+
+where \(y_{t}=(y_{1t},...,y_{Nt})\) is a \(N \times 1\) vector, and in
+our case \(y_{st}\) is the incidence ratio in the province \(s\)
+(\(s=1,...,N\)) the day \(t\) \((t=1,...,T)\); \(X_t=(X^1,...,X^{k_t})\)
+is a \(N \times k_t\) matrix of the \(k_t\) independent variables,
+\(X_i=(X^i_{st})\); \(\beta_t=(\beta_{1t},...,\beta_{Nt})\) is a vector
+of coefficients and \(\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})\) is
+the vector of residuals.
+
+The more relevant characteristic of a SUR model is the dependence
+structure among the vectors of residuals, namely:
+
+Note that this specification is very flexible, in that it allows changes
+in the coefficients \(\beta_{it}\) in order to modulate the effect of
+\(X^i_{.t}\) on \(y_t\). This flexibility can be reduced and it is
+posible to impose restrinctions considering some \(\beta\) coefficients
+as being constant over time. In this case, we can reformulate the
+coefficients expression of
+\(\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})\)
+considering the first \(r\) coefficients contanst.
+
+Equation ) can be rewriten in compact form:
+
+where….
+
+As is the case of cross-sectional data, it is possible identify spatial
+autocorrelation in the residuals of Model , and several Lagrange
+Multipliers tests have been developed to test the null hypothesis of
+spatial independence (see López, Mur, and Angulo 2014). When the null
+hypothesis is rejected, there are alternative several specifications
+that have been propose to include spatial effects (Anselin 1988, see
+also 2016). In this paper we consider a spatial SUR model that
+incorporates a spatial lag of the dependent variable as an explanatory
+factor. The stack expresion for the spatial lag SUR model (SUR-SLM),
+
+where A =\(I_{TN}-\bf{\Lambda} \otimes W\) with
+\(\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)\).
+
+This specification assumes that incidence in a province (\(y_st\)) at
+time \(t\) is partially determined by the weighted average (\(Wy_{st}\))
+of incidence in neighbouring provinces. Parameters of spatial dependence
+are estimated for each time period \(\lambda_t\) and identifies the
+intensity and the sign of the impacts of neighbourhood. It is possible
+test the null hypotheis of identtical levels of spatial dependence
+(\(\lambda_i=\lambda_j, \forall i,j\)). The correspond Wald test is
+available in the R package **spsur**
+
+The SUR-SLM model can be estimated using maximum likelihood (López, Mur,
+and Angulo (2014)) or instrumental variables (Mínguez, López, and Mur
+(2019)).
+
+# Analysis and Results
+
+## Exploratory Data Analysis
+
+We begin with the exploratory analysis of the data.
+
+Figure  shows the geographical variation in the incidence of the
+disease, as well as its temporal progression in weekly averages. Our
+analysis begins on March 13, which is the first date when every province
+had reported at least one case of COVID-19. It can be seen that the
+highest incidence at this early date was in the provice of Álava, in the
+North of Spain. While not the most populous province, with a population
+of only 331,549, Álava has the highest GDP per capita of all provinces.
+Vitoria, its main city, is the capital of the Basque country and has
+been the focus of efforts to develop a “Global Basque City” (Meijers,
+Hoekstra, and Aguado 2008), along with San Sebastian and Bilbao. The
+other early focus of the pandemic in Spain was Madrid, which is the most
+populous province in the country and has the second highest GDP per
+capita after Álava. The early outbreaks in these two provinces can be
+traced throughout the progression of the pandemic over time, although by
+the end of the period under consideration, other provinces had matched
+and even surpased their incidence rates, including Segovia and Soria to
+the north of Madrid, and Ciudad Real and Albacete to the south.
+
+![Mean weekly incidence of COVID-19 by province, in reported cases by
+100,000 people (map omits Islas
+Canarias)](README_files/figure-gfm/weekly-average-incidence-map-1.png)
+
+To visualize the distribution of temperature and humidity we aggregate
+the provinces by Autonomous Community. In Figure  the communities have
+been sorted by latitude, so that Principado de Asturias is the
+northernmost community, and Canarias the southernmost. There is a
+relatively wide range of values both within and between provinces over
+the 30 day period examined. The top panel of the figure shows the
+distribution of mean temperature. The lowest mean temperature for a
+community on any given day is 2.8C, and the highest is 22.4C for a range
+of approximately 20 degrees. Likewise, there is a great deal of
+variability in humidity, as seen in the bottom panel of the figure,
+where the lowest mean humidity for any community is 48.3 and the highest
+is 99.6. The actual values for the provinces display somewhat more
+variability even.
+
+![ Distribution of mean temperatures and humidities in the Autonomous
+Communities in Spain between March 12, 2020 and April 11, 2020. The
+Autonomous Communities have been sorted by latitude, with communities to
+the left being the northermost, and to the right the
+southernmost](README_files/figure-gfm/descriptives-temperature-1.png)
+
+![Spatial distribution of control variables by province (maps omits
+Islas Canarias)](README_files/figure-gfm/control-map-1.png)
+
+Figure  shows the distribution of daily correlations of the independent
+variables with incidence of COVID-19, after log-transforming all
+variables. It can be seen there that the correlation of GDPpc and
+temperature (in its three definitions) have the strongest positive and
+negative correlations with incidence, respectively. Percentage of older
+adults displays somewhat weaker negative correlations with incidence, as
+does density. It can be seen that the humidity variable, in its three
+forms, tends to be possitively correlated with incidence of COVID-19.
+
+![Distribution of daily correlations of the independent variables with
+daily incidence of COVID-19 (all variables have been
+log-transformed)](README_files/figure-gfm/daily-correlations-1.png)
+
+### SUR Models
+
+The goodness of fit of the three systems of equations is shown in Figure
+.
+
+![ Goodness of fit of the SUR systems: by date and
+pooled](README_files/figure-gfm/goodness-of-fit-1.png)
+
+Summary of best model.
+
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+
+<caption>
+
+Summary of estimation results best model (lagged 11-day moving average)
+
+</caption>
+
+<thead>
+
+<tr>
+
+<th style="border-bottom:hidden" colspan="1">
+
+</th>
+
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
+Estimates
+
+</div>
+
+</th>
+
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
+Significance
+
+</div>
+
+</th>
+
+<th style="border-bottom:hidden" colspan="1">
+
+</th>
+
+</tr>
+
+<tr>
+
+<th style="text-align:left;">
+
+Variable
+
+</th>
+
+<th style="text-align:right;">
+
+Min
+
+</th>
+
+<th style="text-align:right;">
+
+Mean
+
+</th>
+
+<th style="text-align:right;">
+
+Max
+
+</th>
+
+<th style="text-align:right;">
+
+p \> 0.10
+
+</th>
+
+<th style="text-align:right;">
+
+0.10 \<= p \< 0.05
+
+</th>
+
+<th style="text-align:right;">
+
+p \<= 0.05
+
+</th>
+
+<th style="text-align:left;">
+
+Note
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+Intercept
+
+</td>
+
+<td style="text-align:right;">
+
+7.175
+
+</td>
+
+<td style="text-align:right;">
+
+10.008
+
+</td>
+
+<td style="text-align:right;">
+
+13.845
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+<td style="text-align:right;">
+
+30
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+log(GDPpc)
+
+</td>
+
+<td style="text-align:right;">
+
+0.513
+
+</td>
+
+<td style="text-align:right;">
+
+0.513
+
+</td>
+
+<td style="text-align:right;">
+
+0.513
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+<td style="text-align:right;">
+
+1
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+<td style="text-align:left;">
+
+Constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+log(Older)
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.783
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.783
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.783
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+<td style="text-align:right;">
+
+1
+
+</td>
+
+<td style="text-align:left;">
+
+Constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+log(Density)
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.217
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.092
+
+</td>
+
+<td style="text-align:right;">
+
+0.188
+
+</td>
+
+<td style="text-align:right;">
+
+19
+
+</td>
+
+<td style="text-align:right;">
+
+1
+
+</td>
+
+<td style="text-align:right;">
+
+10
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Transit
+
+</td>
+
+<td style="text-align:right;">
+
+0.300
+
+</td>
+
+<td style="text-align:right;">
+
+0.518
+
+</td>
+
+<td style="text-align:right;">
+
+0.595
+
+</td>
+
+<td style="text-align:right;">
+
+11
+
+</td>
+
+<td style="text-align:right;">
+
+10
+
+</td>
+
+<td style="text-align:right;">
+
+9
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+log(Humidity)
+
+</td>
+
+<td style="text-align:right;">
+
+\-1.176
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.372
+
+</td>
+
+<td style="text-align:right;">
+
+0.342
+
+</td>
+
+<td style="text-align:right;">
+
+17
+
+</td>
+
+<td style="text-align:right;">
+
+4
+
+</td>
+
+<td style="text-align:right;">
+
+9
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+log(Temperature)
+
+</td>
+
+<td style="text-align:right;">
+
+\-2.048
+
+</td>
+
+<td style="text-align:right;">
+
+\-1.431
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.989
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+<td style="text-align:right;">
+
+30
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+</tbody>
+
+<tfoot>
+
+<tr>
+
+<td style="padding: 0; border: 0;" colspan="100%">
+
+<span style="font-style: italic;">Note: </span>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding: 0; border: 0;" colspan="100%">
+
+<sup></sup> Significance: This is the number of coefficients with
+p-values as indicated
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding: 0; border: 0;" colspan="100%">
+
+<sup></sup> Non-constrained: coefficient was allowed to vary across
+equations
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding: 0; border: 0;" colspan="100%">
+
+<sup></sup> Constrained: coefficient as constant across equations
+
+</td>
+
+</tr>
+
+</tfoot>
+
+</table>
+
+## Discussion
+
+Figure  shows the temporal evolution of the spatial autocorrelation
+coefficient (\(\rho\)).
+
+![Temporal evolution of spatial autocorrelation
+coefficient](README_files/figure-gfm/delta-time-1.png)
+
+Figure  shows the temporal evolution of the intercept.
+
+![Temporal evolution of
+intercept](README_files/figure-gfm/beta-intercept-time-1.png)
+
+Figure  shows the temporal evolution of the coefficient for
+\(\log(Density)\).
+
+![Temporal evolution of coefficient for
+log(Density)](README_files/figure-gfm/beta-density-time-1.png)
+
+Figure  shows the temporal evolution of the coefficient for \(Transit\).
+
+![Temporal evolution of coefficient for
+Transit](README_files/figure-gfm/beta-transit-time-1.png)
+
+Figure  shows the temporal evolution of the coefficient for
+\(\log(Humidity)\).
+
+![Temporal evolution of coefficient for
+log(Humidity)](README_files/figure-gfm/beta-humidity-time-1.png)
+
+Figure  shows the temporal evolution of the coefficient for
+\(\log(Temperature)\).
+
+![Temporal evolution of coefficient for
+log(Temperature)](README_files/figure-gfm/beta-temperature-time-1.png)
+
+## Concluding Remarks
+
+More words go here.
+
 ## Acknowledgments
 
 The following `R` packages were used in the course of this investigation
@@ -181,6 +1302,21 @@ Machinery, et al. 2020. *Rticles: Article Formats for R Markdown*.
 Angulo, Ana, Fernando A Lopez, Roman Minguez, and Jesus Mur. 2020.
 *Spsur: Spatial Seemingly Unrelated Regression Models*.
 <http://github.com/rominsal/spsur>.
+
+</div>
+
+<div id="ref-Anselin1988spatial">
+
+Anselin, Luc. 1988. *Spatial Econometrics: Methods and Models*. Studies
+in Operational Regional Science. Dordrecht: Kluwer Academic Publishers.
+
+</div>
+
+<div id="ref-Anselin2016estimation">
+
+———. 2016. “Estimation and Testing in the Spatial Seemingly Unrelated
+Regression (Sur).” Geoda Center for Geospatial Analysis; Computation,
+Arizona State University. Working Paper 2016-01.
 
 </div>
 
@@ -322,6 +1458,14 @@ Growth Rate.” Journal Article. *medRxiv*.
 
 </div>
 
+<div id="ref-Lopez2014spatial">
+
+López, Fernando A, Jesús Mur, and Ana Angulo. 2014. “Spatial Model
+Selection Strategies in a Sur Framework. The Case of Regional
+Productivity in Eu.” *The Annals of Regional Science* 53 (1): 197–220.
+
+</div>
+
 <div id="ref-Luo2020how">
 
 Luo, Shaowen, and Kwok Ping Tsang. 2020. “How Much of China and World
@@ -340,11 +1484,28 @@ Article. *Respiratory Medicine* 103 (3): 456–62.
 
 </div>
 
+<div id="ref-Meijers2008strategic">
+
+Meijers, Evert, Joris Hoekstra, and Ricardo Aguado. 2008. “Strategic
+Planning for City Networks: The Emergence of a Basque Global City?”
+Journal Article. *International Planning Studies* 13 (3): 239–59.
+<https://doi.org/10.1080/13563470802521440>.
+
+</div>
+
 <div id="ref-Millo2017robust">
 
 Millo, Giovanni. 2017. “Robust Standard Error Estimators for Panel
 Models: A Unifying Approach.” *Journal of Statistical Software* 82 (3):
 1–27. <https://doi.org/10.18637/jss.v082.i03>.
+
+</div>
+
+<div id="ref-Minguez2019">
+
+Mínguez, Roman, Fernando López, and Jesús Mur. 2019. “ML Versus Iv
+Estimates of Spatial Sur Models: Evidence from the Case of Airbnb in
+Madrid Urban Area.” *The Annals of Regional Science*, 1–35.
 
 </div>
 

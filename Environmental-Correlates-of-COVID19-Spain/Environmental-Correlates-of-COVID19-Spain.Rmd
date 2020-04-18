@@ -43,9 +43,11 @@ output: rticles::elsevier_article
 
 ```{r load-packages, include=FALSE}
 # The data package needs to be installed from github repository:
-#devtools::install_github("paezha/covid19-environmental-correlates/covid19env")
-# Also, ask Fernando if the version of `spatsur` needed for the analysis is available from CRAN or needs special distribution
-#library(aemet) # Needs install from github
+# devtools::install_github("paezha/covid19-environmental-correlates/covid19env")
+
+# This version of spsur may be needed:
+# Download spsur_1.0.1.3.tar.gz from https://github.com/paezha/covid19-environmental-correlates and install
+
 library(covid19env)
 library(ggthemes)
 library(gridExtra)
@@ -145,7 +147,7 @@ Some questions are important to point out. Is not evident present a diary associ
 Our dataset includes information about the daily number of cases of COVID-19 reported in Spain \footnote{cases tested} at the provincial level (NUTIII in eurostat terminology) from March 13th to April 11th (30 days and 50 spatial units). The Spanish National Government publishes periodic updates at the regional level (NUTII) and the information is also released at the provincial level as part of a collaborative project. This information is compiled from several sources, mainly the official web pages of the Spanish regional goverments. In addition, we consider two sets of explanatory variables. The first one, and the focus of this research, is set of two environmental variables, namely temperature and humidity. The second set provides some relevant controls for multivariate analysis, and refers to economic and demographic attributes of the province. Table \ref{tab:descriptive-statistics} shows the descriptive statistics and the provencance of the data.
 
 ```{r descriptive-statistics, echo=FALSE}
-junk <- data.frame(Variable = c("COVID-19 Incidence",
+data.frame(Variable = c("COVID-19 Incidence",
                         "GDPpc", 
                         "Older", 
                         "Population Density",
