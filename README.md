@@ -151,30 +151,34 @@ document. The source R Markdown document, as well as all data and code
 needed to reproduce/review/extend the analysis can be obtained from the
 following repository:
 
-<https://github.com/paezha/covid19-environmental-correlates>
+> <https://github.com/paezha/covid19-environmental-correlates>
 
 # Context, Data, and Methods
 
 ## Covid-19 in Spain
 
-For a better interpretation of the results of our analysis is necessary
-to know the chronology of the epidemic outbreak in Spain. This
-subsection presents a brief time line of COVID-19.
-
-The first reported case of COVID-19 in Spain was on January 31th, were a
-German tourist in the Canary Islands was positively tested, but the
-first not imported case was diagnostic on February 27th in Sevilla
-province (Andalusia). The epidemic was growing slowly at the beginning
-but in March 11th the World Health Organization (WHO) declared
-officially the pandemic. This declaration was a break point and on March
-13th the Spanish National Government declare the “Emergency Status”. At
-this date, Spain have been declared 4209 cases of COVID-19 (mostly of
-cases, 1990, in Madrid). Only essential services (e.g. food, health) and
-some economic subsector of industry and construction could to maintain
-activity. On March 17th Spain closes its lands borders and only allows
-entry to nationals and residents. From March 30th to April 12th (April
-10th-12th Easter) lockdown of the Spanish people was hardened and only
-essential activities were allowed.
+The first reported case of COVID-19 in Spain was on January 31th, when a
+German tourist in the Canary Islands tested positive for the virus.
+However, it was still a few weeks before the first domestic case was
+reported, on February 27th in Sevilla province (Andalusia). In a short
+period of time, after this relatively slow start, the outbreak flared.
+By March 11th the World Health Organization (WHO) declared COVID-19
+officially a pandemic. This declaration marked a turning point for the
+public in Spain too. As of March 13th, the number of cases of COVID-19
+reported in Spain was 4,473, with a majority of cases (1,990)
+concentrated in Madrid: these numbers were at the time the worst
+outbreak in Europe, after Italy. In response to the situation, on March
+13th the Spanish National Government declared a state of emergency, to
+go into effect on Saturday March 14th. As part of the state of emergency
+restrictions to most activities were imposed, with the exception of
+essential services (e.g. food, health) and some economic subsectors of
+industry and construction. A few days later, on March 17th, Spain closed
+its lands borders to allow entry only to returnee nationals and
+permanent residents. The lockdown was further hardened between March
+30th and April 12th (including the Easter weekend of April 10th-12th)
+and during this period only essential activities were allowed. During
+this period, there was a dramatic reduction in overall mobility, both
+within provinces as between .
 
 ## Selection of Variables
 
@@ -192,31 +196,44 @@ diary association between the temprature (resp. humidity) with declarate
 case. There is evidences (ref) that a time lag is necessary between the
 day that the individuo inffect and the case is diagnosticate
 
-## Sources of Data
+## Data
 
 Our dataset includes information about the daily number of cases of
 COVID-19 reported in Spain at the provincial level (NUTIII in Eurostat
 terminology) for the period between March 13th and April 11th,
-inclusive. This gives a temporal coverage of 30 days and spatial
-coverage of 50 units. For our purposes, we consider positive cases
-reported, but excluding symptomatic cases diagnosed by a doctor without
-a Polymerase Chain Reaction (PCR) test. The Spanish National Government
-publishes periodic updates at the regional level (NUTII) and the
-information is also released at the provincial level as part of a
-collaborative project \[**by whom?**\]. This information is compiled
-from several sources, mainly the official web pages of the Spanish
-regional goverments. In addition, we consider two sets of explanatory
-variables. The first one, and the focus of this research, is set of two
-environmental variables, namely temperature and humidity, which are
-collected from official sources (i.g., AEMET, the state meteorology
-agency, and MAPA, the ministry of agriculture, fisheries, and food). The
-second set provides some relevant controls for multivariate analysis,
-and refers to economic and demographic attributes of the province (also
-collected from official sources, i.e., INE, the national statistics
-institute). Table  shows the descriptive statistics and the provenance
-of the data.
+inclusive. For our purposes, we consider positive cases reported, but
+excluding symptomatic cases diagnosed by a doctor without a Polymerase
+Chain Reaction (PCR) test. The Spanish National Government publishes
+periodic updates at the regional level (NUTII) and the information is
+also released at the provincial level as part of a collaborative project
+\[**by whom?**\]. This information is compiled from several sources,
+mainly the official web pages of the Spanish regional goverments. In
+addition, we consider two sets of explanatory variables. The first one,
+and the focus of this research, is set of two environmental variables,
+namely temperature and humidity, which are collected from official
+sources (i.g., AEMET, the state meteorology agency, and MAPA, the
+ministry of agriculture, fisheries, and food). The second set provides
+some relevant controls for multivariate analysis, and refers to economic
+and demographic attributes of the province (also collected from official
+sources, i.e., INE, the national statistics institute). Table  shows the
+descriptive statistics and the provenance of the data.
 
-<table>
+The spatial and temporal coverage of the data is as follows. Our dataset
+begins on March 13, which is the first date when every province had
+reported at least one case of COVID-19, and continues until April 11,
+for a period of 30 days. The unit of analysis is the province. Provinces
+are the equivalent of states, and are embedded in Autonomous
+Communities. As an example, Cataluña is an Autonomous Community and
+consists of four provinces, namely Barcelona, Gerona, Lerida, and
+Tarragona. The size of the provinces is relatively large, as seen in
+Table . The smallest province is \(1,978.12km^2\) (this is smaller than
+Rhode Island in the US) and the largest province is \(21,767.93km^2\)
+(slightly smaller than New Jersey in the US). While this is a relatively
+large degree of spatial aggregation, reporting on COVID-19 is
+inconsistent at smaller geographies, or cases are not reported at that
+level at all. The analysis must therefore be considered ecological.
+
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 
 <caption>
 
@@ -326,6 +343,52 @@ Montera34
 
 <td style="text-align:left;">
 
+Area
+
+</td>
+
+<td style="text-align:left;width: 15em; ">
+
+Area of province in sq.km
+
+</td>
+
+<td style="text-align:right;">
+
+1978.12
+
+</td>
+
+<td style="text-align:right;">
+
+10118.79
+
+</td>
+
+<td style="text-align:right;">
+
+21767.93
+
+</td>
+
+<td style="text-align:right;">
+
+4.77
+
+</td>
+
+<td style="text-align:left;width: 5em; ">
+
+INE
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
 GDPpc
 
 </td>
@@ -356,7 +419,7 @@ GDP per capita in €1,000s
 
 <td style="text-align:right;">
 
-4.77
+4805.98
 
 </td>
 
@@ -614,44 +677,41 @@ MAPA
 
 </table>
 
+An important aspect of working with environmental data such as
+temperature and humidity is the incubation period of the disease. Lauer
+et al. (2020) report for the case of COVID-19 a median incubation period
+of 5.7 days (with a confidence interval between 4.9 to 7.8 days). The
+vast majority of cases (95%) develop symptoms between 2.6 days (CI, 2.1
+to 3.7 days) and 12.5 days (CI, 8.2 to 17.7 days). For this reason, we
+judge it best to use lagged values of the environmental variables. We
+test different time lags as follows. We consider a lagged 8-day average,
+from date-minus-12 to date-minus-5 days (hereafter *lag8*). Secondly, we
+consider a lagged 11-day average, from date-minus-12 to date-minus-2
+days (hereafter *lag11*). Finally, to account for the likely duration of
+incubation, we consider a lagged 11-day *weighted* average, from
+date-minus-12 to date-minus-2 days (hereafter *lag11w*). The weights for
+this variable are calculated using the parameters of the log-normal
+distribution reported by Lauer et al. (2020), i.e., a log-mean of 1.621
+and a log-standard deviation of 0.418. With these weights, the
+environmental variables at date-minus-2 and date-minus-12 days are
+weighted as 0.041 and 0.009 respectively, whereas the environmental
+variables at date-minus-5 days are weighted as 0.194.
+
 ## Methods: Spatial SUR
 
-The Seemingly Unrelated Regression equations model (SUR from now on) is
-a multivariate econometric formulation used in different fields when the
-data set is organized as cross-sections for different time periods. The
-basis of this approach is well-known since the initial works of Zellner
-<<<<<<< HEAD
-(<span class="citeproc-not-found" data-reference-id="Zellner1962efficient">**???**</span>)
-and now is a popular methodology included in several Econometrics
-textbook (e.g.,
-<span class="citeproc-not-found" data-reference-id="Greene2003econometric">**???**</span>).
-To our knowledge, Anselin (1988) was the first text that introduced the
-term spatial SUR in reference to a model made of ‘an equation for each
-time period, which is estimated for a cross section of spatial units’
-(p. 141). From this milestone, a huge researches used this methodology
-in spatial framework. Rey and Montouri
-(<span class="citeproc-not-found" data-reference-id="Rey1999us">**???**</span>),
-Fingleton
-(<span class="citeproc-not-found" data-reference-id="Fingleton2007multi">**???**</span>),
-Lauridsen et
-al. (<span class="citeproc-not-found" data-reference-id="Lauridsen2010spatiotemporal">**???**</span>),
-Le Gallo and Dall’Erba
-(<span class="citeproc-not-found" data-reference-id="Legallo2006evaluating">**???**</span>),
-and Lopez et
-al. (<span class="citeproc-not-found" data-reference-id="Lopez2017spatial">**???**</span>)
-are well-known examples in this line.
-=======
-(1962) and now is a popular methodology included in several Econometrics
-textbook (e.g., Greene 2003). To our knowledge, Anselin (1988) was the
-first text that introduced the term spatial SUR in reference to a model
-made of ‘an equation for each time period, which is estimated for a
-cross section of spatial units’ (p. 141). From this milestone, a huge
-researches used this methodology in spatial framework. Rey and Montouri
-(1999), Fingleton
-(<span class="citeproc-not-found" data-reference-id="Fingleton2007multi">**???**</span>),
-Lauridsen et al. (2010), Le Gallo and Dall’Erba (2006), and Lopez et
-al. (2017) are well-known examples in this line.
->>>>>>> f448d32e3b23eaeeae8d724e650eecd0819fef40
+The Seemingly Unrelated Regression equations model (SUR hereafter) is a
+multivariate econometric model used in different fields when the
+structure of the data consisits of cross-sections for different time
+periods. The basis of this approach is well-known since the initial
+works of Zellner (1962), and has become a popular methodology included
+in several econometrics textbook (e.g., Greene 2003). To our knowledge,
+Anselin (1988) was the first author to discuss SUR from a spatial
+perspective. In his landmark text, Anselin discussed a model made of “an
+equation for each time period, which is estimated for a cross section of
+spatial units” (p. 141). From this milestone, a large body of research
+has developed to extend the classical SUR into a spatial framework
+(e.g., Rey and Montouri 1999; Lauridsen et al. 2010; Le Gallo and
+Dall’Erba 2006; López, Martínez-Ortiz, and Cegarra-Navarro 2017).
 
 The classical SUR model without spatial effects (from here, SUR-SIM) is
 a stack of equations as follows:
@@ -663,7 +723,7 @@ a stack of equations as follows:
 y_1 \\ y_2 \\ \vdots \\ y_T
 \end{bmatrix}
 =
-\begin{bmatrix}
+  \begin{bmatrix}
 X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & X_T
 \end{bmatrix}
 \
@@ -675,26 +735,11 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_T
 \end{bmatrix}
 \end{equation}
-<<<<<<< HEAD
+
+\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t=(X^1,...,X^{k_t})$ is a $N \times k_t$ matrix of the $k_t$ independent variables, $X_i=(X^i_{st})$; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals. 
 -->
 
 <!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
-
-![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-sim%7D%20%5Cbegin%7Bbmatrix%7D%20y_1%20%5C%5C%20y_2%20%5C%5C%20%5Cvdots%20%5C%5C%20y_T%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20X_1%20%26%200%20%26%20%5Ccdots%20%26%200%20%5C%5C%200%20%26%20X_2%20%26%20%5Ccdots%20%26%200%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%200%20%26%200%20%26%20%5Ccdots%20%26%20X_T%20%5Cend%7Bbmatrix%7D%20%5C%20%5Cbegin%7Bbmatrix%7D%20%5Cbeta_1%20%5C%5C%20%5Cbeta_1%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cbeta_T%20%5Cend%7Bbmatrix%7D%20%2B%20%5Cbegin%7Bbmatrix%7D%20%5Cepsilon_1%20%5C%5C%20%5Cepsilon_2%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cepsilon_T%20%5Cend%7Bbmatrix%7D%20%5Cend%7Bequation%7D)
-
-where \(y_{t}=(y_{1t},...,y_{Nt})\) is a \(N \times 1\) vector, and in
-our case \(y_{st}\) is the incidence ratio in the province \(s\)
-(\(s=1,...,N\)) the day \(t\) \((t=1,...,T)\); \(X_t=(X^1,...,X^{k_t})\)
-is a \(N \times k_t\) matrix of the \(k_t\) independent variables,
-\(X_i=(X^i_{st})\); \(\beta_t=(\beta_{1t},...,\beta_{Nt})\) is a vector
-of coefficients and \(\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})\) is
-the vector of residuals.
-=======
-
-\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is an $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t=(X^1,...,X^{k_t})$ is a $N \times k_t$ matrix of the $k_t$ independent variables, $X_i=(X^i_{st})$; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals.
--->
-
-<!--Equations for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
 
 ![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-sim%7D%20%5Cbegin%7Bbmatrix%7D%20y_1%20%5C%5C%20y_2%20%5C%5C%20%5Cvdots%20%5C%5C%20y_T%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20X_1%20%26%200%20%26%20%5Ccdots%20%26%200%20%5C%5C%200%20%26%20X_2%20%26%20%5Ccdots%20%26%200%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%200%20%26%200%20%26%20%5Ccdots%20%26%20X_T%20%5Cend%7Bbmatrix%7D%20%5C%20%5Cbegin%7Bbmatrix%7D%20%5Cbeta_1%20%5C%5C%20%5Cbeta_1%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cbeta_T%20%5Cend%7Bbmatrix%7D%20%2B%20%5Cbegin%7Bbmatrix%7D%20%5Cepsilon_1%20%5C%5C%20%5Cepsilon_2%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cepsilon_T%20%5Cend%7Bbmatrix%7D%20%5Cend%7Bequation%7D)
 
@@ -719,21 +764,17 @@ independent variables,
 is a vector of coefficients and
 ![\(\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})\)](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon_t%3D\(%5Cepsilon_%7B1t%7D%2C...%2C%5Cepsilon_%7BNt%7D\)%24)
 is the vector of residuals.
->>>>>>> f448d32e3b23eaeeae8d724e650eecd0819fef40
 
-The more relevant characteristic of a SUR model is the dependence
-structure among the vectors of residuals, namely:
+A key feature of the SUR model is the dependence structure among the
+vectors of residuals, namely:
 
 <!--
 \begin{equation}
 \label{eq:sur-err}
 E[\epsilon_t \epsilon'_{t'}]=\sigma_{tt'}
 \end{equation} 
-<<<<<<< HEAD
-=======
 
-Note that this specification is very flexible, in that it allows changes in the coefficients $\beta_{it}$ in order to modulate the effect of $X^i_{.t}$ on $y_t$. This flexibility can be reduced and it is posible to impose restrinctions considering some $\beta$ coefficients as being constant over time. In this case, we can reformulate the coefficients expression of $\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})$ to restrict the first $r$ coefficients to be constant across equations, i.e., time periods.
->>>>>>> f448d32e3b23eaeeae8d724e650eecd0819fef40
+Note that this specification is very flexible, in that it allows changes in the coefficients $\beta_{it}$ in order to modulate the effect of $X^i_{.t}$ on $y_t$. This flexibility can be reduced and it is posible to impose restrinctions considering some $\beta$ coefficients as being constant over time. In this case, we can reformulate the coefficients expression $\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})$ to restrict the first $r$ coefficients to be constant across equations. This is equivalent to specifying some effects to be invariant over time.
 -->
 
 ![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-err%7D%20E%5B%5Cepsilon_t%20%5Cepsilon'_%7Bt'%7D%5D%3D%5Csigma_%7Btt'%7D%20%5Cend%7Bequation%7D%20)
@@ -745,15 +786,16 @@ in order to modulate the effect of
 ![\(X^i_{.t}\)](https://render.githubusercontent.com/render/math?math=%24X%5Ei_%7B.t%7D%24)
 on
 ![\(y_t\)](https://render.githubusercontent.com/render/math?math=%24y_t%24).
-This flexibility can be reduced and it is posible to impose
-restrinctions considering some
+This flexibility can be reduced and it is posible to impose restrictions
+to consider some
 ![\(\beta\)](https://render.githubusercontent.com/render/math?math=%24%5Cbeta%24)
 coefficients as being constant over time. In this case, we can
-reformulate the coefficients expression of
+reformulate the coefficients expression
 ![\(\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})\)](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_t%20%3D%20\(%5Cbeta_%7B1%7D%2C%20%5Ccdots%2C%20%5Cbeta_%7Br-1%7D%2C%20%5Cbeta_%7Br%7D%2C%20%5Cbeta_%7Br%2B1%7D%2C%20%5Ccdots%2C%20%5Cbeta_%7BNt%7D\)%24)
 to restrict the first
 ![\(r\)](https://render.githubusercontent.com/render/math?math=%24r%24)
-coefficients to be constant across equations, i.e., time periods.
+coefficients to be constant across equations. This is equivalent to
+specifying some effects to be invariant over time.
 
 Equation ) can be rewriten in compact form:
 
@@ -765,17 +807,28 @@ y = X \beta + \epsilon
 
 ![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20y%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5Cend%7Bequation%7D)
 
-where….
+As is the case with cross-sectional data, it is possible to test the
+residuals of Model  for spatial autocorrelation, and several tests have
+been developed to test the null hypothesis of spatial independence (see
+López, Mur, and Angulo 2014). When the null hypothesis is rejected,
+several alternative specifications have been proposed to include spatial
+effects (Anselin 1988, see also 2016). In this paper we consider a
+spatial SUR model that incorporates a spatial lag of the dependent
+variable as an explanatory factor. Spatial analytical approaches were
+used to understand contagion-difussion processes in the case of
+infectious disease in general (e.g., Cliff, Haggett, and Smallman-Raynor
+1998) and the 2003-2004 SARS outbreak in particular (e.g., Meng et al.
+2005; Cao et al. 2010). While we are mindful of the same caveat that the
+novel SARS-CoV2 may not follow the patterns of previous diseases, there
+is still evidence from the United States that COVID-19 displays spatial
+patterns that are consistent with a diffusion process (Desjardins, Hohl,
+and Delmelle 2020). For this reason, the spatial lag model is
+appropriate to model incidence of COVID-19 geographically, since it
+accounts for potential spatial patterns that result from a process of
+contagion, as explained next.
 
-As is the case of cross-sectional data, it is possible identify spatial
-autocorrelation in the residuals of Model , and several Lagrange
-Multipliers tests have been developed to test the null hypothesis of
-spatial independence (see López, Mur, and Angulo 2014). When the null
-hypothesis is rejected, there are alternative several specifications
-that have been propose to include spatial effects (Anselin 1988, see
-also 2016). In this paper we consider a spatial SUR model that
-incorporates a spatial lag of the dependent variable as an explanatory
-factor. The stack expresion for the spatial lag SUR model (SUR-SLM),
+The stack expresion for the spatial lag SUR model (SUR-SLM) is as
+follows:
 
 <!--
 \begin{equation}
@@ -783,33 +836,17 @@ factor. The stack expresion for the spatial lag SUR model (SUR-SLM),
 \bf{A}y = X \beta + \epsilon \\
 \epsilon =N(0,\Omega)
 \end{equation}
-<<<<<<< HEAD
-=======
 
-\noindent where $A =I_{TN}-\bf{\rho} \otimes W$ with $\bf{\rho} = diag(\rho_1, \cdots, \rho_T)$.
->>>>>>> f448d32e3b23eaeeae8d724e650eecd0819fef40
+\noindent where $A =I_{TN}-\bf{\Lambda} \otimes W$ with $\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)$.
 -->
 
 ![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbf%7BA%7Dy%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN\(0%2C%5COmega\)%20%5Cend%7Bequation%7D)
 
-<<<<<<< HEAD
-where A =\(I_{TN}-\bf{\Lambda} \otimes W\) with
-\(\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)\).
-
-This specification assumes that incidence in a province (\(y_st\)) at
-time \(t\) is partially determined by the weighted average (\(Wy_{st}\))
-of incidence in neighbouring provinces. Parameters of spatial dependence
-are estimated for each time period \(\lambda_t\) and identifies the
-intensity and the sign of the impacts of neighbourhood. It is possible
-test the null hypotheis of identtical levels of spatial dependence
-(\(\lambda_i=\lambda_j, \forall i,j\)). The correspond Wald test is
-available in the R package **spsur**
-=======
-where ![\(A =I_{TN}-\bf{\rho} \otimes W\) with
-\(\bf{\rho} = diag(\rho_1, \cdots, \rho_T)\)](https://render.githubusercontent.com/render/math?math=%24A%20%3DI_%7BTN%7D-%5Cbf%7B%5Crho%7D%20%5Cotimes%20W%24%20with%20%24%5Cbf%7B%5Crho%7D%20%3D%20diag\(%5Crho_1%2C%20%5Ccdots%2C%20%5Crho_T\)%24).
+where ![\(A = I_{TN}-\bf{\Lambda} \otimes W\) with
+\(\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)\)](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20I_%7BTN%7D-%5Cbf%7B%5CLambda%7D%20%5Cotimes%20W%24%20with%20%24%5Cbf%7B%5CLambda%7D%20%3D%20diag\(%5Clambda_1%2C%20%5Ccdots%2C%20%5Clambda_T\)%24).
 
 <!--
-This specification assumes that incidence in a province ($y_st$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\rho_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence ($\rho_i=\rho_j, \forall i,j$). The correspond Wald test is available in the R package `spsur`. 
+This specification assumes that incidence in a province ($y_st$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\rho_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence ($\rho_i=\rho_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`.
 -->
 
 This specification assumes that incidence in a province
@@ -825,18 +862,15 @@ and identifies the intensity and the sign of the impacts of
 neighbourhood. It is possible test the null hypotheis of identtical
 levels of spatial dependence
 (![\(\rho_i=\rho_j, \forall i,j\)](https://render.githubusercontent.com/render/math?math=%24%5Crho_i%3D%5Crho_j%2C%20%5Cforall%20i%2Cj%24)).
-The correspond Wald test is available in the R package `spsur`.
->>>>>>> f448d32e3b23eaeeae8d724e650eecd0819fef40
+The correspond Wald test is available in the `R` package `spsur`.
 
 The SUR-SLM model can be estimated using maximum likelihood (López, Mur,
 and Angulo (2014)) or instrumental variables (Mínguez, López, and Mur
-(2019)).
-
-Another alternative methodologies could be use. By example, a dynamic
-spatial panel methodology with fixed spatial an temporal effects
-(e.g. Elhorst 2014, Cap. 4), but those models are more dont take
-account correlation between errors. Therefore, a spatial SUR approach is
-more reasonable for our purpose.
+(2019)). Another alternative methodologies could be use. By example, a
+dynamic spatial panel methodology with fixed spatial an temporal effects
+(e.g. Elhorst 2014, Cap. 4), but those models are more dont take account
+correlation between errors. Therefore, a spatial SUR approach is more
+reasonable for our purpose.
 
 # Analysis and Results
 
@@ -1552,6 +1586,15 @@ Bivand, Roger S., Edzer Pebesma, and Virgilio Gomez-Rubio. 2013.
 
 </div>
 
+<div id="ref-Cao2010spatio">
+
+Cao, ZhiDong, DaJun Zeng, XiaoLong Zheng, QuanYi Wang, FeiYue Wang,
+JinFeng Wang, and XiaoLi Wang. 2010. “Spatio-Temporal Evolution of
+Beijing 2003 Sars Epidemic.” Journal Article. *Science China Earth
+Sciences* 53 (7): 1017–28. <https://doi.org/10.1007/s11430-010-0043-x>.
+
+</div>
+
 <div id="ref-Casanova2010effects">
 
 Casanova, Lisa M, Soyoung Jeon, William A Rutala, David J Weber, and
@@ -1569,6 +1612,15 @@ Sars Coronavirus.” Journal Article. *Advances in Virology* 2011.
 
 </div>
 
+<div id="ref-Cliff1998detecting">
+
+Cliff, AD, Peter Haggett, and MR Smallman-Raynor. 1998. “Detecting
+Space—Time Patterns in Geocoded Disease Data. Cholera in London, 1854
+Measles in the United States, 1962–95.” Book Section. In *Geomed’97*,
+13–42. Springer.
+
+</div>
+
 <div id="ref-Coelho2020exponential">
 
 Coelho, Marco Tulio Pacheco, Joao Fabricio Mota Rodrigues, Anderson
@@ -1576,6 +1628,15 @@ Matos Medina, Paulo Scalco, Levi Carina Terribile, Bruno Vilela, Jose
 Alexandre Felizola Diniz-Filho, and Ricardo Dobrovolski. 2020.
 “Exponential Phase of Covid19 Expansion Is Not Driven by Climate at
 Global Scale.” Journal Article. *medRxiv*.
+
+</div>
+
+<div id="ref-Desjardins2020rapid">
+
+Desjardins, MR, A Hohl, and EM Delmelle. 2020. “Rapid Surveillance of
+Covid-19 in the United States Using a Prospective Space-Time Scan
+Statistic: Detecting and Evaluating Emerging Clusters.” Journal Article.
+*Applied Geography*, 102202.
 
 </div>
 
@@ -1658,6 +1719,17 @@ Growth Rate.” Journal Article. *medRxiv*.
 
 </div>
 
+<div id="ref-Lauer2020incubation">
+
+Lauer, Stephen A., Kyra H. Grantz, Qifang Bi, Forrest K. Jones, Qulu
+Zheng, Hannah R. Meredith, Andrew S. Azman, Nicholas G. Reich, and
+Justin Lessler. 2020. “The Incubation Period of Coronavirus Disease 2019
+(Covid-19) from Publicly Reported Confirmed Cases: Estimation and
+Application.” Journal Article. *Annals of Internal Medicine*.
+<https://doi.org/10.7326/m20-0504>.
+
+</div>
+
 <div id="ref-Lauridsen2010spatiotemporal">
 
 Lauridsen, Jorgen, Mickael Bech, Fernando López, and Mariluz Maté. 2010.
@@ -1715,6 +1787,15 @@ Meijers, Evert, Joris Hoekstra, and Ricardo Aguado. 2008. “Strategic
 Planning for City Networks: The Emergence of a Basque Global City?”
 Journal Article. *International Planning Studies* 13 (3): 239–59.
 <https://doi.org/10.1080/13563470802521440>.
+
+</div>
+
+<div id="ref-Meng2005understanding">
+
+Meng, B., J. Wang, J. Liu, J. Wu, and E. Zhong. 2005. “Understanding the
+Spatial Diffusion Process of Severe Acute Respiratory Syndrome in
+Beijing.” Journal Article. *Public Health* 119 (12): 1080–7.
+<https://doi.org/https://doi.org/10.1016/j.puhe.2005.02.003>.
 
 </div>
 
