@@ -283,8 +283,7 @@ y = X \beta + \epsilon
 \noindent where....
 -->
 
-As is the case with cross-sectional data, it is possible to test the residuals of Model \ref{eq:sur-sim} for spatial autocorrelation, and several tests have been developed to test the null hypothesis of spatial independence [see @Lopez2014spatial]. When the null hypothesis is rejected, several alternative specifications have been proposed to include spatial effects [@Anselin1988spatial; see also @Anselin2016estimation]. In this paper we consider a spatial SUR model that incorporates a spatial lag of the dependent variable as an explanatory factor. A sp
-
+As is the case with cross-sectional data, it is possible to test the residuals of Model \ref{eq:sur-sim} for spatial autocorrelation, and several tests have been developed to test the null hypothesis of spatial independence [see @Lopez2014spatial]. When the null hypothesis is rejected, several alternative specifications have been proposed to include spatial effects [@Anselin1988spatial; see also @Anselin2016estimation]. In this paper we consider a spatial SUR model that incorporates a spatial lag of the dependent variable as an explanatory factor. Spatial analytical approaches were used to understand contagion-difussion processes in the case of infectious disease in general [e.g., @Cliff1998detecting] and the 2003-2004 SARS outbreak in particular [e.g., @Meng2005understanding; @Cao2010spatio]. While we are mindful of the same caveat that the novel SARS-CoV2 may not follow the patterns of previous diseases, there is still evidence from the United States that COVID-19 displays spatial patterns that are consistent with a diffusion process [@Desjardins2020rapid]. For this reason, the spatial lag model is appropriate to model incidence of COVID-19 geographically, since it accounts for potential spatial patterns that result from a process of contagion, as explained next. 
 
 The stack expresion for the spatial lag SUR model (SUR-SLM),
 
