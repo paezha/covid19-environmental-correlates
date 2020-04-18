@@ -125,14 +125,16 @@ Prof.~Moraes Rego, 1235 - Cidade Universitária, Recife, PE, CEP
   incidence of reported cases of the disease per 100,000 population, as a
   function of temperature and humidity, while controlling for GDP per
   capita, population density, percentage of older adults in the
-  population, and presence of mass transit systems. Our results indicate
-  that incidence of the disease is lower at higher temperatures. The
-  evidence with respect to humidity is more mixed, with coefficients for
-  this variable that are significant in only some equations. Our control
-  variables also yield interesting insights, as population density and
-  percentage of older adults display negative associations with incidence
-  of COVID-19, whereas the presence of mass transit systems in the
-  province is associated with a greater incidence of the disease.
+  population, and presence of mass transit systems. An interesting aspect
+  of the spatial SUR approach is that it models incidence as a contagion
+  process. Our results indicate that incidence of the disease is lower at
+  higher temperatures. The evidence with respect to humidity is more
+  mixed, with coefficients for this variable that are significant in only
+  some equations. Our control variables also yield interesting insights,
+  as population density and percentage of older adults display negative
+  associations with incidence of COVID-19, whereas the presence of mass
+  transit systems in the province is associated with a greater incidence
+  of the disease.\\
   \end{abstract}
   
  \end{frontmatter}
@@ -209,7 +211,7 @@ guidance on this matter (see National Academies of Sciences, Engineering
 and Medicine, 2020). Their conclusion summarizes the situation well (see
 p.~6): ``Some limited data support a potential waning of cases in warmer
 and more humid seasons, yet none are without major
-limitations\ldots Additional studies as the SARS-CoV-2 pandemic unfolds
+limitations\ldots{}Additional studies as the SARS-CoV-2 pandemic unfolds
 could shed more light on the effects of climate on transmission.''
 
 With the above considerations in mind, our objective with this paper is
@@ -224,36 +226,50 @@ information, to create a spatio-temporal dataset covering a period of 30
 days. We then join this dataset with provincial-level economic and
 demographic information to act as controls to our key environmental
 variables. These data are analyzed using a spatial Seemingly Unrelated
-Regressions (SUR) approach, which allows us to account for spatial
-autocorrelation.
+Regressions (SUR) approach, which allows us to model incidence of
+COVID-19 as a spatial contagion process.
 
 The results provide evidence of the effect of temperature on the
-incidence of COVID-19, as \textbf{NOTE ABOUT THE MAGNITUDE OF THE
-EFFECT}. The evidence concerning humidity is more mixed: while the
-direction of the effect is negative, as anticipated, the coefficients
-for this variable are only significant in some of equations in the
-system. Our control variables also provide some intriguing insights. The
-results of this analysis provide support to the hypothesis of
-seasonality of the novel SARS-CoV2, and should be of interest to public
-health officials and policy makers wrestling with the question of the
-trajectory of the pandemic.
+incidence of COVID-19. The evidence concerning humidity is more mixed:
+while the direction of the effect is negative, as anticipated, the
+coefficients for this variable are only significant in some of equations
+in the system. Our control variables also provide some intriguing
+insights. The results of this analysis provide support to the hypothesis
+of seasonality of the novel SARS-CoV2, and should be of interest to
+public health officials and policy makers wrestling with the question of
+the trajectory of the pandemic.
 
 Please note that this paper is prepared as a reproducible research
 document. The source R Markdown document, as well as all data and code
 needed to reproduce/review/extend the analysis can be obtained from the
 following repository:
 
-\begin{quote}
-\begin{quote}
-Include link to repository
-\end{quote}
-\end{quote}
+https://github.com/paezha/covid19-environmental-correlates
 
 \hypertarget{context-data-and-methods}{%
 \section{Context, Data, and Methods}\label{context-data-and-methods}}
 
 \hypertarget{covid-19-in-spain}{%
 \subsection{Covid-19 in Spain}\label{covid-19-in-spain}}
+
+For a better interpretation of the results of our analysis is necessary
+to know the chronology of the epidemic outbreak in Spain. This
+subsection presents a brief time line of COVID-19.
+
+The first reported case of COVID-19 in Spain was on January 31th, were a
+German tourist in the Canary Islands was positively tested, but the
+first not imported case was diagnostic on February 27th in Sevilla
+province (Andalusia). The epidemic was growing slowly at the beginning
+but in March 11th the World Health Organization (WHO) declared
+officially the pandemic. This declaration was a break point and on March
+13th the Spanish National Government declare the ``Emergency Status''.
+At this date, Spain have been declared 4209 cases of COVID-19 (mostly of
+cases, 1990, in Madrid). Only essential services (e.g.~food, health) and
+some economic subsector of industry and construction could to maintain
+activity. On March 17th Spain closes its lands borders and only allows
+entry to nationals and residents. From March 30th to April 12th (April
+10th-12th Easter) lockdown of the Spanish people was hardened and only
+essential activities were allowed.
 
 When was the first case reported? When did the country close
 international arrivals? When did initial measures of social distancing
@@ -280,24 +296,65 @@ day that the individuo inffect and the case is diagnosticate
 \subsection{Sources of Data}\label{sources-of-data}}
 
 Our dataset includes information about the daily number of cases of
-COVID-19 reported in Spain \footnote{cases tested} at the provincial
-level (NUTIII in eurostat terminology) from March 13th to April 11th (30
-days and 50 spatial units). The Spanish National Government publishes
-periodic updates at the regional level (NUTII) and the information is
-also released at the provincial level as part of a collaborative
-project. This information is compiled from several sources, mainly the
-official web pages of the Spanish regional goverments. In addition, we
-consider two sets of explanatory variables. The first one, and the focus
-of this research, is set of two environmental variables, namely
-temperature and humidity. The second set provides some relevant controls
-for multivariate analysis, and refers to economic and demographic
-attributes of the province. Table \ref{tab:descriptive-statistics} shows
-the descriptive statistics and the provencance of the data.
+COVID-19 reported in Spain
+\footnote{cases positively tested. Exclude sintomatic cases diagnostic by doctor with-out Reacción en Cadena de la Polimersa (PCR) test}
+at the provincial level (NUTIII in eurostat terminology) from March 13th
+to April 11th (30 days and 50 spatial units). The Spanish National
+Government publishes periodic updates at the regional level (NUTII) and
+the information is also released at the provincial level as part of a
+collaborative project. This information is compiled from several
+sources, mainly the official web pages of the Spanish regional
+goverments. In addition, we consider two sets of explanatory variables.
+The first one, and the focus of this research, is set of two
+environmental variables, namely temperature and humidity. The second set
+provides some relevant controls for multivariate analysis, and refers to
+economic and demographic attributes of the province. Table
+\ref{tab:descriptive-statistics} shows the descriptive statistics and
+the provencance of the data.
+
+\begin{table}
+
+\caption{\label{tab:descriptive-statistics}\label{tab:descriptive-statistics}Descriptive statistics}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{15em}rrrr>{\raggedright\arraybackslash}p{5em}}
+\toprule
+Variable & Note & Min & Mean & Max & SD & Source\\
+\midrule
+\rowcolor{gray!6}  COVID-19 Incidence & Incidence in reported cases of SARS-19 per 100,000 people & 0.38 & 153.61 & 1149.36 & 186.23 & Montera34\\
+GDPpc & GDP per capita in €1,000s & 16.67 & 22.51 & 36.00 & 4.77 & INE\\
+\rowcolor{gray!6}  Older & Percentage of people aged 65 and older in the province & 15.16 & 21.03 & 31.36 & 3.95 & INE\\
+Population Density & Population density in the province in people per sq.km & 8.60 & 140.04 & 829.76 & 181.25 & INE\\
+\rowcolor{gray!6}  Mean Temperature & Mean temperature in province by date, in C & 1.00 & 12.18 & 23.20 & 3.67 & AEMET\\
+\addlinespace
+Humidity & Relative humidity in province by date & 2.00 & 77.82 & 100.00 & 10.37 & MAPA\\
+\bottomrule
+\multicolumn{7}{l}{\textit{Note: }}\\
+\multicolumn{7}{l}{Montera34: https://code.montera34.com:4443/numeroteca/covid19/-/blob/master/README\_providencialdata19.md}\\
+\multicolumn{7}{l}{INE (Instituto Nacional de Estadistica): https://www.ine.es/}\\
+\multicolumn{7}{l}{AEMET (Agencia Estatal de Meteorologia): http://eportal.mapa.gob.es}\\
+\multicolumn{7}{l}{MAPA (Ministerio de Agricultura, Pesca y Alimentacion): http://eportal.mapa.gob.es}\\
+\end{tabular}}
+\end{table}
 
 \hypertarget{methods-spatial-sur}{%
 \subsection{Methods: Spatial SUR}\label{methods-spatial-sur}}
 
-Seemingly Unrelated Regressions are used in the context of\ldots{}
+The spatial Seemingly Unrelated Regressions (SUR) methodology has been a
+popular method to estimate are used in the context of\ldots{}
+
+The Seemingly Unrelated Regression equations model (SUR from now on) is
+a multivariate econometric formulation used in different fields when the
+data set is organized as cross-sections for different time periods. The
+basis of this approach is well-known since the initial works of
+({\textbf{???}}) and now is a popular methodology included in several
+Econometrics textbook (e.g.~({\textbf{???}})). To our knowledge, Anselin
+(1988) was the first text that introduced the term spatial SUR in
+reference to a model made of `an equation for each time period, which is
+estimated for a cross section of spatial units' (p.~141). From this
+milestone, a huge researches used this methodology in spatial framework.
+({\textbf{???}}),({\textbf{???}}), ({\textbf{???}}), ({\textbf{???}}),
+({\textbf{???}}) are well-known examples in this line.
 
 The classical SUR model without spatial effects (from here, SUR-SIM) is
 a stack of equations as follows:
@@ -353,7 +410,7 @@ Equation \ref{eq:sur-sim}) can be rewriten in compact form:
 y = X \beta + \epsilon
 \end{equation}
 
-\noindent where\ldots.
+\noindent where\ldots{}.
 
 As is the case of cross-sectional data, it is possible identify spatial
 autocorrelation in the residuals of Model \ref{eq:sur-sim}, and several
@@ -386,6 +443,12 @@ available in the R package \textbf{spsur}
 
 The SUR-SLM model can be estimated using maximum likelihood (López et
 al. (2014)) or instrumental variables (Mínguez et al. (2019)).
+
+Another alternative methodologies could be use. By example, a dynamic
+spatial panel methodology with fixed spatial an temporal effects
+(e.g.~Elhorst 2014, Cap. 4), but those models are more dont take account
+correlation between errors. Therefore, a spatial SUR approach is more
+reasonable for our purpose.
 
 \hypertarget{analysis-and-results}{%
 \section{Analysis and Results}\label{analysis-and-results}}

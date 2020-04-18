@@ -132,7 +132,13 @@ Context, Data, and Methods
 
 ## Covid-19 in Spain
 
+For a better interpretation of the results of our analysis is necessary to know the chronology of the epidemic outbreak in Spain. This subsection presents a brief time line of COVID-19. 
+
+The first reported case of COVID-19 in Spain was on January 31th, were a German tourist in the 
+Canary Islands was positively tested, but the first not imported case was diagnostic on February 27th in Sevilla province (Andalusia). The epidemic was growing slowly at the beginning but in March 11th the World Health Organization (WHO) declared officially the pandemic. This declaration was a break point and on March 13th the Spanish National Government declare the "Emergency Status". At this date, Spain have been declared 4209 cases of COVID-19 (mostly of cases, 1990, in Madrid). Only essential services (e.g. food, health) and some economic subsector of industry and construction could to maintain activity. On March 17th Spain closes its lands borders and only allows entry to nationals and residents. From March 30th to April 12th (April 10th-12th Easter) lockdown of the Spanish people was hardened and only essential activities were allowed.
+
 When was the first case reported? When did the country close international arrivals? When did initial measures of social distancing were implemented? The lockdown?
+
 
 ## Selection of Variables
 
@@ -144,7 +150,7 @@ Some questions are important to point out. Is not evident present a diary associ
 
 ## Sources of Data
 
-Our dataset includes information about the daily number of cases of COVID-19 reported in Spain \footnote{cases tested} at the provincial level (NUTIII in eurostat terminology) from March 13th to April 11th (30 days and 50 spatial units). The Spanish National Government publishes periodic updates at the regional level (NUTII) and the information is also released at the provincial level as part of a collaborative project. This information is compiled from several sources, mainly the official web pages of the Spanish regional goverments. In addition, we consider two sets of explanatory variables. The first one, and the focus of this research, is set of two environmental variables, namely temperature and humidity. The second set provides some relevant controls for multivariate analysis, and refers to economic and demographic attributes of the province. Table \ref{tab:descriptive-statistics} shows the descriptive statistics and the provencance of the data.
+Our dataset includes information about the daily number of cases of COVID-19 reported in Spain \footnote{cases positively tested. Exclude sintomatic cases diagnostic by doctor with-out Reacción en Cadena de la Polimersa (PCR) test} at the provincial level (NUTIII in eurostat terminology) from March 13th to April 11th (30 days and 50 spatial units). The Spanish National Government publishes periodic updates at the regional level (NUTII) and the information is also released at the provincial level as part of a collaborative project. This information is compiled from several sources, mainly the official web pages of the Spanish regional goverments. In addition, we consider two sets of explanatory variables. The first one, and the focus of this research, is set of two environmental variables, namely temperature and humidity. The second set provides some relevant controls for multivariate analysis, and refers to economic and demographic attributes of the province. Table \ref{tab:descriptive-statistics} shows the descriptive statistics and the provencance of the data.
 
 ```{r descriptive-statistics, echo=FALSE}
 data.frame(Variable = c("COVID-19 Incidence",
@@ -204,7 +210,9 @@ data.frame(Variable = c("COVID-19 Incidence",
 
 ## Methods: Spatial SUR
 
-Seemingly Unrelated Regressions are used in the context of...
+The spatial Seemingly Unrelated Regressions (SUR) methodology has been a popular method to estimate are used in the context of...
+
+The Seemingly Unrelated Regression equations model (SUR from now on) is a multivariate econometric formulation used in different fields when the data set is organized as cross-sections for different time periods. The basis of this approach is well-known since the initial works of @zellner1962 and now is a popular methodology included in several Econometrics textbook (e.g. @greene2003). To our knowledge, @Anselin1988spatial was the first text that introduced the term spatial SUR in reference to a model made of ‘an equation for each time period, which is estimated for a cross section of spatial units’ (p. 141). From this milestone, a huge researches used this methodology in spatial framework. @rey1999,@fingleton2007multi, @lauridsen2010, @legallo2006, @lopez2017spatial are well-known examples in this line.
 
 The classical SUR model without spatial effects (from here, SUR-SIM) is a stack of equations as follows:
 
@@ -259,6 +267,8 @@ As is the case of cross-sectional data, it is possible identify spatial autocorr
 This specification assumes that incidence in a province ($y_st$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Parameters of spatial dependence are estimated for each time period $\lambda_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence ($\lambda_i=\lambda_j, \forall i,j$). The correspond Wald test is available in the R package **spsur** 
 
 The SUR-SLM model can be estimated using maximum likelihood (@Lopez2014spatial) or instrumental variables (@Minguez2019).
+
+Another alternative methodologies could be use. By example, a dynamic spatial panel methodology with fixed spatial an temporal effects (e.g. Elhorst 2014, Cap. 4), but those models are more dont take account correlation between errors. Therefore, a spatial SUR approach is more reasonable for our purpose.
 
 Analysis and Results
 ===================
