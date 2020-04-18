@@ -40,13 +40,14 @@ of the disease.
 
 SARS-CoV2  
 COVID-19  
+Seasonality  
 Temperature  
 Humidity  
 Spatial SUR  
 Contagion  
 Spain
 
-## Introduction
+# Introduction
 
 From a small outbreak linked to a live animal market at the end of 2019
 to a global pandemic in a matter of weeks, the SARS-CoV2 virus has
@@ -152,15 +153,30 @@ following repository:
 
 <https://github.com/paezha/covid19-environmental-correlates>
 
-## Context, Data, and Methods
+# Context, Data, and Methods
 
-### Covid-19 in Spain
+## Covid-19 in Spain
 
-When was the first case reported? When did the country close
-international arrivals? When did initial measures of social distancing
-were implemented? The lockdown?
+For a better interpretation of the results of our analysis is necessary
+to know the chronology of the epidemic outbreak in Spain. This
+subsection presents a brief time line of COVID-19.
 
-### Selection of Variables
+The first reported case of COVID-19 in Spain was on January 31th, were a
+German tourist in the Canary Islands was positively tested, but the
+first not imported case was diagnostic on February 27th in Sevilla
+province (Andalusia). The epidemic was growing slowly at the beginning
+but in March 11th the World Health Organization (WHO) declared
+officially the pandemic. This declaration was a break point and on March
+13th the Spanish National Government declare the “Emergency Status”. At
+this date, Spain have been declared 4209 cases of COVID-19 (mostly of
+cases, 1990, in Madrid). Only essential services (e.g. food, health) and
+some economic subsector of industry and construction could to maintain
+activity. On March 17th Spain closes its lands borders and only allows
+entry to nationals and residents. From March 30th to April 12th (April
+10th-12th Easter) lockdown of the Spanish people was hardened and only
+essential activities were allowed.
+
+## Selection of Variables
 
 Explain the rationale for selecting the variables.
 
@@ -176,21 +192,29 @@ diary association between the temprature (resp. humidity) with declarate
 case. There is evidences (ref) that a time lag is necessary between the
 day that the individuo inffect and the case is diagnosticate
 
-### Sources of Data
+## Sources of Data
 
 Our dataset includes information about the daily number of cases of
-COVID-19 reported in Spain  at the provincial level (NUTIII in eurostat
-terminology) from March 13th to April 11th (30 days and 50 spatial
-units). The Spanish National Government publishes periodic updates at
-the regional level (NUTII) and the information is also released at the
-provincial level as part of a collaborative project. This information is
-compiled from several sources, mainly the official web pages of the
-Spanish regional goverments. In addition, we consider two sets of
-explanatory variables. The first one, and the focus of this research, is
-set of two environmental variables, namely temperature and humidity. The
+COVID-19 reported in Spain at the provincial level (NUTIII in Eurostat
+terminology) for the period between March 13th and April 11th,
+inclusive. This gives a temporal coverage of 30 days and spatial
+coverage of 50 units. For our purposes, we consider positive cases
+reported, but excluding symptomatic cases diagnosed by a doctor without
+a Polymerase Chain Reaction (PCR) test. The Spanish National Government
+publishes periodic updates at the regional level (NUTII) and the
+information is also released at the provincial level as part of a
+collaborative project \[**by whom?**\]. This information is compiled
+from several sources, mainly the official web pages of the Spanish
+regional goverments. In addition, we consider two sets of explanatory
+variables. The first one, and the focus of this research, is set of two
+environmental variables, namely temperature and humidity, which are
+collected from official sources (i.g., AEMET, the state meteorology
+agency, and MAPA, the ministry of agriculture, fisheries, and food). The
 second set provides some relevant controls for multivariate analysis,
-and refers to economic and demographic attributes of the province. Table
- shows the descriptive statistics and the provencance of the data.
+and refers to economic and demographic attributes of the province (also
+collected from official sources, i.e., INE, the national statistics
+institute). Table  shows the descriptive statistics and the provenance
+of the data.
 
 <table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 
@@ -260,7 +284,7 @@ COVID-19 Incidence
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 15em; ">
 
 Incidence in reported cases of SARS-19 per 100,000 people
 
@@ -290,7 +314,7 @@ Incidence in reported cases of SARS-19 per 100,000 people
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 5em; ">
 
 Montera34
 
@@ -306,7 +330,7 @@ GDPpc
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 15em; ">
 
 GDP per capita in €1,000s
 
@@ -336,7 +360,7 @@ GDP per capita in €1,000s
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 5em; ">
 
 INE
 
@@ -352,7 +376,7 @@ Older
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 15em; ">
 
 Percentage of people aged 65 and older in the province
 
@@ -382,7 +406,7 @@ Percentage of people aged 65 and older in the province
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 5em; ">
 
 INE
 
@@ -398,7 +422,7 @@ Population Density
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 15em; ">
 
 Population density in the province in people per sq.km
 
@@ -428,7 +452,7 @@ Population density in the province in people per sq.km
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 5em; ">
 
 INE
 
@@ -444,7 +468,7 @@ Mean Temperature
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 15em; ">
 
 Mean temperature in province by date, in C
 
@@ -474,7 +498,7 @@ Mean temperature in province by date, in C
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 5em; ">
 
 AEMET
 
@@ -490,7 +514,7 @@ Humidity
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 15em; ">
 
 Relative humidity in province by date
 
@@ -520,7 +544,7 @@ Relative humidity in province by date
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 5em; ">
 
 MAPA
 
@@ -590,12 +614,59 @@ MAPA
 
 </table>
 
-### Methods: Spatial SUR
+## Methods: Spatial SUR
 
-Seemingly Unrelated Regressions are used in the context of…
+The Seemingly Unrelated Regression equations model (SUR from now on) is
+a multivariate econometric formulation used in different fields when the
+data set is organized as cross-sections for different time periods. The
+basis of this approach is well-known since the initial works of Zellner
+(<span class="citeproc-not-found" data-reference-id="Zellner1962efficient">**???**</span>)
+and now is a popular methodology included in several Econometrics
+textbook (e.g.,
+<span class="citeproc-not-found" data-reference-id="Greene2003econometric">**???**</span>).
+To our knowledge, Anselin (1988) was the first text that introduced the
+term spatial SUR in reference to a model made of ‘an equation for each
+time period, which is estimated for a cross section of spatial units’
+(p. 141). From this milestone, a huge researches used this methodology
+in spatial framework. Rey and Montouri
+(<span class="citeproc-not-found" data-reference-id="Rey1999us">**???**</span>),
+Fingleton
+(<span class="citeproc-not-found" data-reference-id="Fingleton2007multi">**???**</span>),
+Lauridsen et
+al. (<span class="citeproc-not-found" data-reference-id="Lauridsen2010spatiotemporal">**???**</span>),
+Le Gallo and Dall’Erba
+(<span class="citeproc-not-found" data-reference-id="Legallo2006evaluating">**???**</span>),
+and Lopez et
+al. (<span class="citeproc-not-found" data-reference-id="Lopez2017spatial">**???**</span>)
+are well-known examples in this line.
 
 The classical SUR model without spatial effects (from here, SUR-SIM) is
 a stack of equations as follows:
+
+<!--
+\begin{equation}
+\label{eq:sur-sim}
+\begin{bmatrix}
+y_1 \\ y_2 \\ \vdots \\ y_T
+\end{bmatrix}
+=
+\begin{bmatrix}
+X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & X_T
+\end{bmatrix}
+\
+\begin{bmatrix}
+\beta_1 \\ \beta_1 \\ \vdots \\ \beta_T
+\end{bmatrix}
++
+\begin{bmatrix}
+\epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_T
+\end{bmatrix}
+\end{equation}
+-->
+
+<!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
+
+![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-sim%7D%20%5Cbegin%7Bbmatrix%7D%20y_1%20%5C%5C%20y_2%20%5C%5C%20%5Cvdots%20%5C%5C%20y_T%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20X_1%20%26%200%20%26%20%5Ccdots%20%26%200%20%5C%5C%200%20%26%20X_2%20%26%20%5Ccdots%20%26%200%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%200%20%26%200%20%26%20%5Ccdots%20%26%20X_T%20%5Cend%7Bbmatrix%7D%20%5C%20%5Cbegin%7Bbmatrix%7D%20%5Cbeta_1%20%5C%5C%20%5Cbeta_1%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cbeta_T%20%5Cend%7Bbmatrix%7D%20%2B%20%5Cbegin%7Bbmatrix%7D%20%5Cepsilon_1%20%5C%5C%20%5Cepsilon_2%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cepsilon_T%20%5Cend%7Bbmatrix%7D%20%5Cend%7Bequation%7D)
 
 where \(y_{t}=(y_{1t},...,y_{Nt})\) is a \(N \times 1\) vector, and in
 our case \(y_{st}\) is the incidence ratio in the province \(s\)
@@ -608,6 +679,15 @@ the vector of residuals.
 The more relevant characteristic of a SUR model is the dependence
 structure among the vectors of residuals, namely:
 
+<!--
+\begin{equation}
+\label{eq:sur-err}
+E[\epsilon_t \epsilon'_{t'}]=\sigma_{tt'}
+\end{equation} 
+-->
+
+![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-err%7D%20E%5B%5Cepsilon_t%20%5Cepsilon'_%7Bt'%7D%5D%3D%5Csigma_%7Btt'%7D%20%5Cend%7Bequation%7D%20)
+
 Note that this specification is very flexible, in that it allows changes
 in the coefficients \(\beta_{it}\) in order to modulate the effect of
 \(X^i_{.t}\) on \(y_t\). This flexibility can be reduced and it is
@@ -618,6 +698,14 @@ coefficients expression of
 considering the first \(r\) coefficients contanst.
 
 Equation ) can be rewriten in compact form:
+
+<!--
+\begin{equation}
+y = X \beta + \epsilon
+\end{equation}
+-->
+
+![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20y%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5Cend%7Bequation%7D)
 
 where….
 
@@ -630,6 +718,16 @@ that have been propose to include spatial effects (Anselin 1988, see
 also 2016). In this paper we consider a spatial SUR model that
 incorporates a spatial lag of the dependent variable as an explanatory
 factor. The stack expresion for the spatial lag SUR model (SUR-SLM),
+
+<!--
+\begin{equation}
+\label{eq:sur-slm}
+\bf{A}y = X \beta + \epsilon \\
+\epsilon =N(0,\Omega)
+\end{equation}
+-->
+
+![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbf%7BA%7Dy%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN\(0%2C%5COmega\)%20%5Cend%7Bequation%7D)
 
 where A =\(I_{TN}-\bf{\Lambda} \otimes W\) with
 \(\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)\).
@@ -646,6 +744,12 @@ available in the R package **spsur**
 The SUR-SLM model can be estimated using maximum likelihood (López, Mur,
 and Angulo (2014)) or instrumental variables (Mínguez, López, and Mur
 (2019)).
+
+Another alternative methodologies could be use. By example, a dynamic
+spatial panel methodology with fixed spatial an temporal effects
+(e.g. Elhorst 2014, Cap. 4), but those models are more dont take
+account correlation between errors. Therefore, a spatial SUR approach is
+more reasonable for our purpose.
 
 # Analysis and Results
 
@@ -711,7 +815,7 @@ forms, tends to be possitively correlated with incidence of COVID-19.
 daily incidence of COVID-19 (all variables have been
 log-transformed)](README_files/figure-gfm/daily-correlations-1.png)
 
-### SUR Models
+## SUR Models
 
 The goodness of fit of the three systems of equations is shown in Figure
 .
@@ -1233,7 +1337,7 @@ equations
 
 </table>
 
-## Discussion
+# Discussion
 
 Figure  shows the temporal evolution of the spatial autocorrelation
 coefficient (\(\rho\)).
@@ -1269,22 +1373,24 @@ Figure  shows the temporal evolution of the coefficient for
 ![Temporal evolution of coefficient for
 log(Temperature)](README_files/figure-gfm/beta-temperature-time-1.png)
 
-## Concluding Remarks
+# Concluding Remarks
 
 More words go here.
 
-## Acknowledgments
+# Acknowledgments
+
+Add acknowledgments as appropriate in final draft.
 
 The following `R` packages were used in the course of this investigation
-and the authors wish to acknowledge their developers: `ggthemes` (Arnold
-2019), `gridExtra` (Auguie 2017), `kableExtra` (Zhu 2019), `knitr` (Xie
-2014, 2015), `lubridate` (Grolemund and Wickham 2011), `plm` (Millo
-2017), `rticles` (Allaire et al. 2020), `sf` (Pebesma 2018), `spdep`
-(Bivand, Pebesma, and Gomez-Rubio 2013), spsur (Angulo et al. 2020)
-`tidyverse` (Wickham et al. 2019), `units` (Pebesma, Mailund, and
-Hiebert 2016).
+and the authors wish to acknowledge their developers: `aemet` \[\],
+`ggthemes` (Arnold 2019), `gridExtra` (Auguie 2017), `kableExtra` (Zhu
+2019), `knitr` (Xie 2014, 2015), `lubridate` (Grolemund and Wickham
+2011), `plm` (Millo 2017), `rticles` (Allaire et al. 2020), `sf`
+(Pebesma 2018), `spdep` (Bivand, Pebesma, and Gomez-Rubio 2013), spsur
+(Angulo et al. 2020) `tidyverse` (Wickham et al. 2019), `units`
+(Pebesma, Mailund, and Hiebert 2016).
 
-## References
+# References
 
 <div id="refs" class="references">
 

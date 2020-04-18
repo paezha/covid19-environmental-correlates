@@ -62,13 +62,13 @@ library(tidyverse)
 library(units)
 ```
 
-```{r load-data, include=FALSE}
+```{r load-data, include=FALSE, cache=TRUE}
 # Load data from package `covid19env`
 data("covid19_spain")
 data("provinces_spain")
 ```
 
-```{r data-preparation, include=FALSE}
+```{r data-preparation, include=FALSE, cache=TRUE}
 # Convert GDP per capita to thousands of euros:
 provinces_spain <- provinces_spain %>%
   mutate(GDPpc = GDPpc/1000)
@@ -79,7 +79,7 @@ covid19_spain <- covid19_spain %>%
             by = c("province", "CCAA", "ID_INE"))
 ```
 
-```{r sort-communities-by-latitude, include=FALSE}
+```{r sort-communities-by-latitude, include=FALSE, cache=TRUE}
 # To visualize the distribution of temperature by CCAA, we sort the communities by latitude, from north to south. We do this by community instead of province because the large number of provinces clutters the plots.
 
 # Dissolve internal provincial boundaries to obtain a simple features object with the autonomous communities: 
@@ -134,11 +134,7 @@ Context, Data, and Methods
 
 For a better interpretation of the results of our analysis is necessary to know the chronology of the epidemic outbreak in Spain. This subsection presents a brief time line of COVID-19. 
 
-The first reported case of COVID-19 in Spain was on January 31th, were a German tourist in the 
-Canary Islands was positively tested, but the first not imported case was diagnostic on February 27th in Sevilla province (Andalusia). The epidemic was growing slowly at the beginning but in March 11th the World Health Organization (WHO) declared officially the pandemic. This declaration was a break point and on March 13th the Spanish National Government declare the "Emergency Status". At this date, Spain have been declared 4209 cases of COVID-19 (mostly of cases, 1990, in Madrid). Only essential services (e.g. food, health) and some economic subsector of industry and construction could to maintain activity. On March 17th Spain closes its lands borders and only allows entry to nationals and residents. From March 30th to April 12th (April 10th-12th Easter) lockdown of the Spanish people was hardened and only essential activities were allowed.
-
-When was the first case reported? When did the country close international arrivals? When did initial measures of social distancing were implemented? The lockdown?
-
+The first reported case of COVID-19 in Spain was on January 31th, were a German tourist in the Canary Islands was positively tested, but the first not imported case was diagnostic on February 27th in Sevilla province (Andalusia). The epidemic was growing slowly at the beginning but in March 11th the World Health Organization (WHO) declared officially the pandemic. This declaration was a break point and on March 13th the Spanish National Government declare the "Emergency Status". At this date, Spain have been declared 4209 cases of COVID-19 (mostly of cases, 1990, in Madrid). Only essential services (e.g. food, health) and some economic subsector of industry and construction could to maintain activity. On March 17th Spain closes its lands borders and only allows entry to nationals and residents. From March 30th to April 12th (April 10th-12th Easter) lockdown of the Spanish people was hardened and only essential activities were allowed.
 
 ## Selection of Variables
 
@@ -150,9 +146,9 @@ Some questions are important to point out. Is not evident present a diary associ
 
 ## Sources of Data
 
-Our dataset includes information about the daily number of cases of COVID-19 reported in Spain \footnote{cases positively tested. Exclude sintomatic cases diagnostic by doctor with-out Reacción en Cadena de la Polimersa (PCR) test} at the provincial level (NUTIII in eurostat terminology) from March 13th to April 11th (30 days and 50 spatial units). The Spanish National Government publishes periodic updates at the regional level (NUTII) and the information is also released at the provincial level as part of a collaborative project. This information is compiled from several sources, mainly the official web pages of the Spanish regional goverments. In addition, we consider two sets of explanatory variables. The first one, and the focus of this research, is set of two environmental variables, namely temperature and humidity. The second set provides some relevant controls for multivariate analysis, and refers to economic and demographic attributes of the province. Table \ref{tab:descriptive-statistics} shows the descriptive statistics and the provencance of the data.
+Our dataset includes information about the daily number of cases of COVID-19 reported in Spain at the provincial level (NUTIII in Eurostat terminology) for the period between March 13th and April 11th, inclusive. This gives a temporal coverage of 30 days and spatial coverage of 50 units. For our purposes, we consider positive cases reported, but excluding symptomatic cases diagnosed by a doctor without a Polymerase Chain Reaction (PCR) test. The Spanish National Government publishes periodic updates at the regional level (NUTII) and the information is also released at the provincial level as part of a collaborative project [**by whom?**]. This information is compiled from several sources, mainly the official web pages of the Spanish regional goverments. In addition, we consider two sets of explanatory variables. The first one, and the focus of this research, is set of two environmental variables, namely temperature and humidity, which are collected from official sources (i.g., AEMET, the state meteorology agency, and MAPA, the ministry of agriculture, fisheries, and food). The second set provides some relevant controls for multivariate analysis, and refers to economic and demographic attributes of the province (also collected from official sources, i.e., INE, the national statistics institute). Table \ref{tab:descriptive-statistics} shows the descriptive statistics and the provenance of the data.
 
-```{r descriptive-statistics, echo=FALSE}
+```{r descriptive-statistics, echo=FALSE, cache=TRUE}
 data.frame(Variable = c("COVID-19 Incidence",
                         "GDPpc", 
                         "Older", 
@@ -196,10 +192,12 @@ data.frame(Variable = c("COVID-19 Incidence",
                       "AEMET",
                       "MAPA")) %>%
   kable("latex",
+        #"html",
         booktabs = TRUE,
         digits = 2,
-        caption = "\\label{tab:descriptive-statistics}Descriptive statistics") %>%
+        caption = "\\label{tab:descriptive-statistics} Descriptive statistics") %>%
   kable_styling(latex_options = c("striped", "scale_down")) %>%
+  #kable_styling(bootstrap_options = c("striped", "condensed")) %>%
   column_spec(2, width = "15em") %>%
   column_spec(7, width = "5em") %>%
   footnote(general = c("Montera34: https://code.montera34.com:4443/numeroteca/covid19/-/blob/master/README_providencialdata19.md", 
@@ -210,9 +208,12 @@ data.frame(Variable = c("COVID-19 Incidence",
 
 ## Methods: Spatial SUR
 
-The spatial Seemingly Unrelated Regressions (SUR) methodology has been a popular method to estimate are used in the context of...
-
-The Seemingly Unrelated Regression equations model (SUR from now on) is a multivariate econometric formulation used in different fields when the data set is organized as cross-sections for different time periods. The basis of this approach is well-known since the initial works of @zellner1962 and now is a popular methodology included in several Econometrics textbook (e.g. @greene2003). To our knowledge, @Anselin1988spatial was the first text that introduced the term spatial SUR in reference to a model made of ‘an equation for each time period, which is estimated for a cross section of spatial units’ (p. 141). From this milestone, a huge researches used this methodology in spatial framework. @rey1999,@fingleton2007multi, @lauridsen2010, @legallo2006, @lopez2017spatial are well-known examples in this line.
+<<<<<<< HEAD
+The Seemingly Unrelated Regression equations model (SUR from now on) is a multivariate econometric formulation used in different fields when the data set is organized as cross-sections for different time periods. The basis of this approach is well-known since the initial works of @zellner1962 and now is a popular methodology included in several Econometrics textbook (e.g. @greene2003). To our knowledge, @Anselin1988spatial was the first text that introduced the term spatial SUR in reference to a model made of ‘an equation for each time period, which is estimated for a cross section of spatial units’ (p. 141). From this milestone, a huge researches used this methodology in spatial framework.
+@rey1999, @legallo2006, @fingleton2007multi, @lauridsen2010, @lopez2017spatial are well-known examples in this line.
+=======
+The Seemingly Unrelated Regression equations model (SUR from now on) is a multivariate econometric formulation used in different fields when the data set is organized as cross-sections for different time periods. The basis of this approach is well-known since the initial works of Zellner [-@Zellner1962efficient] and now is a popular methodology included in several Econometrics textbook [e.g., @Greene2003econometric]. To our knowledge, @Anselin1988spatial was the first text that introduced the term spatial SUR in reference to a model made of ‘an equation for each time period, which is estimated for a cross section of spatial units’ (p. 141). From this milestone, a huge researches used this methodology in spatial framework. Rey and Montouri [-@Rey1999us], Fingleton [-@Fingleton2007multi], Lauridsen et al. [-@Lauridsen2010spatiotemporal], Le Gallo and Dall’Erba [-@Legallo2006evaluating], and Lopez et al. [-@Lopez2017spatial] are well-known examples in this line.
+>>>>>>> 6e7d20eeef90bba9a80fbbd6ebf8ae077b1ef52a
 
 The classical SUR model without spatial effects (from here, SUR-SIM) is a stack of equations as follows:
 
@@ -235,6 +236,11 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \end{bmatrix}
 \end{equation}
 
+<!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
+<!--
+![\begin{equation} \label{eq:sur-sim} \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_T \end{bmatrix} = \begin{bmatrix} X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & X_T \end{bmatrix} \ \begin{bmatrix} \beta_1 \\ \beta_1 \\ \vdots \\ \beta_T \end{bmatrix} + \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_T \end{bmatrix} \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-sim%7D%20%5Cbegin%7Bbmatrix%7D%20y_1%20%5C%5C%20y_2%20%5C%5C%20%5Cvdots%20%5C%5C%20y_T%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20X_1%20%26%200%20%26%20%5Ccdots%20%26%200%20%5C%5C%200%20%26%20X_2%20%26%20%5Ccdots%20%26%200%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%200%20%26%200%20%26%20%5Ccdots%20%26%20X_T%20%5Cend%7Bbmatrix%7D%20%5C%20%5Cbegin%7Bbmatrix%7D%20%5Cbeta_1%20%5C%5C%20%5Cbeta_1%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cbeta_T%20%5Cend%7Bbmatrix%7D%20%2B%20%5Cbegin%7Bbmatrix%7D%20%5Cepsilon_1%20%5C%5C%20%5Cepsilon_2%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cepsilon_T%20%5Cend%7Bbmatrix%7D%20%5Cend%7Bequation%7D)
+-->
+
 \noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t=(X^1,...,X^{k_t})$ is a $N \times k_t$ matrix of the $k_t$ independent variables, $X_i=(X^i_{st})$; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals. 
 
 The more relevant characteristic of a SUR model is the dependence structure among the vectors of residuals, namely:
@@ -244,6 +250,10 @@ The more relevant characteristic of a SUR model is the dependence structure amon
 E[\epsilon_t \epsilon'_{t'}]=\sigma_{tt'}
 \end{equation} 
 
+<!--
+![\begin{equation} \label{eq:sur-err} E\[\epsilon_t \epsilon'_{t'}\]=\sigma_{tt'} \end{equation} ](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-err%7D%20E%5B%5Cepsilon_t%20%5Cepsilon'_%7Bt'%7D%5D%3D%5Csigma_%7Btt'%7D%20%5Cend%7Bequation%7D%20)
+-->
+
 Note that this specification is very flexible, in that it allows changes in the coefficients $\beta_{it}$ in order to modulate the effect of $X^i_{.t}$ on $y_t$. This flexibility can be reduced and it is posible to impose restrinctions considering some $\beta$ coefficients as being constant over time. In this case, we can reformulate the coefficients expression of $\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})$ considering the first $r$ coefficients contanst.
 
 Equation \ref{eq:sur-sim}) can be rewriten in compact form:
@@ -251,6 +261,10 @@ Equation \ref{eq:sur-sim}) can be rewriten in compact form:
 \begin{equation}
 y = X \beta + \epsilon
 \end{equation}
+
+<!--
+![\begin{equation} y = X \beta + \epsilon \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20y%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5Cend%7Bequation%7D)
+-->
 
 \noindent where....
 
@@ -261,6 +275,10 @@ As is the case of cross-sectional data, it is possible identify spatial autocorr
 \bf{A}y = X \beta + \epsilon \\
 \epsilon =N(0,\Omega)
 \end{equation}
+
+<!--
+![\begin{equation} \label{eq:sur-slm} \bf{A}y = X \beta + \epsilon \\ \epsilon =N(0,\Omega) \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbf%7BA%7Dy%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN(0%2C%5COmega)%20%5Cend%7Bequation%7D)
+-->
 
 \noindent where A =$I_{TN}-\bf{\Lambda} \otimes W$ with $\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)$.
 
@@ -279,7 +297,7 @@ We begin with the exploratory analysis of the data.
 
 Figure \ref{fig:weekly-average-incidence-map} shows the geographical variation in the incidence of the disease, as well as its temporal progression in weekly averages. Our analysis begins on March 13, which is the first date when every province had reported at least one case of COVID-19. It can be seen that the highest incidence at this early date was in the provice of Álava, in the North of Spain. While not the most populous province, with a population of only 331,549, Álava has the highest GDP per capita of all provinces. Vitoria, its main city, is the capital of the Basque country and has been the focus of efforts to develop a "Global Basque City" [@Meijers2008strategic], along with San Sebastian and Bilbao. The other early focus of the pandemic in Spain was Madrid, which is the most populous province in the country and has the second highest GDP per capita after Álava. The early outbreaks in these two provinces can be traced throughout the progression of the pandemic over time, although by the end of the period under consideration, other provinces had matched and even surpased their incidence rates, including Segovia and Soria to the north of Madrid, and Ciudad Real and Albacete to the south.
 
-```{r weekly-average-incidence-map, echo=FALSE, fig.height= 9, fig.cap="\\label{fig:weekly-average-incidence-map}Mean weekly incidence of COVID-19 by province, in reported cases by 100,000 people (map omits Islas Canarias)", warning=FALSE}
+```{r weekly-average-incidence-map, echo=FALSE, fig.height= 9, fig.cap="\\label{fig:weekly-average-incidence-map}Mean weekly incidence of COVID-19 by province, in reported cases by 100,000 people (map omits Islas Canarias)", warning=FALSE, cache = TRUE}
 # Retrieve the coordinates of Madrid
 madrid_xy <-  st_centroid(provinces_spain %>% filter(province == "Madrid")) %>% st_coordinates()
 
@@ -418,7 +436,7 @@ grid.arrange(week11.plot, week12.plot, week13.plot, week14.plot, week15.plot, nr
 
 To visualize the distribution of temperature and humidity we aggregate the provinces by Autonomous Community. In Figure \ref{fig:descriptives-temperature} the communities have been sorted by latitude, so that Principado de Asturias is the northernmost community, and Canarias the southernmost. There is a relatively wide range of values both within and between provinces over the 30 day period examined. The top panel of the figure shows the distribution of mean temperature. The lowest mean temperature for a community on any given day is 2.8C, and the highest is 22.4C for a range of approximately 20 degrees. Likewise, there is a great deal of variability in humidity, as seen in the bottom panel of the figure, where the lowest mean humidity for any community is 48.3 and the highest is 99.6. The actual values for the provinces display somewhat more variability even.
 
-```{r descriptives-temperature, echo = FALSE, fig.height=7, fig.cap="\\label{fig:descriptives-temperature} Distribution of mean temperatures and humidities in the Autonomous Communities in Spain between March 12, 2020 and April 11, 2020. The Autonomous Communities have been sorted by latitude, with communities to the left being the northermost, and to the right the southernmost"}
+```{r descriptives-temperature, echo = FALSE, fig.height=7, fig.cap="\\label{fig:descriptives-temperature} Distribution of mean temperatures and humidities in the Autonomous Communities in Spain between March 12, 2020 and April 11, 2020. The Autonomous Communities have been sorted by latitude, with communities to the left being the northermost, and to the right the southernmost", cache = TRUE}
 # Summary of temperature by Autonomous Community
 temp.summary <- covid19_spain %>% 
   group_by(CCAA, Date) %>%
@@ -450,7 +468,7 @@ ggplot(data = env.summary,
              scales = "free_y")
 ```
 
-```{r control-map, echo=FALSE, fig.height= 9, fig.cap="\\label{fig:control-map}Spatial distribution of control variables by province (maps omits Islas Canarias)"}
+```{r control-map, cache=TRUE, echo=FALSE, fig.height= 9, fig.cap="\\label{fig:control-map}Spatial distribution of control variables by province (maps omits Islas Canarias)", cache = TRUE}
 gdppc.plot <- provinces_spain %>%
   filter(CCAA != "Canarias") %>%
   ggplot() +
@@ -491,7 +509,7 @@ grid.arrange(gdppc.plot, older.plot, density.plot, nrow = 3)
 
 Figure \ref{fig:daily-correlations} shows the distribution of daily correlations of the independent variables with incidence of COVID-19, after log-transforming all variables. It can be seen there that the correlation of GDPpc and temperature (in its three definitions) have the strongest positive and negative correlations with incidence, respectively. Percentage of older adults displays somewhat weaker negative correlations with incidence, as does density. It can be seen that the humidity variable, in its three forms, tends to be possitively correlated with incidence of COVID-19.
 
-```{r daily-correlations, echo=FALSE, fig.cap="\\label{fig:daily-correlations}Distribution of daily correlations of the independent variables with daily incidence of COVID-19 (all variables have been log-transformed)"}
+```{r daily-correlations, echo=FALSE, fig.cap="\\label{fig:daily-correlations}Distribution of daily correlations of the independent variables with daily incidence of COVID-19 (all variables have been log-transformed)", cache = TRUE}
 covid19_spain %>% 
   group_by(Date) %>%
   summarize(Older = cor(log(Older), log(Incidence)),
@@ -523,7 +541,7 @@ covid19_spain %>%
 
 ## SUR Models
 
-```{r data-preparation-for-modelling, include=FALSE}
+```{r data-preparation-for-modelling, include=FALSE, cache = TRUE}
 # Organize data for SUR modelling 
 GPanel <- plm::pdata.frame(covid19_spain %>%
                              select(province, 
@@ -548,7 +566,7 @@ GPanel <- plm::pdata.frame(covid19_spain %>%
 
 ```
 
-```{r spatial-weights, include=FALSE}
+```{r spatial-weights, include=FALSE, cache = TRUE}
 # Create spatial weights matrix: 
 Wmat <- provinces_spain %>%
   #drop_na() %>%
@@ -584,7 +602,7 @@ miW <- Wmat/rowSums(Wmat)
 listw <- mat2listw(Wmat,style = "W")
 ```
 
-```{r formulas, include=FALSE}
+```{r formulas, include=FALSE, cache = TRUE}
 # Define formulas with three different lagged variables:
 formula_lag8 <- log(Incidence) ~ 
   log(GDPpc) +
@@ -611,7 +629,7 @@ formula_lag11w <- log(Incidence) ~
   log(Mean_Temp_lag11w)
 ```
 
-```{r model-restrictions, include=FALSE}
+```{r model-restrictions, include=FALSE, cache = TRUE}
 T <- max(covid19_spain$Date) - min(covid19_spain$Date) + 1 # Recall that T is the number of days, i.e., time periods, i.e., equations; add 1 to include the starting day
 k <- 7 # Number of independent variables, including the constant
 coef_rest <- 2 # Number of restrictions
@@ -632,7 +650,7 @@ for (i in 1:(T-1)){
 b2 <- matrix(0, ncol = 21*coef_rest)
 ```
 
-```{r model1-8-day-moving-average, include=FALSE}
+```{r model1-8-day-moving-average, include=FALSE, cache = TRUE}
 # Model with a lagged 8-day moving average of climatic variables:
 sur.slm_lag8 <- spsur::spsurtime(formula = formula_lag8, 
                                  data=GPanel, 
@@ -646,7 +664,7 @@ sur.slm_lag8 <- spsur::spsurtime(formula = formula_lag8,
 #print(paste("Pooled R^2 = ", sur.slm_lag8$R2[1]))
 ```
 
-```{r model2-11-day-moving-average, include=FALSE}
+```{r model2-11-day-moving-average, include=FALSE, cache = TRUE}
 # Model with 11-day moving average of climatic variables:
 sur.slm_lag11 <- spsur::spsurtime(formula = formula_lag11, 
                                   data=GPanel, 
@@ -660,7 +678,7 @@ sur.slm_lag11 <- spsur::spsurtime(formula = formula_lag11,
 #print(paste("Pooled R^2 = ", sur.slm_lag11$R2[1]))
 ```
 
-```{r model3-11-day-weighted-moving-average, include=FALSE}
+```{r model3-11-day-weighted-moving-average, include=FALSE, cache = TRUE}
 # Model with 11-day weighted moving average of climatic variables:
 sur.slm_lag11w <- spsur::spsurtime(formula = formula_lag11w, 
                                    data=GPanel, 
@@ -676,7 +694,7 @@ sur.slm_lag11w <- spsur::spsurtime(formula = formula_lag11w,
 
 The goodness of fit of the three systems of equations is shown in Figure \ref{fig:goodness-of-fit}.
 
-```{r goodness-of-fit, echo=FALSE, fig.cap="\\label{fig:goodness-of-fit} Goodness of fit of the SUR systems: by date and pooled"}
+```{r goodness-of-fit, cache = TRUE, echo=FALSE, fig.cap="\\label{fig:goodness-of-fit} Goodness of fit of the SUR systems: by date and pooled"}
 data.frame(Model1 = sur.slm_lag8$R2, 
            Model2 = sur.slm_lag11$R2,
            Model3 = sur.slm_lag11w$R2) %>%
@@ -708,7 +726,7 @@ data.frame(Model1 = sur.slm_lag8$R2,
 ```
 
 Summary of best model.
-```{r summary-best-model, echo=FALSE}
+```{r summary-best-model, echo=FALSE, cache = TRUE}
 data.frame(Coefficient = sur.slm_lag11$coefficients, 
                    pval = dnorm(abs(sur.slm_lag11$coefficients/sur.slm_lag11$rest.se))) %>%
   rownames_to_column(var = "Variable") %>%
@@ -747,11 +765,13 @@ data.frame(Coefficient = sur.slm_lag11$coefficients,
                   "Non-constrained",
                   "Non-constrained")) %>%
   kable("latex",
+        #"html",
         booktabs = TRUE,
         digits = 3,
         col.names = c("Variable", "Min", "Mean", "Max", "p > 0.10", "0.10 <= p < 0.05", "p <= 0.05", "Note"),
         caption = "\\label{tab:summary-best-model}Summary of estimation results best model (lagged 11-day moving average)") %>%
   kable_styling(latex_options = c("striped", "scale_down")) %>%
+  #kable_styling(bootstrap_options = c("striped", "condensed")) %>%
   add_header_above(c(" " = 1, "Estimates" = 3, "Significance" = 3, " " = 1)) %>%
   footnote(general = c("Significance: This is the number of coefficients with p-values as indicated",
                        "Non-constrained: coefficient was allowed to vary across equations",
@@ -763,7 +783,7 @@ Discussion
 
 Figure \ref{fig:delta-time} shows the temporal evolution of the spatial autocorrelation coefficient ($\rho$).
 
-```{r delta-time, echo=FALSE, fig.cap="\\label{fig:delta-time}Temporal evolution of spatial autocorrelation coefficient"}
+```{r delta-time, cache = TRUE, echo=FALSE, fig.cap="\\label{fig:delta-time}Temporal evolution of spatial autocorrelation coefficient"}
 data.frame(Date = seq(ymd("2020-03-13"), 
                       ymd("2020-04-11"), 
                       by = "days"),
@@ -781,7 +801,7 @@ data.frame(Date = seq(ymd("2020-03-13"),
 
 Figure \ref{fig:beta-intercept-time} shows the temporal evolution of the intercept.
 
-```{r beta-intercept-time, echo=FALSE, fig.cap="\\label{fig:beta-intercept-time}Temporal evolution of intercept"}
+```{r beta-intercept-time, cache = TRUE, echo=FALSE, fig.cap="\\label{fig:beta-intercept-time}Temporal evolution of intercept"}
 #Intercept
 n = 1
 data.frame(Date = seq(ymd("2020-03-13"), 
@@ -801,7 +821,7 @@ data.frame(Date = seq(ymd("2020-03-13"),
 
 Figure \ref{fig:beta-density-time} shows the temporal evolution of the coefficient for $\log(Density)$.
 
-```{r beta-density-time, echo=FALSE, , fig.cap="\\label{fig:beta-density-time}Temporal evolution of coefficient for log(Density)"}
+```{r beta-density-time, echo=FALSE, , fig.cap="\\label{fig:beta-density-time}Temporal evolution of coefficient for log(Density)", cache = TRUE}
 #Density:
 n = 2 # Although this is the fourth coefficient, after intercept, log(GDPpc), and log(Older), we start at 2 here because the two constrained coefficients are removed from the matrix of coefficients 
 data.frame(Date = seq(ymd("2020-03-13"), 
@@ -822,7 +842,7 @@ data.frame(Date = seq(ymd("2020-03-13"),
 
 Figure \ref{fig:beta-transit-time} shows the temporal evolution of the coefficient for $Transit$.
 
-```{r beta-transit-time, echo=FALSE, fig.cap="\\label{fig:beta-transit-time}Temporal evolution of coefficient for Transit"}
+```{r beta-transit-time, echo=FALSE, fig.cap="\\label{fig:beta-transit-time}Temporal evolution of coefficient for Transit", cache = TRUE}
 n = 3
 data.frame(Date = seq(ymd("2020-03-13"), 
                       ymd("2020-04-11"), 
@@ -842,7 +862,7 @@ data.frame(Date = seq(ymd("2020-03-13"),
 
 Figure \ref{fig:beta-humidity-time} shows the temporal evolution of the coefficient for $\log(Humidity)$.
 
-```{r beta-humidity-time, echo=FALSE, fig.cap="\\label{fig:beta-humidity-time}Temporal evolution of coefficient for log(Humidity)"}
+```{r beta-humidity-time, echo=FALSE, fig.cap="\\label{fig:beta-humidity-time}Temporal evolution of coefficient for log(Humidity)", cache = TRUE}
 n = 4
 data.frame(Date = seq(ymd("2020-03-13"), 
                       ymd("2020-04-11"), 
@@ -861,7 +881,7 @@ data.frame(Date = seq(ymd("2020-03-13"),
 
 Figure \ref{fig:beta-density-time} shows the temporal evolution of the coefficient for $\log(Temperature)$.
 
-```{r beta-temperature-time, echo=FALSE, fig.cap="\\label{fig:beta-temperature-time}Temporal evolution of coefficient for log(Temperature)"}
+```{r beta-temperature-time, echo=FALSE, fig.cap="\\label{fig:beta-temperature-time}Temporal evolution of coefficient for log(Temperature)", cache = TRUE}
 n = 5
 data.frame(Date = seq(ymd("2020-03-13"), 
                       ymd("2020-04-11"), 

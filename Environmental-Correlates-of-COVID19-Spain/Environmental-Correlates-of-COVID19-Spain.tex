@@ -134,7 +134,7 @@ Prof.~Moraes Rego, 1235 - Cidade Universitária, Recife, PE, CEP
   as population density and percentage of older adults display negative
   associations with incidence of COVID-19, whereas the presence of mass
   transit systems in the province is associated with a greater incidence
-  of the disease.\\
+  of the disease.
   \end{abstract}
   
  \end{frontmatter}
@@ -211,7 +211,7 @@ guidance on this matter (see National Academies of Sciences, Engineering
 and Medicine, 2020). Their conclusion summarizes the situation well (see
 p.~6): ``Some limited data support a potential waning of cases in warmer
 and more humid seasons, yet none are without major
-limitations\ldots{}Additional studies as the SARS-CoV-2 pandemic unfolds
+limitations\ldots Additional studies as the SARS-CoV-2 pandemic unfolds
 could shed more light on the effects of climate on transmission.''
 
 With the above considerations in mind, our objective with this paper is
@@ -271,10 +271,6 @@ entry to nationals and residents. From March 30th to April 12th (April
 10th-12th Easter) lockdown of the Spanish people was hardened and only
 essential activities were allowed.
 
-When was the first case reported? When did the country close
-international arrivals? When did initial measures of social distancing
-were implemented? The lockdown?
-
 \hypertarget{selection-of-variables}{%
 \subsection{Selection of Variables}\label{selection-of-variables}}
 
@@ -296,25 +292,30 @@ day that the individuo inffect and the case is diagnosticate
 \subsection{Sources of Data}\label{sources-of-data}}
 
 Our dataset includes information about the daily number of cases of
-COVID-19 reported in Spain
-\footnote{cases positively tested. Exclude sintomatic cases diagnostic by doctor with-out Reacción en Cadena de la Polimersa (PCR) test}
-at the provincial level (NUTIII in eurostat terminology) from March 13th
-to April 11th (30 days and 50 spatial units). The Spanish National
-Government publishes periodic updates at the regional level (NUTII) and
-the information is also released at the provincial level as part of a
-collaborative project. This information is compiled from several
-sources, mainly the official web pages of the Spanish regional
-goverments. In addition, we consider two sets of explanatory variables.
-The first one, and the focus of this research, is set of two
-environmental variables, namely temperature and humidity. The second set
-provides some relevant controls for multivariate analysis, and refers to
-economic and demographic attributes of the province. Table
-\ref{tab:descriptive-statistics} shows the descriptive statistics and
-the provencance of the data.
+COVID-19 reported in Spain at the provincial level (NUTIII in Eurostat
+terminology) for the period between March 13th and April 11th,
+inclusive. This gives a temporal coverage of 30 days and spatial
+coverage of 50 units. For our purposes, we consider positive cases
+reported, but excluding symptomatic cases diagnosed by a doctor without
+a Polymerase Chain Reaction (PCR) test. The Spanish National Government
+publishes periodic updates at the regional level (NUTII) and the
+information is also released at the provincial level as part of a
+collaborative project {[}\textbf{by whom?}{]}. This information is
+compiled from several sources, mainly the official web pages of the
+Spanish regional goverments. In addition, we consider two sets of
+explanatory variables. The first one, and the focus of this research, is
+set of two environmental variables, namely temperature and humidity,
+which are collected from official sources (i.g., AEMET, the state
+meteorology agency, and MAPA, the ministry of agriculture, fisheries,
+and food). The second set provides some relevant controls for
+multivariate analysis, and refers to economic and demographic attributes
+of the province (also collected from official sources, i.e., INE, the
+national statistics institute). Table \ref{tab:descriptive-statistics}
+shows the descriptive statistics and the provenance of the data.
 
 \begin{table}
 
-\caption{\label{tab:descriptive-statistics}\label{tab:descriptive-statistics}Descriptive statistics}
+\caption{\label{tab:descriptive-statistics}\label{tab:descriptive-statistics} Descriptive statistics}
 \centering
 \resizebox{\linewidth}{!}{
 \begin{tabular}[t]{l>{\raggedright\arraybackslash}p{15em}rrrr>{\raggedright\arraybackslash}p{5em}}
@@ -340,21 +341,28 @@ Humidity & Relative humidity in province by date & 2.00 & 77.82 & 100.00 & 10.37
 \hypertarget{methods-spatial-sur}{%
 \subsection{Methods: Spatial SUR}\label{methods-spatial-sur}}
 
-The spatial Seemingly Unrelated Regressions (SUR) methodology has been a
-popular method to estimate are used in the context of\ldots{}
-
 The Seemingly Unrelated Regression equations model (SUR from now on) is
 a multivariate econometric formulation used in different fields when the
 data set is organized as cross-sections for different time periods. The
-basis of this approach is well-known since the initial works of
-({\textbf{???}}) and now is a popular methodology included in several
-Econometrics textbook (e.g.~({\textbf{???}})). To our knowledge, Anselin
-(1988) was the first text that introduced the term spatial SUR in
-reference to a model made of `an equation for each time period, which is
-estimated for a cross section of spatial units' (p.~141). From this
-milestone, a huge researches used this methodology in spatial framework.
-({\textbf{???}}),({\textbf{???}}), ({\textbf{???}}), ({\textbf{???}}),
-({\textbf{???}}) are well-known examples in this line.
+basis of this approach is well-known since the initial works of Zellner
+(1962) and now is a popular methodology included in several Econometrics
+<<<<<<< HEAD
+textbook (e.g.~Greene (2003)). To our knowledge, Anselin (1988) was the
+=======
+textbook (e.g., Greene, 2003). To our knowledge, Anselin (1988) was the
+>>>>>>> 6e7d20eeef90bba9a80fbbd6ebf8ae077b1ef52a
+first text that introduced the term spatial SUR in reference to a model
+made of `an equation for each time period, which is estimated for a
+cross section of spatial units' (p.~141). From this milestone, a huge
+researches used this methodology in spatial framework. Rey and Montouri
+<<<<<<< HEAD
+(1999), Le Gallo and Dall'Erba (2006), Fingleton (2007), Lauridsen et
+al. (2010), López et al. (2017) are well-known examples in this line.
+=======
+(1999), Fingleton ({\textbf{???}}), Lauridsen et al.~(2010), Le Gallo
+and Dall'Erba (2006), and Lopez et al.~(2017) are well-known examples in
+this line.
+>>>>>>> 6e7d20eeef90bba9a80fbbd6ebf8ae077b1ef52a
 
 The classical SUR model without spatial effects (from here, SUR-SIM) is
 a stack of equations as follows:
@@ -410,7 +418,7 @@ Equation \ref{eq:sur-sim}) can be rewriten in compact form:
 y = X \beta + \epsilon
 \end{equation}
 
-\noindent where\ldots{}.
+\noindent where\ldots.
 
 As is the case of cross-sectional data, it is possible identify spatial
 autocorrelation in the residuals of Model \ref{eq:sur-sim}, and several
@@ -729,10 +737,22 @@ global scale. medRxiv.
 Fernandes, N., 2020. Economic effects of coronavirus outbreak (covid-19)
 on the world economy. Available at SSRN 3557504.
 
+\leavevmode\hypertarget{ref-fingleton2007multi}{}%
+Fingleton, B., 2007. A multi-equation spatial econometric model, with
+application to eu manufacturing productivity growth. Journal of
+Geographical Systems 9, 119--144.
+
 \leavevmode\hypertarget{ref-Gong2020balance}{}%
 Gong, B., Zhang, S., Yuan, L., Chen, K.Z., 2020. A balance act:
 Minimizing economic loss while controlling novel coronavirus pneumonia.
 Journal of Chinese Governance 1--20.
+
+<<<<<<< HEAD
+\leavevmode\hypertarget{ref-greene2003}{}%
+=======
+\leavevmode\hypertarget{ref-Greene2003econometric}{}%
+>>>>>>> 6e7d20eeef90bba9a80fbbd6ebf8ae077b1ef52a
+Greene, W.H., 2003. Econometric analysis. Pearson Education India.
 
 \leavevmode\hypertarget{ref-Grolemund2011dates}{}%
 Grolemund, G., Wickham, H., 2011. Dates and times made easy with
@@ -765,6 +785,36 @@ National Academy of Sciences 116, 10905--10910.
 Lancastle, N.M., 2020. Is the impact of social distancing on coronavirus
 growth rates effective across different settings? A non-parametric and
 local regression approach to test and compare the growth rate. medRxiv.
+
+<<<<<<< HEAD
+\leavevmode\hypertarget{ref-lauridsen2010}{}%
+=======
+\leavevmode\hypertarget{ref-Lauridsen2010spatiotemporal}{}%
+>>>>>>> 6e7d20eeef90bba9a80fbbd6ebf8ae077b1ef52a
+Lauridsen, J., Bech, M., López, F., Maté, M., 2010. A spatiotemporal
+analysis of public pharmaceutical expenditure. The Annals of Regional
+Science 44, 299--314.
+
+<<<<<<< HEAD
+\leavevmode\hypertarget{ref-legallo2006}{}%
+=======
+\leavevmode\hypertarget{ref-Legallo2006evaluating}{}%
+>>>>>>> 6e7d20eeef90bba9a80fbbd6ebf8ae077b1ef52a
+Le Gallo, J., Dall'Erba, S., 2006. Evaluating the temporal and spatial
+heterogeneity of the european convergence process, 1980--1999. Journal
+of Regional Science 46, 269--288.
+
+<<<<<<< HEAD
+\leavevmode\hypertarget{ref-lopez2017spatial}{}%
+López, F.A., Martinez, P.J., Cegarra, J.-G., 2017. Spatial spillovers in
+public expenditure on a municipal level in spain. The Annals of Regional
+Science 58, 39--65.
+=======
+\leavevmode\hypertarget{ref-Lopez2017spatial}{}%
+López, F.A., Martínez-Ortiz, P.J., Cegarra-Navarro, J.-G., 2017. Spatial
+spillovers in public expenditure on a municipal level in spain. The
+Annals of Regional Science 58, 39--65.
+>>>>>>> 6e7d20eeef90bba9a80fbbd6ebf8ae077b1ef52a
 
 \leavevmode\hypertarget{ref-Lopez2014spatial}{}%
 López, F.A., Mur, J., Angulo, A., 2014. Spatial model selection
@@ -815,6 +865,14 @@ Pebesma, E., Mailund, T., Hiebert, J., 2016. Measurement units in R. R
 Journal 8, 486--494.
 doi:\href{https://doi.org/10.32614/RJ-2016-061}{10.32614/RJ-2016-061}
 
+<<<<<<< HEAD
+\leavevmode\hypertarget{ref-rey1999}{}%
+=======
+\leavevmode\hypertarget{ref-Rey1999us}{}%
+>>>>>>> 6e7d20eeef90bba9a80fbbd6ebf8ae077b1ef52a
+Rey, S.J., Montouri, B.D., 1999. US regional income convergence: A
+spatial econometric perspective. Regional studies 33, 143--156.
+
 \leavevmode\hypertarget{ref-Wickham2019}{}%
 Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L.D., François,
 R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen,
@@ -832,6 +890,15 @@ Reproducible Computational Research. Chapman; Hall/CRC.
 \leavevmode\hypertarget{ref-Xie2015}{}%
 Xie, Y., 2015. Dynamic documents with R and knitr, 2nd ed. Chapman;
 Hall/CRC, Boca Raton, Florida.
+
+<<<<<<< HEAD
+\leavevmode\hypertarget{ref-zellner1962}{}%
+=======
+\leavevmode\hypertarget{ref-Zellner1962efficient}{}%
+>>>>>>> 6e7d20eeef90bba9a80fbbd6ebf8ae077b1ef52a
+Zellner, A., 1962. An efficient method of estimating seemingly unrelated
+regressions and tests for aggregation bias. Journal of the American
+statistical Association 57, 348--368.
 
 \leavevmode\hypertarget{ref-Zhu2019}{}%
 Zhu, H., 2019. KableExtra: Construct complex table with 'kable' and pipe
