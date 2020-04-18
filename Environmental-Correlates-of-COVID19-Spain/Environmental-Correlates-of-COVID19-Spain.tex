@@ -252,24 +252,30 @@ https://github.com/paezha/covid19-environmental-correlates
 \hypertarget{covid-19-in-spain}{%
 \subsection{Covid-19 in Spain}\label{covid-19-in-spain}}
 
-For a better interpretation of the results of our analysis is necessary
-to know the chronology of the epidemic outbreak in Spain. This
-subsection presents a brief time line of COVID-19.
-
-The first reported case of COVID-19 in Spain was on January 31th, were a
-German tourist in the Canary Islands was positively tested, but the
-first not imported case was diagnostic on February 27th in Sevilla
-province (Andalusia). The epidemic was growing slowly at the beginning
-but in March 11th the World Health Organization (WHO) declared
-officially the pandemic. This declaration was a break point and on March
-13th the Spanish National Government declare the ``Emergency Status''.
-At this date, Spain have been declared 4209 cases of COVID-19 (mostly of
-cases, 1990, in Madrid). Only essential services (e.g.~food, health) and
-some economic subsector of industry and construction could to maintain
-activity. On March 17th Spain closes its lands borders and only allows
-entry to nationals and residents. From March 30th to April 12th (April
-10th-12th Easter) lockdown of the Spanish people was hardened and only
-essential activities were allowed.
+The first reported case of COVID-19 in Spain was on January 31th, when a
+German tourist in the Canary Islands tested positive for the virus.
+However, it was still a few weeks before the first domestic case was
+reported, on February 27th in Sevilla province (Andalusia). In a short
+period of time, after this relatively slow start, the outbreak flared.
+By March 11th the World Health Organization (WHO) declared COVID-19
+officially a pandemic. This declaration marked a turning point for the
+public in Spain too. As of March 13th, the number of cases of COVID-19
+reported in Spain was 4,473, with a majority of cases (1,990)
+concentrated in Madrid: these numbers were at the time the worst
+outbreak in Europe, after Italy. In response to the situation, on March
+13th the Spanish National Government declared a state of emergency. As
+part of the state of emergency restrictions to most activities were
+imposed, with the exception of essential services (e.g.~food, health)
+and some economic subsectors of industry and construction. A few days
+later, on March 17th, Spain closed its lands borders to allow entry only
+to returnee nationals and permanent residents. The lockdown was further
+hardened between March 30th and April 12th (including the Easter weekend
+of April 10th-12th) and during this period only essential activities
+were allowed. During this period, there was a dramatic reduction in
+overall mobility, both within provinces
+\footnote{https://www.mitma.gob.es/ministerio/covid-19/evolucion-movilidad-big-data/movilidad-provincial}
+as between
+\footnote{https://www.mitma.gob.es/ministerio/covid-19/evolucion-movilidad-big-data/movilidad-provincial}.
 
 \hypertarget{selection-of-variables}{%
 \subsection{Selection of Variables}\label{selection-of-variables}}
@@ -294,24 +300,39 @@ day that the individuo inffect and the case is diagnosticate
 Our dataset includes information about the daily number of cases of
 COVID-19 reported in Spain at the provincial level (NUTIII in Eurostat
 terminology) for the period between March 13th and April 11th,
-inclusive. This gives a temporal coverage of 30 days and spatial
-coverage of 50 units. For our purposes, we consider positive cases
-reported, but excluding symptomatic cases diagnosed by a doctor without
-a Polymerase Chain Reaction (PCR) test. The Spanish National Government
-publishes periodic updates at the regional level (NUTII) and the
-information is also released at the provincial level as part of a
-collaborative project {[}\textbf{by whom?}{]}. This information is
-compiled from several sources, mainly the official web pages of the
-Spanish regional goverments. In addition, we consider two sets of
-explanatory variables. The first one, and the focus of this research, is
-set of two environmental variables, namely temperature and humidity,
-which are collected from official sources (i.g., AEMET, the state
-meteorology agency, and MAPA, the ministry of agriculture, fisheries,
-and food). The second set provides some relevant controls for
-multivariate analysis, and refers to economic and demographic attributes
-of the province (also collected from official sources, i.e., INE, the
-national statistics institute). Table \ref{tab:descriptive-statistics}
-shows the descriptive statistics and the provenance of the data.
+inclusive. For our purposes, we consider positive cases reported, but
+excluding symptomatic cases diagnosed by a doctor without a Polymerase
+Chain Reaction (PCR) test. The Spanish National Government publishes
+periodic updates at the regional level (NUTII) and the information is
+also released at the provincial level as part of a collaborative project
+{[}\textbf{by whom?}{]}. This information is compiled from several
+sources, mainly the official web pages of the Spanish regional
+goverments. In addition, we consider two sets of explanatory variables.
+The first one, and the focus of this research, is set of two
+environmental variables, namely temperature and humidity, which are
+collected from official sources (i.g., AEMET, the state meteorology
+agency, and MAPA, the ministry of agriculture, fisheries, and food). The
+second set provides some relevant controls for multivariate analysis,
+and refers to economic and demographic attributes of the province (also
+collected from official sources, i.e., INE, the national statistics
+institute). Table \ref{tab:descriptive-statistics} shows the descriptive
+statistics and the provenance of the data.
+
+The spatial and temporal coverage of the data is as follows. Our dataset
+begins on March 13, which is the first date when every province had
+reported at least one case of COVID-19, and continues until April 11,
+for a period of 30 days. The unit of analysis is the province. Provinces
+are the equivalent of states, and are embedded in Autonomous
+Communities. As an example, Cataluña is an Autonomous Community and
+consists of four provinces, namely Barcelona, Gerona, Lerida, and
+Tarragona. The size of the provinces is relatively large, as seen in
+Table \ref{tab:descriptive-statistics}. The smallest province is
+\(1,978.12km^2\) (this is smaller than Rhode Island in the US) and the
+largest province is \(21,767.93km^2\) (slightly smaller than New Jersey
+in the US). While this is a relatively large degree of spatial
+aggregation, reporting on COVID-19 is inconsistent at smaller
+geographies, or cases are not reported at that level at all. The
+analysis must therefore be considered ecological.
 
 \begin{table}
 
@@ -323,12 +344,13 @@ shows the descriptive statistics and the provenance of the data.
 Variable & Note & Min & Mean & Max & SD & Source\\
 \midrule
 \rowcolor{gray!6}  COVID-19 Incidence & Incidence in reported cases of SARS-19 per 100,000 people & 0.38 & 153.61 & 1149.36 & 186.23 & Montera34\\
-GDPpc & GDP per capita in €1,000s & 16.67 & 22.51 & 36.00 & 4.77 & INE\\
-\rowcolor{gray!6}  Older & Percentage of people aged 65 and older in the province & 15.16 & 21.03 & 31.36 & 3.95 & INE\\
-Population Density & Population density in the province in people per sq.km & 8.60 & 140.04 & 829.76 & 181.25 & INE\\
-\rowcolor{gray!6}  Mean Temperature & Mean temperature in province by date, in C & 1.00 & 12.18 & 23.20 & 3.67 & AEMET\\
+Area & Area of province in sq.km & 1978.12 & 10118.79 & 21767.93 & 4805.98 & INE\\
+\rowcolor{gray!6}  GDPpc & GDP per capita in €1,000s & 16.67 & 22.51 & 36.00 & 4.77 & INE\\
+Older & Percentage of people aged 65 and older in the province & 15.16 & 21.03 & 31.36 & 3.95 & INE\\
+\rowcolor{gray!6}  Population Density & Population density in the province in people per sq.km & 8.60 & 140.04 & 829.76 & 181.25 & INE\\
 \addlinespace
-Humidity & Relative humidity in province by date & 2.00 & 77.82 & 100.00 & 10.37 & MAPA\\
+Mean Temperature & Mean temperature in province by date, in C & 1.00 & 12.18 & 23.20 & 3.67 & AEMET\\
+\rowcolor{gray!6}  Humidity & Relative humidity in province by date & 2.00 & 77.82 & 100.00 & 10.37 & MAPA\\
 \bottomrule
 \multicolumn{7}{l}{\textit{Note: }}\\
 \multicolumn{7}{l}{Montera34: https://code.montera34.com:4443/numeroteca/covid19/-/blob/master/README\_providencialdata19.md}\\
@@ -338,24 +360,45 @@ Humidity & Relative humidity in province by date & 2.00 & 77.82 & 100.00 & 10.37
 \end{tabular}}
 \end{table}
 
+An important aspect of working with environmental data such as
+temperature and humidity is the incubation period of the disease. Lauer
+et al.~(2020) report for the case of COVID-19 a median incubation period
+of 5.7 days (with a confidence interval between 4.9 to 7.8 days). The
+vast majority of cases (95\%) develop symptoms between 2.6 days (CI, 2.1
+to 3.7 days) and 12.5 days (CI, 8.2 to 17.7 days). For this reason, we
+judge it best to use lagged values of the environmental variables. We
+test different time lags as follows. We consider a lagged 8-day average,
+from date-minus-12 to date-minus-5 days (hereafter \emph{lag8}).
+Secondly, we consider a lagged 11-day average, from date-minus-12 to
+date-minus-2 days (hereafter \emph{lag11}). Finally, to account for the
+likely duration of incubation, we consider a lagged 11-day
+\emph{weighted} average, from date-minus-12 to date-minus-2 days
+(hereafter \emph{lag11w}). The weights for this variable are calculated
+using the parameters of the log-normal distribution reported by Lauer et
+al.~(2020), i.e., a log-mean of 1.621 and a log-standard deviation of
+0.418. With these weights, the environmental variables at date-minus-2
+and date-minus-12 days are weighted as 0.041 and 0.009 respectively,
+whereas the environmental variables at date-minus-5 days are weighted as
+0.194.
+
 \hypertarget{methods-spatial-sur}{%
 \subsection{Methods: Spatial SUR}\label{methods-spatial-sur}}
 
-The Seemingly Unrelated Regression equations model (SUR from now on) is
-a multivariate econometric formulation used in different fields when the
-data set is organized as cross-sections for different time periods. The
-basis of this approach is well-known since the initial works of Zellner
-(1962) and now is a popular methodology included in several Econometrics
-textbook (e.g., Greene, 2003). To our knowledge, Anselin (1988) was the
-first text that introduced the term spatial SUR in reference to a model
-made of `an equation for each time period, which is estimated for a
-cross section of spatial units' (p.~141). From this milestone, a huge
-researches used this methodology in spatial framework. Rey and Montouri
-(1999), Fingleton ({\textbf{???}}), Lauridsen et al.~(2010), Le Gallo
-and Dall'Erba (2006), and Lopez et al.~(2017) are well-known examples in
-this line.
+The Seemingly Unrelated Regression equations model (SUR hereafter) is a
+multivariate econometric model used in different fields when the
+structure of the data consisits of cross-sections for different time
+periods. The basis of this approach is well-known since the initial
+works of Zellner (1962), and has become a popular methodology included
+in several econometrics textbook (e.g., Greene, 2003). To our knowledge,
+Anselin (1988) was the first author to discuss SUR from a spatial
+perspective. In his landmark text, Anselin discussed a model made of
+``an equation for each time period, which is estimated for a cross
+section of spatial units'' (p.~141). From this milestone, a large body
+of research has developed to extend the classical SUR into a spatial
+framework (e.g., Rey and Montouri, 1999; Lauridsen et al., 2010; Le
+Gallo and Dall'Erba, 2006; López et al., 2017).
 
-The classical SUR model without spatial effects (from here, SUR-SIM) is
+The classical SUR model without spatial effects (hereafter, SUR-SIM) is
 a stack of equations as follows:
 
 \begin{equation}
@@ -377,33 +420,34 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \end{bmatrix}
 \end{equation}
 
-\noindent where \(y_{t}=(y_{1t},...,y_{Nt})\) is a \(N \times 1\)
-vector, and in our case \(y_{st}\) is the incidence ratio in the
-province \(s\) (\(s=1,...,N\)) the day \(t\) \((t=1,...,T)\);
-\(X_t=(X^1,...,X^{k_t})\) is a \(N \times k_t\) matrix of the \(k_t\)
+\noindent where \(y_{t}=(y_{1t},...,y_{Nt})\) is an \(N \times 1\)
+vector, and in our case \(y_{st}\) is the incidence ratio in province
+\(s\text{ }s=1,...,N\)) on day \(t\text{ }(t=1,...,T)\);
+\(X_t=(X^1,...,X^{k_t})\) is an \(N \times k_t\) matrix of the \(k_t\)
 independent variables, \(X_i=(X^i_{st})\);
 \(\beta_t=(\beta_{1t},...,\beta_{Nt})\) is a vector of coefficients and
-\(\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})\) is the vector of
-residuals.
+\(\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})\) is the usual vector of
+random residuals.
 
-The more relevant characteristic of a SUR model is the dependence
-structure among the vectors of residuals, namely:
+A key feature of the SUR framework is the dependence structure among the
+vectors of random residuals, which takes the following form:
 
 \begin{equation}
 \label{eq:sur-err}
 E[\epsilon_t \epsilon'_{t'}]=\sigma_{tt'}
 \end{equation}
 
-Note that this specification is very flexible, in that it allows changes
-in the coefficients \(\beta_{it}\) in order to modulate the effect of
-\(X^i_{.t}\) on \(y_t\). This flexibility can be reduced and it is
-posible to impose restrinctions considering some \(\beta\) coefficients
-as being constant over time. In this case, we can reformulate the
+Note that this specification is very flexible, since it allows the
+coefficients \(\beta_{it}\) to vary in order to modulate the effect of
+\(X^i_{.t}\) on \(y_t\). A less flexible if more parsimonious model can
+be obtained by imposing restrictions to some \(\beta\) coefficients to
+fix them across equations. This is equivalent to specifying an effect
+that is constant in time. In this case, we can reformulate the
 coefficients expression of
 \(\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})\)
-considering the first \(r\) coefficients contanst.
+to restrict the first \(r\) coefficients to be constant.
 
-Equation \ref{eq:sur-sim}) can be rewriten in compact form:
+Equation \ref{eq:sur-sim}) can be rewriten in compact form as follows:
 
 \begin{equation}
 y = X \beta + \epsilon
@@ -411,16 +455,16 @@ y = X \beta + \epsilon
 
 \noindent where\ldots.
 
-As is the case of cross-sectional data, it is possible identify spatial
-autocorrelation in the residuals of Model \ref{eq:sur-sim}, and several
-Lagrange Multipliers tests have been developed to test the null
-hypothesis of spatial independence (see López et al., 2014). When the
-null hypothesis is rejected, there are alternative several
-specifications that have been propose to include spatial effects
-(Anselin, 1988, see also 2016). In this paper we consider a spatial SUR
-model that incorporates a spatial lag of the dependent variable as an
-explanatory factor. The stack expresion for the spatial lag SUR model
-(SUR-SLM),
+As is the case with cross-sectional data, it is possible to test the
+residuals of Model \ref{eq:sur-sim} for spatial autocorrelation, and
+several tests have been developed to test the null hypothesis of spatial
+independence (see López et al., 2014). When the null hypothesis is
+rejected, several alternative specifications have been proposed to
+include spatial effects (Anselin, 1988, see also 2016). In this paper we
+consider a spatial SUR model that incorporates a spatial lag of the
+dependent variable as an explanatory factor. A sp
+
+The stack expresion for the spatial lag SUR model (SUR-SLM),
 
 \begin{equation}
 \label{eq:sur-slm}
@@ -428,17 +472,17 @@ explanatory factor. The stack expresion for the spatial lag SUR model
 \epsilon =N(0,\Omega)
 \end{equation}
 
-\noindent where A =\(I_{TN}-\bf{\Lambda} \otimes W\) with
-\(\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)\).
+\noindent where \(A =I_{TN}-\bf{\rho} \otimes W\) with
+\(\bf{\rho} = diag(\rho_1, \cdots, \rho_T)\).
 
 This specification assumes that incidence in a province (\(y_st\)) at
 time \(t\) is partially determined by the weighted average (\(Wy_{st}\))
-of incidence in neighbouring provinces. Parameters of spatial dependence
-are estimated for each time period \(\lambda_t\) and identifies the
-intensity and the sign of the impacts of neighbourhood. It is possible
-test the null hypotheis of identtical levels of spatial dependence
-(\(\lambda_i=\lambda_j, \forall i,j\)). The correspond Wald test is
-available in the R package \textbf{spsur}
+of incidence in neighbouring provinces. Coefficients for the spatially
+lagged variable are estimated for each time period \(\rho_t\) and
+identifies the intensity and the sign of the impacts of neighbourhood.
+It is possible test the null hypotheis of identtical levels of spatial
+dependence (\(\rho_i=\rho_j, \forall i,j\)). The correspond Wald test is
+available in the R package \texttt{spsur}.
 
 The SUR-SLM model can be estimated using maximum likelihood (López et
 al. (2014)) or instrumental variables (Mínguez et al. (2019)).
@@ -459,22 +503,20 @@ We begin with the exploratory analysis of the data.
 
 Figure \ref{fig:weekly-average-incidence-map} shows the geographical
 variation in the incidence of the disease, as well as its temporal
-progression in weekly averages. Our analysis begins on March 13, which
-is the first date when every province had reported at least one case of
-COVID-19. It can be seen that the highest incidence at this early date
-was in the provice of Álava, in the North of Spain. While not the most
-populous province, with a population of only 331,549, Álava has the
-highest GDP per capita of all provinces. Vitoria, its main city, is the
-capital of the Basque country and has been the focus of efforts to
-develop a ``Global Basque City'' (Meijers et al., 2008), along with San
-Sebastian and Bilbao. The other early focus of the pandemic in Spain was
-Madrid, which is the most populous province in the country and has the
-second highest GDP per capita after Álava. The early outbreaks in these
-two provinces can be traced throughout the progression of the pandemic
-over time, although by the end of the period under consideration, other
-provinces had matched and even surpased their incidence rates, including
-Segovia and Soria to the north of Madrid, and Ciudad Real and Albacete
-to the south.
+progression in weekly averages. It can be seen that the highest
+incidence at this early date was in the provice of Álava, in the North
+of Spain. While not the most populous province, with a population of
+only 331,549, Álava has the highest GDP per capita of all provinces.
+Vitoria, its main city, is the capital of the Basque country and has
+been the focus of efforts to develop a ``Global Basque City'' (Meijers
+et al., 2008), along with San Sebastian and Bilbao. The other early
+focus of the pandemic in Spain was Madrid, which is the most populous
+province in the country and has the second highest GDP per capita after
+Álava. The early outbreaks in these two provinces can be traced
+throughout the progression of the pandemic over time, although by the
+end of the period under consideration, other provinces had matched and
+even surpased their incidence rates, including Segovia and Soria to the
+north of Madrid, and Ciudad Real and Albacete to the south.
 
 \begin{figure}
 \centering
@@ -767,6 +809,13 @@ National Academy of Sciences 116, 10905--10910.
 Lancastle, N.M., 2020. Is the impact of social distancing on coronavirus
 growth rates effective across different settings? A non-parametric and
 local regression approach to test and compare the growth rate. medRxiv.
+
+\leavevmode\hypertarget{ref-Lauer2020incubation}{}%
+Lauer, S.A., Grantz, K.H., Bi, Q., Jones, F.K., Zheng, Q., Meredith,
+H.R., Azman, A.S., Reich, N.G., Lessler, J., 2020. The incubation period
+of coronavirus disease 2019 (covid-19) from publicly reported confirmed
+cases: Estimation and application. Annals of Internal Medicine.
+doi:\href{https://doi.org/10.7326/m20-0504}{10.7326/m20-0504}
 
 \leavevmode\hypertarget{ref-Lauridsen2010spatiotemporal}{}%
 Lauridsen, J., Bech, M., López, F., Maté, M., 2010. A spatiotemporal
