@@ -216,7 +216,7 @@ collected from official sources, i.e., INE, the national statistics
 institute). Table  shows the descriptive statistics and the provenance
 of the data.
 
-<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+<table>
 
 <caption>
 
@@ -620,6 +620,7 @@ The Seemingly Unrelated Regression equations model (SUR from now on) is
 a multivariate econometric formulation used in different fields when the
 data set is organized as cross-sections for different time periods. The
 basis of this approach is well-known since the initial works of Zellner
+<<<<<<< HEAD
 (<span class="citeproc-not-found" data-reference-id="Zellner1962efficient">**???**</span>)
 and now is a popular methodology included in several Econometrics
 textbook (e.g.,
@@ -639,6 +640,18 @@ Le Gallo and Dall’Erba
 and Lopez et
 al. (<span class="citeproc-not-found" data-reference-id="Lopez2017spatial">**???**</span>)
 are well-known examples in this line.
+=======
+(1962) and now is a popular methodology included in several Econometrics
+textbook (e.g., Greene 2003). To our knowledge, Anselin (1988) was the
+first text that introduced the term spatial SUR in reference to a model
+made of ‘an equation for each time period, which is estimated for a
+cross section of spatial units’ (p. 141). From this milestone, a huge
+researches used this methodology in spatial framework. Rey and Montouri
+(1999), Fingleton
+(<span class="citeproc-not-found" data-reference-id="Fingleton2007multi">**???**</span>),
+Lauridsen et al. (2010), Le Gallo and Dall’Erba (2006), and Lopez et
+al. (2017) are well-known examples in this line.
+>>>>>>> f448d32e3b23eaeeae8d724e650eecd0819fef40
 
 The classical SUR model without spatial effects (from here, SUR-SIM) is
 a stack of equations as follows:
@@ -662,6 +675,7 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_T
 \end{bmatrix}
 \end{equation}
+<<<<<<< HEAD
 -->
 
 <!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
@@ -675,6 +689,37 @@ is a \(N \times k_t\) matrix of the \(k_t\) independent variables,
 \(X_i=(X^i_{st})\); \(\beta_t=(\beta_{1t},...,\beta_{Nt})\) is a vector
 of coefficients and \(\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})\) is
 the vector of residuals.
+=======
+
+\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is an $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t=(X^1,...,X^{k_t})$ is a $N \times k_t$ matrix of the $k_t$ independent variables, $X_i=(X^i_{st})$; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals.
+-->
+
+<!--Equations for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
+
+![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-sim%7D%20%5Cbegin%7Bbmatrix%7D%20y_1%20%5C%5C%20y_2%20%5C%5C%20%5Cvdots%20%5C%5C%20y_T%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20X_1%20%26%200%20%26%20%5Ccdots%20%26%200%20%5C%5C%200%20%26%20X_2%20%26%20%5Ccdots%20%26%200%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%200%20%26%200%20%26%20%5Ccdots%20%26%20X_T%20%5Cend%7Bbmatrix%7D%20%5C%20%5Cbegin%7Bbmatrix%7D%20%5Cbeta_1%20%5C%5C%20%5Cbeta_1%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cbeta_T%20%5Cend%7Bbmatrix%7D%20%2B%20%5Cbegin%7Bbmatrix%7D%20%5Cepsilon_1%20%5C%5C%20%5Cepsilon_2%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cepsilon_T%20%5Cend%7Bbmatrix%7D%20%5Cend%7Bequation%7D)
+
+where
+![\(y_{t}=(y_{1t},...,y_{Nt})\)](https://render.githubusercontent.com/render/math?math=%24y_%7Bt%7D%3D\(y_%7B1t%7D%2C...%2Cy_%7BNt%7D\)%24)
+is an
+![\(N \times 1\)](https://render.githubusercontent.com/render/math?math=%24N%20%5Ctimes%201%24)
+vector, and in our case
+![\(y_{st}\)](https://render.githubusercontent.com/render/math?math=%24y_%7Bst%7D%24)
+is the incidence ratio in the province
+![\(s\text{ }(s=1,...,N)\)](https://render.githubusercontent.com/render/math?math=%24s%5Ctext%7B%20%7D\(s%3D1%2C...%2CN\)%24)
+the day
+![\(t\text{ }(t=1,...,T)\)](https://render.githubusercontent.com/render/math?math=%24t%5Ctext%7B%20%7D\(t%3D1%2C...%2CT\)%24);
+![\(X_t=(X^1,...,X^{k_t})\)](https://render.githubusercontent.com/render/math?math=%24X_t%3D\(X%5E1%2C...%2CX%5E%7Bk_t%7D\)%24)
+is a
+![\(N \times k_t\)](https://render.githubusercontent.com/render/math?math=%24N%20%5Ctimes%20k_t%24)
+matrix of the
+![\(k_t\)](https://render.githubusercontent.com/render/math?math=%24k_t%24)
+independent variables,
+![\(X_i=(X^i_{st})\)](https://render.githubusercontent.com/render/math?math=%24X_i%3D\(X%5Ei_%7Bst%7D\)%24);
+![\(\beta_t=(\beta_{1t},...,\beta_{Nt})\)](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_t%3D\(%5Cbeta_%7B1t%7D%2C...%2C%5Cbeta_%7BNt%7D\)%24)
+is a vector of coefficients and
+![\(\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})\)](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon_t%3D\(%5Cepsilon_%7B1t%7D%2C...%2C%5Cepsilon_%7BNt%7D\)%24)
+is the vector of residuals.
+>>>>>>> f448d32e3b23eaeeae8d724e650eecd0819fef40
 
 The more relevant characteristic of a SUR model is the dependence
 structure among the vectors of residuals, namely:
@@ -684,18 +729,31 @@ structure among the vectors of residuals, namely:
 \label{eq:sur-err}
 E[\epsilon_t \epsilon'_{t'}]=\sigma_{tt'}
 \end{equation} 
+<<<<<<< HEAD
+=======
+
+Note that this specification is very flexible, in that it allows changes in the coefficients $\beta_{it}$ in order to modulate the effect of $X^i_{.t}$ on $y_t$. This flexibility can be reduced and it is posible to impose restrinctions considering some $\beta$ coefficients as being constant over time. In this case, we can reformulate the coefficients expression of $\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})$ to restrict the first $r$ coefficients to be constant across equations, i.e., time periods.
+>>>>>>> f448d32e3b23eaeeae8d724e650eecd0819fef40
 -->
 
 ![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-err%7D%20E%5B%5Cepsilon_t%20%5Cepsilon'_%7Bt'%7D%5D%3D%5Csigma_%7Btt'%7D%20%5Cend%7Bequation%7D%20)
 
 Note that this specification is very flexible, in that it allows changes
-in the coefficients \(\beta_{it}\) in order to modulate the effect of
-\(X^i_{.t}\) on \(y_t\). This flexibility can be reduced and it is
-posible to impose restrinctions considering some \(\beta\) coefficients
-as being constant over time. In this case, we can reformulate the
-coefficients expression of
-\(\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})\)
-considering the first \(r\) coefficients contanst.
+in the coefficients
+![\(\beta_{it}\)](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_%7Bit%7D%24)
+in order to modulate the effect of
+![\(X^i_{.t}\)](https://render.githubusercontent.com/render/math?math=%24X%5Ei_%7B.t%7D%24)
+on
+![\(y_t\)](https://render.githubusercontent.com/render/math?math=%24y_t%24).
+This flexibility can be reduced and it is posible to impose
+restrinctions considering some
+![\(\beta\)](https://render.githubusercontent.com/render/math?math=%24%5Cbeta%24)
+coefficients as being constant over time. In this case, we can
+reformulate the coefficients expression of
+![\(\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})\)](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_t%20%3D%20\(%5Cbeta_%7B1%7D%2C%20%5Ccdots%2C%20%5Cbeta_%7Br-1%7D%2C%20%5Cbeta_%7Br%7D%2C%20%5Cbeta_%7Br%2B1%7D%2C%20%5Ccdots%2C%20%5Cbeta_%7BNt%7D\)%24)
+to restrict the first
+![\(r\)](https://render.githubusercontent.com/render/math?math=%24r%24)
+coefficients to be constant across equations, i.e., time periods.
 
 Equation ) can be rewriten in compact form:
 
@@ -725,10 +783,16 @@ factor. The stack expresion for the spatial lag SUR model (SUR-SLM),
 \bf{A}y = X \beta + \epsilon \\
 \epsilon =N(0,\Omega)
 \end{equation}
+<<<<<<< HEAD
+=======
+
+\noindent where $A =I_{TN}-\bf{\rho} \otimes W$ with $\bf{\rho} = diag(\rho_1, \cdots, \rho_T)$.
+>>>>>>> f448d32e3b23eaeeae8d724e650eecd0819fef40
 -->
 
 ![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbf%7BA%7Dy%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN\(0%2C%5COmega\)%20%5Cend%7Bequation%7D)
 
+<<<<<<< HEAD
 where A =\(I_{TN}-\bf{\Lambda} \otimes W\) with
 \(\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)\).
 
@@ -740,6 +804,29 @@ intensity and the sign of the impacts of neighbourhood. It is possible
 test the null hypotheis of identtical levels of spatial dependence
 (\(\lambda_i=\lambda_j, \forall i,j\)). The correspond Wald test is
 available in the R package **spsur**
+=======
+where ![\(A =I_{TN}-\bf{\rho} \otimes W\) with
+\(\bf{\rho} = diag(\rho_1, \cdots, \rho_T)\)](https://render.githubusercontent.com/render/math?math=%24A%20%3DI_%7BTN%7D-%5Cbf%7B%5Crho%7D%20%5Cotimes%20W%24%20with%20%24%5Cbf%7B%5Crho%7D%20%3D%20diag\(%5Crho_1%2C%20%5Ccdots%2C%20%5Crho_T\)%24).
+
+<!--
+This specification assumes that incidence in a province ($y_st$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\rho_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence ($\rho_i=\rho_j, \forall i,j$). The correspond Wald test is available in the R package `spsur`. 
+-->
+
+This specification assumes that incidence in a province
+(![\(y_st\)](https://render.githubusercontent.com/render/math?math=%24y_st%24))
+at time
+![\(t\)](https://render.githubusercontent.com/render/math?math=%24t%24)
+is partially determined by the weighted average
+![(\(Wy_{st}\))](https://render.githubusercontent.com/render/math?math=\(%24Wy_%7Bst%7D%24\))
+of incidence in neighbouring provinces. Coefficients for the spatially
+lagged variable are estimated for each time period
+![\(\rho_t\)](https://render.githubusercontent.com/render/math?math=%24%5Crho_t%24)
+and identifies the intensity and the sign of the impacts of
+neighbourhood. It is possible test the null hypotheis of identtical
+levels of spatial dependence
+(![\(\rho_i=\rho_j, \forall i,j\)](https://render.githubusercontent.com/render/math?math=%24%5Crho_i%3D%5Crho_j%2C%20%5Cforall%20i%2Cj%24)).
+The correspond Wald test is available in the R package `spsur`.
+>>>>>>> f448d32e3b23eaeeae8d724e650eecd0819fef40
 
 The SUR-SLM model can be estimated using maximum likelihood (López, Mur,
 and Angulo (2014)) or instrumental variables (Mínguez, López, and Mur
@@ -1509,6 +1596,13 @@ Governance*, 1–20.
 
 </div>
 
+<div id="ref-Greene2003econometric">
+
+Greene, William H. 2003. *Econometric Analysis*. Pearson Education
+India.
+
+</div>
+
 <div id="ref-Grolemund2011dates">
 
 Grolemund, Garrett, and Hadley Wickham. 2011. “Dates and Times Made Easy
@@ -1561,6 +1655,31 @@ Lancastle, Neil M. 2020. “Is the Impact of Social Distancing on
 Coronavirus Growth Rates Effective Across Different Settings? A
 Non-Parametric and Local Regression Approach to Test and Compare the
 Growth Rate.” Journal Article. *medRxiv*.
+
+</div>
+
+<div id="ref-Lauridsen2010spatiotemporal">
+
+Lauridsen, Jorgen, Mickael Bech, Fernando López, and Mariluz Maté. 2010.
+“A Spatiotemporal Analysis of Public Pharmaceutical Expenditure.” *The
+Annals of Regional Science* 44 (2): 299–314.
+
+</div>
+
+<div id="ref-Legallo2006evaluating">
+
+Le Gallo, Julie, and Sandy Dall’Erba. 2006. “Evaluating the Temporal and
+Spatial Heterogeneity of the European Convergence Process, 1980–1999.”
+*Journal of Regional Science* 46 (2): 269–88.
+
+</div>
+
+<div id="ref-Lopez2017spatial">
+
+López, Fernando A, Pedro J Martínez-Ortiz, and Juan-Gabriel
+Cegarra-Navarro. 2017. “Spatial Spillovers in Public Expenditure on a
+Municipal Level in Spain.” *The Annals of Regional Science* 58 (1):
+39–65.
 
 </div>
 
@@ -1641,6 +1760,14 @@ Units in R.” *R Journal* 8 (2): 486–94.
 
 </div>
 
+<div id="ref-Rey1999us">
+
+Rey, Sergio J, and Brett D Montouri. 1999. “US Regional Income
+Convergence: A Spatial Econometric Perspective.” *Regional Studies* 33
+(2): 143–56.
+
+</div>
+
 <div id="ref-Wickham2019">
 
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy
@@ -1663,6 +1790,14 @@ Hall/CRC. <http://www.crcpress.com/product/isbn/9781466561595>.
 
 ———. 2015. *Dynamic Documents with R and Knitr*. 2nd ed. Boca Raton,
 Florida: Chapman; Hall/CRC. <https://yihui.org/knitr/>.
+
+</div>
+
+<div id="ref-Zellner1962efficient">
+
+Zellner, Arnold. 1962. “An Efficient Method of Estimating Seemingly
+Unrelated Regressions and Tests for Aggregation Bias.” *Journal of the
+American Statistical Association* 57 (298): 348–68.
 
 </div>
 
