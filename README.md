@@ -18,23 +18,24 @@ encouraging evidence that early public health interventions have slowed
 the spread of the virus, this has come at a high cost as the global
 economy is brought to its knees. How and when to ease restrictions to
 movement hinges in part on the question whether SARS-CoV2 will display
-seasonality associated with variations in temperature and humidity. In
-this research, we address this question by means of a spatial analysis
-of the incidence of COVID-19 in the provinces in Spain. Use of a spatial
-Seemingly Unrelated Regressions (SUR) approach allows us to model the
-incidence of reported cases of the disease per 100,000 population, as a
-function of temperature and humidity, while controlling for GDP per
-capita, population density, percentage of older adults in the
-population, and presence of mass transit systems. An interesting aspect
-of the spatial SUR approach is that it models incidence as a contagion
-process. Our results indicate that incidence of the disease is lower at
-higher temperatures. The evidence with respect to humidity is more
-mixed, with coefficients for this variable that are significant in only
-some equations. Our control variables also yield interesting insights,
-as population density and percentage of older adults display negative
-associations with incidence of COVID-19, whereas the presence of mass
-transit systems in the province is associated with a greater incidence
-of the disease.
+seasonality associated with variations in temperature, humidity, and
+hours of sunshine. In this research, we address this question by means
+of a spatial analysis of the incidence of COVID-19 in the provinces in
+Spain. Use of a spatial Seemingly Unrelated Regressions (SUR) approach
+allows us to model the incidence of reported cases of the disease per
+100,000 population, as a function of temperature and humidity, while
+controlling for GDP per capita, population density, percentage of older
+adults in the population, and presence of mass transit systems. An
+interesting aspect of the spatial SUR approach is that it models
+incidence as a contagion process. Our results indicate that incidence of
+the disease is lower at higher temperatures and higher levels of
+humidity, although coefficients for this variable are significant only
+in some equations. Sunshine, in contrast, displays a positive
+association with incidence of the disease. Our control variables also
+yield interesting insights. Higher incidence is associated with higher
+GDP per capita and presence of mass transit systems in the province; in
+contrast, population density and percentage of older adults display
+negative associations with incidence of COVID-19.
 
 ## Keywords
 
@@ -43,6 +44,8 @@ COVID-19
 Seasonality  
 Temperature  
 Humidity  
+Population density  
+Older adults  
 Spatial SUR  
 Contagion  
 Spain
@@ -102,49 +105,60 @@ However, de Ángel Solá et al. (2020) note that “not all seasonal
 respiratory viruses experience the same spatiotemporal patterns”
 (section 4). This urges caution when extrapolating from known viruses,
 and indeed, the evidence in this respect is inconclusive. At a global
-scale, whereas de Ángel Solá et al. (2020) see less risk in the Caribean
-Basin, Coelho et al. (Coelho et al. 2020) warn that at least during the
-exponential phase, expansion of the virus is not driven by climate.
+scale, de Ángel Solá et al. (2020) see less risk in the Caribean Basin;
+however, Coelho et al. (Coelho et al. 2020) warn that at least during
+the exponential phase, expansion of the virus is not driven by climate.
 Similarly, whereas Araujo and Naimi (2020) argue that spread of
 SARS-CoV2 will likely be constrained by climate, Harbert et al. (2020)
 remain unconvinced that spatial modelling can currently discriminate the
 distribution of the disease on the basis of climate, at least in the
-United States. To further complicate matters, much of the relevant work
-has yet to be peer-reviewed and therefore is open to change (see for
-example the challenge of Harbert, Cunningham, and Tessler (2020) to
-Araujo and Naimi (2020)). In the United States, the National Academy of
-Sciences, Engineering, and Medicine was engaged by the Office of the
-Executive for guidance on this matter (see National Academies of
-Sciences, Engineering and Medicine 2020). Their conclusion summarizes
-the situation well (see p. 6): “Some limited data support a potential
-waning of cases in warmer and more humid seasons, yet none are without
-major limitations…Additional studies as the SARS-CoV-2 pandemic unfolds
-could shed more light on the effects of climate on transmission.”
+United States. Yao et al. (2020), examined data from China and came to
+the conclusion that neither temperature nor ultraviolet indices had an
+association with transmission of COVID-19. This is despite previous
+research that has linked less exposure to UVB radiation to higher
+prevalence and severity of acute respiratory tract infections
+(Zittermann et al. 2016; Dąbrowska-Leonik et al. 2018; Dinlen et
+al. 2016; Mathyssen et al. 2017; Esposito and Lelii 2015; Jat 2017;
+Moriyama, Hugentobler, and Iwasaki 2020). To further complicate matters,
+much of the relevant work has yet to be peer-reviewed and therefore is
+open to change (see for example the challenge of Harbert, Cunningham,
+and Tessler (2020) to Araujo and Naimi (2020)). In the United States,
+the National Academy of Sciences, Engineering, and Medicine was engaged
+by the Office of the Executive for guidance on this matter (see National
+Academies of Sciences, Engineering and Medicine 2020). Their conclusion
+summarizes the situation well (see p. 6): “Some limited data support a
+potential waning of cases in warmer and more humid seasons, yet none are
+without major limitations…Additional studies as the SARS-CoV-2 pandemic
+unfolds could shed more light on the effects of climate on
+transmission.”
 
 With the above considerations in mind, our objective with this paper is
 to contribute to the knowledge basis regarding the spread of COVID-19
-and the influence of environmental factors, particularly temperature and
-humidity. Hence, here we report results from a spatial analysis of
-incidence of COVID-19 in fifty provinces in Spain. Spain is one of the
-countries hardest hit by the virus, and enacted lockdown measures on
-March 16, 2020, in response to a rapidly growing outbreak of COVID-19.
-We combine data on reported cases of the disease with metereological
-information, to create a spatio-temporal dataset covering a period of 30
-days. We then join this dataset with provincial-level economic and
-demographic information to act as controls to our key environmental
-variables. These data are analyzed using a spatial Seemingly Unrelated
-Regressions (SUR) approach, which allows us to model incidence of
-COVID-19 as a spatial contagion process.
+and the influence of environmental factors, particularly temperature,
+humidity, and sunshine. We adopt a population health approach, and
+report results from a spatial model of the incidence of COVID-19 in
+fifty provinces in Spain, one of the countries hardest hit by the
+pandemic. We combine data on reported cases of the disease with
+metereological information, to create a spatio-temporal dataset covering
+a period of 30 days. We then join this dataset with provincial-level
+economic and demographic information to act as controls to our key
+environmental variables. These data are analyzed using a spatial
+Seemingly Unrelated Regressions (SUR) approach, which allows us to model
+incidence of COVID-19 as a spatial contagion process.
 
-The results provide evidence of the effect of temperature on the
-incidence of COVID-19. The evidence concerning humidity is more mixed:
-while the direction of the effect is negative, as anticipated, the
-coefficients for this variable are only significant in some of equations
-in the system. Our control variables also provide some intriguing
-insights. The results of this analysis provide support to the hypothesis
-of seasonality of the novel SARS-CoV2, and should be of interest to
-public health officials and policy makers wrestling with the question of
-the trajectory of the pandemic.
+The results provide evidence of the effect of temperature, humidity, and
+sunshine on the incidence of COVID-19. The clearest result with respect
+to these variables is a lower incidence of COVID-19 at higher
+temperatures and levels of humidity, while the opposite happens with
+respect to hours of sunshine. Our control variables also provide some
+intriguing insights. Higher incidence is associated with higher GDP per
+capita and presence of mass transit systems in the province; in
+contrast, population density and percentage of older adults display
+negative associations with incidence of COVID-19. The results of this
+analysis provide support to the hypothesis of seasonality of the novel
+SARS-CoV2, and should be of interest to public health officials and
+policy makers grappling with the question of the trajectory of the
+pandemic.
 
 Please note that this paper is prepared as a reproducible research
 document. The source R Markdown document, as well as all data and code
@@ -736,7 +750,7 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \end{bmatrix}
 \end{equation}
 
-\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t=(X^1,...,X^{k_t})$ is a $N \times k_t$ matrix of the $k_t$ independent variables, $X_i=(X^i_{st})$; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals. 
+\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t=(X^1,...,X^{k_t})$ is a $N \times k_t$ matrix of the $k_t$ independent variables, $X_i=(X^i_{st})$; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals.
 -->
 
 <!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
@@ -838,16 +852,14 @@ follows:
 \end{equation}
 
 \noindent where $A =I_{TN}-\bf{\Lambda} \otimes W$ with $\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)$.
+
+This specification assumes that incidence in a province ($y_st$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\lambda_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence ($\lambda_i=\lambda_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`. 
 -->
 
 ![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbf%7BA%7Dy%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN\(0%2C%5COmega\)%20%5Cend%7Bequation%7D)
 
 where ![\(A = I_{TN}-\bf{\Lambda} \otimes W\) with
 \(\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)\)](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20I_%7BTN%7D-%5Cbf%7B%5CLambda%7D%20%5Cotimes%20W%24%20with%20%24%5Cbf%7B%5CLambda%7D%20%3D%20diag\(%5Clambda_1%2C%20%5Ccdots%2C%20%5Clambda_T\)%24).
-
-<!--
-This specification assumes that incidence in a province ($y_st$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\lambda_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence ($\lambda_i=\lambda_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`.
--->
 
 This specification assumes that incidence in a province
 (![\(y_st\)](https://render.githubusercontent.com/render/math?math=%24y_st%24))
@@ -1054,19 +1066,19 @@ Intercept
 
 <td style="text-align:right;">
 
-7.175
+7.370
 
 </td>
 
 <td style="text-align:right;">
 
-10.008
+10.037
 
 </td>
 
 <td style="text-align:right;">
 
-13.845
+12.968
 
 </td>
 
@@ -1106,19 +1118,25 @@ log(GDPpc)
 
 <td style="text-align:right;">
 
-0.513
+0.620
 
 </td>
 
 <td style="text-align:right;">
 
-0.513
+0.620
 
 </td>
 
 <td style="text-align:right;">
 
-0.513
+0.620
+
+</td>
+
+<td style="text-align:right;">
+
+0
 
 </td>
 
@@ -1131,12 +1149,6 @@ log(GDPpc)
 <td style="text-align:right;">
 
 1
-
-</td>
-
-<td style="text-align:right;">
-
-0
 
 </td>
 
@@ -1158,19 +1170,19 @@ log(Older)
 
 <td style="text-align:right;">
 
-\-0.783
+\-0.737
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.783
+\-0.737
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.783
+\-0.737
 
 </td>
 
@@ -1210,19 +1222,19 @@ log(Density)
 
 <td style="text-align:right;">
 
-\-0.217
+\-0.220
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.092
+\-0.097
 
 </td>
 
 <td style="text-align:right;">
 
-0.188
+0.153
 
 </td>
 
@@ -1262,25 +1274,19 @@ Transit
 
 <td style="text-align:right;">
 
-0.300
+0.314
 
 </td>
 
 <td style="text-align:right;">
 
-0.518
+0.512
 
 </td>
 
 <td style="text-align:right;">
 
-0.595
-
-</td>
-
-<td style="text-align:right;">
-
-11
+0.583
 
 </td>
 
@@ -1293,6 +1299,12 @@ Transit
 <td style="text-align:right;">
 
 9
+
+</td>
+
+<td style="text-align:right;">
+
+11
 
 </td>
 
@@ -1314,37 +1326,37 @@ log(Humidity)
 
 <td style="text-align:right;">
 
-\-1.176
+\-1.434
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.372
+\-0.534
 
 </td>
 
 <td style="text-align:right;">
 
-0.342
+\-0.031
 
 </td>
 
 <td style="text-align:right;">
 
-17
+10
 
 </td>
 
 <td style="text-align:right;">
 
-4
+1
 
 </td>
 
 <td style="text-align:right;">
 
-9
+19
 
 </td>
 
@@ -1366,19 +1378,19 @@ log(Temperature)
 
 <td style="text-align:right;">
 
-\-2.048
+\-2.014
 
 </td>
 
 <td style="text-align:right;">
 
-\-1.431
+\-1.406
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.989
+\-0.929
 
 </td>
 
@@ -1397,6 +1409,58 @@ log(Temperature)
 <td style="text-align:right;">
 
 30
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+log(Sunshine)
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.258
+
+</td>
+
+<td style="text-align:right;">
+
+0.097
+
+</td>
+
+<td style="text-align:right;">
+
+0.206
+
+</td>
+
+<td style="text-align:right;">
+
+7
+
+</td>
+
+<td style="text-align:right;">
+
+2
+
+</td>
+
+<td style="text-align:right;">
+
+21
 
 </td>
 
@@ -1493,6 +1557,12 @@ Figure  shows the temporal evolution of the coefficient for
 
 ![Temporal evolution of coefficient for
 log(Temperature)](README_files/figure-gfm/beta-temperature-time-1.png)
+
+Figure  shows the temporal evolution of the coefficient for
+\(\log(Sunshine + 0.1)\).
+
+![Temporal evolution of coefficient for log(Sunshine +
+0.1)](README_files/figure-gfm/beta-sunshine-time-1.png)
 
 # Concluding Remarks
 
@@ -1871,6 +1941,16 @@ Hall/CRC. <http://www.crcpress.com/product/isbn/9781466561595>.
 
 ———. 2015. *Dynamic Documents with R and Knitr*. 2nd ed. Boca Raton,
 Florida: Chapman; Hall/CRC. <https://yihui.org/knitr/>.
+
+</div>
+
+<div id="ref-Yao2020association">
+
+Yao, Ye, Jinhua Pan, Zhixi Liu, Xia Meng, Weidong Wang, Haidong Kan, and
+Weibing Wang. 2020. “No Association of Covid-19 Transmission with
+Temperature or Uv Radiation in Chinese Cities.” Journal Article.
+*European Respiratory Journal*, 2000517.
+<https://doi.org/10.1183/13993003.00517-2020>.
 
 </div>
 

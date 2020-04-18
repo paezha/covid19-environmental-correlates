@@ -16,7 +16,7 @@ Maira Galdino da Rocha Pitta (Universidade Federal de Pernambuco)
 
 ## Abstract
 
-Spreading with astonishing speed, the novel SARS-CoV2 has swept the globe, causing enormous stress to health systems and prompting social distance guidelines and mandates to arrest its progress. While there is encouraging evidence that early public health interventions have slowed the spread of the virus, this has come at a high cost as the global economy is brought to its knees. How and when to ease restrictions to movement hinges in part on the question whether SARS-CoV2 will display seasonality associated with variations in temperature and humidity. In this research, we address this question by means of a spatial analysis of the incidence of COVID-19 in the provinces in Spain. Use of a spatial Seemingly Unrelated Regressions (SUR) approach allows us to model the incidence of reported cases of the disease per 100,000 population, as a function of temperature and humidity, while controlling for GDP per capita, population density, percentage of older adults in the population, and presence of mass transit systems. An interesting aspect of the spatial SUR approach is that it models incidence as a contagion process. Our results indicate that incidence of the disease is lower at higher temperatures. The evidence with respect to humidity is more mixed, with coefficients for this variable that are significant in only some equations. Our control variables also yield interesting insights, as population density and percentage of older adults display negative associations with incidence of COVID-19, whereas the presence of mass transit systems in the province is associated with a greater incidence of the disease. 
+  Spreading with astonishing speed, the novel SARS-CoV2 has swept the globe, causing enormous stress to health systems and prompting social distance guidelines and mandates to arrest its progress. While there is encouraging evidence that early public health interventions have slowed the spread of the virus, this has come at a high cost as the global economy is brought to its knees. How and when to ease restrictions to movement hinges in part on the question whether SARS-CoV2 will display seasonality associated with variations in temperature, humidity, and hours of sunshine. In this research, we address this question by means of a spatial analysis of the incidence of COVID-19 in the provinces in Spain. Use of a spatial Seemingly Unrelated Regressions (SUR) approach allows us to model the incidence of reported cases of the disease per 100,000 population, as a function of temperature and humidity, while controlling for GDP per capita, population density, percentage of older adults in the population, and presence of mass transit systems. An interesting aspect of the spatial SUR approach is that it models incidence as a contagion process. Our results indicate that incidence of the disease is lower at higher temperatures and higher levels of humidity, although coefficients for this variable are significant only in some equations. Sunshine, in contrast, displays a positive association with incidence of the disease. Our control variables also yield interesting insights. Higher incidence is associated with higher GDP per capita and presence of mass transit systems in the province; in contrast, population density and percentage of older adults display negative associations with incidence of COVID-19.
 
 ## Keywords
 
@@ -25,6 +25,8 @@ COVID-19
 Seasonality  
 Temperature  
 Humidity  
+Population density  
+Older adults  
 Spatial SUR  
 Contagion  
 Spain  
@@ -105,11 +107,11 @@ A salient question in the debate on how and when to ease social distancing measu
 
 While existing research on similar pathogens suggests that SARS-CoV is more stable and potentially easier to transmit in conditions of low temperature and low humidity, it is far from certain that this will also be the case with the novel SARS-CoV2. If such is the case, there is the possibility of easing restrictions to social contact as the weather warms; however, weeks or possibly months of costly measures could become undone if not, and the restrictions are lifted prematurely. Not surprisingly, given the stakes involved, this issue has already triggered a lively debate. 
 
-Some of what is thought about the possible seasonality of COVID-19 is based on analogies to the patterns of other known respiratory viruses. However, de Ángel Solá et al. [-@deangel2020weathering] note that "not all seasonal respiratory viruses experience the same spatiotemporal patterns" (section 4). This urges caution when extrapolating from known viruses, and indeed, the evidence in this respect is inconclusive. At a global scale, whereas de Ángel Solá et al. [-@deangel2020weathering] see less risk in the Caribean Basin, Coelho et al. [@Coelho2020exponential] warn that at least during the exponential phase, expansion of the virus is not driven by climate. Similarly, whereas Araujo and Naimi [-@Araujo2020spread] argue that spread of SARS-CoV2 will likely be constrained by climate, Harbert et al. [-@Harbert2020spatial] remain unconvinced that spatial modelling can currently discriminate the distribution of the disease on the basis of climate, at least in the United States. To further complicate matters, much of the relevant work has yet to be peer-reviewed and therefore is open to change (see for example the challenge of @Harbert2020spatial to @Araujo2020spread). In the United States, the National Academy of Sciences, Engineering, and Medicine was engaged by the Office of the Executive for guidance on this matter [see @National2020rapid]. Their conclusion summarizes the situation well (see p. 6): "Some limited data support a potential waning of cases in warmer and more humid seasons, yet none are without major limitations...Additional studies as the SARS-CoV-2 pandemic unfolds could shed more light on the effects of climate on transmission."
+Some of what is thought about the possible seasonality of COVID-19 is based on analogies to the patterns of other known respiratory viruses. However, de Ángel Solá et al. [-@deangel2020weathering] note that "not all seasonal respiratory viruses experience the same spatiotemporal patterns" (section 4). This urges caution when extrapolating from known viruses, and indeed, the evidence in this respect is inconclusive. At a global scale, de Ángel Solá et al. [-@deangel2020weathering] see less risk in the Caribean Basin; however, Coelho et al. [@Coelho2020exponential] warn that at least during the exponential phase, expansion of the virus is not driven by climate. Similarly, whereas Araujo and Naimi [-@Araujo2020spread] argue that spread of SARS-CoV2 will likely be constrained by climate, Harbert et al. [-@Harbert2020spatial] remain unconvinced that spatial modelling can currently discriminate the distribution of the disease on the basis of climate, at least in the United States. Yao et al. [-@Yao2020association], examined data from China and came to the conclusion that neither temperature nor ultraviolet indices had an association with transmission of COVID-19. This is despite previous research that has linked less exposure to UVB radiation to higher prevalence and severity of acute respiratory tract infections (Zittermann et al. 2016; Dąbrowska-Leonik et al. 2018; Dinlen et al. 2016; Mathyssen et al. 2017; Esposito and Lelii 2015; Jat 2017; Moriyama, Hugentobler, and Iwasaki 2020). To further complicate matters, much of the relevant work has yet to be peer-reviewed and therefore is open to change (see for example the challenge of @Harbert2020spatial to @Araujo2020spread). In the United States, the National Academy of Sciences, Engineering, and Medicine was engaged by the Office of the Executive for guidance on this matter [see @National2020rapid]. Their conclusion summarizes the situation well (see p. 6): "Some limited data support a potential waning of cases in warmer and more humid seasons, yet none are without major limitations...Additional studies as the SARS-CoV-2 pandemic unfolds could shed more light on the effects of climate on transmission."
 
-With the above considerations in mind, our objective with this paper is to contribute to the knowledge basis regarding the spread of COVID-19 and the influence of environmental factors, particularly temperature and humidity. Hence, here we report results from a spatial analysis of incidence of COVID-19 in fifty provinces in Spain. Spain is one of the countries hardest hit by the virus, and enacted lockdown measures on March 16, 2020, in response to a rapidly growing outbreak of COVID-19. We combine data on reported cases of the disease with metereological information, to create a spatio-temporal dataset covering a period of 30 days. We then join this dataset with provincial-level economic and demographic information to act as controls to our key environmental variables. These data are analyzed using a spatial Seemingly Unrelated Regressions (SUR) approach, which allows us to model incidence of COVID-19 as a spatial contagion process. 
+With the above considerations in mind, our objective with this paper is to contribute to the knowledge basis regarding the spread of COVID-19 and the influence of environmental factors, particularly temperature, humidity, and sunshine. We adopt a population health approach, and report results from a spatial model of the incidence of COVID-19 in fifty provinces in Spain, one of the countries hardest hit by the pandemic. We combine data on reported cases of the disease with metereological information, to create a spatio-temporal dataset covering a period of 30 days. We then join this dataset with provincial-level economic and demographic information to act as controls to our key environmental variables. These data are analyzed using a spatial Seemingly Unrelated Regressions (SUR) approach, which allows us to model incidence of COVID-19 as a spatial contagion process. 
 
-The results provide evidence of the effect of temperature on the incidence of COVID-19. The evidence concerning humidity is more mixed: while the direction of the effect is negative, as anticipated, the coefficients for this variable are only significant in some of equations in the system. Our control variables also provide some intriguing insights. The results of this analysis provide support to the hypothesis of seasonality of the novel SARS-CoV2, and should be of interest to public health officials and policy makers wrestling with the question of the trajectory of the pandemic.
+The results provide evidence of the effect of temperature, humidity, and sunshine on the incidence of COVID-19. The clearest result with respect to these variables is a lower incidence of COVID-19 at higher temperatures and levels of humidity, while the opposite happens with respect to hours of sunshine. Our control variables also provide some intriguing insights. Higher incidence is associated with higher GDP per capita and presence of mass transit systems in the province; in contrast, population density and percentage of older adults display negative associations with incidence of COVID-19. The results of this analysis provide support to the hypothesis of seasonality of the novel SARS-CoV2, and should be of interest to public health officials and policy makers grappling with the question of the trajectory of the pandemic.
 
 Please note that this paper is prepared as a reproducible research document. The source R Markdown document, as well as all data and code needed to reproduce/review/extend the analysis can be obtained from the following repository:
   
@@ -216,7 +218,7 @@ An important aspect of working with environmental data such as temperature and h
 The Seemingly Unrelated Regression equations model (SUR hereafter) is a multivariate econometric model used in different fields when the structure of the data consisits of cross-sections for different time periods. The basis of this approach is well-known since the initial works of Zellner [-@Zellner1962efficient], and has become a popular methodology included in several econometrics textbook [e.g., @Greene2003econometric]. To our knowledge, Anselin [-@Anselin1988spatial] was the first author to discuss SUR from a spatial perspective. In his landmark text, Anselin discussed a model made of "an equation for each time period, which is estimated for a cross section of spatial units" (p. 141). From this milestone, a large body of research has developed to extend the classical SUR into a spatial framework [e.g., @Rey1999us; @Lauridsen2010spatiotemporal; @Legallo2006evaluating; @Lopez2017spatial].
 
 The classical SUR model without spatial effects (from here, SUR-SIM) is a stack of equations as follows:
-
+  
 <!--
 \begin{equation}
 \label{eq:sur-sim}
@@ -237,11 +239,10 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \end{bmatrix}
 \end{equation}
 
-\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t=(X^1,...,X^{k_t})$ is a $N \times k_t$ matrix of the $k_t$ independent variables, $X_i=(X^i_{st})$; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals. 
--->
+\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t=(X^1,...,X^{k_t})$ is a $N \times k_t$ matrix of the $k_t$ independent variables, $X_i=(X^i_{st})$; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals.
+--> 
 
 <!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
-
 ![\begin{equation} \label{eq:sur-sim} \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_T \end{bmatrix} = \begin{bmatrix} X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & X_T \end{bmatrix} \ \begin{bmatrix} \beta_1 \\ \beta_1 \\ \vdots \\ \beta_T \end{bmatrix} + \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_T \end{bmatrix} \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-sim%7D%20%5Cbegin%7Bbmatrix%7D%20y_1%20%5C%5C%20y_2%20%5C%5C%20%5Cvdots%20%5C%5C%20y_T%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20X_1%20%26%200%20%26%20%5Ccdots%20%26%200%20%5C%5C%200%20%26%20X_2%20%26%20%5Ccdots%20%26%200%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%200%20%26%200%20%26%20%5Ccdots%20%26%20X_T%20%5Cend%7Bbmatrix%7D%20%5C%20%5Cbegin%7Bbmatrix%7D%20%5Cbeta_1%20%5C%5C%20%5Cbeta_1%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cbeta_T%20%5Cend%7Bbmatrix%7D%20%2B%20%5Cbegin%7Bbmatrix%7D%20%5Cepsilon_1%20%5C%5C%20%5Cepsilon_2%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cepsilon_T%20%5Cend%7Bbmatrix%7D%20%5Cend%7Bequation%7D)
   
 \noindent where ![$y_{t}=(y_{1t},...,y_{Nt})$](https://render.githubusercontent.com/render/math?math=%24y_%7Bt%7D%3D(y_%7B1t%7D%2C...%2Cy_%7BNt%7D)%24) is an ![$N \times 1$](https://render.githubusercontent.com/render/math?math=%24N%20%5Ctimes%201%24) vector, and in our case ![$y_{st}$](https://render.githubusercontent.com/render/math?math=%24y_%7Bst%7D%24) is the incidence ratio in the province ![$s\text{ }(s=1,...,N)$](https://render.githubusercontent.com/render/math?math=%24s%5Ctext%7B%20%7D(s%3D1%2C...%2CN)%24) the day ![$t\text{ }(t=1,...,T)$](https://render.githubusercontent.com/render/math?math=%24t%5Ctext%7B%20%7D(t%3D1%2C...%2CT)%24); ![$X_t=(X^1,...,X^{k_t})$](https://render.githubusercontent.com/render/math?math=%24X_t%3D(X%5E1%2C...%2CX%5E%7Bk_t%7D)%24) is a ![$N \times k_t$](https://render.githubusercontent.com/render/math?math=%24N%20%5Ctimes%20k_t%24) matrix of the ![$k_t$](https://render.githubusercontent.com/render/math?math=%24k_t%24) independent variables, ![$X_i=(X^i_{st})$](https://render.githubusercontent.com/render/math?math=%24X_i%3D(X%5Ei_%7Bst%7D)%24); ![$\beta_t=(\beta_{1t},...,\beta_{Nt})$](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_t%3D(%5Cbeta_%7B1t%7D%2C...%2C%5Cbeta_%7BNt%7D)%24) is a vector of coefficients and ![$\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon_t%3D(%5Cepsilon_%7B1t%7D%2C...%2C%5Cepsilon_%7BNt%7D)%24) is the vector of residuals.
@@ -269,7 +270,7 @@ y = X \beta + \epsilon
 \end{equation}
 -->
 
-![\begin{equation} y = X \beta + \epsilon \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20y%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5Cend%7Bequation%7D)
+  ![\begin{equation} y = X \beta + \epsilon \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20y%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5Cend%7Bequation%7D)
   
 As is the case with cross-sectional data, it is possible to test the residuals of Model \ref{eq:sur-sim} for spatial autocorrelation, and several tests have been developed to test the null hypothesis of spatial independence [see @Lopez2014spatial]. When the null hypothesis is rejected, several alternative specifications have been proposed to include spatial effects [@Anselin1988spatial; see also @Anselin2016estimation]. In this paper we consider a spatial SUR model that incorporates a spatial lag of the dependent variable as an explanatory factor. Spatial analytical approaches were used to understand contagion-difussion processes in the case of infectious disease in general [e.g., @Cliff1998detecting] and the 2003-2004 SARS outbreak in particular [e.g., @Meng2005understanding; @Cao2010spatio]. While we are mindful of the same caveat that the novel SARS-CoV2 may not follow the patterns of previous diseases, there is still evidence from the United States that COVID-19 displays spatial patterns that are consistent with a diffusion process [@Desjardins2020rapid]. For this reason, the spatial lag model is appropriate to model incidence of COVID-19 geographically, since it accounts for potential spatial patterns that result from a process of contagion, as explained next. 
 
@@ -283,18 +284,16 @@ The stack expresion for the spatial lag SUR model (SUR-SLM) is as follows:
 \end{equation}
 
 \noindent where $A =I_{TN}-\bf{\Lambda} \otimes W$ with $\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)$.
+
+This specification assumes that incidence in a province ($y_st$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\lambda_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence ($\lambda_i=\lambda_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`. 
 -->
 
 ![\begin{equation} \label{eq:sur-slm} \bf{A}y = X \beta + \epsilon \\ \epsilon =N(0,\Omega) \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbf%7BA%7Dy%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN(0%2C%5COmega)%20%5Cend%7Bequation%7D)
 
 \noindent where ![$A = I_{TN}-\bf{\Lambda} \otimes W$ with $\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)$](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20I_%7BTN%7D-%5Cbf%7B%5CLambda%7D%20%5Cotimes%20W%24%20with%20%24%5Cbf%7B%5CLambda%7D%20%3D%20diag(%5Clambda_1%2C%20%5Ccdots%2C%20%5Clambda_T)%24).
                                                                                                                   
-<!--
-This specification assumes that incidence in a province ($y_st$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\lambda_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence ($\lambda_i=\lambda_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`.
--->
-
 This specification assumes that incidence in a province (![$y_st$](https://render.githubusercontent.com/render/math?math=%24y_st%24)) at time ![$t$](https://render.githubusercontent.com/render/math?math=%24t%24) is partially determined by the weighted average ![($Wy_{st}$)](https://render.githubusercontent.com/render/math?math=(%24Wy_%7Bst%7D%24)) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period ![$\lambda_t$](https://render.githubusercontent.com/render/math?math=%24%5Clambda_t%24) and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence (![$\lambda_i=\lambda_j, \forall i,j$](https://render.githubusercontent.com/render/math?math=%24%5Clambda_i%3D%5Clambda_j%2C%20%5Cforall%20i%2Cj%24)). The correspond Wald test is available in the `R` package `spsur`. 
-  
+
 The SUR-SLM model can be estimated using maximum likelihood (@Lopez2014spatial) or instrumental variables (@Minguez2019). Another alternative methodologies could be use. By example, a dynamic spatial panel methodology with fixed spatial an temporal effects (e.g. Elhorst 2014, Cap. 4), but those models are more dont take account correlation between errors. Therefore, a spatial SUR approach is more reasonable for our purpose.
 
 Analysis and Results
@@ -619,7 +618,8 @@ formula_lag8 <- log(Incidence) ~
   log(Density) +
   Transit +
   log(Humidity_lag8) +
-  log(Mean_Temp_lag8)
+  log(Mean_Temp_lag8) +
+  log(Sunshine_Hours_lag8 + 0.1)
 
 formula_lag11 <- log(Incidence) ~ 
   log(GDPpc) +
@@ -627,7 +627,8 @@ formula_lag11 <- log(Incidence) ~
   log(Density) +
   Transit +
   log(Humidity_lag11) +
-  log(Mean_Temp_lag11) 
+  log(Mean_Temp_lag11) +
+  log(Sunshine_Hours_lag11 + 0.1)
 
 formula_lag11w <- log(Incidence) ~ 
   log(GDPpc) +
@@ -635,12 +636,13 @@ formula_lag11w <- log(Incidence) ~
   log(Density) +
   Transit +
   log(Humidity_lag11w) +
-  log(Mean_Temp_lag11w)
+  log(Mean_Temp_lag11w) +
+  log(Sunshine_Hours_lag11w + 0.1)
 ```
 
 ```{r model-restrictions, include=FALSE, cache = TRUE}
 T <- max(covid19_spain$Date) - min(covid19_spain$Date) + 1 # Recall that T is the number of days, i.e., time periods, i.e., equations; add 1 to include the starting day
-k <- 7 # Number of independent variables, including the constant
+k <- 8 # Number of independent variables, including the constant
 coef_rest <- 2 # Number of restrictions
 
 # nrow is number of equations (time periods) minus 1, times the number of restrictions
@@ -656,7 +658,7 @@ for (i in 1:(T-1)){
   #R2[(i + T - 1) * 2, 4] <- 1
   #R2[(i + T - 1) * 2, (4 + i * k)] <- -1
 }
-b2 <- matrix(0, ncol = 21*coef_rest)
+b2 <- matrix(0, ncol = (T - 1) * coef_rest)
 ```
 
 ```{r model1-8-day-moving-average, include=FALSE, cache = TRUE}
@@ -734,6 +736,7 @@ data.frame(Model1 = sur.slm_lag8$R2,
 
 ```
 
+
 Summary of best model.
 ```{r summary-best-model, echo=FALSE, cache = TRUE}
 data.frame(Coefficient = sur.slm_lag11$coefficients, 
@@ -746,11 +749,14 @@ data.frame(Coefficient = sur.slm_lag11$coefficients,
                       "Transit",
                       "log(Humidity)",
                       "log(Temperature)",
+                      "log(Sunshine)",
                       rep(c("Intercept",
                             "log(Density)", 
                             "Transit", 
                             "log(Humidity)", 
-                            "log(Temperature)"), 29)),
+                            "log(Temperature)",
+                            "log(Sunshine)"),
+                          29)),
          Variable = factor(Variable, 
                            levels = c("Intercept", 
                                       "log(GDPpc)", 
@@ -758,7 +764,8 @@ data.frame(Coefficient = sur.slm_lag11$coefficients,
                                       "log(Density)",
                                       "Transit", 
                                       "log(Humidity)",
-                                      "log(Temperature)"))) %>%
+                                      "log(Temperature)",
+                                      "log(Sunshine)"))) %>%
   group_by(Variable) %>%
   summarize(Min = min(Coefficient), 
             Mean = mean(Coefficient), 
@@ -770,6 +777,7 @@ data.frame(Coefficient = sur.slm_lag11$coefficients,
                   "Constrained", 
                   "Constrained", 
                   "Non-constrained", 
+                  "Non-constrained",
                   "Non-constrained",
                   "Non-constrained",
                   "Non-constrained")) %>%
@@ -786,6 +794,7 @@ data.frame(Coefficient = sur.slm_lag11$coefficients,
                        "Non-constrained: coefficient was allowed to vary across equations",
                        "Constrained: coefficient as constant across equations"))
 ```
+
 
 Discussion
 ===================
@@ -888,10 +897,29 @@ data.frame(Date = seq(ymd("2020-03-13"),
   theme_tufte()
 ```
 
-Figure \ref{fig:beta-density-time} shows the temporal evolution of the coefficient for $\log(Temperature)$.
+Figure \ref{fig:beta-temperature-time} shows the temporal evolution of the coefficient for $\log(Temperature)$.
 
 ```{r beta-temperature-time, echo=FALSE, fig.cap="\\label{fig:beta-temperature-time}Temporal evolution of coefficient for log(Temperature)", cache = TRUE}
 n = 5
+data.frame(Date = seq(ymd("2020-03-13"), 
+                      ymd("2020-04-11"), 
+                      by = "days"),
+           Beta = matrix(sur.slm_lag11$coefficients[-c(2,3)],ncol = T)[n,],
+           tvalue = matrix(sur.slm_lag11$coefficients[-c(2,3)]/sur.slm_lag11$rest.se[-c(2,3)], ncol = T)[n,]) %>%
+  mutate(sig = case_when(abs(tvalue) >= qnorm(0.95, mean = 0, sd = 1) ~ "p <= 0.05",
+                         abs(tvalue) >= qnorm(0.90, mean = 0, sd = 1) ~ "p <= 0.10",
+                         TRUE ~ "p > 0.10")) %>%
+  ggplot(aes(x = Date, y = Beta, color = sig)) +
+  geom_point(size = 2) +
+  scale_color_manual(values = c("p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "black")) +  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = as_date("2020-03-16"), color = "red") +
+  theme_tufte()
+```
+
+Figure \ref{fig:beta-sunshine-time} shows the temporal evolution of the coefficient for $\log(Sunshine + 0.1)$.
+
+```{r beta-sunshine-time, echo=FALSE, fig.cap="\\label{fig:beta-sunshine-time}Temporal evolution of coefficient for log(Sunshine + 0.1)", cache = TRUE}
+n = 6
 data.frame(Date = seq(ymd("2020-03-13"), 
                       ymd("2020-04-11"), 
                       by = "days"),
@@ -922,4 +950,3 @@ The following `R` packages were used in the course of this investigation and the
   
 References {#references .unnumbered}
 ==========
-      
