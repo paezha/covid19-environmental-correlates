@@ -244,12 +244,15 @@ document. The source R Markdown document, as well as all data and code
 needed to reproduce/review/extend the analysis can be obtained from the
 following repository:
 
+\begin{quote}
 https://github.com/paezha/covid19-environmental-correlates
+\end{quote}
 
 \hypertarget{context-data-and-methods}{%
 \section{Context, Data, and Methods}\label{context-data-and-methods}}
 
-\#\# Covid-19 in Spain
+\hypertarget{covid-19-in-spain}{%
+\subsection{Covid-19 in Spain}\label{covid-19-in-spain}}
 
 The first reported case of COVID-19 in Spain was on January 31th, when a
 German tourist in the Canary Islands tested positive for the virus.
@@ -292,8 +295,8 @@ diary association between the temprature (resp. humidity) with declarate
 case. There is evidences (ref) that a time lag is necessary between the
 day that the individuo inffect and the case is diagnosticate
 
-\hypertarget{sources-of-data}{%
-\subsection{Sources of Data}\label{sources-of-data}}
+\hypertarget{data}{%
+\subsection{Data}\label{data}}
 
 Our dataset includes information about the daily number of cases of
 COVID-19 reported in Spain at the provincial level (NUTIII in Eurostat
@@ -487,11 +490,11 @@ follows:
 This specification assumes that incidence in a province (\(y_st\)) at
 time \(t\) is partially determined by the weighted average (\(Wy_{st}\))
 of incidence in neighbouring provinces. Coefficients for the spatially
-lagged variable are estimated for each time period \(\rho_t\) and
+lagged variable are estimated for each time period \(\lambda_t\) and
 identifies the intensity and the sign of the impacts of neighbourhood.
 It is possible test the null hypotheis of identtical levels of spatial
-dependence (\(\rho_i=\rho_j, \forall i,j\)). The correspond Wald test is
-available in the R package \texttt{spsur}.
+dependence (\(\lambda_i=\lambda_j, \forall i,j\)). The correspond Wald
+test is available in the \texttt{R} package \texttt{spsur}.
 
 The SUR-SLM model can be estimated using maximum likelihood (López et
 al. (2014)) or instrumental variables (Mínguez et al. (2019)). Another
@@ -611,14 +614,15 @@ Summary of best model.
 \cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
 Variable & Min & Mean & Max & p > 0.10 & 0.10 <= p < 0.05 & p <= 0.05 & Note\\
 \midrule
-\rowcolor{gray!6}  Intercept & 7.175 & 10.008 & 13.845 & 0 & 0 & 30 & Non-constrained\\
-log(GDPpc) & 0.513 & 0.513 & 0.513 & 0 & 1 & 0 & Constrained\\
-\rowcolor{gray!6}  log(Older) & -0.783 & -0.783 & -0.783 & 0 & 0 & 1 & Constrained\\
-log(Density) & -0.217 & -0.092 & 0.188 & 19 & 1 & 10 & Non-constrained\\
-\rowcolor{gray!6}  Transit & 0.300 & 0.518 & 0.595 & 11 & 10 & 9 & Non-constrained\\
+\rowcolor{gray!6}  Intercept & 7.370 & 10.037 & 12.968 & 0 & 0 & 30 & Non-constrained\\
+log(GDPpc) & 0.620 & 0.620 & 0.620 & 0 & 0 & 1 & Constrained\\
+\rowcolor{gray!6}  log(Older) & -0.737 & -0.737 & -0.737 & 0 & 0 & 1 & Constrained\\
+log(Density) & -0.220 & -0.097 & 0.153 & 19 & 1 & 10 & Non-constrained\\
+\rowcolor{gray!6}  Transit & 0.314 & 0.512 & 0.583 & 10 & 9 & 11 & Non-constrained\\
 \addlinespace
-log(Humidity) & -1.176 & -0.372 & 0.342 & 17 & 4 & 9 & Non-constrained\\
-\rowcolor{gray!6}  log(Temperature) & -2.048 & -1.431 & -0.989 & 0 & 0 & 30 & Non-constrained\\
+log(Humidity) & -1.434 & -0.534 & -0.031 & 10 & 1 & 19 & Non-constrained\\
+\rowcolor{gray!6}  log(Temperature) & -2.014 & -1.406 & -0.929 & 0 & 0 & 30 & Non-constrained\\
+log(Sunshine) & -0.258 & 0.097 & 0.206 & 7 & 2 & 21 & Non-constrained\\
 \bottomrule
 \multicolumn{8}{l}{\textit{Note: }}\\
 \multicolumn{8}{l}{Significance: This is the number of coefficients with p-values as indicated}\\
@@ -631,7 +635,7 @@ log(Humidity) & -1.176 & -0.372 & 0.342 & 17 & 4 & 9 & Non-constrained\\
 \section{Discussion}\label{discussion}}
 
 Figure \ref{fig:delta-time} shows the temporal evolution of the spatial
-autocorrelation coefficient (\(\rho\)).
+autocorrelation coefficient (\(\lambda\)).
 
 \begin{figure}
 \centering
@@ -679,14 +683,24 @@ coefficient for \(\log(Humidity)\).
 for log(Humidity)}
 \end{figure}
 
-Figure \ref{fig:beta-density-time} shows the temporal evolution of the
-coefficient for \(\log(Temperature)\).
+Figure \ref{fig:beta-temperature-time} shows the temporal evolution of
+the coefficient for \(\log(Temperature)\).
 
 \begin{figure}
 \centering
 \includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-temperature-time-1.pdf}
 \caption{\label{fig:beta-temperature-time}Temporal evolution of
 coefficient for log(Temperature)}
+\end{figure}
+
+Figure \ref{fig:beta-sunshine-time} shows the temporal evolution of the
+coefficient for \(\log(Sunshine + 0.1)\).
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-sunshine-time-1.pdf}
+\caption{\label{fig:beta-sunshine-time}Temporal evolution of coefficient
+for log(Sunshine + 0.1)}
 \end{figure}
 
 \hypertarget{concluding-remarks}{%
