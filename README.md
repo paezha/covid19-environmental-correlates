@@ -846,7 +846,7 @@ where ![\(A = I_{TN}-\bf{\Lambda} \otimes W\) with
 \(\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)\)](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20I_%7BTN%7D-%5Cbf%7B%5CLambda%7D%20%5Cotimes%20W%24%20with%20%24%5Cbf%7B%5CLambda%7D%20%3D%20diag\(%5Clambda_1%2C%20%5Ccdots%2C%20%5Clambda_T\)%24).
 
 <!--
-This specification assumes that incidence in a province ($y_st$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\rho_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence ($\rho_i=\rho_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`.
+This specification assumes that incidence in a province ($y_st$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\lambda_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence ($\lambda_i=\lambda_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`.
 -->
 
 This specification assumes that incidence in a province
@@ -857,11 +857,11 @@ is partially determined by the weighted average
 ![(\(Wy_{st}\))](https://render.githubusercontent.com/render/math?math=\(%24Wy_%7Bst%7D%24\))
 of incidence in neighbouring provinces. Coefficients for the spatially
 lagged variable are estimated for each time period
-![\(\rho_t\)](https://render.githubusercontent.com/render/math?math=%24%5Crho_t%24)
+![\(\lambda_t\)](https://render.githubusercontent.com/render/math?math=%24%5Clambda_t%24)
 and identifies the intensity and the sign of the impacts of
 neighbourhood. It is possible test the null hypotheis of identtical
 levels of spatial dependence
-(![\(\rho_i=\rho_j, \forall i,j\)](https://render.githubusercontent.com/render/math?math=%24%5Crho_i%3D%5Crho_j%2C%20%5Cforall%20i%2Cj%24)).
+(![\(\lambda_i=\lambda_j, \forall i,j\)](https://render.githubusercontent.com/render/math?math=%24%5Clambda_i%3D%5Clambda_j%2C%20%5Cforall%20i%2Cj%24)).
 The correspond Wald test is available in the `R` package `spsur`.
 
 The SUR-SLM model can be estimated using maximum likelihood (López, Mur,
@@ -1461,7 +1461,7 @@ equations
 # Discussion
 
 Figure  shows the temporal evolution of the spatial autocorrelation
-coefficient (\(\rho\)).
+coefficient (\(\lambda\)).
 
 ![Temporal evolution of spatial autocorrelation
 coefficient](README_files/figure-gfm/delta-time-1.png)
