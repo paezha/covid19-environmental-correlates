@@ -1,0 +1,119 @@
+---
+output: github_document
+always_allow_html: true
+bibliography: References.bib
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# A spatial analysis of the environmental correlates of COVID-19 incidence in Spain
+
+Antonio Paez (McMaster University)  
+Fernando A. Lopez (Universidad Politecnica de Cartagena)  
+Tatiane Menezes (Universidade Federal de Pernambuco)  
+Renata Cavalcanti (Universidade Federal de Pernambuco)  
+Maira Galdino da Rocha Pitta (Universidade Federal de Pernambuco)  
+
+## Abstract
+
+Spreading with astonishing speed, the novel SARS-CoV2 has swept the globe, causing enormous stress to health systems and prompting social distance guidelines and mandates to arrest its progress. While there is encouraging evidence that early public health interventions have slowed the spread of the virus, this has come at a high cost as the global economy is brought to its knees. How and when to ease restrictions to movement hinges in part on the question whether SARS-CoV2 will display seasonality associated with variations in temperature and humidity. In this research, we address this question by means of a spatial analysis of the incidence of COVID-19 in the provinces in Spain. Use of a spatial Seemingly Unrelated Regressions (SUR) approach allows us to model the incidence of reported cases of the disease per 100,000 population, as a function of temperature and humidity, while controlling for GDP per capita, population density, percentage of older adults in the population, and presence of mass transit systems. An interesting aspect of the spatial SUR approach is that it models incidence as a contagion process. Our results indicate that incidence of the disease is lower at higher temperatures. The evidence with respect to humidity is more mixed, with coefficients for this variable that are significant in only some equations. Our control variables also yield interesting insights, as population density and percentage of older adults display negative associations with incidence of COVID-19, whereas the presence of mass transit systems in the province is associated with a greater incidence of the disease. 
+
+## Keywords
+
+SARS-CoV2  
+COVID-19  
+Temperature  
+Humidity  
+Spatial SUR  
+Contagion  
+Spain  
+
+```{r load-packages, include=FALSE}
+# The data package needs to be installed from github repository: remember to include the instructions to install
+# Also, ask Fernando if the version of `spatsur` needed for the analysis is available from CRAN or needs special distribution
+#library(aemet) # Needs install from github
+library(covid19env)
+library(ggthemes)
+library(gridExtra)
+library(kableExtra)
+library(lubridate)
+#library(meteoland) # Ask Fernando if this package was used in the end
+library(plm)
+library(sf)
+library(spdep)
+library(spsur)
+library(tidyverse)
+library(units)
+```
+
+```{r load-data, include=FALSE}
+# Load data from package `covid19env`
+data("covid19_spain")
+data("provinces_spain")
+```
+
+```{r data-preparation, include=FALSE}
+# Convert GDP per capita to thousands of euros:
+provinces_spain <- provinces_spain %>%
+  mutate(GDPpc = GDPpc/1000)
+
+# Join provincial data to incidence data and convert to simple features:
+covid19_spain <- covid19_spain %>% 
+  left_join(provinces_spain %>% st_drop_geometry(),
+            by = c("province", "CCAA", "ID_INE"))
+```
+
+```{r sort-communities-by-latitude, include=FALSE}
+# To visualize the distribution of temperature by CCAA, we sort the communities by latitude, from north to south. We do this by community instead of province because the large number of provinces clutters the plots.
+
+# Dissolve internal provincial boundaries to obtain a simple features object with the autonomous communities: 
+ccaa.sf <-  provinces_spain %>% 
+  group_by(CCAA) %>% 
+  summarize(provinces = n())
+
+# Extract coordinates of autonomous communities
+ccaa.coords <- ccaa.sf %>%
+  st_centroid() %>%
+  st_coordinates() %>%
+  as.data.frame()
+
+# Join Y coordinate to ccaa.sf
+ccaa.sf <- ccaa.sf %>% 
+  mutate(long = ccaa.coords$Y)
+
+# Sort autonomous communities from north to south
+ccaa.levels <- ccaa.sf %>% 
+  arrange(desc(long)) %>% select(CCAA)
+
+ccaa.levels <- as.character(ccaa.levels$CCAA)
+
+# Relevel autonomous communities
+covid19_spain <- covid19_spain %>%
+  mutate(CCAA = factor(CCAA, levels = ccaa.levels, ordered = TRUE))
+```
+
+## Introduction
+
+From a small outbreak linked to a live animal market at the end of 2019 to a global pandemic in a matter of weeks, the SARS-CoV2 virus has threatened to overrun health systems the world over. In efforts to contain the spread, numerous governments in many nations and regions have either recommended or mandated social distancing measures, and as of this writing, millions of people in five continents shelter in place. There are encouraging signs that these measures have arrested the spread of the virus where they have been implemented, and have thus helped to keep a bad situation from becoming even worse [e.g., -@Lancastle2020impact]. However, this has come at a high cost, and the consequences for all spheres of the economy, social, and cultural life have been dire [e.g., @Fernandes2020economic; @Luo2020how]. As a result, there is a sense of urgency to anticipate the progression of the pandemic, in order to plan for progressive lifting of restrictions to movement and social contact [e.g., @Kissler2020projecting]. Needless to say, this has become a delicate, and politically charged, balancing act between public health and the economy [@Gong2020balance].    
+
+A salient question in the debate on how and when to ease social distancing measures is whether the virus will display seasonal variations. Earlier, diverse studies have shown the effect of temperature and humidity on the incidence of influenza [e.g., @Makinen2009cold; @Jaakkola2014decline; @Kudo2019low]. Jaakkola et al. [-@Jaakkola2014decline], for example, found that a decrease of temperature and absolute humidity precedes the onset of symptoms of influenza A and B viruses by 3 days in places where the temperature is low. After the 2002-2004 outbreak of SARS, researchers also began to investigate the relationship between these factors and SARS-CoV. In this way, Casanova et al. [-@Casanova2010effects] used two surrogates, namely the gastroenteritis (TGEV) and mouse hepatitis viruses (MHV), to find that virus inactivation was more rapid at temperatures of 20C than 4C, and at 40C than 20C; in terms of humidity, these researchers reported that survival of the virus was lower at moderate relative humidity levels. In a similar vein, but working directly with SARS-CoV, Chan et al. [-@Chan2011effects] found that viability of the virus was lost at temperatures higher than 38C and relative humidity superior to 95%. 
+
+While existing research on similar pathogens suggests that SARS-CoV is more stable and potentially easier to transmit in conditions of low temperature and low humidity, it is far from certain that this will also be the case with the novel SARS-CoV2. If such is the case, there is the possibility of easing restrictions to social contact as the weather warms; however, weeks or possibly months of costly measures could become undone if not, and the restrictions are lifted prematurely. Not surprisingly, given the stakes involved, this issue has already triggered a lively debate. 
+
+Some of what is thought about the possible seasonality of COVID-19 is based on analogies to the patterns of other known respiratory viruses. However, de Ángel Solá et al. [-@deangel2020weathering] note that "not all seasonal respiratory viruses experience the same spatiotemporal patterns" (section 4). This urges caution when extrapolating from known viruses, and indeed, the evidence in this respect is inconclusive. At a global scale, whereas de Ángel Solá et al. [-@deangel2020weathering] see less risk in the Caribean Basin, Coelho et al. [@Coelho2020exponential] warn that at least during the exponential phase, expansion of the virus is not driven by climate. Similarly, whereas Araujo and Naimi [-@Araujo2020spread] argue that spread of SARS-CoV2 will likely be constrained by climate, Harbert et al. [-@Harbert2020spatial] remain unconvinced that spatial modelling can currently discriminate the distribution of the disease on the basis of climate, at least in the United States. To further complicate matters, much of the relevant work has yet to be peer-reviewed and therefore is open to change (see for example the challenge of @Harbert2020spatial to @Araujo2020spread). In the United States, the National Academy of Sciences, Engineering, and Medicine was engaged by the Office of the Executive for guidance on this matter [see @National2020rapid]. Their conclusion summarizes the situation well (see p. 6): "Some limited data support a potential waning of cases in warmer and more humid seasons, yet none are without major limitations...Additional studies as the SARS-CoV-2 pandemic unfolds could shed more light on the effects of climate on transmission."
+
+With the above considerations in mind, our objective with this paper is to contribute to the knowledge basis regarding the spread of COVID-19 and the influence of environmental factors, particularly temperature and humidity. Hence, here we report results from a spatial analysis of incidence of COVID-19 in fifty provinces in Spain. Spain is one of the countries hardest hit by the virus, and enacted lockdown measures on March 16, 2020, in response to a rapidly growing outbreak of COVID-19. We combine data on reported cases of the disease with metereological information, to create a spatio-temporal dataset covering a period of 30 days. We then join this dataset with provincial-level economic and demographic information to act as controls to our key environmental variables. These data are analyzed using a spatial Seemingly Unrelated Regressions (SUR) approach, which allows us to model incidence of COVID-19 as a spatial contagion process. 
+
+The results provide evidence of the effect of temperature on the incidence of COVID-19. The evidence concerning humidity is more mixed: while the direction of the effect is negative, as anticipated, the coefficients for this variable are only significant in some of equations in the system. Our control variables also provide some intriguing insights. The results of this analysis provide support to the hypothesis of seasonality of the novel SARS-CoV2, and should be of interest to public health officials and policy makers wrestling with the question of the trajectory of the pandemic.
+
+Please note that this paper is prepared as a reproducible research document. The source R Markdown document, as well as all data and code needed to reproduce/review/extend the analysis can be obtained from the following repository:
+
+https://github.com/paezha/covid19-environmental-correlates
+
+
+
+## Acknowledgments
+
+The following `R` packages were used in the course of this investigation and the authors wish to acknowledge their developers: `ggthemes` [@Arnold2019], `gridExtra` [@Auguie2017gridextra], `kableExtra` [@Zhu2019], `knitr` [@Xie2014; @Xie2015], `lubridate` [@Grolemund2011dates], `plm` [@Millo2017robust], `rticles` [@Allaire2020], `sf` [@Pebesma2018], `spdep` [@Bivand2013], spsur [@Angulo2020spsur] `tidyverse` [@Wickham2019], `units` [@Pebesma2016].
+
+## References

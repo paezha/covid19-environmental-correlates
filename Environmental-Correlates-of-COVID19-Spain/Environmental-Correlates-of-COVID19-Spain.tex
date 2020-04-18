@@ -1,0 +1,780 @@
+\documentclass[]{elsarticle} %review=doublespace preprint=single 5p=2 column
+%%% Begin My package additions %%%%%%%%%%%%%%%%%%%
+\usepackage[hyphens]{url}
+
+  \journal{Geographical Analysis} % Sets Journal name
+
+
+\usepackage{lineno} % add
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{graphicx}
+\usepackage{booktabs} % book-quality tables
+%%%%%%%%%%%%%%%% end my additions to header
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \usepackage{fontspec}
+  \ifxetex
+    \usepackage{xltxtra,xunicode}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\bibliographystyle{elsarticle-harv}
+\usepackage{graphicx}
+% We will generate all images so they have a width \maxwidth. This means
+% that they will get their normal width if they fit onto the page, but
+% are scaled down if they would overflow the margins.
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+\else\Gin@nat@width\fi}
+\makeatother
+\let\Oldincludegraphics\includegraphics
+\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={A spatial analysis of the environmental correlates of COVID-19 incidence in Spain},
+            colorlinks=false,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+\setcounter{secnumdepth}{0}
+% Pandoc toggle for numbering sections (defaults to be off)
+\setcounter{secnumdepth}{0}
+
+
+% Pandoc header
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+
+
+\begin{document}
+\begin{frontmatter}
+
+  \title{A spatial analysis of the environmental correlates of COVID-19 incidence
+in Spain}
+    \author[McMaster University]{Antonio Paez\corref{1}}
+   \ead{paezha@mcmaster.ca} 
+    \author[Universidad Politecnica de Cartagena]{Fernando A. Lopez}
+   \ead{fernando.lopez@upct.es} 
+    \author[Departamento de Economia]{Tatiane Menezes}
+   \ead{tatiane.menezes@ufpe.br} 
+    \author[Nucleo de Pesquisa]{Renata Cavalcanti}
+   \ead{renata.vcsantos@gmail.com} 
+    \author[Nucleo de Pesquisa]{Maira Galdino da Rocha Pitta}
+   \ead{mgrpitta@ufpe.br} 
+      \address[McMaster University]{School of Geography and Earth Sciences, McMaster University, 1281 Main
+St W, Hamilton, ON, L8S 4K1, Canada}
+    \address[Universidad Politecnica de Cartagena]{Departamento de Metodos Cuantitativos, Ciencias Juridicas, y Lenguas
+Modernas, Universidad Politecnica de Cartagena, Calle Real Numero 3,
+30201, Cartagena, Murcia, Spain}
+    \address[Departamento de Economia]{Departamento de Economia, Universidade Federal de Pernambuco, Av dos
+Economistas, s/n - Cidade Universitária, Recife - PE, 50670-901, Brasil}
+    \address[Nucleo de Pesquisa]{Núcleo de Pesquisa em Inovação Terapêutica NUPIT / UFPE, Av.
+Prof.~Moraes Rego, 1235 - Cidade Universitária, Recife, PE, CEP
+50670-901, Brazil}
+      \cortext[1]{Corresponding Author}
+  
+  \begin{abstract}
+  Spreading with astonishing speed, the novel SARS-CoV2 has swept the
+  globe, causing enormous stress to health systems and prompting social
+  distance guidelines and mandates to arrest its progress. While there is
+  encouraging evidence that early public health interventions have slowed
+  the spread of the virus, this has come at a high cost as the global
+  economy is brought to its knees. How and when to ease restrictions to
+  movement hinges in part on the question whether SARS-CoV2 will display
+  seasonality associated with variations in temperature and humidity. In
+  this research, we address this question by means of a spatial analysis
+  of the incidence of COVID-19 in the provinces in Spain. Use of a spatial
+  Seemingly Unrelated Regressions (SUR) approach allows us to model the
+  incidence of reported cases of the disease per 100,000 population, as a
+  function of temperature and humidity, while controlling for GDP per
+  capita, population density, percentage of older adults in the
+  population, and presence of mass transit systems. Our results indicate
+  that incidence of the disease is lower at higher temperatures. The
+  evidence with respect to humidity is more mixed, with coefficients for
+  this variable that are significant in only some equations. Our control
+  variables also yield interesting insights, as population density and
+  percentage of older adults display negative associations with incidence
+  of COVID-19, whereas the presence of mass transit systems in the
+  province is associated with a greater incidence of the disease.
+  \end{abstract}
+  
+ \end{frontmatter}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+From a small outbreak linked to a live animal market at the end of 2019
+to a global pandemic in a matter of weeks, the SARS-CoV2 virus has
+threatened to overrun health systems the world over. In efforts to
+contain the spread, numerous governments in many nations and regions
+have either recommended or mandated social distancing measures, and as
+of this writing, millions of people in five continents shelter in place.
+There are encouraging signs that these measures have arrested the spread
+of the virus where they have been implemented, and have thus helped to
+keep a bad situation from becoming even worse (e.g., 2020). However,
+this has come at a high cost, and the consequences for all spheres of
+the economy, social, and cultural life have been dire (e.g., Fernandes,
+2020; Luo and Tsang, 2020). As a result, there is a sense of urgency to
+anticipate the progression of the pandemic, in order to plan for
+progressive lifting of restrictions to movement and social contact
+(e.g., Kissler et al., 2020). Needless to say, this has become a
+delicate, and politically charged, balancing act between public health
+and the economy (Gong et al., 2020).
+
+A salient question in the debate on how and when to ease social
+distancing measures is whether the virus will display seasonal
+variations. Earlier, diverse studies have shown the effect of
+temperature and humidity on the incidence of influenza (e.g., Mäkainen
+et al., 2009; Jaakkola et al., 2014; Kudo et al., 2019). Jaakkola et
+al.~(2014), for example, found that a decrease of temperature and
+absolute humidity precedes the onset of symptoms of influenza A and B
+viruses by 3 days in places where the temperature is low. After the
+2002-2004 outbreak of SARS, researchers also began to investigate the
+relationship between these factors and SARS-CoV. In this way, Casanova
+et al.~(2010) used two surrogates, namely the gastroenteritis (TGEV) and
+mouse hepatitis viruses (MHV), to find that virus inactivation was more
+rapid at temperatures of 20C than 4C, and at 40C than 20C; in terms of
+humidity, these researchers reported that survival of the virus was
+lower at moderate relative humidity levels. In a similar vein, but
+working directly with SARS-CoV, Chan et al.~(2011) found that viability
+of the virus was lost at temperatures higher than 38C and relative
+humidity superior to 95\%.
+
+While existing research on similar pathogens suggests that SARS-CoV is
+more stable and potentially easier to transmit in conditions of low
+temperature and low humidity, it is far from certain that this will also
+be the case with the novel SARS-CoV2. If such is the case, there is the
+possibility of easing restrictions to social contact as the weather
+warms; however, weeks or possibly months of costly measures could become
+undone if not, and the restrictions are lifted prematurely. Not
+surprisingly, given the stakes involved, this issue has already
+triggered a lively debate.
+
+Some of what is thought about the possible seasonality of COVID-19 is
+based on analogies to the patterns of other known respiratory viruses.
+However, de Ángel Solá et al.~(2020) note that ``not all seasonal
+respiratory viruses experience the same spatiotemporal patterns''
+(section 4). This urges caution when extrapolating from known viruses,
+and indeed, the evidence in this respect is inconclusive. At a global
+scale, whereas de Ángel Solá et al.~(2020) see less risk in the Caribean
+Basin, Coelho et al.~(Coelho et al., 2020) warn that at least during the
+exponential phase, expansion of the virus is not driven by climate.
+Similarly, whereas Araujo and Naimi (2020) argue that spread of
+SARS-CoV2 will likely be constrained by climate, Harbert et al.~(2020)
+remain unconvinced that spatial modelling can currently discriminate the
+distribution of the disease on the basis of climate, at least in the
+United States. To further complicate matters, much of the relevant work
+has yet to be peer-reviewed and therefore is open to change (see for
+example the challenge of Harbert et al. (2020) to Araujo and Naimi
+(2020)). In the United States, the National Academy of Sciences,
+Engineering, and Medicine was engaged by the Office of the Executive for
+guidance on this matter (see National Academies of Sciences, Engineering
+and Medicine, 2020). Their conclusion summarizes the situation well (see
+p.~6): ``Some limited data support a potential waning of cases in warmer
+and more humid seasons, yet none are without major
+limitations\ldots Additional studies as the SARS-CoV-2 pandemic unfolds
+could shed more light on the effects of climate on transmission.''
+
+With the above considerations in mind, our objective with this paper is
+to contribute to the knowledge basis regarding the spread of COVID-19
+and the influence of environmental factors, particularly temperature and
+humidity. Hence, here we report results from a spatial analysis of
+incidence of COVID-19 in fifty provinces in Spain. Spain is one of the
+countries hardest hit by the virus, and enacted lockdown measures on
+March 16, 2020, in response to a rapidly growing outbreak of COVID-19.
+We combine data on reported cases of the disease with metereological
+information, to create a spatio-temporal dataset covering a period of 30
+days. We then join this dataset with provincial-level economic and
+demographic information to act as controls to our key environmental
+variables. These data are analyzed using a spatial Seemingly Unrelated
+Regressions (SUR) approach, which allows us to account for spatial
+autocorrelation.
+
+The results provide evidence of the effect of temperature on the
+incidence of COVID-19, as \textbf{NOTE ABOUT THE MAGNITUDE OF THE
+EFFECT}. The evidence concerning humidity is more mixed: while the
+direction of the effect is negative, as anticipated, the coefficients
+for this variable are only significant in some of equations in the
+system. Our control variables also provide some intriguing insights. The
+results of this analysis provide support to the hypothesis of
+seasonality of the novel SARS-CoV2, and should be of interest to public
+health officials and policy makers wrestling with the question of the
+trajectory of the pandemic.
+
+Please note that this paper is prepared as a reproducible research
+document. The source R Markdown document, as well as all data and code
+needed to reproduce/review/extend the analysis can be obtained from the
+following repository:
+
+\begin{quote}
+\begin{quote}
+Include link to repository
+\end{quote}
+\end{quote}
+
+\hypertarget{context-data-and-methods}{%
+\section{Context, Data, and Methods}\label{context-data-and-methods}}
+
+\hypertarget{covid-19-in-spain}{%
+\subsection{Covid-19 in Spain}\label{covid-19-in-spain}}
+
+When was the first case reported? When did the country close
+international arrivals? When did initial measures of social distancing
+were implemented? The lockdown?
+
+\hypertarget{selection-of-variables}{%
+\subsection{Selection of Variables}\label{selection-of-variables}}
+
+Explain the rationale for selecting the variables.
+
+For example: The literature about COVID-19 suggested that population
+density is the one of the most important proliferate cause of these
+viscous, however this ill spread with different intensity at big cities
+of the world. Controlling for socioeconomic characteristics the
+objective of this paper is observe the effect of clime on COVID-19
+proliferation.
+
+Some questions are important to point out. Is not evident present a
+diary association between the temprature (resp. humidity) with declarate
+case. There is evidences (ref) that a time lag is necessary between the
+day that the individuo inffect and the case is diagnosticate
+
+\hypertarget{sources-of-data}{%
+\subsection{Sources of Data}\label{sources-of-data}}
+
+Our dataset includes information about the daily number of cases of
+COVID-19 reported in Spain \footnote{cases tested} at the provincial
+level (NUTIII in eurostat terminology) from March 13th to April 11th (30
+days and 50 spatial units). The Spanish National Government publishes
+periodic updates at the regional level (NUTII) and the information is
+also released at the provincial level as part of a collaborative
+project. This information is compiled from several sources, mainly the
+official web pages of the Spanish regional goverments. In addition, we
+consider two sets of explanatory variables. The first one, and the focus
+of this research, is set of two environmental variables, namely
+temperature and humidity. The second set provides some relevant controls
+for multivariate analysis, and refers to economic and demographic
+attributes of the province. Table \ref{tab:descriptive-statistics} shows
+the descriptive statistics and the provencance of the data.
+
+\hypertarget{methods-spatial-sur}{%
+\subsection{Methods: Spatial SUR}\label{methods-spatial-sur}}
+
+Seemingly Unrelated Regressions are used in the context of\ldots{}
+
+The classical SUR model without spatial effects (from here, SUR-SIM) is
+a stack of equations as follows:
+
+\begin{equation}
+\label{eq:sur-sim}
+\begin{bmatrix}
+y_1 \\ y_2 \\ \vdots \\ y_T
+\end{bmatrix}
+=
+\begin{bmatrix}
+X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & X_T
+\end{bmatrix}
+\
+\begin{bmatrix}
+\beta_1 \\ \beta_1 \\ \vdots \\ \beta_T
+\end{bmatrix}
++
+\begin{bmatrix}
+\epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_T
+\end{bmatrix}
+\end{equation}
+
+\noindent where \(y_{t}=(y_{1t},...,y_{Nt})\) is a \(N \times 1\)
+vector, and in our case \(y_{st}\) is the incidence ratio in the
+province \(s\) (\(s=1,...,N\)) the day \(t\) \((t=1,...,T)\);
+\(X_t=(X^1,...,X^{k_t})\) is a \(N \times k_t\) matrix of the \(k_t\)
+independent variables, \(X_i=(X^i_{st})\);
+\(\beta_t=(\beta_{1t},...,\beta_{Nt})\) is a vector of coefficients and
+\(\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})\) is the vector of
+residuals.
+
+The more relevant characteristic of a SUR model is the dependence
+structure among the vectors of residuals, namely:
+
+\begin{equation}
+\label{eq:sur-err}
+E[\epsilon_t \epsilon'_{t'}]=\sigma_{tt'}
+\end{equation}
+
+Note that this specification is very flexible, in that it allows changes
+in the coefficients \(\beta_{it}\) in order to modulate the effect of
+\(X^i_{.t}\) on \(y_t\). This flexibility can be reduced and it is
+posible to impose restrinctions considering some \(\beta\) coefficients
+as being constant over time. In this case, we can reformulate the
+coefficients expression of
+\(\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})\)
+considering the first \(r\) coefficients contanst.
+
+Equation \ref{eq:sur-sim}) can be rewriten in compact form:
+
+\begin{equation}
+y = X \beta + \epsilon
+\end{equation}
+
+\noindent where\ldots.
+
+As is the case of cross-sectional data, it is possible identify spatial
+autocorrelation in the residuals of Model \ref{eq:sur-sim}, and several
+Lagrange Multipliers tests have been developed to test the null
+hypothesis of spatial independence (see López et al., 2014). When the
+null hypothesis is rejected, there are alternative several
+specifications that have been propose to include spatial effects
+(Anselin, 1988, see also 2016). In this paper we consider a spatial SUR
+model that incorporates a spatial lag of the dependent variable as an
+explanatory factor. The stack expresion for the spatial lag SUR model
+(SUR-SLM),
+
+\begin{equation}
+\label{eq:sur-slm}
+\bf{A}y = X \beta + \epsilon \\
+\epsilon =N(0,\Omega)
+\end{equation}
+
+\noindent where A =\(I_{TN}-\bf{\Lambda} \otimes W\) with
+\(\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)\).
+
+This specification assumes that incidence in a province (\(y_st\)) at
+time \(t\) is partially determined by the weighted average (\(Wy_{st}\))
+of incidence in neighbouring provinces. Parameters of spatial dependence
+are estimated for each time period \(\lambda_t\) and identifies the
+intensity and the sign of the impacts of neighbourhood. It is possible
+test the null hypotheis of identtical levels of spatial dependence
+(\(\lambda_i=\lambda_j, \forall i,j\)). The correspond Wald test is
+available in the R package \textbf{spsur}
+
+The SUR-SLM model can be estimated using maximum likelihood (López et
+al. (2014)) or instrumental variables (Mínguez et al. (2019)).
+
+\hypertarget{analysis-and-results}{%
+\section{Analysis and Results}\label{analysis-and-results}}
+
+\hypertarget{exploratory-data-analysis}{%
+\subsection{Exploratory Data Analysis}\label{exploratory-data-analysis}}
+
+We begin with the exploratory analysis of the data.
+
+Figure \ref{fig:weekly-average-incidence-map} shows the geographical
+variation in the incidence of the disease, as well as its temporal
+progression in weekly averages. Our analysis begins on March 13, which
+is the first date when every province had reported at least one case of
+COVID-19. It can be seen that the highest incidence at this early date
+was in the provice of Álava, in the North of Spain. While not the most
+populous province, with a population of only 331,549, Álava has the
+highest GDP per capita of all provinces. Vitoria, its main city, is the
+capital of the Basque country and has been the focus of efforts to
+develop a ``Global Basque City'' (Meijers et al., 2008), along with San
+Sebastian and Bilbao. The other early focus of the pandemic in Spain was
+Madrid, which is the most populous province in the country and has the
+second highest GDP per capita after Álava. The early outbreaks in these
+two provinces can be traced throughout the progression of the pandemic
+over time, although by the end of the period under consideration, other
+provinces had matched and even surpased their incidence rates, including
+Segovia and Soria to the north of Madrid, and Ciudad Real and Albacete
+to the south.
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/weekly-average-incidence-map-1.pdf}
+\caption{\label{fig:weekly-average-incidence-map}Mean weekly incidence
+of COVID-19 by province, in reported cases by 100,000 people (map omits
+Islas Canarias)}
+\end{figure}
+
+To visualize the distribution of temperature and humidity we aggregate
+the provinces by Autonomous Community. In Figure
+\ref{fig:descriptives-temperature} the communities have been sorted by
+latitude, so that Principado de Asturias is the northernmost community,
+and Canarias the southernmost. There is a relatively wide range of
+values both within and between provinces over the 30 day period
+examined. The top panel of the figure shows the distribution of mean
+temperature. The lowest mean temperature for a community on any given
+day is 2.8C, and the highest is 22.4C for a range of approximately 20
+degrees. Likewise, there is a great deal of variability in humidity, as
+seen in the bottom panel of the figure, where the lowest mean humidity
+for any community is 48.3 and the highest is 99.6. The actual values for
+the provinces display somewhat more variability even.
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/descriptives-temperature-1.pdf}
+\caption{\label{fig:descriptives-temperature} Distribution of mean
+temperatures and humidities in the Autonomous Communities in Spain
+between March 12, 2020 and April 11, 2020. The Autonomous Communities
+have been sorted by latitude, with communities to the left being the
+northermost, and to the right the southernmost}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/control-map-1.pdf}
+\caption{\label{fig:control-map}Spatial distribution of control
+variables by province (maps omits Islas Canarias)}
+\end{figure}
+
+Figure \ref{fig:daily-correlations} shows the distribution of daily
+correlations of the independent variables with incidence of COVID-19,
+after log-transforming all variables. It can be seen there that the
+correlation of GDPpc and temperature (in its three definitions) have the
+strongest positive and negative correlations with incidence,
+respectively. Percentage of older adults displays somewhat weaker
+negative correlations with incidence, as does density. It can be seen
+that the humidity variable, in its three forms, tends to be possitively
+correlated with incidence of COVID-19.
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/daily-correlations-1.pdf}
+\caption{\label{fig:daily-correlations}Distribution of daily
+correlations of the independent variables with daily incidence of
+COVID-19 (all variables have been log-transformed)}
+\end{figure}
+
+\hypertarget{sur-models}{%
+\subsection{SUR Models}\label{sur-models}}
+
+The goodness of fit of the three systems of equations is shown in Figure
+\ref{fig:goodness-of-fit}.
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/goodness-of-fit-1.pdf}
+\caption{\label{fig:goodness-of-fit} Goodness of fit of the SUR systems:
+by date and pooled}
+\end{figure}
+
+Summary of best model.
+
+\begin{table}
+
+\caption{\label{tab:summary-best-model}\label{tab:summary-best-model}Summary of estimation results best model (lagged 11-day moving average)}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{lrrrrrrl}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Estimates} & \multicolumn{3}{c}{Significance} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+Variable & Min & Mean & Max & p > 0.10 & 0.10 <= p < 0.05 & p <= 0.05 & Note\\
+\midrule
+\rowcolor{gray!6}  Intercept & 7.175 & 10.008 & 13.845 & 0 & 0 & 30 & Non-constrained\\
+log(GDPpc) & 0.513 & 0.513 & 0.513 & 0 & 1 & 0 & Constrained\\
+\rowcolor{gray!6}  log(Older) & -0.783 & -0.783 & -0.783 & 0 & 0 & 1 & Constrained\\
+log(Density) & -0.217 & -0.092 & 0.188 & 19 & 1 & 10 & Non-constrained\\
+\rowcolor{gray!6}  Transit & 0.300 & 0.518 & 0.595 & 11 & 10 & 9 & Non-constrained\\
+\addlinespace
+log(Humidity) & -1.176 & -0.372 & 0.342 & 17 & 4 & 9 & Non-constrained\\
+\rowcolor{gray!6}  log(Temperature) & -2.048 & -1.431 & -0.989 & 0 & 0 & 30 & Non-constrained\\
+\bottomrule
+\multicolumn{8}{l}{\textit{Note: }}\\
+\multicolumn{8}{l}{Significance: This is the number of coefficients with p-values as indicated}\\
+\multicolumn{8}{l}{Non-constrained: coefficient was allowed to vary across equations}\\
+\multicolumn{8}{l}{Constrained: coefficient as constant across equations}\\
+\end{tabular}}
+\end{table}
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+Figure \ref{fig:delta-time} shows the temporal evolution of the spatial
+autocorrelation coefficient (\(\rho\)).
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/delta-time-1.pdf}
+\caption{\label{fig:delta-time}Temporal evolution of spatial
+autocorrelation coefficient}
+\end{figure}
+
+Figure \ref{fig:beta-intercept-time} shows the temporal evolution of the
+intercept.
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-intercept-time-1.pdf}
+\caption{\label{fig:beta-intercept-time}Temporal evolution of intercept}
+\end{figure}
+
+Figure \ref{fig:beta-density-time} shows the temporal evolution of the
+coefficient for \(\log(Density)\).
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-density-time-1.pdf}
+\caption{\label{fig:beta-density-time}Temporal evolution of coefficient
+for log(Density)}
+\end{figure}
+
+Figure \ref{fig:beta-transit-time} shows the temporal evolution of the
+coefficient for \(Transit\).
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-transit-time-1.pdf}
+\caption{\label{fig:beta-transit-time}Temporal evolution of coefficient
+for Transit}
+\end{figure}
+
+Figure \ref{fig:beta-humidity-time} shows the temporal evolution of the
+coefficient for \(\log(Humidity)\).
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-humidity-time-1.pdf}
+\caption{\label{fig:beta-humidity-time}Temporal evolution of coefficient
+for log(Humidity)}
+\end{figure}
+
+Figure \ref{fig:beta-density-time} shows the temporal evolution of the
+coefficient for \(\log(Temperature)\).
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-temperature-time-1.pdf}
+\caption{\label{fig:beta-temperature-time}Temporal evolution of
+coefficient for log(Temperature)}
+\end{figure}
+
+\hypertarget{concluding-remarks}{%
+\section{Concluding Remarks}\label{concluding-remarks}}
+
+More words go here.
+
+\hypertarget{acknowledgments}{%
+\section*{Acknowledgments}\label{acknowledgments}}
+\addcontentsline{toc}{section}{Acknowledgments}
+
+Add acknowledgments as appropriate in final draft.
+
+The following \texttt{R} packages were used in the course of this
+investigation and the authors wish to acknowledge their developers:
+\texttt{aemet} {[}{]}, \texttt{ggthemes} (Arnold, 2019),
+\texttt{gridExtra} (Auguie, 2017), \texttt{kableExtra} (Zhu, 2019),
+\texttt{knitr} (Xie, 2015, 2014), \texttt{lubridate} (Grolemund and
+Wickham, 2011), \texttt{plm} (Millo, 2017), \texttt{rticles} (Allaire et
+al., 2020), \texttt{sf} (Pebesma, 2018), \texttt{spdep} (Bivand et al.,
+2013), spsur (Angulo et al., 2020) \texttt{tidyverse} (Wickham et al.,
+2019), \texttt{units} (Pebesma et al., 2016).
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-Allaire2020}{}%
+Allaire, J., Xie, Y., R Foundation, Wickham, H., Journal of Statistical
+Software, Vaidyanathan, R., Association for Computing Machinery,
+Boettiger, C., Elsevier, Broman, K., Mueller, K., Quast, B., Pruim, R.,
+Marwick, B., Wickham, C., Keyes, O., Yu, M., Emaasit, D., Onkelinx, T.,
+Gasparini, A., Desautels, M.-A., Leutnant, D., MDPI, Taylor and Francis,
+Ögreden, O., Hance, D., Nüst, D., Uvesten, P., Campitelli, E.,
+Muschelli, J., Kamvar, Z.N., Ross, N., Cannoodt, R., Luguern, D.,
+Kaplan, D.M., 2020. Rticles: Article formats for r markdown.
+
+\leavevmode\hypertarget{ref-Angulo2020spsur}{}%
+Angulo, A., Lopez, F.A., Minguez, R., Mur, J., 2020. Spsur: Spatial
+seemingly unrelated regression models.
+
+\leavevmode\hypertarget{ref-Anselin1988spatial}{}%
+Anselin, L., 1988. Spatial econometrics: Methods and models, Studies in
+operational regional science. Kluwer Academic Publishers, Dordrecht.
+
+\leavevmode\hypertarget{ref-Anselin2016estimation}{}%
+Anselin, L., 2016. Estimation and testing in the spatial seemingly
+unrelated regression (sur). Geoda Center for Geospatial Analysis;
+Computation, Arizona State University. Working Paper 2016-01.
+
+\leavevmode\hypertarget{ref-Araujo2020spread}{}%
+Araujo, M.B., Naimi, B., 2020. Spread of sars-cov-2 coronavirus likely
+to be constrained by climate. medRxiv.
+
+\leavevmode\hypertarget{ref-Arnold2019}{}%
+Arnold, J.B., 2019. Ggthemes: Extra themes, scales and geoms for
+'ggplot2'.
+
+\leavevmode\hypertarget{ref-Auguie2017gridextra}{}%
+Auguie, B., 2017. GridExtra: Miscellaneous functions for "grid"
+graphics.
+
+\leavevmode\hypertarget{ref-deangel2020weathering}{}%
+Ángel Solá, D.E. de, Wang, L., Vázquez, M., Lázaro, P.A.M., 2020.
+Weathering the pandemic: How the caribbean basin can use viral and
+environmental patterns to predict, prepare and respond to covid‐19.
+Journal of Medical Virology.
+
+\leavevmode\hypertarget{ref-Bivand2013}{}%
+Bivand, R.S., Pebesma, E., Gomez-Rubio, V., 2013. Applied spatial data
+analysis with R, second edition. Springer, NY.
+
+\leavevmode\hypertarget{ref-Casanova2010effects}{}%
+Casanova, L.M., Jeon, S., Rutala, W.A., Weber, D.J., Sobsey, M.D., 2010.
+Effects of air temperature and relative humidity on coronavirus survival
+on surfaces. Appl. Environ. Microbiol. 76, 2712--2717.
+
+\leavevmode\hypertarget{ref-Chan2011effects}{}%
+Chan, K., Peiris, J., Lam, S., Poon, L., Yuen, K., Seto, W., 2011. The
+effects of temperature and relative humidity on the viability of the
+sars coronavirus. Advances in virology 2011.
+
+\leavevmode\hypertarget{ref-Coelho2020exponential}{}%
+Coelho, M.T.P., Rodrigues, J.F.M., Medina, A.M., Scalco, P., Terribile,
+L.C., Vilela, B., Diniz-Filho, J.A.F., Dobrovolski, R., 2020.
+Exponential phase of covid19 expansion is not driven by climate at
+global scale. medRxiv.
+
+\leavevmode\hypertarget{ref-Fernandes2020economic}{}%
+Fernandes, N., 2020. Economic effects of coronavirus outbreak (covid-19)
+on the world economy. Available at SSRN 3557504.
+
+\leavevmode\hypertarget{ref-Gong2020balance}{}%
+Gong, B., Zhang, S., Yuan, L., Chen, K.Z., 2020. A balance act:
+Minimizing economic loss while controlling novel coronavirus pneumonia.
+Journal of Chinese Governance 1--20.
+
+\leavevmode\hypertarget{ref-Grolemund2011dates}{}%
+Grolemund, G., Wickham, H., 2011. Dates and times made easy with
+lubridate. Journal of Statistical Software 40, 1--25.
+
+\leavevmode\hypertarget{ref-Harbert2020spatial}{}%
+Harbert, R.S., Cunningham, S.W., Tessler, M., 2020. Spatial modeling
+cannot currently differentiate sars-cov-2 coronavirus and human
+distributions on the basis of climate in the united states. medRxiv.
+
+\leavevmode\hypertarget{ref-Jaakkola2014decline}{}%
+Jaakkola, K., Saukkoriipi, A., Jokelainen, J., Juvonen, R., Kauppila,
+J., Vainio, O., Ziegler, T., Rönkkö, E., Jaakkola, J.J., Ikäheimo, T.M.,
+2014. Decline in temperature and humidity increases the occurrence of
+influenza in cold climate. Environmental Health 13, 22.
+
+\leavevmode\hypertarget{ref-Kissler2020projecting}{}%
+Kissler, S.M., Tedijanto, C., Goldstein, E., Grad, Y.H., Lipsitch, M.,
+2020. Projecting the transmission dynamics of sars-cov-2 through the
+postpandemic period. Science eabb5793.
+doi:\href{https://doi.org/10.1126/science.abb5793}{10.1126/science.abb5793}
+
+\leavevmode\hypertarget{ref-Kudo2019low}{}%
+Kudo, E., Song, E., Yockey, L.J., Rakib, T., Wong, P.W., Homer, R.J.,
+Iwasaki, A., 2019. Low ambient humidity impairs barrier function and
+innate resistance against influenza infection. Proceedings of the
+National Academy of Sciences 116, 10905--10910.
+
+\leavevmode\hypertarget{ref-Lancastle2020impact}{}%
+Lancastle, N.M., 2020. Is the impact of social distancing on coronavirus
+growth rates effective across different settings? A non-parametric and
+local regression approach to test and compare the growth rate. medRxiv.
+
+\leavevmode\hypertarget{ref-Lopez2014spatial}{}%
+López, F.A., Mur, J., Angulo, A., 2014. Spatial model selection
+strategies in a sur framework. The case of regional productivity in eu.
+The Annals of Regional Science 53, 197--220.
+
+\leavevmode\hypertarget{ref-Luo2020how}{}%
+Luo, S., Tsang, K.P., 2020. How much of china and world gdp has the
+coronavirus reduced? Available at SSRN 3543760.
+
+\leavevmode\hypertarget{ref-Makinen2009cold}{}%
+Mäkainen, T.M., Juvonen, R., Jokelainen, J., Harju, T.H., Peitso, A.,
+Bloigu, A., Silvennoinen-Kassinen, S., Leinonen, M., Hassi, J., 2009.
+Cold temperature and low humidity are associated with increased
+occurrence of respiratory tract infections. Respiratory medicine 103,
+456--462.
+
+\leavevmode\hypertarget{ref-Meijers2008strategic}{}%
+Meijers, E., Hoekstra, J., Aguado, R., 2008. Strategic planning for city
+networks: The emergence of a basque global city? International Planning
+Studies 13, 239--259.
+doi:\href{https://doi.org/10.1080/13563470802521440}{10.1080/13563470802521440}
+
+\leavevmode\hypertarget{ref-Millo2017robust}{}%
+Millo, G., 2017. Robust standard error estimators for panel models: A
+unifying approach. Journal of Statistical Software 82, 1--27.
+doi:\href{https://doi.org/10.18637/jss.v082.i03}{10.18637/jss.v082.i03}
+
+\leavevmode\hypertarget{ref-Minguez2019}{}%
+Mínguez, R., López, F., Mur, J., 2019. ML versus iv estimates of spatial
+sur models: Evidence from the case of airbnb in madrid urban area. The
+Annals of Regional Science 1--35.
+
+\leavevmode\hypertarget{ref-National2020rapid}{}%
+National Academies of Sciences, Engineering and Medicine, 2020. Rapid
+expert consultation on sars-cov-2 survival in relation to temperature
+and humidity and potential for seasonality for the covid-19 pandemic
+(april 7, 2020). The National Academies Press, Washington, DC.
+doi:\href{https://doi.org/doi:10.17226/25771}{doi:10.17226/25771}
+
+\leavevmode\hypertarget{ref-Pebesma2018}{}%
+Pebesma, E., 2018. Simple Features for R: Standardized Support for
+Spatial Vector Data. The R Journal 10, 439--446.
+doi:\href{https://doi.org/10.32614/RJ-2018-009}{10.32614/RJ-2018-009}
+
+\leavevmode\hypertarget{ref-Pebesma2016}{}%
+Pebesma, E., Mailund, T., Hiebert, J., 2016. Measurement units in R. R
+Journal 8, 486--494.
+doi:\href{https://doi.org/10.32614/RJ-2016-061}{10.32614/RJ-2016-061}
+
+\leavevmode\hypertarget{ref-Wickham2019}{}%
+Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L.D., François,
+R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen,
+T.L., Miller, E., Bache, S.M., Müller, K., Ooms, J., Robinson, D.,
+Seidel, D.P., Spinu, V., Takahashi, K., Vaughan, D., Wilke, C., Woo, K.,
+Yutani, H., 2019. Welcome to the tidyverse. Journal of Open Source
+Software 4, 1686.
+doi:\href{https://doi.org/10.21105/joss.01686}{10.21105/joss.01686}
+
+\leavevmode\hypertarget{ref-Xie2014}{}%
+Xie, Y., 2014. Knitr: A comprehensive tool for reproducible research in
+R, in: Stodden, V., Leisch, F., Peng, R.D. (Eds.), Implementing
+Reproducible Computational Research. Chapman; Hall/CRC.
+
+\leavevmode\hypertarget{ref-Xie2015}{}%
+Xie, Y., 2015. Dynamic documents with R and knitr, 2nd ed. Chapman;
+Hall/CRC, Boca Raton, Florida.
+
+\leavevmode\hypertarget{ref-Zhu2019}{}%
+Zhu, H., 2019. KableExtra: Construct complex table with 'kable' and pipe
+syntax.
+
+
+\end{document}
+
+
