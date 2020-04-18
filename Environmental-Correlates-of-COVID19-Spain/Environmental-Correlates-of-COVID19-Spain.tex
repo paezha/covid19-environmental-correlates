@@ -249,8 +249,7 @@ https://github.com/paezha/covid19-environmental-correlates
 \hypertarget{context-data-and-methods}{%
 \section{Context, Data, and Methods}\label{context-data-and-methods}}
 
-\hypertarget{covid-19-in-spain}{%
-\subsection{Covid-19 in Spain}\label{covid-19-in-spain}}
+\#\# Covid-19 in Spain
 
 The first reported case of COVID-19 in Spain was on January 31th, when a
 German tourist in the Canary Islands tested positive for the virus.
@@ -335,7 +334,7 @@ analysis must therefore be considered ecological.
 
 \begin{table}
 
-\caption{\label{tab:descriptive-statistics}\label{tab:descriptive-statistics}Descriptive statistics}
+\caption{\label{tab:descriptive-statistics}\label{tab:descriptive-statistics} Descriptive statistics}
 \centering
 \resizebox{\linewidth}{!}{
 \begin{tabular}[t]{l>{\raggedright\arraybackslash}p{15em}rrrr>{\raggedright\arraybackslash}p{5em}}
@@ -343,8 +342,8 @@ analysis must therefore be considered ecological.
 Variable & Note & Min & Mean & Max & SD & Source\\
 \midrule
 \rowcolor{gray!6}  COVID-19 Incidence & Incidence in reported cases of SARS-19 per 100,000 people & 0.38 & 153.61 & 1149.36 & 186.23 & Montera34\\
-Area & Area of province in sq.km & 1978.12 & 10118.79 & 21767.93 & 4805.98 & INE\\
-\rowcolor{gray!6}  GDPpc & GDP per capita in €1,000s & 16.67 & 22.51 & 36.00 & 4.77 & INE\\
+Area & Area of province in sq.km & 1978.12 & 10118.79 & 21767.93 & 4.77 & INE\\
+\rowcolor{gray!6}  GDPpc & GDP per capita in €1,000s & 16.67 & 22.51 & 36.00 & 4805.98 & INE\\
 Older & Percentage of people aged 65 and older in the province & 15.16 & 21.03 & 31.36 & 3.95 & INE\\
 \rowcolor{gray!6}  Population Density & Population density in the province in people per sq.km & 8.60 & 140.04 & 829.76 & 181.25 & INE\\
 \addlinespace
@@ -397,7 +396,7 @@ of research has developed to extend the classical SUR into a spatial
 framework (e.g., Rey and Montouri, 1999; Lauridsen et al., 2010; Le
 Gallo and Dall'Erba, 2006; López et al., 2017).
 
-The classical SUR model without spatial effects (hereafter, SUR-SIM) is
+The classical SUR model without spatial effects (from here, SUR-SIM) is
 a stack of equations as follows:
 
 \begin{equation}
@@ -406,7 +405,7 @@ a stack of equations as follows:
 y_1 \\ y_2 \\ \vdots \\ y_T
 \end{bmatrix}
 =
-\begin{bmatrix}
+  \begin{bmatrix}
 X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & X_T
 \end{bmatrix}
 \
@@ -419,40 +418,39 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \end{bmatrix}
 \end{equation}
 
-\noindent where \(y_{t}=(y_{1t},...,y_{Nt})\) is an \(N \times 1\)
-vector, and in our case \(y_{st}\) is the incidence ratio in province
-\(s\text{ }s=1,...,N\)) on day \(t\text{ }(t=1,...,T)\);
-\(X_t=(X^1,...,X^{k_t})\) is an \(N \times k_t\) matrix of the \(k_t\)
+\noindent where \(y_{t}=(y_{1t},...,y_{Nt})\) is a \(N \times 1\)
+vector, and in our case \(y_{st}\) is the incidence ratio in the
+province \(s\) (\(s=1,...,N\)) the day \(t\) \((t=1,...,T)\);
+\(X_t=(X^1,...,X^{k_t})\) is a \(N \times k_t\) matrix of the \(k_t\)
 independent variables, \(X_i=(X^i_{st})\);
 \(\beta_t=(\beta_{1t},...,\beta_{Nt})\) is a vector of coefficients and
-\(\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})\) is the usual vector of
-random residuals.
+\(\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})\) is the vector of
+residuals.
 
-A key feature of the SUR framework is the dependence structure among the
-vectors of random residuals, which takes the following form:
+A key feature of the SUR model is the dependence structure among the
+vectors of residuals, namely:
 
 \begin{equation}
 \label{eq:sur-err}
 E[\epsilon_t \epsilon'_{t'}]=\sigma_{tt'}
 \end{equation}
 
-Note that this specification is very flexible, since it allows the
-coefficients \(\beta_{it}\) to vary in order to modulate the effect of
-\(X^i_{.t}\) on \(y_t\). A less flexible if more parsimonious model can
-be obtained by imposing restrictions to some \(\beta\) coefficients to
-fix them across equations. This is equivalent to specifying an effect
-that is constant in time. In this case, we can reformulate the
-coefficients expression of
+Note that this specification is very flexible, in that it allows changes
+in the coefficients \(\beta_{it}\) in order to modulate the effect of
+\(X^i_{.t}\) on \(y_t\). This flexibility can be reduced and it is
+posible to impose restrinctions considering some \(\beta\) coefficients
+as being constant over time. In this case, we can reformulate the
+coefficients expression
 \(\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})\)
-to restrict the first \(r\) coefficients to be constant.
+to restrict the first \(r\) coefficients to be constant across
+equations. This is equivalent to specifying some effects to be invariant
+over time.
 
-Equation \ref{eq:sur-sim}) can be rewriten in compact form as follows:
+Equation \ref{eq:sur-sim}) can be rewriten in compact form:
 
 \begin{equation}
 y = X \beta + \epsilon
 \end{equation}
-
-\noindent where\ldots.
 
 As is the case with cross-sectional data, it is possible to test the
 residuals of Model \ref{eq:sur-sim} for spatial autocorrelation, and
@@ -461,9 +459,21 @@ independence (see López et al., 2014). When the null hypothesis is
 rejected, several alternative specifications have been proposed to
 include spatial effects (Anselin, 1988, see also 2016). In this paper we
 consider a spatial SUR model that incorporates a spatial lag of the
-dependent variable as an explanatory factor. A sp
+dependent variable as an explanatory factor. Spatial analytical
+approaches were used to understand contagion-difussion processes in the
+case of infectious disease in general (e.g., Cliff et al., 1998) and the
+2003-2004 SARS outbreak in particular (e.g., Meng et al., 2005; Cao et
+al., 2010). While we are mindful of the same caveat that the novel
+SARS-CoV2 may not follow the patterns of previous diseases, there is
+still evidence from the United States that COVID-19 displays spatial
+patterns that are consistent with a diffusion process (Desjardins et
+al., 2020). For this reason, the spatial lag model is appropriate to
+model incidence of COVID-19 geographically, since it accounts for
+potential spatial patterns that result from a process of contagion, as
+explained next.
 
-The stack expresion for the spatial lag SUR model (SUR-SLM),
+The stack expresion for the spatial lag SUR model (SUR-SLM) is as
+follows:
 
 \begin{equation}
 \label{eq:sur-slm}
@@ -471,8 +481,8 @@ The stack expresion for the spatial lag SUR model (SUR-SLM),
 \epsilon =N(0,\Omega)
 \end{equation}
 
-\noindent where \(A =I_{TN}-\bf{\rho} \otimes W\) with
-\(\bf{\rho} = diag(\rho_1, \cdots, \rho_T)\).
+\noindent where \(A =I_{TN}-\bf{\Lambda} \otimes W\) with
+\(\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)\).
 
 This specification assumes that incidence in a province (\(y_st\)) at
 time \(t\) is partially determined by the weighted average (\(Wy_{st}\))
@@ -484,13 +494,12 @@ dependence (\(\rho_i=\rho_j, \forall i,j\)). The correspond Wald test is
 available in the R package \texttt{spsur}.
 
 The SUR-SLM model can be estimated using maximum likelihood (López et
-al. (2014)) or instrumental variables (Mínguez et al. (2019)).
-
-Another alternative methodologies could be use. By example, a dynamic
-spatial panel methodology with fixed spatial an temporal effects
-(e.g.~Elhorst 2014, Cap. 4), but those models are more dont take account
-correlation between errors. Therefore, a spatial SUR approach is more
-reasonable for our purpose.
+al. (2014)) or instrumental variables (Mínguez et al. (2019)). Another
+alternative methodologies could be use. By example, a dynamic spatial
+panel methodology with fixed spatial an temporal effects (e.g.~Elhorst
+2014, Cap. 4), but those models are more dont take account correlation
+between errors. Therefore, a spatial SUR approach is more reasonable for
+our purpose.
 
 \hypertarget{analysis-and-results}{%
 \section{Analysis and Results}\label{analysis-and-results}}
@@ -502,20 +511,22 @@ We begin with the exploratory analysis of the data.
 
 Figure \ref{fig:weekly-average-incidence-map} shows the geographical
 variation in the incidence of the disease, as well as its temporal
-progression in weekly averages. It can be seen that the highest
-incidence at this early date was in the provice of Álava, in the North
-of Spain. While not the most populous province, with a population of
-only 331,549, Álava has the highest GDP per capita of all provinces.
-Vitoria, its main city, is the capital of the Basque country and has
-been the focus of efforts to develop a ``Global Basque City'' (Meijers
-et al., 2008), along with San Sebastian and Bilbao. The other early
-focus of the pandemic in Spain was Madrid, which is the most populous
-province in the country and has the second highest GDP per capita after
-Álava. The early outbreaks in these two provinces can be traced
-throughout the progression of the pandemic over time, although by the
-end of the period under consideration, other provinces had matched and
-even surpased their incidence rates, including Segovia and Soria to the
-north of Madrid, and Ciudad Real and Albacete to the south.
+progression in weekly averages. Our analysis begins on March 13, which
+is the first date when every province had reported at least one case of
+COVID-19. It can be seen that the highest incidence at this early date
+was in the provice of Álava, in the North of Spain. While not the most
+populous province, with a population of only 331,549, Álava has the
+highest GDP per capita of all provinces. Vitoria, its main city, is the
+capital of the Basque country and has been the focus of efforts to
+develop a ``Global Basque City'' (Meijers et al., 2008), along with San
+Sebastian and Bilbao. The other early focus of the pandemic in Spain was
+Madrid, which is the most populous province in the country and has the
+second highest GDP per capita after Álava. The early outbreaks in these
+two provinces can be traced throughout the progression of the pandemic
+over time, although by the end of the period under consideration, other
+provinces had matched and even surpased their incidence rates, including
+Segovia and Soria to the north of Madrid, and Ciudad Real and Albacete
+to the south.
 
 \begin{figure}
 \centering
@@ -749,6 +760,12 @@ Journal of Medical Virology.
 Bivand, R.S., Pebesma, E., Gomez-Rubio, V., 2013. Applied spatial data
 analysis with R, second edition. Springer, NY.
 
+\leavevmode\hypertarget{ref-Cao2010spatio}{}%
+Cao, Z., Zeng, D., Zheng, X., Wang, Q., Wang, F., Wang, J., Wang, X.,
+2010. Spatio-temporal evolution of beijing 2003 sars epidemic. Science
+China Earth Sciences 53, 1017--1028.
+doi:\href{https://doi.org/10.1007/s11430-010-0043-x}{10.1007/s11430-010-0043-x}
+
 \leavevmode\hypertarget{ref-Casanova2010effects}{}%
 Casanova, L.M., Jeon, S., Rutala, W.A., Weber, D.J., Sobsey, M.D., 2010.
 Effects of air temperature and relative humidity on coronavirus survival
@@ -759,11 +776,23 @@ Chan, K., Peiris, J., Lam, S., Poon, L., Yuen, K., Seto, W., 2011. The
 effects of temperature and relative humidity on the viability of the
 sars coronavirus. Advances in virology 2011.
 
+\leavevmode\hypertarget{ref-Cliff1998detecting}{}%
+Cliff, A., Haggett, P., Smallman-Raynor, M., 1998. Detecting
+space---time patterns in geocoded disease data. Cholera in london, 1854
+measles in the united states, 1962--95, in: Geomed'97. Springer, pp.
+13--42.
+
 \leavevmode\hypertarget{ref-Coelho2020exponential}{}%
 Coelho, M.T.P., Rodrigues, J.F.M., Medina, A.M., Scalco, P., Terribile,
 L.C., Vilela, B., Diniz-Filho, J.A.F., Dobrovolski, R., 2020.
 Exponential phase of covid19 expansion is not driven by climate at
 global scale. medRxiv.
+
+\leavevmode\hypertarget{ref-Desjardins2020rapid}{}%
+Desjardins, M., Hohl, A., Delmelle, E., 2020. Rapid surveillance of
+covid-19 in the united states using a prospective space-time scan
+statistic: Detecting and evaluating emerging clusters. Applied Geography
+102202.
 
 \leavevmode\hypertarget{ref-Fernandes2020economic}{}%
 Fernandes, N., 2020. Economic effects of coronavirus outbreak (covid-19)
@@ -852,6 +881,12 @@ Meijers, E., Hoekstra, J., Aguado, R., 2008. Strategic planning for city
 networks: The emergence of a basque global city? International Planning
 Studies 13, 239--259.
 doi:\href{https://doi.org/10.1080/13563470802521440}{10.1080/13563470802521440}
+
+\leavevmode\hypertarget{ref-Meng2005understanding}{}%
+Meng, B., Wang, J., Liu, J., Wu, J., Zhong, E., 2005. Understanding the
+spatial diffusion process of severe acute respiratory syndrome in
+beijing. Public Health 119, 1080--1087.
+doi:\href{https://doi.org/https://doi.org/10.1016/j.puhe.2005.02.003}{https://doi.org/10.1016/j.puhe.2005.02.003}
 
 \leavevmode\hypertarget{ref-Millo2017robust}{}%
 Millo, G., 2017. Robust standard error estimators for panel models: A

@@ -118,6 +118,7 @@ https://github.com/paezha/covid19-environmental-correlates
 
 Context, Data, and Methods
 ============
+<<<<<<< HEAD
 
 ## Covid-19 in Spain
 
@@ -125,6 +126,15 @@ For a better interpretation of the results of our analysis is necessary to know 
 
 The first reported case of COVID-19 in Spain was on January 31th, were a German tourist in the Canary Islands was positively tested, but the first not imported case was diagnostic on February 27th in Sevilla province (Andalusia). The epidemic was growing slowly at the beginning but in March 11th the World Health Organization (WHO) declared officially the pandemic. This declaration was a break point and on March 13th the Spanish National Government declare the "Emergency Status". At this date, Spain have been declared 4209 cases of COVID-19 (mostly of cases, 1990, in Madrid). Only essential services (e.g. food, health) and some economic subsector of industry and construction could to maintain activity. On March 17th Spain closes its lands borders and only allows entry to nationals and residents. From March 30th to April 12th (April 10th-12th Easter) lockdown of the Spanish people was hardened and only essential activities were allowed.
 
+=======
+
+## Covid-19 in Spain
+
+For a better interpretation of the results of our analysis is necessary to know the chronology of the epidemic outbreak in Spain. This subsection presents a brief time line of COVID-19. 
+
+The first reported case of COVID-19 in Spain was on January 31th, were a German tourist in the Canary Islands was positively tested, but the first not imported case was diagnostic on February 27th in Sevilla province (Andalusia). The epidemic was growing slowly at the beginning but in March 11th the World Health Organization (WHO) declared officially the pandemic. This declaration was a break point and on March 13th the Spanish National Government declare the "Emergency Status". At this date, Spain have been declared 4209 cases of COVID-19 (mostly of cases, 1990, in Madrid). Only essential services (e.g. food, health) and some economic subsector of industry and construction could to maintain activity. On March 17th Spain closes its lands borders and only allows entry to nationals and residents. From March 30th to April 12th (April 10th-12th Easter) lockdown of the Spanish people was hardened and only essential activities were allowed.
+
+>>>>>>> f448d32e3b23eaeeae8d724e650eecd0819fef40
 ## Selection of Variables
 
 Explain the rationale for selecting the variables.
@@ -186,7 +196,11 @@ data.frame(Variable = c("COVID-19 Incidence",
         digits = 2,
         caption = "\\label{tab:descriptive-statistics}Descriptive statistics") %>%
   #kable_styling(latex_options = c("striped", "scale_down")) %>%
+<<<<<<< HEAD
+  kable_styling(bootstrap_options = c("striped", "condensed")) %>%
+=======
 #kable_styling(bootstrap_options = c("striped", "condensed")) %>%
+>>>>>>> f448d32e3b23eaeeae8d724e650eecd0819fef40
   column_spec(2, width = "15em") %>%
   column_spec(7, width = "5em") %>%
   footnote(general = c("Montera34: https://code.montera34.com:4443/numeroteca/covid19/-/blob/master/README_providencialdata19.md", 
@@ -220,6 +234,10 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_T
 \end{bmatrix}
 \end{equation}
+-->
+
+<!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
+![\begin{equation} \label{eq:sur-sim} \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_T \end{bmatrix} = \begin{bmatrix} X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & X_T \end{bmatrix} \ \begin{bmatrix} \beta_1 \\ \beta_1 \\ \vdots \\ \beta_T \end{bmatrix} + \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_T \end{bmatrix} \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-sim%7D%20%5Cbegin%7Bbmatrix%7D%20y_1%20%5C%5C%20y_2%20%5C%5C%20%5Cvdots%20%5C%5C%20y_T%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20X_1%20%26%200%20%26%20%5Ccdots%20%26%200%20%5C%5C%200%20%26%20X_2%20%26%20%5Ccdots%20%26%200%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%200%20%26%200%20%26%20%5Ccdots%20%26%20X_T%20%5Cend%7Bbmatrix%7D%20%5C%20%5Cbegin%7Bbmatrix%7D%20%5Cbeta_1%20%5C%5C%20%5Cbeta_1%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cbeta_T%20%5Cend%7Bbmatrix%7D%20%2B%20%5Cbegin%7Bbmatrix%7D%20%5Cepsilon_1%20%5C%5C%20%5Cepsilon_2%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cepsilon_T%20%5Cend%7Bbmatrix%7D%20%5Cend%7Bequation%7D)
 
 \noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is an $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t=(X^1,...,X^{k_t})$ is a $N \times k_t$ matrix of the $k_t$ independent variables, $X_i=(X^i_{st})$; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals.
 -->
@@ -236,6 +254,9 @@ The more relevant characteristic of a SUR model is the dependence structure amon
 \label{eq:sur-err}
 E[\epsilon_t \epsilon'_{t'}]=\sigma_{tt'}
 \end{equation} 
+-->
+
+![\begin{equation} \label{eq:sur-err} E\[\epsilon_t \epsilon'_{t'}\]=\sigma_{tt'} \end{equation} ](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-err%7D%20E%5B%5Cepsilon_t%20%5Cepsilon'_%7Bt'%7D%5D%3D%5Csigma_%7Btt'%7D%20%5Cend%7Bequation%7D%20)
 
 Note that this specification is very flexible, in that it allows changes in the coefficients $\beta_{it}$ in order to modulate the effect of $X^i_{.t}$ on $y_t$. This flexibility can be reduced and it is posible to impose restrinctions considering some $\beta$ coefficients as being constant over time. In this case, we can reformulate the coefficients expression of $\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})$ to restrict the first $r$ coefficients to be constant across equations, i.e., time periods.
 -->
@@ -264,6 +285,9 @@ As is the case of cross-sectional data, it is possible identify spatial autocorr
 \bf{A}y = X \beta + \epsilon \\
 \epsilon =N(0,\Omega)
 \end{equation}
+-->
+
+![\begin{equation} \label{eq:sur-slm} \bf{A}y = X \beta + \epsilon \\ \epsilon =N(0,\Omega) \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbf%7BA%7Dy%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN(0%2C%5COmega)%20%5Cend%7Bequation%7D)
 
 \noindent where $A =I_{TN}-\bf{\rho} \otimes W$ with $\bf{\rho} = diag(\rho_1, \cdots, \rho_T)$.
 -->
