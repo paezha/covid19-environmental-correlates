@@ -118,23 +118,24 @@ Prof.~Moraes Rego, 1235 - Cidade Universitária, Recife, PE, CEP
   the spread of the virus, this has come at a high cost as the global
   economy is brought to its knees. How and when to ease restrictions to
   movement hinges in part on the question whether SARS-CoV2 will display
-  seasonality associated with variations in temperature and humidity. In
-  this research, we address this question by means of a spatial analysis
-  of the incidence of COVID-19 in the provinces in Spain. Use of a spatial
-  Seemingly Unrelated Regressions (SUR) approach allows us to model the
-  incidence of reported cases of the disease per 100,000 population, as a
-  function of temperature and humidity, while controlling for GDP per
-  capita, population density, percentage of older adults in the
-  population, and presence of mass transit systems. An interesting aspect
-  of the spatial SUR approach is that it models incidence as a contagion
-  process. Our results indicate that incidence of the disease is lower at
-  higher temperatures. The evidence with respect to humidity is more
-  mixed, with coefficients for this variable that are significant in only
-  some equations. Our control variables also yield interesting insights,
-  as population density and percentage of older adults display negative
-  associations with incidence of COVID-19, whereas the presence of mass
-  transit systems in the province is associated with a greater incidence
-  of the disease.\\
+  seasonality associated with variations in temperature, humidity, and
+  hours of sunshine. In this research, we address this question by means
+  of a spatial analysis of the incidence of COVID-19 in the provinces in
+  Spain. Use of a spatial Seemingly Unrelated Regressions (SUR) approach
+  allows us to model the incidence of reported cases of the disease per
+  100,000 population, as a function of temperature and humidity, while
+  controlling for GDP per capita, population density, percentage of older
+  adults in the population, and presence of mass transit systems. An
+  interesting aspect of the spatial SUR approach is that it models
+  incidence as a contagion process. Our results indicate that incidence of
+  the disease is lower at higher temperatures and higher levels of
+  humidity, although coefficients for this variable are significant only
+  in some equations. Sunshine, in contrast, displays a positive
+  association with incidence of the disease. Our control variables also
+  yield interesting insights. Higher incidence is associated with higher
+  GDP per capita and presence of mass transit systems in the province; in
+  contrast, population density and percentage of older adults display
+  negative associations with incidence of COVID-19.\\
   \end{abstract}
   
  \end{frontmatter}
@@ -195,49 +196,60 @@ However, de Ángel Solá et al.~(2020) note that ``not all seasonal
 respiratory viruses experience the same spatiotemporal patterns''
 (section 4). This urges caution when extrapolating from known viruses,
 and indeed, the evidence in this respect is inconclusive. At a global
-scale, whereas de Ángel Solá et al.~(2020) see less risk in the Caribean
-Basin, Coelho et al.~(Coelho et al., 2020) warn that at least during the
-exponential phase, expansion of the virus is not driven by climate.
+scale, de Ángel Solá et al.~(2020) see less risk in the Caribean Basin;
+however, Coelho et al.~(Coelho et al., 2020) warn that at least during
+the exponential phase, expansion of the virus is not driven by climate.
 Similarly, whereas Araujo and Naimi (2020) argue that spread of
 SARS-CoV2 will likely be constrained by climate, Harbert et al.~(2020)
 remain unconvinced that spatial modelling can currently discriminate the
 distribution of the disease on the basis of climate, at least in the
-United States. To further complicate matters, much of the relevant work
-has yet to be peer-reviewed and therefore is open to change (see for
-example the challenge of Harbert et al. (2020) to Araujo and Naimi
-(2020)). In the United States, the National Academy of Sciences,
-Engineering, and Medicine was engaged by the Office of the Executive for
-guidance on this matter (see National Academies of Sciences, Engineering
-and Medicine, 2020). Their conclusion summarizes the situation well (see
-p.~6): ``Some limited data support a potential waning of cases in warmer
-and more humid seasons, yet none are without major
-limitations\ldots{}Additional studies as the SARS-CoV-2 pandemic unfolds
-could shed more light on the effects of climate on transmission.''
+United States. Yao et al.~({\textbf{???}}), examined data from China and
+came to the conclusion that neither temperature nor ultraviolet indices
+had an association with transmission of COVID-19. This is despite
+previous research that has linked less exposure to UVB radiation to
+higher prevalence and severity of acute respiratory tract infections
+(Zittermann et al.~2016; Dąbrowska-Leonik et al.~2018; Dinlen et
+al.~2016; Mathyssen et al.~2017; Esposito and Lelii 2015; Jat 2017;
+Moriyama, Hugentobler, and Iwasaki 2020). To further complicate matters,
+much of the relevant work has yet to be peer-reviewed and therefore is
+open to change (see for example the challenge of Harbert et al. (2020)
+to Araujo and Naimi (2020)). In the United States, the National Academy
+of Sciences, Engineering, and Medicine was engaged by the Office of the
+Executive for guidance on this matter (see National Academies of
+Sciences, Engineering and Medicine, 2020). Their conclusion summarizes
+the situation well (see p.~6): ``Some limited data support a potential
+waning of cases in warmer and more humid seasons, yet none are without
+major limitations\ldots{}Additional studies as the SARS-CoV-2 pandemic
+unfolds could shed more light on the effects of climate on
+transmission.''
 
 With the above considerations in mind, our objective with this paper is
 to contribute to the knowledge basis regarding the spread of COVID-19
-and the influence of environmental factors, particularly temperature and
-humidity. Hence, here we report results from a spatial analysis of
-incidence of COVID-19 in fifty provinces in Spain. Spain is one of the
-countries hardest hit by the virus, and enacted lockdown measures on
-March 16, 2020, in response to a rapidly growing outbreak of COVID-19.
-We combine data on reported cases of the disease with metereological
-information, to create a spatio-temporal dataset covering a period of 30
-days. We then join this dataset with provincial-level economic and
-demographic information to act as controls to our key environmental
-variables. These data are analyzed using a spatial Seemingly Unrelated
-Regressions (SUR) approach, which allows us to model incidence of
-COVID-19 as a spatial contagion process.
+and the influence of environmental factors, particularly temperature,
+humidity, and sunshine. We adopt a population health approach, and
+report results from a spatial model of the incidence of COVID-19 in
+fifty provinces in Spain, one of the countries hardest hit by the
+pandemic. We combine data on reported cases of the disease with
+metereological information, to create a spatio-temporal dataset covering
+a period of 30 days. We then join this dataset with provincial-level
+economic and demographic information to act as controls to our key
+environmental variables. These data are analyzed using a spatial
+Seemingly Unrelated Regressions (SUR) approach, which allows us to model
+incidence of COVID-19 as a spatial contagion process.
 
-The results provide evidence of the effect of temperature on the
-incidence of COVID-19. The evidence concerning humidity is more mixed:
-while the direction of the effect is negative, as anticipated, the
-coefficients for this variable are only significant in some of equations
-in the system. Our control variables also provide some intriguing
-insights. The results of this analysis provide support to the hypothesis
-of seasonality of the novel SARS-CoV2, and should be of interest to
-public health officials and policy makers wrestling with the question of
-the trajectory of the pandemic.
+The results provide evidence of the effect of temperature, humidity, and
+sunshine on the incidence of COVID-19. The clearest result with respect
+to these variables is a lower incidence of COVID-19 at higher
+temperatures and levels of humidity, while the opposite happens with
+respect to hours of sunshine. Our control variables also provide some
+intriguing insights. Higher incidence is associated with higher GDP per
+capita and presence of mass transit systems in the province; in
+contrast, population density and percentage of older adults display
+negative associations with incidence of COVID-19. The results of this
+analysis provide support to the hypothesis of seasonality of the novel
+SARS-CoV2, and should be of interest to public health officials and
+policy makers grappling with the question of the trajectory of the
+pandemic.
 
 Please note that this paper is prepared as a reproducible research
 document. The source R Markdown document, as well as all data and code
@@ -281,19 +293,51 @@ within provinces as between
 \hypertarget{selection-of-variables}{%
 \subsection{Selection of Variables}\label{selection-of-variables}}
 
-Explain the rationale for selecting the variables.
+Two set of variables has been selected to explain the diary incidence
+ratio in each Spanish province. The first, are climatic variables
+(temperature, humidity and sunshine) and its impact has been argued in
+the introduction section. The second, is a set of specific
+characteristics of each province. The objective is include in our model
+some control variables (socioeconomic characteristics) to capture the
+probable heterogeneity of each spatial unit. All those variables are
+constant along the temporal period analized in this research. In this
+subsetion we present some evidences of the expected relationship between
+the four control variables considered an the incidence ratio.
 
-For example: The literature about COVID-19 suggested that population
-density is the one of the most important proliferate cause of these
-viscous, however this ill spread with different intensity at big cities
-of the world. Controlling for socioeconomic characteristics the
-objective of this paper is observe the effect of clime on COVID-19
-proliferation.
+The structure of population is a key variable on the incidence. Several
+papers related the relationship between a fast trasnmision of COVID-19
+and population density (e.g.~cumulative incidence in urban areas like
+NYC) and therefore a positive sign will be expected. Note that our
+analysis is at provincial level - not a urban level - and therefore is
+necessary to rethinking the relationship. In Spain the population is
+concentrate (with som exception) in the mediterranean coast (Goerlich
+and Cantarino (2013)), in general with high temperature and high
+humidity. So, positive or negative sign will be expected in the model.
 
-Some questions are important to point out. Is not evident present a
-diary association between the temprature (resp. humidity) with declarate
-case. There is evidences (ref) that a time lag is necessary between the
-day that the individuo inffect and the case is diagnosticate
+The percentaje of older adults (over 65) is the second variable related
+with the population structure include like control variable. Unlike the
+population density the older people in Spain is concentrate in the core
+of the Iberian Peninsula (see figure \ref{plotfer1}).
+
+The per capita GDP also can generate differences between provinces. No
+direct relationship can be observed between the GDP and the ratio of
+incidence but the GDP is a proxy of inobservable information. This
+varaible has been included in similar papers (Wang et al. (2020)). For
+low DGPpc is more difficult maintain social distance (sing +); High
+DGPpc -\textgreater{} more economic activity -\textgreater{} es mas
+difícl mantener el confinamiento.
+
+Posibles relaciones causales Alto GDP -\textgreater{} mas movimiento de
+la población. Se recibió más gente de otros sitios que podría venir con
+el virus puesto! Alto GDP -\textgreater{} La actividad económica de la
+industria y la construcción solo se paralizó unos días. Aquellas
+provincias con alto GDP tienen mas astividad industrial/contrucción
+-\textgreater{} más movimimiento de la población. Bajo GDP
+-\textgreater{} La población con menores ingresos no puede ser tan
+obediente a la orden de confinamiento (suele ser menos disciplinada).
+
+All those variables will we include in log to capture non-linar
+realtionship.
 
 \hypertarget{data}{%
 \subsection{Data}\label{data}}
@@ -423,9 +467,9 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 
 \noindent where \(y_{t}=(y_{1t},...,y_{Nt})\) is a \(N \times 1\)
 vector, and in our case \(y_{st}\) is the incidence ratio in the
-province \(s\) (\(s=1,...,N\)) the day \(t\) \((t=1,...,T)\);
-\(X_t=(X^1,...,X^{k_t})\) is a \(N \times k_t\) matrix of the \(k_t\)
-independent variables, \(X_i=(X^i_{st})\);
+province \(s\) (\(s=1,...,N\)) the day \(t\) \((t=1,...,T)\); \(X_t\) is
+a \(N \times k_t\) matrix of the \(k_t\) independent variables, with
+associated vector of coefficients \(\beta_t\),;
 \(\beta_t=(\beta_{1t},...,\beta_{Nt})\) is a vector of coefficients and
 \(\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})\) is the vector of
 residuals.
@@ -449,17 +493,28 @@ to restrict the first \(r\) coefficients to be constant across
 equations. This is equivalent to specifying some effects to be invariant
 over time.
 
-Equation \ref{eq:sur-sim}) can be rewriten in compact form:
+Equation (\ref{eq:sur-sim}) can be rewriten in compact form:
 
 \begin{equation}
-y = X \beta + \epsilon
+\bf{Y} = \bf{X} \beta + \epsilon
+\label{eq:sur-sim-block}
+\end{equation}
+
+where \(\bf{Y}\) is now a vector of dimension \(NT \times 1\),
+\(\bf{X}\) is a block-diagonal matrix \(NT \times K\) (with
+\(K = \sum_t{k_t}\)) and \(\epsilon\) is a \(NT \times 1\) vector. Using
+the Kronecker product notation (\(\otimes\)), the error matrix structure
+is expressed concisely as:
+
+\begin{equation}
+E[\epsilon \epsilon']=\Sigma \otimes I_N ; \ \Sigma=(\sigma_{tt'})
 \end{equation}
 
 As is the case with cross-sectional data, it is possible to test the
-residuals of Model \ref{eq:sur-sim} for spatial autocorrelation, and
-several tests have been developed to test the null hypothesis of spatial
-independence (see López et al., 2014). When the null hypothesis is
-rejected, several alternative specifications have been proposed to
+residuals of Model (\ref{eq:sur-sim-block}) for spatial autocorrelation,
+and several tests have been developed to test the null hypothesis of
+spatial independence (see López et al., 2014). When the null hypothesis
+is rejected, several alternative specifications have been proposed to
 include spatial effects (Anselin, 1988, see also 2016). In this paper we
 consider a spatial SUR model that incorporates a spatial lag of the
 dependent variable as an explanatory factor. Spatial analytical
@@ -480,29 +535,31 @@ follows:
 
 \begin{equation}
 \label{eq:sur-slm}
-\bf{A}y = X \beta + \epsilon \\
-\epsilon =N(0,\Omega)
+\begin{aligned}
+\bf{AY} = \bf{X} \beta + \epsilon \\
+\epsilon =N(0,\bf{\Sigma})
+\end{aligned}
 \end{equation}
 
-\noindent where \(A =I_{TN}-\bf{\Lambda} \otimes W\) with
-\(\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)\).
+\noindent where \(\bf{A} =I_{TN}-\bf{\Gamma} \otimes W\) with
+\(\bf{\Gamma} = diag(\rho_1, \cdots, \rho_T)\).
 
-This specification assumes that incidence in a province (\(y_st\)) at
+This specification assumes that incidence in a province (\(y_{st}\)) at
 time \(t\) is partially determined by the weighted average (\(Wy_{st}\))
 of incidence in neighbouring provinces. Coefficients for the spatially
-lagged variable are estimated for each time period \(\lambda_t\) and
+lagged variable are estimated for each time period \(\rho_t\) and
 identifies the intensity and the sign of the impacts of neighbourhood.
-It is possible test the null hypotheis of identtical levels of spatial
-dependence (\(\lambda_i=\lambda_j, \forall i,j\)). The correspond Wald
-test is available in the \texttt{R} package \texttt{spsur}.
+It is possible test the null hypothesis of identtical levels of spatial
+dependence (\(\rho_i=\rho_j, \forall i,j\)). The correspond Wald test is
+available in the \texttt{R} package \texttt{spsur}.
 
 The SUR-SLM model can be estimated using maximum likelihood (López et
 al. (2014)) or instrumental variables (Mínguez et al. (2019)). Another
 alternative methodologies could be use. By example, a dynamic spatial
 panel methodology with fixed spatial an temporal effects (e.g.~Elhorst
-2014, Cap. 4), but those models are more dont take account correlation
-between errors. Therefore, a spatial SUR approach is more reasonable for
-our purpose.
+2014, Cap. 4), but those models don't take account correlation between
+errors. Therefore, a spatial SUR approach is more reasonable for our
+purpose.
 
 \hypertarget{analysis-and-results}{%
 \section{Analysis and Results}\label{analysis-and-results}}
@@ -568,6 +625,13 @@ northermost, and to the right the southernmost}
 \includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/control-map-1.pdf}
 \caption{\label{fig:control-map}Spatial distribution of control
 variables by province (maps omits Islas Canarias)}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/plotfer1-1.pdf}
+\caption{\label{Fig-quantile} Spatial distribution of Spanish density
+population}
 \end{figure}
 
 Figure \ref{fig:daily-correlations} shows the distribution of daily
@@ -708,6 +772,69 @@ for log(Sunshine + 0.1)}
 
 More words go here.
 
+Limitaciones
+
+\begin{itemize}
+\item
+  La temperatura puedes ser un factor pero cabría esperar que no tuviera
+  un impacto lineal. Por el contrario deberiamos esperar un `punto de
+  corte': Una temperatua mantenida superior a X grados durante siete
+  días sea la mejor forma de incorporarla al modelo. En nuestro modelo
+  (log-log) en incremento en un 1\% de la temperatura se asocia con un
+  incremento beta\% en la incidencia. Esto es lo mismo si la temperatura
+  es baja que si es alta.
+\item
+  Idem para la humedad y horas de sol
+\item
+  Los datos son `provisionales'. Hay gran confusión sobre la incidencia
+  real. La ausencia de test de diagnóstico PCRs al inicio de la pandemia
+  (también ahora) puede desvirtuar el número de casos dianosticados.
+\item
+  Los datos oficiales (que tampoco son fiables) son reportados a nivel
+  de Comunidades Autónomas. La recopilación de datos a nivel de
+  provincial son el resultado de un esfuerzo colaborativo de
+  recopilacion entre distintas fuentes (principalmente gobiernos
+  locales). Nuevamente puede haber sesgos importanes.
+\item
+  En carácter insular de las Islas Canarias y de las Islas baleares no
+  se ha tenido en cuenta.
+\item
+  Baleares se ha linkado artificialmente con 3/4 provincias y debería de
+  haberse dejado aislada para respetar su carácter insular al definir la
+  matriz W.
+\item
+  La incidencia depende de un estado inicial. Al inicio del estudio
+  había provincias en las que la epidemia estaba muy desarrollada
+  (Madrid/Alava) mientras que en otras apenas habías casos. Este hecho
+  no ha sido considerado en el modelo. Decretar el confinamiento debe
+  tener distintos impactos entre provincias. QUIZAR METER UNA VARAIBLE
+  DUMMY CON COEF BETA CONSTANTE PARA CONTROLAR AQUELLAS PROVINCIAS CON
+  MAYOR NUEMRO DE CASOS AL INICIO DEL CONFINAMIENTO.
+\item
+  No se ha controlado por el sistema sanitario de cada provincia. Uno de
+  los principales focos de contagio han sido los hospitales y los
+  centros de salud. En aquellas provincias donde se ha promovido el
+  mensaje ``NO IR AL MEDICO'' han presentado menor incidencia.
+\item
+  HAY QUE INCLUIR INTERVALOS DE CONFIANZA EN LOS GRÁFICOS QUE HACEMOS DE
+  LOS COEFICIENTES DEL MODELO
+\item
+  ¿hasta que punto las variables de control no recojen también factores
+  climáticos? por ejemplo, la gente jóven vive en el sur de España que
+  ha tenido menos incidencia.
+\item
+  TITULO: A spatial analysis of the environmental correlates ofCOVID-19
+  incidence in Spain ¿during the lookdown?
+\item
+  Las estaciones meteorológicas para la obtencion de datos climáticos
+  has sido elegidas aleatoriamente (una para cada provincia). otra
+  seleccion puede dar otros resultados. AQUI SE PODRÍA HACER EL ESFUERZO
+  DE CONSIDERARLAS TODAS (1000) Y CALCULAR LA MEDIA DE LAS VARAIBLES POR
+  PROVINCIA
+\end{itemize}
+
+*IDEM para la humedad. idem para sunshine
+
 \hypertarget{acknowledgments}{%
 \section*{Acknowledgments}\label{acknowledgments}}
 \addcontentsline{toc}{section}{Acknowledgments}
@@ -811,6 +938,11 @@ statistic: Detecting and evaluating emerging clusters. Applied Geography
 \leavevmode\hypertarget{ref-Fernandes2020economic}{}%
 Fernandes, N., 2020. Economic effects of coronavirus outbreak (covid-19)
 on the world economy. Available at SSRN 3557504.
+
+\leavevmode\hypertarget{ref-goerlich2013population}{}%
+Goerlich, F.J., Cantarino, I., 2013. A population density grid for
+spain. International Journal of Geographical Information Science 27,
+2247--2263.
 
 \leavevmode\hypertarget{ref-Gong2020balance}{}%
 Gong, B., Zhang, S., Yuan, L., Chen, K.Z., 2020. A balance act:
@@ -932,6 +1064,10 @@ doi:\href{https://doi.org/10.32614/RJ-2016-061}{10.32614/RJ-2016-061}
 \leavevmode\hypertarget{ref-Rey1999us}{}%
 Rey, S.J., Montouri, B.D., 1999. US regional income convergence: A
 spatial econometric perspective. Regional studies 33, 143--156.
+
+\leavevmode\hypertarget{ref-wang2020high}{}%
+Wang, J., Tang, K., Feng, K., Lv, W., 2020. High temperature and high
+humidity reduce the transmission of covid-19. Available at SSRN 3551767.
 
 \leavevmode\hypertarget{ref-Wickham2019}{}%
 Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L.D., François,

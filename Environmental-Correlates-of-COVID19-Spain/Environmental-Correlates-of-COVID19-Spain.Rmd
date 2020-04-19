@@ -46,7 +46,6 @@ output: rticles::elsevier_article
 
 # This version of spsur may be needed:
 # Download spsur_1.0.1.3.tar.gz from https://github.com/paezha/covid19-environmental-correlates and install
-
 library(covid19env)
 library(ggthemes)
 library(gridExtra)
@@ -135,11 +134,26 @@ The first reported case of COVID-19 in Spain was on January 31th, when a German 
 
 ## Selection of Variables
 
-Explain the rationale for selecting the variables.
+Two set of variables has been selected to explain the diary incidence ratio in each Spanish province. The first, are climatic variables (temperature, humidity and sunshine) and its impact has been argued in the introduction section. The second, is a set of specific characteristics of each province. The objective is include in our model some control variables (socioeconomic characteristics) to capture the probable heterogeneity of each spatial unit. All those variables are constant along the temporal period analized in this research. In this subsetion we present some evidences of the expected relationship between the four control variables considered an the incidence ratio.
 
-For example: The literature about COVID-19 suggested that population density is the one of the most important proliferate cause of these viscous, however this ill spread with different intensity at big cities of the world. Controlling for socioeconomic characteristics the objective of this paper is observe the effect of clime on COVID-19  proliferation.
+The structure of population is a key variable on the incidence. Several papers related the relationship between a fast trasnmision of COVID-19 and population density (e.g. cumulative incidence in urban areas like NYC) and therefore a positive sign will be expected. Note that our analysis is at provincial level - not a urban level - and therefore is necessary to rethinking the relationship. In Spain the population is concentrate (with som exception) in the mediterranean coast (@goerlich2013population), in general with high temperature and high humidity. So, positive or negative sign will be expected in the model.
 
-Some questions are important to point out. Is not evident present a diary association between the temprature (resp. humidity) with declarate case. There is evidences (ref) that a time lag is necessary between the day that the individuo inffect and the case is diagnosticate 
+The percentaje of older adults (over 65) is the second variable related with the population structure include like control variable. Unlike the population density the older people in Spain is concentrate in the core of the Iberian Peninsula (see figure \ref{plotfer1}).
+
+The per capita GDP also can generate differences between provinces. No direct relationship can be observed between the GDP and the ratio of incidence but the GDP is a proxy of inobservable information. This varaible has been included in similar papers (@wang2020high). For low DGPpc is more difficult maintain social distance (sing +); High DGPpc -> more economic activity -> es mas difícl mantener el confinamiento.
+
+Posibles relaciones causales
+Alto GDP -> mas movimiento de la población. Se recibió más gente de otros sitios que podría venir con el virus puesto!
+Alto GDP -> La actividad económica de la industria y la construcción solo se paralizó unos días. Aquellas provincias con alto GDP tienen mas astividad industrial/contrucción -> más movimimiento de la población.
+Bajo GDP -> La población con menores ingresos no puede ser tan obediente a la orden de confinamiento (suele ser menos disciplinada).
+
+All those variables will we include in log to capture non-linar realtionship.
+
+<!-- Because COVID-19 is primarily transmitted by respiratory droplets, population density might play a significant role in the acceleration of transmission. Puede hacer crecer mas rápidamente la transmision pero no explicar la incidencia   -->
+
+<!-- For example: The literature about COVID-19 suggested that population density is the one of the most important proliferate cause of these viscous, however this ill spread with different intensity at big cities of the world. . -->
+
+<!-- Some questions are important to point out. Is not evident present a diary association between the temprature (resp. humidity) with declarate case. There is evidences (ref) that a time lag is necessary between the day that the individuo inffect and the case is diagnosticate  -->
 
 ## Data
 
@@ -247,7 +261,7 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \end{bmatrix}
 \end{equation}
 
-\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t=(X^1,...,X^{k_t})$ is a $N \times k_t$ matrix of the $k_t$ independent variables, $X_i=(X^i_{st})$; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals. 
+\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t$ is a $N \times k_t$ matrix of the $k_t$ independent variables, with associated vector of coefficients $\beta_t$,; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals. 
 
 <!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
   <!--
@@ -258,7 +272,7 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 
 A key feature of the SUR model is the dependence structure among the vectors of residuals, namely:
   
-  \begin{equation}
+\begin{equation}
 \label{eq:sur-err}
 E[\epsilon_t \epsilon'_{t'}]=\sigma_{tt'}
 \end{equation} 
@@ -271,27 +285,37 @@ Note that this specification is very flexible, in that it allows changes in the 
 Note that this specification is very flexible, in that it allows changes in the coefficients ![$\beta_{it}$](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_%7Bit%7D%24) in order to modulate the effect of ![$X^i_{.t}$](https://render.githubusercontent.com/render/math?math=%24X%5Ei_%7B.t%7D%24) on ![$y_t$](https://render.githubusercontent.com/render/math?math=%24y_t%24). This flexibility can be reduced and it is posible to impose restrictions to consider some ![$\beta$](https://render.githubusercontent.com/render/math?math=%24%5Cbeta%24) coefficients as being constant over time. In this case, we can reformulate the coefficients expression ![$\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})$](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_t%20%3D%20(%5Cbeta_%7B1%7D%2C%20%5Ccdots%2C%20%5Cbeta_%7Br-1%7D%2C%20%5Cbeta_%7Br%7D%2C%20%5Cbeta_%7Br%2B1%7D%2C%20%5Ccdots%2C%20%5Cbeta_%7BNt%7D)%24) to restrict the first ![$r$](https://render.githubusercontent.com/render/math?math=%24r%24) coefficients to be constant across equations. This is equivalent to specifying some effects to be invariant over time.
 -->
 
-Equation \ref{eq:sur-sim}) can be rewriten in compact form:
+Equation (\ref{eq:sur-sim}) can be rewriten in compact form:
   
-  \begin{equation}
-y = X \beta + \epsilon
+\begin{equation}
+\bf{Y} = \bf{X} \beta + \epsilon
+\label{eq:sur-sim-block}
+\end{equation}
+
+where $\bf{Y}$ is now a vector of dimension $NT \times 1$, $\bf{X}$ is a block-diagonal matrix $NT \times K$ 
+(with $K = \sum_t{k_t}$) and $\epsilon$ is a $NT \times 1$ vector. Using the Kronecker product notation ($\otimes$), the error matrix structure is expressed concisely as:
+
+\begin{equation}
+E[\epsilon \epsilon']=\Sigma \otimes I_N ; \ \Sigma=(\sigma_{tt'})
 \end{equation}
 
 <!--
   ![\begin{equation} y = X \beta + \epsilon \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20y%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5Cend%7Bequation%7D)
 -->
   
-As is the case with cross-sectional data, it is possible to test the residuals of Model \ref{eq:sur-sim} for spatial autocorrelation, and several tests have been developed to test the null hypothesis of spatial independence [see @Lopez2014spatial]. When the null hypothesis is rejected, several alternative specifications have been proposed to include spatial effects [@Anselin1988spatial; see also @Anselin2016estimation]. In this paper we consider a spatial SUR model that incorporates a spatial lag of the dependent variable as an explanatory factor. Spatial analytical approaches were used to understand contagion-difussion processes in the case of infectious disease in general [e.g., @Cliff1998detecting] and the 2003-2004 SARS outbreak in particular [e.g., @Meng2005understanding; @Cao2010spatio]. While we are mindful of the same caveat that the novel SARS-CoV2 may not follow the patterns of previous diseases, there is still evidence from the United States that COVID-19 displays spatial patterns that are consistent with a diffusion process [@Desjardins2020rapid]. For this reason, the spatial lag model is appropriate to model incidence of COVID-19 geographically, since it accounts for potential spatial patterns that result from a process of contagion, as explained next. 
+As is the case with cross-sectional data, it is possible to test the residuals of Model (\ref{eq:sur-sim-block}) for spatial autocorrelation, and several tests have been developed to test the null hypothesis of spatial independence [see @Lopez2014spatial]. When the null hypothesis is rejected, several alternative specifications have been proposed to include spatial effects [@Anselin1988spatial; see also @Anselin2016estimation]. In this paper we consider a spatial SUR model that incorporates a spatial lag of the dependent variable as an explanatory factor. Spatial analytical approaches were used to understand contagion-difussion processes in the case of infectious disease in general [e.g., @Cliff1998detecting] and the 2003-2004 SARS outbreak in particular [e.g., @Meng2005understanding; @Cao2010spatio]. While we are mindful of the same caveat that the novel SARS-CoV2 may not follow the patterns of previous diseases, there is still evidence from the United States that COVID-19 displays spatial patterns that are consistent with a diffusion process [@Desjardins2020rapid]. For this reason, the spatial lag model is appropriate to model incidence of COVID-19 geographically, since it accounts for potential spatial patterns that result from a process of contagion, as explained next. 
 
 The stack expresion for the spatial lag SUR model (SUR-SLM) is as follows:
 
 \begin{equation}
 \label{eq:sur-slm}
-\bf{A}y = X \beta + \epsilon \\
-\epsilon =N(0,\Omega)
+\begin{aligned}
+\bf{AY} = \bf{X} \beta + \epsilon \\
+\epsilon =N(0,\bf{\Sigma})
+\end{aligned}
 \end{equation}
 
-\noindent where $A =I_{TN}-\bf{\Lambda} \otimes W$ with $\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)$.
+\noindent where $\bf{A} =I_{TN}-\bf{\Gamma} \otimes W$ with $\bf{\Gamma} = diag(\rho_1, \cdots, \rho_T)$.
 
 <!--
   ![\begin{equation} \label{eq:sur-slm} \bf{A}y = X \beta + \epsilon \\ \epsilon =N(0,\Omega) \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbf%7BA%7Dy%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN(0%2C%5COmega)%20%5Cend%7Bequation%7D)
@@ -299,13 +323,13 @@ The stack expresion for the spatial lag SUR model (SUR-SLM) is as follows:
 \noindent where ![$A = I_{TN}-\bf{\Lambda} \otimes W$ with $\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)$](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20I_%7BTN%7D-%5Cbf%7B%5CLambda%7D%20%5Cotimes%20W%24%20with%20%24%5Cbf%7B%5CLambda%7D%20%3D%20diag(%5Clambda_1%2C%20%5Ccdots%2C%20%5Clambda_T)%24).
 -->
                                                                                                                   
-This specification assumes that incidence in a province ($y_st$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\lambda_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence ($\lambda_i=\lambda_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`. 
+This specification assumes that incidence in a province ($y_{st}$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\rho_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypothesis of identtical levels of spatial dependence ($\rho_i=\rho_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`. 
                                                                                                                 
 <!--
 This specification assumes that incidence in a province (![$y_st$](https://render.githubusercontent.com/render/math?math=%24y_st%24)) at time ![$t$](https://render.githubusercontent.com/render/math?math=%24t%24) is partially determined by the weighted average ![($Wy_{st}$)](https://render.githubusercontent.com/render/math?math=(%24Wy_%7Bst%7D%24)) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period ![$\lambda_t$](https://render.githubusercontent.com/render/math?math=%24%5Clambda_t%24) and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence (![$\lambda_i=\lambda_j, \forall i,j$](https://render.githubusercontent.com/render/math?math=%24%5Clambda_i%3D%5Clambda_j%2C%20%5Cforall%20i%2Cj%24)). The correspond Wald test is available in the `R` package `spsur`. 
 -->
   
-The SUR-SLM model can be estimated using maximum likelihood (@Lopez2014spatial) or instrumental variables (@Minguez2019). Another alternative methodologies could be use. By example, a dynamic spatial panel methodology with fixed spatial an temporal effects (e.g. Elhorst 2014, Cap. 4), but those models are more dont take account correlation between errors. Therefore, a spatial SUR approach is more reasonable for our purpose.
+The SUR-SLM model can be estimated using maximum likelihood (@Lopez2014spatial) or instrumental variables (@Minguez2019). Another alternative methodologies could be use. By example, a dynamic spatial panel methodology with fixed spatial an temporal effects (e.g. Elhorst 2014, Cap. 4), but those models don't take account correlation between errors. Therefore, a spatial SUR approach is more reasonable for our purpose.
 
 Analysis and Results
 ===================
@@ -525,6 +549,24 @@ density.plot <- provinces_spain %>%
 
 grid.arrange(gdppc.plot, older.plot, density.plot, nrow = 3)
 ```
+
+
+```{r plotfer1, echo=FALSE,  warning=FALSE, fig.cap="\\label{Fig-quantile} Spatial distribution of Spanish density population", cache=TRUE}
+q <- quantile(provinces_spain$Density)
+provinces_spain$Quantile<- as.factor((provinces_spain$Density > q[2]) + (provinces_spain$Density > q[3]) +(provinces_spain$Density >= q[4]) + 1)
+p1 <- ggplot(data = provinces_spain) +
+  geom_sf(aes(fill = Quantile),color = "black",size=.2) +
+  theme_bw(base_size=6) +
+  scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
+q <- quantile(provinces_spain$Older)
+provinces_spain$Quantile<- as.factor((provinces_spain$Older > q[2]) + (provinces_spain$Older > q[3]) +(provinces_spain$Older >= q[4]) + 1)
+p2 <- ggplot(data = provinces_spain) +
+  geom_sf(aes(fill = Quantile),color = "black",size=.2) +
+  theme_bw(base_size=6) +
+  scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
+gridExtra::grid.arrange(p1,p2,nrow=1)
+```
+
 
 Figure \ref{fig:daily-correlations} shows the distribution of daily correlations of the independent variables with incidence of COVID-19, after log-transforming all variables. It can be seen there that the correlation of GDPpc and temperature (in its three definitions) have the strongest positive and negative correlations with incidence, respectively. Percentage of older adults displays somewhat weaker negative correlations with incidence, as does density. It can be seen that the humidity variable, in its three forms, tends to be possitively correlated with incidence of COVID-19.
 
@@ -951,11 +993,33 @@ Concluding Remarks
   
 More words go here.
 
-* La temperatura puedes ser un factor pero cabría esperar que no tuviera un impacto lineal. Quizás una temperatua mantenida superior a X grados sea la mejor forma de incorporarla al modelo. En nuestro modelo en incremento en un grado de la temp de 2 a 3 grados (en una provincia fria al norte de España) tiene el mismo impacto que un incremento de 25 a 26 grados (en una provincia en las Islas Canarias)
-* En carácter insular de las Islas Canarias y de las Islas baleares no se ha tenido en cuenta
-* Baleares se ha linkado artificialmente con 3 provincias y debia de haberse dejado aislada para respetar su carácter insular.
-* La incidencia depende de un estado inicial
-* No se ha controlado por el sistema sanitario de cada provincia. Uno de los principales focos de cintagio han sido los hospitales y los centros de salud. En aquellas provincias donde se ha promovido "NO IR AL MEDICO" han presentado menor incidencia.
+Limitaciones
+
+* La temperatura puedes ser un factor pero cabría esperar que no tuviera un impacto lineal. Por el contrario deberiamos esperar un 'punto de corte': Una temperatua mantenida superior a X grados durante siete días sea la mejor forma de incorporarla al modelo. En nuestro modelo (log-log) en incremento en un 1% de la temperatura se asocia con un incremento beta% en la incidencia. Esto es lo mismo si la temperatura es baja que si es alta.
+
+* Idem para la humedad y horas de sol
+
+* Los datos son 'provisionales'. Hay gran confusión sobre la incidencia real. La ausencia de test de diagnóstico PCRs al inicio de la pandemia (también ahora) puede desvirtuar el número de casos dianosticados. 
+
+* Los datos oficiales (que tampoco son fiables) son reportados a nivel de Comunidades Autónomas. La recopilación de datos a nivel de provincial son el resultado de un esfuerzo colaborativo de recopilacion entre distintas fuentes (principalmente gobiernos locales). Nuevamente puede haber sesgos importanes. 
+
+* En carácter insular de las Islas Canarias y de las Islas baleares no se ha tenido en cuenta. 
+
+* Baleares se ha linkado artificialmente con 3/4 provincias y debería de haberse dejado aislada para respetar su carácter insular al definir la matriz W.
+
+* La incidencia depende de un estado inicial. Al inicio del estudio había provincias en las que la epidemia estaba muy desarrollada (Madrid/Alava) mientras que en otras apenas habías casos. Este hecho no ha sido considerado en el modelo. Decretar el confinamiento debe tener distintos impactos entre provincias. QUIZAR METER UNA VARAIBLE DUMMY CON COEF BETA CONSTANTE PARA CONTROLAR AQUELLAS PROVINCIAS CON MAYOR NUEMRO DE CASOS AL INICIO DEL CONFINAMIENTO.
+
+* No se ha controlado por el sistema sanitario de cada provincia. Uno de los principales focos de contagio han sido los hospitales y los centros de salud. En aquellas provincias donde se ha promovido el mensaje "NO IR AL MEDICO" han presentado menor incidencia.
+
+* HAY QUE INCLUIR INTERVALOS DE CONFIANZA EN LOS GRÁFICOS QUE HACEMOS DE LOS COEFICIENTES DEL MODELO
+
+* ¿hasta que punto las variables de control no recojen también factores climáticos? por ejemplo, la gente jóven vive en el sur de España que ha tenido menos incidencia.
+
+* TITULO: A spatial analysis of the environmental correlates ofCOVID-19 incidence in Spain ¿during the lookdown?
+
+* Las estaciones meteorológicas para la obtencion de datos climáticos has sido elegidas aleatoriamente (una para cada provincia). otra seleccion puede dar otros resultados. AQUI SE PODRÍA HACER EL ESFUERZO DE CONSIDERARLAS TODAS (1000) Y CALCULAR LA MEDIA DE LAS VARAIBLES POR PROVINCIA
+
+*IDEM para la humedad. idem para sunshine 
 
 Acknowledgments {#acknowledgments .unnumbered}
 ==========
