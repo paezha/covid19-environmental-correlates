@@ -135,7 +135,7 @@ Prof.~Moraes Rego, 1235 - Cidade Universitária, Recife, PE, CEP
   yield interesting insights. Higher incidence is associated with higher
   GDP per capita and presence of mass transit systems in the province; in
   contrast, population density and percentage of older adults display
-  negative associations with incidence of COVID-19.\\
+  negative associations with incidence of COVID-19.
   \end{abstract}
   
  \end{frontmatter}
@@ -203,11 +203,11 @@ Similarly, whereas Araujo and Naimi (2020) argue that spread of
 SARS-CoV2 will likely be constrained by climate, Harbert et al.~(2020)
 remain unconvinced that spatial modelling can currently discriminate the
 distribution of the disease on the basis of climate, at least in the
-United States. Yao et al.~({\textbf{???}}), examined data from China and
-came to the conclusion that neither temperature nor ultraviolet indices
-had an association with transmission of COVID-19. This is despite
-previous research that has linked less exposure to UVB radiation to
-higher prevalence and severity of acute respiratory tract infections
+United States. Yao et al.~(2020), examined data from China and came to
+the conclusion that neither temperature nor ultraviolet indices had an
+association with transmission of COVID-19. This is despite previous
+research that has linked less exposure to UVB radiation to higher
+prevalence and severity of acute respiratory tract infections
 (Zittermann et al.~2016; Dąbrowska-Leonik et al.~2018; Dinlen et
 al.~2016; Mathyssen et al.~2017; Esposito and Lelii 2015; Jat 2017;
 Moriyama, Hugentobler, and Iwasaki 2020). To further complicate matters,
@@ -219,7 +219,7 @@ Executive for guidance on this matter (see National Academies of
 Sciences, Engineering and Medicine, 2020). Their conclusion summarizes
 the situation well (see p.~6): ``Some limited data support a potential
 waning of cases in warmer and more humid seasons, yet none are without
-major limitations\ldots{}Additional studies as the SARS-CoV-2 pandemic
+major limitations\ldots Additional studies as the SARS-CoV-2 pandemic
 unfolds could shed more light on the effects of climate on
 transmission.''
 
@@ -256,9 +256,7 @@ document. The source R Markdown document, as well as all data and code
 needed to reproduce/review/extend the analysis can be obtained from the
 following repository:
 
-\begin{quote}
-https://github.com/paezha/covid19-environmental-correlates
-\end{quote}
+https://github.com/paezha/covid19-environmental-correlates/tree/master/Environmental-Correlates-of-COVID19-Spain
 
 \hypertarget{context-data-and-methods}{%
 \section{Context, Data, and Methods}\label{context-data-and-methods}}
@@ -293,16 +291,46 @@ within provinces as between
 \hypertarget{selection-of-variables}{%
 \subsection{Selection of Variables}\label{selection-of-variables}}
 
-Two set of variables has been selected to explain the diary incidence
-ratio in each Spanish province. The first, are climatic variables
-(temperature, humidity and sunshine) and its impact has been argued in
-the introduction section. The second, is a set of specific
-characteristics of each province. The objective is include in our model
-some control variables (socioeconomic characteristics) to capture the
-probable heterogeneity of each spatial unit. All those variables are
-constant along the temporal period analized in this research. In this
-subsetion we present some evidences of the expected relationship between
-the four control variables considered an the incidence ratio.
+The global emergence of infectious diseases is mostly driven by
+environmental, ecological, and socio-economic factors (Jones et al.,
+2008). In the case of SARS-CoV2, the ecological factors include the
+interaction between humans and wildlife. Once transmission of a disease
+begins to happen between humans, socio-economic and environmental
+factors become increasingly important. As noted in the introduction, the
+focus of the paper is on environmental variables, namely temperature,
+humidity, and sunshine. These variables have been implicated in the
+viability and ease of transmission of similar viruses. In addition to
+these variables, we also aim to use a set of controls, in the form of
+specific socio-economic and demographic characteristics of each
+province.
+
+The first variable that we consider is GDP per capita. Much has been
+said about globalization and the spread of infectious
+disease\footnote{As the Globe and Mail, Canada's paper of record, put it in relation to the SARS outbreak in 2003: "Globalization means that if someone in China sneezes, someone in Toronto may one day catch a cold" (Editorial, March 28, 2003, p. A18)}.
+The growth in global connections has presented a challenge to spatial
+approaches in the initial stages of disease management, when its cause
+may still be unclear (Zhou and Coleman, 2016). In reference to the
+earlier outbreak of SARS, van Wagner (Van Wagner, 2008) remarks how
+Toronto's status as a global city was a vulnerability. In our case, we
+think of GDP per capita as a marker of a region's relative position in a
+network of global cities, and their potential to be further ahead in the
+trajectory of the pandemic. Furthermore, wealthier regions also tend to
+concentrate more activities that produce non-traded goods, including
+building and construction (Hallet, 2002). Therefore, it is possible that
+wealthier regions remained relatively more active even during the
+lockdown. On the other hand, it is also possible the less wealthy
+regions have a higher proportion of workers in manual occupations that
+cannot telework.
+
+The percentaje of older adults (over 65) is the second variable related
+with the population structure include like control variable. Unlike the
+population density the older people in Spain is concentrate in the core
+of the Iberian Peninsula (see figure \ref{plotfer1}). Our hypothesis is
+that in the provinces with more older adults the social contact is lower
+(Prem et al. (2017)) and therefore the a negative correlation will be
+expected. This hypotesis is based in the idea that the agee-structured
+social contact matrix in Spain is similar to Italy (see Singh and
+Adhikari (2020) Fig 1 pag 3)
 
 The structure of population is a key variable on the incidence. Several
 papers related the relationship between a fast trasnmision of COVID-19
@@ -310,34 +338,14 @@ and population density (e.g.~cumulative incidence in urban areas like
 NYC) and therefore a positive sign will be expected. Note that our
 analysis is at provincial level - not a urban level - and therefore is
 necessary to rethinking the relationship. In Spain the population is
-concentrate (with som exception) in the mediterranean coast (Goerlich
+concentrate (with some exception) in the mediterranean coast (Goerlich
 and Cantarino (2013)), in general with high temperature and high
 humidity. So, positive or negative sign will be expected in the model.
 
-The percentaje of older adults (over 65) is the second variable related
-with the population structure include like control variable. Unlike the
-population density the older people in Spain is concentrate in the core
-of the Iberian Peninsula (see figure \ref{plotfer1}).
-
-The per capita GDP also can generate differences between provinces. No
-direct relationship can be observed between the GDP and the ratio of
-incidence but the GDP is a proxy of inobservable information. This
-varaible has been included in similar papers (Wang et al. (2020)). For
-low DGPpc is more difficult maintain social distance (sing +); High
-DGPpc -\textgreater{} more economic activity -\textgreater{} es mas
-difícl mantener el confinamiento.
-
-Posibles relaciones causales Alto GDP -\textgreater{} mas movimiento de
-la población. Se recibió más gente de otros sitios que podría venir con
-el virus puesto! Alto GDP -\textgreater{} La actividad económica de la
-industria y la construcción solo se paralizó unos días. Aquellas
-provincias con alto GDP tienen mas astividad industrial/contrucción
--\textgreater{} más movimimiento de la población. Bajo GDP
--\textgreater{} La población con menores ingresos no puede ser tan
-obediente a la orden de confinamiento (suele ser menos disciplinada).
-
 All those variables will we include in log to capture non-linar
 realtionship.
+
+Transit.
 
 \hypertarget{data}{%
 \subsection{Data}\label{data}}
@@ -956,6 +964,10 @@ Greene, W.H., 2003. Econometric analysis. Pearson Education India.
 Grolemund, G., Wickham, H., 2011. Dates and times made easy with
 lubridate. Journal of Statistical Software 40, 1--25.
 
+\leavevmode\hypertarget{ref-Hallet2002regional}{}%
+Hallet, M., 2002. Regional specialisation and concentration in the eu,
+in: Regional Convergence in the European Union. Springer, pp. 53--76.
+
 \leavevmode\hypertarget{ref-Harbert2020spatial}{}%
 Harbert, R.S., Cunningham, S.W., Tessler, M., 2020. Spatial modeling
 cannot currently differentiate sars-cov-2 coronavirus and human
@@ -966,6 +978,12 @@ Jaakkola, K., Saukkoriipi, A., Jokelainen, J., Juvonen, R., Kauppila,
 J., Vainio, O., Ziegler, T., Rönkkö, E., Jaakkola, J.J., Ikäheimo, T.M.,
 2014. Decline in temperature and humidity increases the occurrence of
 influenza in cold climate. Environmental Health 13, 22.
+
+\leavevmode\hypertarget{ref-Jones2008global}{}%
+Jones, K.E., Patel, N.G., Levy, M.A., Storeygard, A., Balk, D.,
+Gittleman, J.L., Daszak, P., 2008. Global trends in emerging infectious
+diseases. Nature 451, 990--993.
+doi:\href{https://doi.org/10.1038/nature06536}{10.1038/nature06536}
 
 \leavevmode\hypertarget{ref-Kissler2020projecting}{}%
 Kissler, S.M., Tedijanto, C., Goldstein, E., Grad, Y.H., Lipsitch, M.,
@@ -1061,13 +1079,24 @@ Pebesma, E., Mailund, T., Hiebert, J., 2016. Measurement units in R. R
 Journal 8, 486--494.
 doi:\href{https://doi.org/10.32614/RJ-2016-061}{10.32614/RJ-2016-061}
 
+\leavevmode\hypertarget{ref-prem2017projecting}{}%
+Prem, K., Cook, A.R., Jit, M., 2017. Projecting social contact matrices
+in 152 countries using contact surveys and demographic data. PLoS
+computational biology 13, e1005697.
+
 \leavevmode\hypertarget{ref-Rey1999us}{}%
 Rey, S.J., Montouri, B.D., 1999. US regional income convergence: A
 spatial econometric perspective. Regional studies 33, 143--156.
 
-\leavevmode\hypertarget{ref-wang2020high}{}%
-Wang, J., Tang, K., Feng, K., Lv, W., 2020. High temperature and high
-humidity reduce the transmission of covid-19. Available at SSRN 3551767.
+\leavevmode\hypertarget{ref-singh2020age}{}%
+Singh, R., Adhikari, R., 2020. Age-structured impact of social
+distancing on the covid-19 epidemic in india. arXiv preprint
+arXiv:2003.12055.
+
+\leavevmode\hypertarget{ref-vanWagner2008toward}{}%
+Van Wagner, E., 2008. Toward a dialectical understanding of networked
+disease in the global city: Vulnerability, connectivity, topologies.
+Networked disease: Emerging infections in the global city 13--26.
 
 \leavevmode\hypertarget{ref-Wickham2019}{}%
 Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L.D., François,
@@ -1087,10 +1116,21 @@ Reproducible Computational Research. Chapman; Hall/CRC.
 Xie, Y., 2015. Dynamic documents with R and knitr, 2nd ed. Chapman;
 Hall/CRC, Boca Raton, Florida.
 
+\leavevmode\hypertarget{ref-Yao2020association}{}%
+Yao, Y., Pan, J., Liu, Z., Meng, X., Wang, W., Kan, H., Wang, W., 2020.
+No association of covid-19 transmission with temperature or uv radiation
+in chinese cities. European Respiratory Journal 2000517.
+doi:\href{https://doi.org/10.1183/13993003.00517-2020}{10.1183/13993003.00517-2020}
+
 \leavevmode\hypertarget{ref-Zellner1962efficient}{}%
 Zellner, A., 1962. An efficient method of estimating seemingly unrelated
 regressions and tests for aggregation bias. Journal of the American
 statistical Association 57, 348--368.
+
+\leavevmode\hypertarget{ref-Zhou2016accelerated}{}%
+Zhou, Y.R., Coleman, W.D., 2016. Accelerated contagion and response:
+Understanding the relationships among globalization, time, and disease.
+Globalizations 13, 285--299.
 
 \leavevmode\hypertarget{ref-Zhu2019}{}%
 Zhu, H., 2019. KableExtra: Construct complex table with 'kable' and pipe

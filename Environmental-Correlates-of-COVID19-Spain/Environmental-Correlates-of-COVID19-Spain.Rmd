@@ -123,7 +123,7 @@ The results provide evidence of the effect of temperature, humidity, and sunshin
 
 Please note that this paper is prepared as a reproducible research document. The source R Markdown document, as well as all data and code needed to reproduce/review/extend the analysis can be obtained from the following repository:
   
->https://github.com/paezha/covid19-environmental-correlates
+https://github.com/paezha/covid19-environmental-correlates/tree/master/Environmental-Correlates-of-COVID19-Spain
 
 Context, Data, and Methods
 ============
@@ -134,26 +134,18 @@ The first reported case of COVID-19 in Spain was on January 31th, when a German 
 
 ## Selection of Variables
 
-Two set of variables has been selected to explain the daily incidence ratio in each Spanish province. The first, are climatic variables (temperature, humidity and sunshine) and its impact has been argued in the introduction section. The second, is a set of specific characteristics of each province. The objective is include in our model some control variables (socioeconomic characteristics) to capture the probable heterogeneity of each spatial unit. All those variables are time constant along the temporal period analized in this research but have high spatial variability. In this subsetion we present some evidences of the expected relationship between the four control variables and the incidence ratio.
+The global emergence of infectious diseases is mostly driven by environmental, ecological, and socio-economic factors [@Jones2008global]. In the case of SARS-CoV2, the ecological factors include the interaction between humans and wildlife. Once transmission of a disease begins to happen between humans, socio-economic and environmental factors become increasingly important. As noted in the introduction, the focus of the paper is on environmental variables, namely temperature, humidity, and sunshine. These variables have been implicated in the viability and ease of transmission of similar viruses. In addition to these variables, we also aim to use a set of controls, in the form of specific socio-economic and demographic characteristics of each province.
 
-The structure of population is a key variable on the incidence. Several papers related the relationship between a fast trasnmision of COVID-19 and population density (e.g. cumulative incidence in urban areas like NYC) and therefore a positive sign will be expected. Note that our analysis is at provincial level - not a urban level - and therefore is necessary to rethinking the relationship. In Spain the population is concentrate (with some exception) in the mediterranean coast (@goerlich2013population), in general with high temperature and high humidity. So, positive or negative sign will be expected in the model.
+The first variable that we consider is GDP per capita. Much has been said about globalization and the spread of infectious disease\footnote{As the Globe and Mail, Canada's paper of record, put it in relation to the SARS outbreak in 2003: "Globalization means that if someone in China sneezes, someone in Toronto may one day catch a cold" (Editorial, March 28, 2003, p. A18)}. The growth in global connections has presented a challenge to spatial approaches in the initial stages of disease management, when its cause may still be unclear [@Zhou2016accelerated]. In reference to the earlier outbreak of SARS, van Wagner [@vanWagner2008toward] remarks how Toronto's status as a global city was a vulnerability. In our case, we think of GDP per capita as a marker of a region's relative position in a network of global cities, and their potential to be further ahead in the trajectory of the pandemic. Furthermore, wealthier regions also tend to concentrate more activities that produce non-traded goods, including building and construction [@Hallet2002regional]. Therefore, it is possible that wealthier regions remained relatively more active even during the lockdown. On the other hand, it is also possible the less wealthy regions have a higher proportion of workers in manual occupations that cannot telework.
 
-The percentaje of older adults (over 65) is the second variable related with the population structure include like control variable. Unlike the population density the older people in Spain is concentrate in the core of the Iberian Peninsula (see figure \ref{plotfer1}). Our hypothesis is that in the provinces with more older adults the social contact is lower (@prem2017projecting) and therefore the a negative correlation will be expected. This hypotesis is based in the idea that the agee-structured social contact matrix in Spain is similar to Italy (see @singh2020age Fig 1 pag 3)
+The percentaje of older adults (over 65) is the second variable that we consider as a control. Early evidence suggest that the case rate mortality is higher at older ages [e.g. @Novel2020epidemiological]. It is not clear that presence of older adults necessarily translates into higher transmission in the population. The public health tool of choice in containing the spread of the disease has been social distancing. In this respect, the evidence from the field of transportation is that older adults tend to travel less frequently, for shorter distances, and have higher rates of immobility [e.g., @Roorda2010trip; @Morency2011distance; @Sikder2012immobility]. In other words, older adults are, by preference or necessity, already in a form of social isolation. Social distancing during the pandemic may actually reinforce that condition for older adults, as the analysis of age-structured social contact in India, China, and Italy of Sing and Adhikari [-@Singh2020age] suggests. Accordingly, our expectation is that in the provinces with higher proportions of older adults will tend to have similarl levels of lower social contact, particularly since age-structured social contact matrix in Spain is similar to Italy [@Prem2017projecting].
 
-The per capita GDP (GDPpc) also can generate differences between provinces. No direct relationship can be observed between the GDP and the ratio of incidence but our hypothesis is that the GDPpc is a proxy of inobservable information. By example, provinces with high DGPpc have more transit of foreing people This variable has been included in similar papers (@wang2020high). For low DGPpc is more difficult maintain social distance (sing +); High DGPpc -> more economic activity -> es mas difícl mantener el confinamiento.
-
-Posibles relaciones causales
-Alto GDP -> mas movimiento de la población. Se recibió más gente de otros sitios que podría venir con el virus puesto!
-Alto GDP -> La actividad económica de la industria y la construcción solo se paralizó unos días. Aquellas provincias con alto GDP tienen mas astividad industrial/contrucción -> más movimimiento de la población.
-Bajo GDP -> La población con menores ingresos no puede ser tan obediente a la orden de confinamiento (suele ser menos disciplinada).
+The structure of population is a key variable on the incidence. Several papers related the relationship between a fast trasnmision of COVID-19 and population density (e.g. cumulative incidence in urban areas like NYC) and therefore a positive sign will be expected. Note that our analysis is at provincial level - not a urban level - and therefore is necessary to rethinking the relationship. In Spain the population is concentrate (with some exception) in the mediterranean coast (@Goerlich2013population), in general with high temperature and high humidity. So, positive or negative sign will be expected in the model.
 
 All those variables will we include in log to capture non-linar realtionship.
 
-<!-- Because COVID-19 is primarily transmitted by respiratory droplets, population density might play a significant role in the acceleration of transmission. Puede hacer crecer mas rápidamente la transmision pero no explicar la incidencia   -->
+Transit.
 
-<!-- For example: The literature about COVID-19 suggested that population density is the one of the most important proliferate cause of these viscous, however this ill spread with different intensity at big cities of the world. . -->
-
-<!-- Some questions are important to point out. Is not evident present a diary association between the temprature (resp. humidity) with declarate case. There is evidences (ref) that a time lag is necessary between the day that the individuo inffect and the case is diagnosticate  -->
 
 ## Data
 
@@ -345,7 +337,7 @@ Figure \ref{fig:weekly-average-incidence-map} shows the geographical variation i
 madrid_xy <-  st_centroid(provinces_spain %>% filter(province == "Madrid")) %>% st_coordinates()
 
 week11.plot <- covid19_spain %>%
-  filter(CCAA != "Canarias") %>%
+  #filter(CCAA != "Canarias") %>%
   group_by(province, week = isoweek(Date)) %>% 
   summarise(ID_INE = first(ID_INE), mean_weekly_incidence = mean(Incidence)) %>%
   filter(week == 11) %>%
@@ -358,22 +350,22 @@ week11.plot <- covid19_spain %>%
                        palette = "Reds", 
                        direction = 1) +
   ggtitle("March 13 - March 15") +
-  theme_tufte() +
+  theme_bw(base_size = 9) +
   theme(axis.text = element_blank(),
         legend.position = "bottom",
         plot.margin = margin(0, 0, 0, 0, "cm")) +
   geom_sf_text(label = "Madrid", 
-               x = madrid_xy[1] - 4.9, 
+               x = madrid_xy[1] - 8, 
                y = madrid_xy[2] + 0.6,
                family = "serif") +
-  geom_segment(x = madrid_xy[1] - 3.4, 
+  geom_segment(x = madrid_xy[1] - 6, 
                y = madrid_xy[2] + 0.5, 
                xend = madrid_xy[1], 
                yend = madrid_xy[2])
 
 
 week12.plot <- covid19_spain %>%
-  filter(CCAA != "Canarias") %>%
+  #filter(CCAA != "Canarias") %>%
   group_by(province, week = isoweek(Date)) %>% 
   summarise(ID_INE = first(ID_INE), mean_weekly_incidence = mean(Incidence)) %>%
   filter(week == 12) %>%
@@ -386,15 +378,15 @@ week12.plot <- covid19_spain %>%
                        palette = "Reds",
                        direction = 1) +
   ggtitle("March 16 - March 22") +
-  theme_tufte() +
+  theme_bw(base_size = 9) +
   theme(axis.text = element_blank(),
         legend.position = "bottom",
         plot.margin = margin(0, 0, 0, 0, "cm")) +
-  geom_sf_text(label = "Madrid", x = madrid_xy[1] - 4.9, y = madrid_xy[2] + 0.6) +
-  geom_segment(x = madrid_xy[1] - 3.4, y = madrid_xy[2] + 0.5, xend = madrid_xy[1], yend = madrid_xy[2])
+  geom_sf_text(label = "Madrid", x = madrid_xy[1] - 8, y = madrid_xy[2] + 0.6) +
+  geom_segment(x = madrid_xy[1] - 6, y = madrid_xy[2] + 0.5, xend = madrid_xy[1], yend = madrid_xy[2])
 
 week13.plot <- covid19_spain %>%
-  filter(CCAA != "Canarias") %>%
+  #filter(CCAA != "Canarias") %>%
   group_by(province, week = isoweek(Date)) %>% 
   summarise(ID_INE = first(ID_INE), mean_weekly_incidence = mean(Incidence)) %>%
   filter(week == 13) %>%
@@ -407,21 +399,21 @@ week13.plot <- covid19_spain %>%
                        palette = "Reds", 
                        direction = 1) +
   ggtitle("March 23 - March 29") +
-  theme_tufte() +
+  theme_bw(base_size = 9) +
   theme(axis.text = element_blank(),
         legend.position = "bottom",
         plot.margin = margin(0, 0, 0, 0, "cm")) +
   geom_sf_text(label = "Madrid",
-               x = madrid_xy[1] - 4.9, 
+               x = madrid_xy[1] - 8, 
                y = madrid_xy[2] + 0.6,
                family = "serif") +
-  geom_segment(x = madrid_xy[1] - 3.4, 
+  geom_segment(x = madrid_xy[1] - 6, 
                y = madrid_xy[2] + 0.5, 
                xend = madrid_xy[1], 
                yend = madrid_xy[2])
 
 week14.plot <- covid19_spain %>%
-  filter(CCAA != "Canarias") %>%
+  #filter(CCAA != "Canarias") %>%
   group_by(province, week = isoweek(Date)) %>% 
   summarise(ID_INE = first(ID_INE), mean_weekly_incidence = mean(Incidence)) %>%
   filter(week == 14) %>%
@@ -434,21 +426,21 @@ week14.plot <- covid19_spain %>%
                        palette = "Reds", 
                        direction = 1) +
   ggtitle("March 30 - April 5") +
-  theme_tufte() +
+  theme_bw(base_size = 9) +
   theme(axis.text = element_blank(),
         legend.position = "bottom",
         plot.margin = margin(0, 0, 0, 0, "cm")) +
   geom_sf_text(label = "Madrid", 
-               x = madrid_xy[1] - 4.9, 
+               x = madrid_xy[1] - 8, 
                y = madrid_xy[2] + 0.6,
                family = "serif") +
-  geom_segment(x = madrid_xy[1] - 3.4, 
+  geom_segment(x = madrid_xy[1] - 6, 
                y = madrid_xy[2] + 0.5, 
                xend = madrid_xy[1], 
                yend = madrid_xy[2])
 
 week15.plot <- covid19_spain %>%
-  filter(CCAA != "Canarias") %>%
+  #filter(CCAA != "Canarias") %>%
   group_by(province, week = isoweek(Date)) %>% 
   summarise(ID_INE = first(ID_INE), mean_weekly_incidence = mean(Incidence)) %>%
   filter(week == 15) %>%
@@ -461,15 +453,15 @@ week15.plot <- covid19_spain %>%
                        palette = "Reds", 
                        direction = 1) +
   ggtitle("April 6 - April 11") +
-  theme_tufte() +
+  theme_bw(base_size = 9) +
   theme(axis.text = element_blank(),
         legend.position = "bottom",
         plot.margin = margin(0, 0, 0, 0, "cm")) +
   geom_sf_text(label = "Madrid", 
-               x = madrid_xy[1] - 4.9, 
+               x = madrid_xy[1] - 8, 
                y = madrid_xy[2] + 0.6,
                family = "serif") +
-  geom_segment(x = madrid_xy[1] - 3.4, 
+  geom_segment(x = madrid_xy[1] - 6, 
                y = madrid_xy[2] + 0.5, 
                xend = madrid_xy[1], 
                yend = madrid_xy[2])
@@ -511,68 +503,81 @@ ggplot(data = env.summary,
              scales = "free_y")
 ```
 
-```{r control-map, cache=TRUE, echo=FALSE, fig.height= 9, fig.cap="\\label{fig:control-map}Spatial distribution of control variables by province (maps omits Islas Canarias)", cache = TRUE}
+```{r map-controls, cache=TRUE, echo=FALSE, fig.height= 9, fig.cap="\\label{fig:map-controls}Spatial distribution of control variables by province (maps omits Islas Canarias)", cache = TRUE}
+# GDP per capita:
+q <- quantile(provinces_spain$GDPpc)
 gdppc.plot <- provinces_spain %>%
-  filter(CCAA != "Canarias") %>%
+  mutate(GDPpc = GDPpc,
+         GDPpc = case_when(GDPpc < q[2] ~ "1st",
+                             GDPpc > q[2] & GDPpc <= q[3]  ~ "2nd",
+                             GDPpc > q[3] & GDPpc <= q[4] ~ "3rd",
+                             GDPpc > q[4] ~ "4th")) %>%
+  #filter(CCAA != "Canarias") %>%
   ggplot() +
   geom_sf(aes(fill = GDPpc)) +
-  scale_fill_distiller(name = "GDP per capita", 
-                       palette = "Blues", 
-                       direction = 1) +
-  theme_tufte() +
+  scale_fill_manual(name = "Quartile", values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D")) +
+  theme_bw(base_size = 9) +
   theme(axis.text = element_blank(),
-        legend.position = "bottom")
+        legend.position = "bottom") +
+  geom_sf_text(label = "Madrid", 
+               x = madrid_xy[1] - 8, 
+               y = madrid_xy[2] + 0.6,
+               family = "serif") +
+  geom_segment(x = madrid_xy[1] - 6, 
+               y = madrid_xy[2] + 0.5, 
+               xend = madrid_xy[1], 
+               yend = madrid_xy[2])
 
 # Older adults:
+q <- quantile(provinces_spain$Older)
 older.plot <- provinces_spain %>% 
-  filter(CCAA != "Canarias") %>%
+  mutate(Older = Older,
+         Older = case_when(Older < q[2] ~ "1st",
+                             Older > q[2] & Older <= q[3]  ~ "2nd",
+                             Older > q[3] & Older <= q[4] ~ "3rd",
+                             Older > q[4] ~ "4th")) %>%
+  #filter(CCAA != "Canarias") %>%
   ggplot() +
-  geom_sf(aes(fill = as.numeric(Older))) +
-  scale_fill_distiller(name = "Percentage of older adults", 
-                       palette = "Blues", 
-                       direction = 1) +
-  theme_tufte() +
+  geom_sf(aes(fill = Older)) +
+  scale_fill_manual(name = "Quartile", values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D")) +
+  theme_bw(base_size = 9) +
   theme(axis.text = element_blank(),
-        legend.position = "bottom")
+        legend.position = "bottom") +
+  geom_sf_text(label = "Madrid", 
+               x = madrid_xy[1] - 8, 
+               y = madrid_xy[2] + 0.6,
+               family = "serif") +
+  geom_segment(x = madrid_xy[1] - 6, 
+               y = madrid_xy[2] + 0.5, 
+               xend = madrid_xy[1], 
+               yend = madrid_xy[2])
 
 # Population density:
+q <- as.numeric(quantile(provinces_spain$Density))
 density.plot <- provinces_spain %>% 
-  filter(CCAA != "Canarias") %>%
+  mutate(Density = as.numeric(Density),
+         Density = case_when(Density < q[2] ~ "1st",
+                             Density > q[2] & Density <= q[3]  ~ "2nd",
+                             Density > q[3] & Density <= q[4] ~ "3rd",
+                             Density > q[4] ~ "4th")) %>%
+  #filter(CCAA != "Canarias") %>%
   ggplot() +
-  geom_sf(aes(fill = as.numeric(Density))) +
-  scale_fill_distiller(name = "Population Density", 
-                       palette = "Blues", 
-                       direction = 1) +
-  theme_tufte() +
+  geom_sf(aes(fill = Density)) +
+  scale_fill_manual(name = "Quartile", values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D")) +
+  theme_bw(base_size = 9) +
   theme(axis.text = element_blank(),
-        legend.position = "bottom")
+        legend.position = "bottom") +
+  geom_sf_text(label = "Madrid", 
+               x = madrid_xy[1] - 8, 
+               y = madrid_xy[2] + 0.6,
+               family = "serif") +
+  geom_segment(x = madrid_xy[1] - 6, 
+               y = madrid_xy[2] + 0.5, 
+               xend = madrid_xy[1], 
+               yend = madrid_xy[2])
 
 grid.arrange(gdppc.plot, older.plot, density.plot, nrow = 3)
 ```
-
-
-```{r plotfer1, echo=FALSE,  warning=FALSE, fig.cap="\\label{Fig-quantile} Spatial distribution of Spanish density population", cache=TRUE}
-q <- quantile(provinces_spain$Density)
-provinces_spain$Quantile<- as.factor((provinces_spain$Density > q[2]) + (provinces_spain$Density > q[3]) +(provinces_spain$Density >= q[4]) + 1)
-p1 <- ggplot(data = provinces_spain) +
-  geom_sf(aes(fill = Quantile),color = "black",size=.2) +
-  theme_bw(base_size=6) +
-  scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
-q <- quantile(provinces_spain$Older)
-provinces_spain$Quantile<- as.factor((provinces_spain$Older > q[2]) + (provinces_spain$Older > q[3]) +(provinces_spain$Older >= q[4]) + 1)
-p2 <- ggplot(data = provinces_spain) +
-  geom_sf(aes(fill = Quantile),color = "black",size=.2) +
-  theme_bw(base_size=6) +
-  scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
-q <- quantile(provinces_spain$GDPpc)
-provinces_spain$Quantile<- as.factor((provinces_spain$GDPpc > q[2]) + (provinces_spain$GDPpc > q[3]) +(provinces_spain$GDPpc >= q[4]) + 1)
-p3 <- ggplot(data = provinces_spain) +
-  geom_sf(aes(fill = Quantile),color = "black",size=.2) +
-  theme_bw(base_size=6) +
-  scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
-gridExtra::grid.arrange(p1,p2,p3,nrow=2)
-```
-
 
 Figure \ref{fig:daily-correlations} shows the distribution of daily correlations of the independent variables with incidence of COVID-19, after log-transforming all variables. It can be seen there that the correlation of GDPpc and temperature (in its three definitions) have the strongest positive and negative correlations with incidence, respectively. Percentage of older adults displays somewhat weaker negative correlations with incidence, as does density. It can be seen that the humidity variable, in its three forms, tends to be possitively correlated with incidence of COVID-19.
 
@@ -853,7 +858,6 @@ data.frame(Coefficient = sur.slm_lag11$coefficients,
                        "Non-constrained: coefficient was allowed to vary across equations",
                        "Constrained: coefficient as constant across equations"))
 ```
-
 
 Discussion
 ===================
