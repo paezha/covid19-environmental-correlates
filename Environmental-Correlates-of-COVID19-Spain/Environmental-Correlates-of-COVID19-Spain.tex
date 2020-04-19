@@ -33,46 +33,6 @@
 % use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
 \bibliographystyle{elsarticle-harv}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{graphicx}
 % We will generate all images so they have a width \maxwidth. This means
 % that they will get their normal width if they fit onto the page, but
@@ -412,13 +372,17 @@ excluding symptomatic cases diagnosed by a doctor without a Polymerase
 Chain Reaction (PCR) test. The Spanish National Government publishes
 periodic updates at the regional level (NUTII) and the information is
 also released at the provincial level as part of a collaborative project
-{[}\textbf{by whom?}{]}. This information is compiled from several
-sources, mainly the official web pages of the Spanish regional
-goverments. In addition, we consider two sets of explanatory variables.
-The first one, and the focus of this research, is set of two
-environmental variables, namely temperature and humidity, which are
-collected from official sources (i.g., AEMET, the state meteorology
-agency, and MAPA, the ministry of agriculture, fisheries, and food). The
+by geovoluntarios.com\footnote{https://www.geovoluntarios.org/},
+ProvidencialData19\footnote{https://www.datoscovid.es/pages/providencialdata19},
+and ESRI España. This information is compiled from several sources,
+mainly the official web pages of the Spanish regional goverments, as
+documented in Centro de Datos
+Covid-19\footnote{https://www.datoscovid.es/pages/sobre-la-iniciativa}.
+In addition, we consider two sets of explanatory variables. The first
+one, and the focus of this research, is set of two environmental
+variables, namely temperature and humidity, which are collected from
+official sources (i.g., \emph{AEMET}, the state meteorology agency, and
+\emph{MAPA}, the ministry of agriculture, fisheries, and food). The
 second set provides some relevant controls for multivariate analysis,
 and refers to economic and demographic attributes of the province (also
 collected from official sources, i.e., INE, the national statistics
@@ -450,7 +414,7 @@ analysis must therefore be considered ecological.
 \toprule
 Variable & Note & Min & Mean & Max & SD & Source\\
 \midrule
-\rowcolor{gray!6}  COVID-19 Incidence & Incidence in reported cases of SARS-19 per 100,000 people & 0.38 & 153.61 & 1149.36 & 186.23 & Montera34\\
+\rowcolor{gray!6}  COVID-19 Incidence & Incidence in reported cases of SARS-19 per 100,000 people & 0.38 & 153.61 & 1149.36 & 186.23 & ProvidencialData19\\
 Area & Area of province in sq.km & 1978.12 & 10118.79 & 21767.93 & 4.77 & INE\\
 \rowcolor{gray!6}  GDPpc & GDP per capita in €1,000s & 16.67 & 22.51 & 36.00 & 4805.98 & INE\\
 Older & Percentage of people aged 65 and older in the province & 15.16 & 21.03 & 31.36 & 3.95 & INE\\
@@ -460,7 +424,7 @@ Mean Temperature & Mean temperature in province by date, in C & 1.00 & 12.18 & 2
 \rowcolor{gray!6}  Humidity & Relative humidity in province by date & 2.00 & 77.82 & 100.00 & 10.37 & MAPA\\
 \bottomrule
 \multicolumn{7}{l}{\textit{Note: }}\\
-\multicolumn{7}{l}{Montera34: https://code.montera34.com:4443/numeroteca/covid19/-/blob/master/README\_providencialdata19.md}\\
+\multicolumn{7}{l}{ProvidencialData19: https://www.datoscovid.es/pages/providencialdata19}\\
 \multicolumn{7}{l}{INE (Instituto Nacional de Estadistica): https://www.ine.es/}\\
 \multicolumn{7}{l}{AEMET (Agencia Estatal de Meteorologia): http://eportal.mapa.gob.es}\\
 \multicolumn{7}{l}{MAPA (Ministerio de Agricultura, Pesca y Alimentacion): http://eportal.mapa.gob.es}\\
@@ -562,11 +526,11 @@ Equation (\ref{eq:sur-sim}) can be rewriten in compact form:
 \label{eq:sur-sim-block}
 \end{equation}
 
-where \(\bf{Y}\) is now a vector of dimension \(NT \times 1\),
+\noindent where \(\bf{Y}\) is now a vector of dimension \(NT \times 1\),
 \(\bf{X}\) is a block-diagonal matrix \(NT \times K\) (with
-\(K = \sum_t{k_t}\)) and \(\epsilon\) is a \(NT \times 1\) vector. Using
-the Kronecker product notation (\(\otimes\)), the error matrix structure
-is expressed concisely as:
+\(K = \sum_t{k_t}\)) and \(\epsilon\) is an \(NT \times 1\) vector.
+Using the Kronecker product notation (\(\otimes\)), the error matrix
+structure is expressed concisely as:
 
 \begin{equation}
 E[\epsilon \epsilon']=\Sigma \otimes I_N ; \ \Sigma=(\sigma_{tt'})
@@ -592,8 +556,8 @@ model incidence of COVID-19 geographically, since it accounts for
 potential spatial patterns that result from a process of contagion, as
 explained next.
 
-The stack expresion for the spatial lag SUR model (SUR-SLM) is as
-follows:
+The stack expresion for the SUR model with a spatially lagged dependent
+variable (SUR-SLM) is as follows:
 
 \begin{equation}
 \label{eq:sur-slm}
@@ -603,17 +567,22 @@ follows:
 \end{aligned}
 \end{equation}
 
-\noindent where \(\bf{A} =I_{TN}-\bf{\Gamma} \otimes W\) with
+\noindent where \(\bf{A} =I_{TN}-\bf{\Gamma} \otimes W\) is the
+spatially lagged dependent variable, and
 \(\bf{\Gamma} = diag(\rho_1, \cdots, \rho_T)\).
 
-This specification assumes that incidence in a province (\(y_{st}\)) at
-time \(t\) is partially determined by the weighted average (\(Wy_{st}\))
-of incidence in neighbouring provinces. Coefficients for the spatially
-lagged variable are estimated for each time period \(\rho_t\) and
-identifies the intensity and the sign of the impacts of neighbourhood.
-It is possible test the null hypothesis of identtical levels of spatial
-dependence (\(\rho_i=\rho_j, \forall i,j\)). The correspond Wald test is
-available in the \texttt{R} package \texttt{spsur}.
+This specification assumes that outcome (\(y_{st}\)) at location \(s\)
+and time \(t\) is partially determined by the weighted average
+(\(Wy_{st}\)) of the outcome in neighboring provinces, with neighborhood
+defined by matrix \(W\) of spatial weights. In other words, the
+spatially lagged dependent variable represents a process of contagion,
+where the disease in neighboring provinces can spillover in a spatial
+way. The coefficients of the spatially lagged variable are estimated for
+each time period \(\rho_t\) and identify the intensity and the sign of
+the contagion effect. It is possible test the null hypothesis of
+identical levels of spatial dependence (\(\rho_i=\rho_j, \forall i,j\)).
+The correspond Wald test is available in the \texttt{R} package
+\texttt{spsur}.
 
 The SUR-SLM model can be estimated using maximum likelihood (López et
 al. (2014)) or instrumental variables (Mínguez et al. (2019)). Another
@@ -758,8 +727,11 @@ autocorrelation coefficient (\(\lambda\)).
 \begin{figure}
 \centering
 \includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/delta-time-1.pdf}
-\caption{\label{fig:delta-time}Temporal evolution of spatial
-autocorrelation coefficient}
+\caption{\label{fig:delta-time}Temporal evolution of the spatial
+autocorrelation coefficient; dots are the point estimates and vertical
+lines are 95\% confidence intervals. In yellow is the period after the
+declaration of the state of emergency, and in orange is the period when
+only essential activities were allowed.}
 \end{figure}
 
 Figure \ref{fig:beta-intercept-time} shows the temporal evolution of the
@@ -768,7 +740,11 @@ intercept.
 \begin{figure}
 \centering
 \includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-intercept-time-1.pdf}
-\caption{\label{fig:beta-intercept-time}Temporal evolution of intercept}
+\caption{\label{fig:beta-intercept-time}Temporal evolution of intercept;
+dots are the point estimates and vertical lines are 95\% confidence
+intervals. In yellow is the period after the declaration of the state of
+emergency, and in orange is the period when only essential activities
+were allowed.}
 \end{figure}
 
 Figure \ref{fig:beta-density-time} shows the temporal evolution of the
@@ -778,7 +754,10 @@ coefficient for \(\log(Density)\).
 \centering
 \includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-density-time-1.pdf}
 \caption{\label{fig:beta-density-time}Temporal evolution of coefficient
-for log(Density)}
+for log(Density); dots are the point estimates and vertical lines are
+95\% confidence intervals. In yellow is the period after the declaration
+of the state of emergency, and in orange is the period when only
+essential activities were allowed.}
 \end{figure}
 
 Figure \ref{fig:beta-transit-time} shows the temporal evolution of the
@@ -788,7 +767,10 @@ coefficient for \(Transit\).
 \centering
 \includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-transit-time-1.pdf}
 \caption{\label{fig:beta-transit-time}Temporal evolution of coefficient
-for Transit}
+for Transit; dots are the point estimates and vertical lines are 95\%
+confidence intervals. In yellow is the period after the declaration of
+the state of emergency, and in orange is the period when only essential
+activities were allowed.}
 \end{figure}
 
 Figure \ref{fig:beta-humidity-time} shows the temporal evolution of the
@@ -798,7 +780,10 @@ coefficient for \(\log(Humidity)\).
 \centering
 \includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-humidity-time-1.pdf}
 \caption{\label{fig:beta-humidity-time}Temporal evolution of coefficient
-for log(Humidity)}
+for log(Humidity); dots are the point estimates and vertical lines are
+95\% confidence intervals. In yellow is the period after the declaration
+of the state of emergency, and in orange is the period when only
+essential activities were allowed.}
 \end{figure}
 
 Figure \ref{fig:beta-temperature-time} shows the temporal evolution of
@@ -808,7 +793,10 @@ the coefficient for \(\log(Temperature)\).
 \centering
 \includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-temperature-time-1.pdf}
 \caption{\label{fig:beta-temperature-time}Temporal evolution of
-coefficient for log(Temperature)}
+coefficient for log(Temperature); dots are the point estimates and
+vertical lines are 95\% confidence intervals. In yellow is the period
+after the declaration of the state of emergency, and in orange is the
+period when only essential activities were allowed.}
 \end{figure}
 
 Figure \ref{fig:beta-sunshine-time} shows the temporal evolution of the
@@ -818,74 +806,11 @@ coefficient for \(\log(Sunshine + 0.1)\).
 \centering
 \includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-sunshine-time-1.pdf}
 \caption{\label{fig:beta-sunshine-time}Temporal evolution of coefficient
-for log(Sunshine + 0.1)}
+for log(Sunshine + 0.1); dots are the point estimates and vertical lines
+are 95\% confidence intervals. In yellow is the period after the
+declaration of the state of emergency, and in orange is the period when
+only essential activities were allowed.}
 \end{figure}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{Wsur <-}\StringTok{ }\KeywordTok{as}\NormalTok{(spdep}\OperatorTok{::}\KeywordTok{listw2mat}\NormalTok{(listw), }\StringTok{"CsparseMatrix"}\NormalTok{)}
-\NormalTok{trsur <-}\StringTok{ }\NormalTok{spatialreg}\OperatorTok{::}\KeywordTok{trW}\NormalTok{(Wsur, }\DataTypeTok{type =} \StringTok{"MC"}\NormalTok{)}
-\NormalTok{impacts.sur.slm_lag11 <-}\StringTok{ }\KeywordTok{impactspsur}\NormalTok{(sur.slm_lag11, }\DataTypeTok{tr =}\NormalTok{ trsur,}\DataTypeTok{R =} \DecValTok{1000}\NormalTok{)}
-
-\NormalTok{impacts.sur.slm_lag11[[}\DecValTok{1}\NormalTok{]]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Impact measures (lag, trace):
-##                                       Direct   Indirect      Total
-## log(GDPpc)_1                       0.6736035  0.6395634  1.3131669
-## log(Older)_1                      -0.8002302 -0.7597912 -1.5600214
-## log(Density)_1                     0.1662437  0.1578427  0.3240864
-## Transit_1                          0.3413888  0.3241370  0.6655259
-## log(Humidity_lag11)_1             -1.5578465 -1.4791220 -3.0369685
-## log(Mean_Temp_lag11)_1            -1.7365494 -1.6487943 -3.3853437
-## log(Sunshine_Hours_lag11 + 0.1)_1 -0.2804735 -0.2663000 -0.5467734
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{impacts.sur.slm_lag11[[}\DecValTok{2}\NormalTok{]]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Impact measures (lag, trace):
-##                                        Direct    Indirect      Total
-## log(Density)_2                     0.06248795  0.04048188  0.1029698
-## Transit_2                          0.44006548  0.28508982  0.7251553
-## log(Humidity_lag11)_2             -1.06244958 -0.68829202 -1.7507416
-## log(Mean_Temp_lag11)_2            -1.47760442 -0.95724386 -2.4348483
-## log(Sunshine_Hours_lag11 + 0.1)_2 -0.19072953 -0.12356126 -0.3142908
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{impacts.sur.slm_lag11[[}\DecValTok{3}\NormalTok{]]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Impact measures (lag, trace):
-##                                        Direct    Indirect       Total
-## log(Density)_3                     0.02426235  0.01927572  0.04353807
-## Transit_3                          0.43033000  0.34188455  0.77221455
-## log(Humidity_lag11)_3             -0.97379005 -0.77364759 -1.74743764
-## log(Mean_Temp_lag11)_3            -1.39450981 -1.10789707 -2.50240689
-## log(Sunshine_Hours_lag11 + 0.1)_3 -0.09683377 -0.07693158 -0.17376535
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{myimpact <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DataTypeTok{ncol =} \DecValTok{5}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{29}\NormalTok{)}
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{2}\OperatorTok{:}\DecValTok{30}\NormalTok{)\{}
-\NormalTok{  myimpact[i}\DecValTok{-1}\NormalTok{,] <-}\StringTok{ }\NormalTok{impacts.sur.slm_lag11[[i]]}\OperatorTok{$}\NormalTok{res}\OperatorTok{$}\NormalTok{direct}
-\NormalTok{\}}
-\KeywordTok{matplot}\NormalTok{(myimpact, }\DataTypeTok{type=}\StringTok{'l'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/impacts-1.pdf}
 
 \hypertarget{concluding-remarks}{%
 \section{Concluding Remarks}\label{concluding-remarks}}

@@ -149,7 +149,7 @@ The last control variable is the presence of mass transit systems in a province.
 
 ## Data
 
-Our dataset includes information about the daily number of cases of COVID-19 reported in Spain at the provincial level (NUTIII in Eurostat terminology) for the period between March 13th and April 11th, inclusive. For our purposes, we consider positive cases reported, but excluding symptomatic cases diagnosed by a doctor without a Polymerase Chain Reaction (PCR) test. The Spanish National Government publishes periodic updates at the regional level (NUTII) and the information is also released at the provincial level as part of a collaborative project [**by whom?**]. This information is compiled from several sources, mainly the official web pages of the Spanish regional goverments. In addition, we consider two sets of explanatory variables. The first one, and the focus of this research, is set of two environmental variables, namely temperature and humidity, which are collected from official sources (i.g., AEMET, the state meteorology agency, and MAPA, the ministry of agriculture, fisheries, and food). The second set provides some relevant controls for multivariate analysis, and refers to economic and demographic attributes of the province (also collected from official sources, i.e., INE, the national statistics institute). Table \ref{tab:descriptive-statistics} shows the descriptive statistics and the provenance of the data.
+Our dataset includes information about the daily number of cases of COVID-19 reported in Spain at the provincial level (NUTIII in Eurostat terminology) for the period between March 13th and April 11th, inclusive. For our purposes, we consider positive cases reported, but excluding symptomatic cases diagnosed by a doctor without a Polymerase Chain Reaction (PCR) test. The Spanish National Government publishes periodic updates at the regional level (NUTII) and the information is also released at the provincial level as part of a collaborative project by geovoluntarios.com\footnote{https://www.geovoluntarios.org/}, ProvidencialData19\footnote{https://www.datoscovid.es/pages/providencialdata19}, and ESRI España. This information is compiled from several sources, mainly the official web pages of the Spanish regional goverments, as documented in Centro de Datos Covid-19\footnote{https://www.datoscovid.es/pages/sobre-la-iniciativa}. In addition, we consider two sets of explanatory variables. The first one, and the focus of this research, is set of two environmental variables, namely temperature and humidity, which are collected from official sources (i.g., *AEMET*, the state meteorology agency, and *MAPA*, the ministry of agriculture, fisheries, and food). The second set provides some relevant controls for multivariate analysis, and refers to economic and demographic attributes of the province (also collected from official sources, i.e., INE, the national statistics institute). Table \ref{tab:descriptive-statistics} shows the descriptive statistics and the provenance of the data.
 
 The spatial and temporal coverage of the data is as follows. Our dataset begins on March 13, which is the first date when every province had reported at least one case of COVID-19, and continues until April 11, for a period of 30 days. The unit of analysis is the province. Provinces are the equivalent of states, and are embedded in Autonomous Communities. As an example, Cataluña is an Autonomous Community and consists of four provinces, namely Barcelona, Gerona, Lerida, and Tarragona. The size of the provinces is relatively large, as seen in Table \ref{tab:descriptive-statistics}. The smallest province is $1,978.12km^2$ (this is smaller than Rhode Island in the US) and the largest province is $21,767.93km^2$ (slightly smaller than New Jersey in the US). While this is a relatively large degree of spatial aggregation, reporting on COVID-19 is inconsistent at smaller geographies, or cases are not reported at that level at all. The analysis must therefore be considered ecological.
 
@@ -204,7 +204,7 @@ data.frame(Variable = c("COVID-19 Incidence",
                   sd(provinces_spain$Density),
                   sd(covid19_spain$Mean_Temp),
                   sd(covid19_spain$Humidity)),
-           Source = c("Montera34",
+           Source = c("ProvidencialData19",
                       "INE",
                       "INE",
                       "INE",
@@ -220,7 +220,7 @@ data.frame(Variable = c("COVID-19 Incidence",
   #kable_styling(bootstrap_options = c("striped", "condensed")) %>%
   column_spec(2, width = "15em") %>%
   column_spec(7, width = "5em") %>%
-  footnote(general = c("Montera34: https://code.montera34.com:4443/numeroteca/covid19/-/blob/master/README_providencialdata19.md", 
+  footnote(general = c("ProvidencialData19: https://www.datoscovid.es/pages/providencialdata19", 
                        "INE (Instituto Nacional de Estadistica): https://www.ine.es/",
                        "AEMET (Agencia Estatal de Meteorologia): http://eportal.mapa.gob.es",
                        "MAPA (Ministerio de Agricultura, Pesca y Alimentacion): http://eportal.mapa.gob.es"))
@@ -284,20 +284,25 @@ Equation (\ref{eq:sur-sim}) can be rewriten in compact form:
 \label{eq:sur-sim-block}
 \end{equation}
 
-where $\bf{Y}$ is now a vector of dimension $NT \times 1$, $\bf{X}$ is a block-diagonal matrix $NT \times K$ 
-(with $K = \sum_t{k_t}$) and $\epsilon$ is a $NT \times 1$ vector. Using the Kronecker product notation ($\otimes$), the error matrix structure is expressed concisely as:
+\noindent where $\bf{Y}$ is now a vector of dimension $NT \times 1$, $\bf{X}$ is a block-diagonal matrix $NT \times K$ 
+(with $K = \sum_t{k_t}$) and $\epsilon$ is an $NT \times 1$ vector. Using the Kronecker product notation ($\otimes$), the error matrix structure is expressed concisely as:
 
 \begin{equation}
 E[\epsilon \epsilon']=\Sigma \otimes I_N ; \ \Sigma=(\sigma_{tt'})
 \end{equation}
 
 <!--
-  ![\begin{equation} y = X \beta + \epsilon \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20y%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5Cend%7Bequation%7D)
+![\begin{equation} y = X \beta + \epsilon \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20y%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5Cend%7Bequation%7D)
+  
+\noindent where ![$\bf{Y}$](https://render.githubusercontent.com/render/math?math=%24%5Cbf%7BY%7D%24) is now a vector of dimension ![$NT \times 1$](https://render.githubusercontent.com/render/math?math=%24NT%20%5Ctimes%201%24), ![$\bf{X}$](https://render.githubusercontent.com/render/math?math=%24%5Cbf%7BX%7D%24) is a block-diagonal matrix ![$NT \times K$](https://render.githubusercontent.com/render/math?math=%24NT%20%5Ctimes%20K%24) 
+(with ![$K = \sum_t{k_t}$](https://render.githubusercontent.com/render/math?math=%24K%20%3D%20%5Csum_t%7Bk_t%7D%24)) and ![$\epsilon$](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%24) is an ![$NT \times 1$](https://render.githubusercontent.com/render/math?math=%24NT%20%5Ctimes%201%24) vector. Using the Kronecker product notation (![$\otimes$](https://render.githubusercontent.com/render/math?math=%24%5Cotimes%24)), the error matrix structure is expressed concisely as:
+
+![\begin{equation} E\[\epsilon \epsilon'\]=\Sigma \otimes I_N ; \ \Sigma=(\sigma_{tt'}) \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20E%5B%5Cepsilon%20%5Cepsilon'%5D%3D%5CSigma%20%5Cotimes%20I_N%20%3B%20%5C%20%5CSigma%3D(%5Csigma_%7Btt'%7D)%20%5Cend%7Bequation%7D)
 -->
   
 As is the case with cross-sectional data, it is possible to test the residuals of Model (\ref{eq:sur-sim-block}) for spatial autocorrelation, and several tests have been developed to test the null hypothesis of spatial independence [see @Lopez2014spatial]. When the null hypothesis is rejected, several alternative specifications have been proposed to include spatial effects [@Anselin1988spatial; see also @Anselin2016estimation]. In this paper we consider a spatial SUR model that incorporates a spatial lag of the dependent variable as an explanatory factor. Spatial analytical approaches were used to understand contagion-difussion processes in the case of infectious disease in general [e.g., @Cliff1998detecting] and the 2003-2004 SARS outbreak in particular [e.g., @Meng2005understanding; @Cao2010spatio]. While we are mindful of the same caveat that the novel SARS-CoV2 may not follow the patterns of previous diseases, there is still evidence from the United States that COVID-19 displays spatial patterns that are consistent with a diffusion process [@Desjardins2020rapid]. For this reason, the spatial lag model is appropriate to model incidence of COVID-19 geographically, since it accounts for potential spatial patterns that result from a process of contagion, as explained next. 
 
-The stack expresion for the spatial lag SUR model (SUR-SLM) is as follows:
+The stack expresion for the SUR model with a spatially lagged dependent variable (SUR-SLM) is as follows:
 
 \begin{equation}
 \label{eq:sur-slm}
@@ -307,18 +312,18 @@ The stack expresion for the spatial lag SUR model (SUR-SLM) is as follows:
 \end{aligned}
 \end{equation}
 
-\noindent where $\bf{A} =I_{TN}-\bf{\Gamma} \otimes W$ with $\bf{\Gamma} = diag(\rho_1, \cdots, \rho_T)$.
+\noindent where $\bf{A} =I_{TN}-\bf{\Gamma} \otimes W$ is the spatially lagged dependent variable, and $\bf{\Gamma} = diag(\rho_1, \cdots, \rho_T)$.
 
 <!--
-  ![\begin{equation} \label{eq:sur-slm} \bf{A}y = X \beta + \epsilon \\ \epsilon =N(0,\Omega) \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbf%7BA%7Dy%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN(0%2C%5COmega)%20%5Cend%7Bequation%7D)
+![\begin{equation} \label{eq:sur-slm} \begin{aligned} \bf{AY} = \bf{X} \beta + \epsilon \\ \epsilon =N(0,\bf{\Sigma}) \end{aligned} \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbegin%7Baligned%7D%20%5Cbf%7BAY%7D%20%3D%20%5Cbf%7BX%7D%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN(0%2C%5Cbf%7B%5CSigma%7D)%20%5Cend%7Baligned%7D%20%5Cend%7Bequation%7D)
 
-\noindent where ![$A = I_{TN}-\bf{\Lambda} \otimes W$ with $\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)$](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20I_%7BTN%7D-%5Cbf%7B%5CLambda%7D%20%5Cotimes%20W%24%20with%20%24%5Cbf%7B%5CLambda%7D%20%3D%20diag(%5Clambda_1%2C%20%5Ccdots%2C%20%5Clambda_T)%24).
+\noindent where ![$\bf{A} =I_{TN}-\bf{\Gamma} \otimes W$](https://render.githubusercontent.com/render/math?math=%24%5Cbf%7BA%7D%20%3DI_%7BTN%7D-%5Cbf%7B%5CGamma%7D%20%5Cotimes%20W%24) is the spatially lagged dependent variable, and ![$\bf{\Gamma} = diag(\rho_1, \cdots, \rho_T)$](https://render.githubusercontent.com/render/math?math=%24%5Cbf%7B%5CGamma%7D%20%3D%20diag(%5Crho_1%2C%20%5Ccdots%2C%20%5Crho_T)%24).
 -->
                                                                                                                   
-This specification assumes that incidence in a province ($y_{st}$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\rho_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypothesis of identtical levels of spatial dependence ($\rho_i=\rho_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`. 
+This specification assumes that outcome ($y_{st}$) at location $s$ and time $t$ is partially determined by the weighted average ($Wy_{st}$) of the outcome in neighboring provinces, with neighborhood defined by matrix $W$ of spatial weights. In other words, the spatially lagged dependent variable represents a process of contagion, where the disease in neighboring provinces can spillover in a spatial way. The coefficients of the spatially lagged variable are estimated for each time period $\rho_t$ and identify the intensity and the sign of the contagion effect. It is possible test the null hypothesis of identical levels of spatial dependence ($\rho_i=\rho_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`. 
                                                                                                                 
 <!--
-This specification assumes that incidence in a province (![$y_st$](https://render.githubusercontent.com/render/math?math=%24y_st%24)) at time ![$t$](https://render.githubusercontent.com/render/math?math=%24t%24) is partially determined by the weighted average ![($Wy_{st}$)](https://render.githubusercontent.com/render/math?math=(%24Wy_%7Bst%7D%24)) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period ![$\lambda_t$](https://render.githubusercontent.com/render/math?math=%24%5Clambda_t%24) and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence (![$\lambda_i=\lambda_j, \forall i,j$](https://render.githubusercontent.com/render/math?math=%24%5Clambda_i%3D%5Clambda_j%2C%20%5Cforall%20i%2Cj%24)). The correspond Wald test is available in the `R` package `spsur`. 
+This specification assumes that outcome (![$y_{st}$](https://render.githubusercontent.com/render/math?math=%24y_%7Bst%7D%24)) at location ![$s$](https://render.githubusercontent.com/render/math?math=%24s%24) and time ![$t$](https://render.githubusercontent.com/render/math?math=%24t%24) is partially determined by the weighted average (![$Wy_{st}$](https://render.githubusercontent.com/render/math?math=%24Wy_%7Bst%7D%24)) of the outcome in neighboring provinces, with neighborhood defined by matrix ![$W$](https://render.githubusercontent.com/render/math?math=%24W%24) of spatial weights. In other words, the spatially lagged dependent variable represents a process of contagion, where the disease in neighboring provinces can spillover in a spatial way. The coefficients of the spatially lagged variable are estimated for each time period ![$\rho_t$](https://render.githubusercontent.com/render/math?math=%24%5Crho_t%24) and identify the intensity and the sign of the contagion effect. It is possible test the null hypothesis of identical levels of spatial dependence (![$\rho_i=\rho_j, \forall i,j$](https://render.githubusercontent.com/render/math?math=%24%5Crho_i%3D%5Crho_j%2C%20%5Cforall%20i%2Cj%24)). The correspond Wald test is available in the `R` package `spsur`. 
 -->
   
 The SUR-SLM model can be estimated using maximum likelihood (@Lopez2014spatial) or instrumental variables (@Minguez2019). Another alternative methodologies could be use. By example, a dynamic spatial panel methodology with fixed spatial an temporal effects (e.g. Elhorst 2014, Cap. 4), but those models don't take account correlation between errors. Therefore, a spatial SUR approach is more reasonable for our purpose.
@@ -592,7 +597,10 @@ covid19_spain %>%
             Humidity_lag11w = cor(log(Humidity_lag11w), log(Incidence)),
             Mean_Temp_lag8 = cor(log(Mean_Temp_lag8), log(Incidence)),
             Mean_Temp_lag11 = cor(log(Mean_Temp_lag11), log(Incidence)),
-            Mean_Temp_lag11w = cor(log(Mean_Temp_lag11w), log(Incidence))) %>%
+            Mean_Temp_lag11w = cor(log(Mean_Temp_lag11w), log(Incidence)),
+            Sunshine_Hours_lag8 = cor(log(Sunshine_Hours_lag8 + 0.1), log(Incidence)),
+            Sunshine_Hours_lag11 = cor(log(Sunshine_Hours_lag11 + 0.1), log(Incidence)),
+            Sunshine_Hours_lag11w = cor(log(Sunshine_Hours_lag11w + 0.1), log(Incidence))) %>%
   select(-Date) %>%
   pivot_longer(everything(), names_to = "Variable", values_to = "Correlation") %>%
   mutate(Variable = factor(Variable,
@@ -604,7 +612,10 @@ covid19_spain %>%
                                       "Humidity_lag11w",
                                       "Mean_Temp_lag8",
                                       "Mean_Temp_lag11",
-                                      "Mean_Temp_lag11w"))) %>%
+                                      "Mean_Temp_lag11w",
+                                      "Sunshine_Hours_lag8",
+                                      "Sunshine_Hours_lag11",
+                                      "Sunshine_Hours_lag11w"))) %>%
   ggplot(aes(x = Variable, y = Correlation)) +
   geom_boxplot() +
   theme_tufte() +
@@ -864,141 +875,126 @@ Discussion
   
 Figure \ref{fig:delta-time} shows the temporal evolution of the spatial autocorrelation coefficient ($\lambda$).
 
-```{r delta-time, cache = TRUE, echo=FALSE, fig.cap="\\label{fig:delta-time}Temporal evolution of spatial autocorrelation coefficient"}
+```{r delta-time, cache = TRUE, echo=FALSE, fig.cap="\\label{fig:delta-time}Temporal evolution of the spatial autocorrelation coefficient; dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed."}
 data.frame(Date = seq(ymd("2020-03-13"), 
                       ymd("2020-04-11"), 
                       by = "days"),
-           Deltas = sur.slm_lag11$deltas,
-           tvalue = sur.slm_lag11$deltas/sur.slm_lag11$deltas.se) %>%
-  mutate(sig = case_when(abs(tvalue) >= qnorm(0.95, mean = 0, sd = 1) ~ "p <= 0.05",
-                         abs(tvalue) >= qnorm(0.90, mean = 0, sd = 1) ~ "p <= 0.10",
+           Beta = sur.slm_lag11$deltas,
+           sd = sur.slm_lag11$deltas.se) %>%
+  mutate(zscore = Beta/sd,
+         pval = 2 * pnorm(-abs(zscore)),
+           CI95low = Beta - qnorm(0.975, mean = 0, sd = 1) * sd,
+           CI95up = Beta + qnorm(0.975, mean = 0, sd = 1) * sd,
+           CI90low = Beta - qnorm(0.95, mean = 0, sd = 1) * sd,
+           CI90up = Beta + qnorm(0.95, mean = 0, sd = 1) * sd,
+         pval = case_when(pval <= 0.05 ~ "p <= 0.05",
+                          pval > 0.05 & pval <= 0.10 ~ "0.05 < p <= 0.10",
                          TRUE ~ "p > 0.10")) %>%
-  ggplot(aes(x = Date, y = Deltas, color = sig)) +
-  geom_point(size = 2) +
-  scale_color_manual(values = c("p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "black")) +  geom_hline(yintercept = 0) +
-  geom_vline(xintercept = as_date("2020-03-16"), color = "red") +
-  theme_tufte()
+  ggplot(aes(x = Date, y = Beta, color = pval)) +
+  geom_rect(xmin = as_date("2020-03-14"), xmax = as_date("2020-03-30"),
+              ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "yellow", color = NA) +
+  geom_rect(xmin = as_date("2020-03-30"), xmax = as_date("2020-04-12"),
+            ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "orange", color = NA) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(x = Date,
+                     ymin = CI90low,
+                    ymax = CI90up), 
+                width = 0.5) +
+  geom_linerange(aes(x = Date,
+                     ymin = CI95low,
+                    ymax = CI95up),
+                 size = 0.5) +
+  scale_color_manual(values = c("0.05 < p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "gray")) +  
+  geom_hline(yintercept = 0) +
+  theme_bw()
+```
+```{r function-for-plotting-coefficients, include=FALSE}
+# Define a function for plotting the coefficients over time including their confidence intervals and significance
+plot_coeff <- function(model = model, n = n){
+  data.frame(Date = seq(ymd("2020-03-13"), 
+                        ymd("2020-04-11"), 
+                        by = "days"),
+             Beta = matrix(model$coefficients[-c(2,3)],ncol = T)[n,],
+             sd = matrix(model$rest.se[-c(2,3)], ncol = T)[n,]) %>%
+    mutate(zscore = Beta/sd,
+           pval = 2 * pnorm(-abs(zscore)),
+           CI95low = Beta - qnorm(0.975, mean = 0, sd = 1) * sd,
+           CI95up = Beta + qnorm(0.975, mean = 0, sd = 1) * sd,
+           CI90low = Beta - qnorm(0.95, mean = 0, sd = 1) * sd,
+           CI90up = Beta + qnorm(0.95, mean = 0, sd = 1) * sd,
+           pval = case_when(pval <= 0.05 ~ "p <= 0.05",
+                            pval > 0.05 & pval <= 0.10 ~ "0.05 < p <= 0.10",
+                            TRUE ~ "p > 0.10")) %>%
+    ggplot(aes(x = Date, y = Beta, color = pval)) +
+    geom_rect(xmin = as_date("2020-03-14"), xmax = as_date("2020-03-30"),
+              ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "yellow", color = NA) +
+    geom_rect(xmin = as_date("2020-03-30"), xmax = as_date("2020-04-12"),
+              ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "orange", color = NA) +
+    geom_point(size = 3) +
+    geom_errorbar(aes(x = Date,
+                      ymin = CI90low,
+                      ymax = CI90up), 
+                  width = 0.5) +
+    geom_linerange(aes(x = Date,
+                       ymin = CI95low,
+                       ymax = CI95up),
+                   size = 0.5) +
+    scale_color_manual(values = c("0.05 < p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "gray")) +  
+    geom_hline(yintercept = 0) +
+    theme_bw()
+  }
 ```
 
 Figure \ref{fig:beta-intercept-time} shows the temporal evolution of the intercept.
 
-```{r beta-intercept-time, cache = TRUE, echo=FALSE, fig.cap="\\label{fig:beta-intercept-time}Temporal evolution of intercept"}
+```{r beta-intercept-time, cache = TRUE, echo=FALSE, fig.cap="\\label{fig:beta-intercept-time}Temporal evolution of intercept; dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed."}
 #Intercept
-n = 1
-data.frame(Date = seq(ymd("2020-03-13"), 
-                      ymd("2020-04-11"), 
-                      by = "days"),
-           Beta = matrix(sur.slm_lag11$coefficients[-c(2,3)],ncol = T)[n,],
-           tvalue = matrix(sur.slm_lag11$coefficients[-c(2,3)]/sur.slm_lag11$rest.se[-c(2,3)], ncol = T)[n,]) %>%
-  mutate(sig = case_when(abs(tvalue) >= qnorm(0.95, mean = 0, sd = 1) ~ "p <= 0.05",
-                         abs(tvalue) >= qnorm(0.90, mean = 0, sd = 1) ~ "p <= 0.10",
-                         TRUE ~ "p > 0.10")) %>%
-  ggplot(aes(x = Date, y = Beta, color = sig)) +
-  geom_point(size = 2) +
-  scale_color_manual(values = c("p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "black")) +  geom_hline(yintercept = 0) +
-  geom_vline(xintercept = as_date("2020-03-16"), color = "red") +
-  theme_tufte()
+plot_coeff(model = sur.slm_lag11, n = 1) + 
+  ylab("Beta (Intercept)")
 ```
 
 Figure \ref{fig:beta-density-time} shows the temporal evolution of the coefficient for $\log(Density)$.
 
-```{r beta-density-time, echo=FALSE, , fig.cap="\\label{fig:beta-density-time}Temporal evolution of coefficient for log(Density)", cache = TRUE}
+```{r beta-density-time, echo=FALSE, , fig.cap="\\label{fig:beta-density-time}Temporal evolution of coefficient for log(Density); dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
 #Density:
-n = 2 # Although this is the fourth coefficient, after intercept, log(GDPpc), and log(Older), we start at 2 here because the two constrained coefficients are removed from the matrix of coefficients 
-data.frame(Date = seq(ymd("2020-03-13"), 
-                      ymd("2020-04-11"), 
-                      by = "days"),
-           Beta = matrix(sur.slm_lag11$coefficients[-c(2,3)],ncol = T)[n,],
-           tvalue = matrix(sur.slm_lag11$coefficients[-c(2,3)]/sur.slm_lag11$rest.se[-c(2,3)], ncol = T)[n,]) %>%
-  mutate(sig = case_when(abs(tvalue) >= qnorm(0.95, mean = 0, sd = 1) ~ "p <= 0.05",
-                         abs(tvalue) >= qnorm(0.90, mean = 0, sd = 1) ~ "p <= 0.10",
-                         TRUE ~ "p > 0.10")) %>%
-  ggplot(aes(x = Date, y = Beta, color = sig)) +
-  geom_point(size = 2) +
-  scale_color_manual(values = c("p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "black")) +
-  geom_hline(yintercept = 0) +
-  geom_vline(xintercept = as_date("2020-03-16"), color = "red") +
-  theme_tufte()
+plot_coeff(model = sur.slm_lag11, n = 2) + 
+  ylab("Beta (log(Density))")
 ```
 
 Figure \ref{fig:beta-transit-time} shows the temporal evolution of the coefficient for $Transit$.
 
-```{r beta-transit-time, echo=FALSE, fig.cap="\\label{fig:beta-transit-time}Temporal evolution of coefficient for Transit", cache = TRUE}
-n = 3
-data.frame(Date = seq(ymd("2020-03-13"), 
-                      ymd("2020-04-11"), 
-                      by = "days"),
-           Beta = matrix(sur.slm_lag11$coefficients[-c(2,3)],ncol = T)[n,],
-           tvalue = matrix(sur.slm_lag11$coefficients[-c(2,3)]/sur.slm_lag11$rest.se[-c(2,3)], ncol = T)[n,]) %>%
-  mutate(sig = case_when(abs(tvalue) >= qnorm(0.95, mean = 0, sd = 1) ~ "p <= 0.05",
-                         abs(tvalue) >= qnorm(0.90, mean = 0, sd = 1) ~ "p <= 0.10",
-                         TRUE ~ "p > 0.10")) %>%
-  ggplot(aes(x = Date, y = Beta, color = sig)) +
-  geom_point(size = 2) +
-  scale_color_manual(values = c("p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "black")) +  geom_hline(yintercept = 0) +
-  geom_vline(xintercept = as_date("2020-03-16"), color = "red") +
-  theme_tufte()
+```{r beta-transit-time, echo=FALSE, fig.cap="\\label{fig:beta-transit-time}Temporal evolution of coefficient for Transit; dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
+# Transit
+plot_coeff(model = sur.slm_lag11, n = 3) + 
+  ylab("Beta (Transit)")
 ```
 
 
 Figure \ref{fig:beta-humidity-time} shows the temporal evolution of the coefficient for $\log(Humidity)$.
 
-```{r beta-humidity-time, echo=FALSE, fig.cap="\\label{fig:beta-humidity-time}Temporal evolution of coefficient for log(Humidity)", cache = TRUE}
-n = 4
-data.frame(Date = seq(ymd("2020-03-13"), 
-                      ymd("2020-04-11"), 
-                      by = "days"),
-           Beta = matrix(sur.slm_lag11$coefficients[-c(2,3)],ncol = T)[n,],
-           tvalue = matrix(sur.slm_lag11$coefficients[-c(2,3)]/sur.slm_lag11$rest.se[-c(2,3)], ncol = T)[n,]) %>%
-  mutate(sig = case_when(abs(tvalue) >= qnorm(0.95, mean = 0, sd = 1) ~ "p <= 0.05",
-                         abs(tvalue) >= qnorm(0.90, mean = 0, sd = 1) ~ "p <= 0.10",
-                         TRUE ~ "p > 0.10")) %>%
-  ggplot(aes(x = Date, y = Beta, color = sig)) +
-  geom_point(size = 2) +
-  scale_color_manual(values = c("p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "black")) +  geom_hline(yintercept = 0) +
-  geom_vline(xintercept = as_date("2020-03-16"), color = "red") +
-  theme_tufte()
+```{r beta-humidity-time, echo=FALSE, fig.cap="\\label{fig:beta-humidity-time}Temporal evolution of coefficient for log(Humidity); dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
+# Humidity:
+plot_coeff(model = sur.slm_lag11, n = 4) + 
+  ylab("Beta (log(Humidity))")
 ```
 
 Figure \ref{fig:beta-temperature-time} shows the temporal evolution of the coefficient for $\log(Temperature)$.
 
-```{r beta-temperature-time, echo=FALSE, fig.cap="\\label{fig:beta-temperature-time}Temporal evolution of coefficient for log(Temperature)", cache = TRUE}
-n = 5
-data.frame(Date = seq(ymd("2020-03-13"), 
-                      ymd("2020-04-11"), 
-                      by = "days"),
-           Beta = matrix(sur.slm_lag11$coefficients[-c(2,3)],ncol = T)[n,],
-           tvalue = matrix(sur.slm_lag11$coefficients[-c(2,3)]/sur.slm_lag11$rest.se[-c(2,3)], ncol = T)[n,]) %>%
-  mutate(sig = case_when(abs(tvalue) >= qnorm(0.95, mean = 0, sd = 1) ~ "p <= 0.05",
-                         abs(tvalue) >= qnorm(0.90, mean = 0, sd = 1) ~ "p <= 0.10",
-                         TRUE ~ "p > 0.10")) %>%
-  ggplot(aes(x = Date, y = Beta, color = sig)) +
-  geom_point(size = 2) +
-  scale_color_manual(values = c("p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "black")) +  geom_hline(yintercept = 0) +
-  geom_vline(xintercept = as_date("2020-03-16"), color = "red") +
-  theme_tufte()
+```{r beta-temperature-time, echo=FALSE, fig.cap="\\label{fig:beta-temperature-time}Temporal evolution of coefficient for log(Temperature); dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
+# Temperature
+plot_coeff(model = sur.slm_lag11, n = 5) + 
+  ylab("Beta (log(Temperature))")
 ```
 
 Figure \ref{fig:beta-sunshine-time} shows the temporal evolution of the coefficient for $\log(Sunshine + 0.1)$.
 
-```{r beta-sunshine-time, echo=FALSE, fig.cap="\\label{fig:beta-sunshine-time}Temporal evolution of coefficient for log(Sunshine + 0.1)", cache = TRUE}
-n = 6
-data.frame(Date = seq(ymd("2020-03-13"), 
-                      ymd("2020-04-11"), 
-                      by = "days"),
-           Beta = matrix(sur.slm_lag11$coefficients[-c(2,3)],ncol = T)[n,],
-           tvalue = matrix(sur.slm_lag11$coefficients[-c(2,3)]/sur.slm_lag11$rest.se[-c(2,3)], ncol = T)[n,]) %>%
-  mutate(sig = case_when(abs(tvalue) >= qnorm(0.95, mean = 0, sd = 1) ~ "p <= 0.05",
-                         abs(tvalue) >= qnorm(0.90, mean = 0, sd = 1) ~ "p <= 0.10",
-                         TRUE ~ "p > 0.10")) %>%
-  ggplot(aes(x = Date, y = Beta, color = sig)) +
-  geom_point(size = 2) +
-  scale_color_manual(values = c("p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "black")) +  geom_hline(yintercept = 0) +
-  geom_vline(xintercept = as_date("2020-03-16"), color = "red") +
-  theme_tufte()
+```{r beta-sunshine-time, echo=FALSE, fig.cap="\\label{fig:beta-sunshine-time}Temporal evolution of coefficient for log(Sunshine + 0.1); dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
+# Sunshine
+plot_coeff(model = sur.slm_lag11, n = 6) + 
+  ylab("Beta (log(Sunshine + 0.1))")
 ```
 
-```{r impacts, echo=FALSE}
+```{r impacts, echo=FALSE, include=FALSE}
 Wsur <- as(spdep::listw2mat(listw), "CsparseMatrix")
 trsur <- spatialreg::trW(Wsur, type = "MC")
 impacts.sur.slm_lag11 <- impactspsur(sur.slm_lag11, tr = trsur,R = 1000)
@@ -1011,13 +1007,14 @@ myimpact <- matrix(0,ncol = 5, nrow = 29)
 for (i in 2:30){
   myimpact[i-1,] <- impacts.sur.slm_lag11[[i]]$res$direct
 }
+
 matplot(myimpact, type='l')
 
 ```
 
 Concluding Remarks
 ===================
-  
+
 More words go here.
 
 Limitaciones
