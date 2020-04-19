@@ -39,6 +39,9 @@ bibliography: References.bib
 csl: elsevier-harvard.csl
 output: rticles::elsevier_article
 ---
+
+<!-- load cache -->
+<!-- whoppeR::load_knitr_cache('/Users/fernandoair/Dropbox/COVID-19/covid19-environmental-correlates/Environmental-Correlates-of-COVID19-Spain/Environmental-Correlates-of-COVID19-Spain_cache/latex/') -->
   
 ```{r load-packages, include=FALSE}
 # The data package needs to be installed from github repository:
@@ -570,7 +573,13 @@ p3 <- ggplot(data = provinces_spain) +
   geom_sf(aes(fill = Quantile),color = "black",size=.2) +
   theme_bw(base_size=6) +
   scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
-gridExtra::grid.arrange(p1,p2,p3,nrow=2)
+
+provinces_spain$M.Transit<- as.factor(provinces_spain$Transit)
+p4 <- ggplot(data = provinces_spain) +
+  geom_sf(aes(fill = M.Transit),color = "black",size=.2) +
+  theme_bw(base_size=6) +
+  scale_fill_manual(values=c("white", "gray1"))
+gridExtra::grid.arrange(p1,p2,p3,p4,nrow=2)
 ```
 
 
@@ -994,6 +1003,23 @@ data.frame(Date = seq(ymd("2020-03-13"),
   theme_tufte()
 ```
 
+```{r impacts}
+Wsur <- as(spdep::listw2mat(listw), "CsparseMatrix")
+trsur <- spatialreg::trW(Wsur, type = "MC")
+impacts.sur.slm_lag11 <- impactspsur(sur.slm_lag11, tr = trsur,R = 1000)
+
+impacts.sur.slm_lag11[[1]]
+impacts.sur.slm_lag11[[2]]
+impacts.sur.slm_lag11[[3]]
+
+myimpact <- matrix(0,ncol = 5, nrow = 29)
+for (i in 2:30){
+  myimpact[i-1,] <- impacts.sur.slm_lag11[[i]]$res$direct
+}
+matplot(myimpact, type='l')
+
+```
+
 Concluding Remarks
 ===================
   
@@ -1026,6 +1052,8 @@ Limitaciones
 * Las estaciones meteorológicas para la obtencion de datos climáticos has sido elegidas aleatoriamente (una para cada provincia). otra seleccion puede dar otros resultados. AQUI SE PODRÍA HACER EL ESFUERZO DE CONSIDERARLAS TODAS (1000) Y CALCULAR LA MEDIA DE LAS VARAIBLES POR PROVINCIA
 
 *IDEM para la humedad. idem para sunshine 
+
+* HACE FALTA INCLUIR UN PLOT CON LAS CORRELACIONES DE LOS RESIDUOS PARA DARLE RELEVANCIA A LA ESTIMACION SUR
 
 Acknowledgments {#acknowledgments .unnumbered}
 ==========

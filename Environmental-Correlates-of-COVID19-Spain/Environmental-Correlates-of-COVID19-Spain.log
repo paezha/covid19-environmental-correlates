@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.18)  19 APR 2020 12:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.18)  19 APR 2020 17:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -252,6 +252,29 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks25
 \inpenc@posthook=\toks26
+) (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
+
+(/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+) (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.st
+y
+Package: fancyvrb 2020/01/13 v3.5 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count271
+\FV@InFile=\read2
+\FV@TabBox=\box52
+\c@FancyVerbLine=\count272
+\FV@StepNumber=\count273
+\FV@OutFile=\write4
+) (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip56
+\fb@frw=\dimen168
+\fb@frh=\dimen169
+\FrameRule=\dimen170
+\FrameSep=\dimen171
 ) (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.st
 y
 Package: hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
@@ -295,9 +318,9 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 y
 Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
 )
-\@linkdim=\dimen168
-\Hy@linkcounter=\count271
-\Hy@pagecounter=\count272
+\@linkdim=\dimen172
+\Hy@linkcounter=\count274
+\Hy@pagecounter=\count275
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2020/01/14 v7.00d Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -310,7 +333,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 y
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count273
+\Hy@SavedSpaceFactor=\count276
 Package hyperref Info: Option `unicode' set `true' on input line 4421.
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2020/01/14 v7.00d Hyperref: PDF Unicode definition (HO)
@@ -324,9 +347,9 @@ Package hyperref Info: Plain pages OFF on input line 4562.
 Package hyperref Info: Backreferencing OFF on input line 4567.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4800.
-\c@Hy@tempcnt=\count274
+\c@Hy@tempcnt=\count277
 LaTeX Info: Redefining \url on input line 5159.
-\XeTeXLinkMargin=\dimen169
+\XeTeXLinkMargin=\dimen173
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
@@ -335,9 +358,9 @@ c.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count275
-\Field@Width=\dimen170
-\Fld@charsize=\dimen171
+\Fld@menulength=\count278
+\Field@Width=\dimen174
+\Fld@charsize=\dimen175
 Package hyperref Info: Hyper figures OFF on input line 6430.
 Package hyperref Info: Link nesting OFF on input line 6435.
 Package hyperref Info: Hyper index ON on input line 6438.
@@ -352,9 +375,9 @@ LaTeX Info: Redefining \pageref on input line 6504.
 y
 Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
 )
-\Hy@abspage=\count276
-\c@Item=\count277
-\c@Hfootnote=\count278
+\Hy@abspage=\count279
+\c@Item=\count280
+\c@Hfootnote=\count281
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
@@ -365,8 +388,8 @@ y
 Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
 Package atveryend Info: \enddocument detected (standard20110627).
 )
-\Fld@listcount=\count279
-\c@bookmark@seq@number=\count280
+\Fld@listcount=\count282
+\c@bookmark@seq@number=\count283
 
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfi
 lecheck.sty
@@ -379,74 +402,66 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 86.
 )
-\Hy@SectionHShift=\skip56
+\Hy@SectionHShift=\skip57
 )
-Package hyperref Info: Option `breaklinks' set `true' on input line 60.
+Package hyperref Info: Option `breaklinks' set `true' on input line 100.
 
 Package hyperref Warning: Option `bookmarks' has already been used,
-(hyperref)                setting the option has no effect on input line 60.
+(hyperref)                setting the option has no effect on input line 100.
 
-Package hyperref Info: Option `colorlinks' set `false' on input line 60.
+Package hyperref Info: Option `colorlinks' set `false' on input line 100.
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
-\LTleft=\skip57
-\LTright=\skip58
-\LTpre=\skip59
-\LTpost=\skip60
-\LTchunksize=\count281
-\LTcapwidth=\dimen172
-\LT@head=\box52
-\LT@firsthead=\box53
-\LT@foot=\box54
-\LT@lastfoot=\box55
-\LT@cols=\count282
-\LT@rows=\count283
-\c@LT@tables=\count284
-\c@LT@chunks=\count285
+\LTleft=\skip58
+\LTright=\skip59
+\LTpre=\skip60
+\LTpost=\skip61
+\LTchunksize=\count284
+\LTcapwidth=\dimen176
+\LT@head=\box53
+\LT@firsthead=\box54
+\LT@foot=\box55
+\LT@lastfoot=\box56
+\LT@cols=\count285
+\LT@rows=\count286
+\c@LT@tables=\count287
+\c@LT@chunks=\count288
 \LT@p@ftn=\toks27
 ) (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
 Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
-\col@sep=\dimen173
-\ar@mcellbox=\box56
-\extrarowheight=\dimen174
+\col@sep=\dimen177
+\ar@mcellbox=\box57
+\extrarowheight=\dimen178
 \NC@list=\toks28
-\extratabsurround=\skip61
-\backup@length=\skip62
-\ar@cellbox=\box57
+\extratabsurround=\skip62
+\backup@length=\skip63
+\ar@cellbox=\box58
 ) (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.st
 y
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
-\multirow@colwidth=\skip63
-\multirow@cntb=\count286
-\multirow@dima=\skip64
-\bigstrutjot=\dimen175
+\multirow@colwidth=\skip64
+\multirow@cntb=\count289
+\multirow@dima=\skip65
+\bigstrutjot=\dimen179
 ) (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen176
-\WF@size=\dimen177
-\c@WF@wrappedlines=\count287
-\WF@box=\box58
+\wrapoverhang=\dimen180
+\WF@size=\dimen181
+\c@WF@wrappedlines=\count290
+\WF@box=\box59
 \WF@everypar=\toks29
 Package: wrapfig 2003/01/31  v 3.6
 ) (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count288
+\c@float@type=\count291
 \float@exts=\toks30
-\float@box=\box59
+\float@box=\box60
 \@float@everytoks=\toks31
-\@floatcapt=\box60
+\@floatcapt=\box61
 ) (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.st
 y
 Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
-(/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
-
-(/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: pdftex.def on input line 147.
-)
 \everycr=\toks32
-\minrowclearance=\skip65
+\minrowclearance=\skip66
 )
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape.st
 y
@@ -459,38 +474,38 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box61
-\sift@deathcycles=\count289
-\@vwid@loff=\dimen178
-\@vwid@roff=\dimen179
+\@vwid@box=\box62
+\sift@deathcycles=\count292
+\@vwid@loff=\dimen182
+\@vwid@roff=\dimen183
 )
-\c@taburow=\count290
-\tabu@nbcols=\count291
-\tabu@cnt=\count292
-\tabu@Xcol=\count293
-\tabu@alloc=\count294
-\tabu@nested=\count295
-\tabu@target=\dimen180
-\tabu@spreadtarget=\dimen181
-\tabu@naturalX=\dimen182
-\tabucolX=\dimen183
-\tabu@Xsum=\dimen184
-\extrarowdepth=\dimen185
-\abovetabulinesep=\dimen186
-\belowtabulinesep=\dimen187
-\tabustrutrule=\dimen188
+\c@taburow=\count293
+\tabu@nbcols=\count294
+\tabu@cnt=\count295
+\tabu@Xcol=\count296
+\tabu@alloc=\count297
+\tabu@nested=\count298
+\tabu@target=\dimen184
+\tabu@spreadtarget=\dimen185
+\tabu@naturalX=\dimen186
+\tabucolX=\dimen187
+\tabu@Xsum=\dimen188
+\extrarowdepth=\dimen189
+\abovetabulinesep=\dimen190
+\belowtabulinesep=\dimen191
+\tabustrutrule=\dimen192
 \tabu@thebody=\toks33
 \tabu@footnotes=\toks34
-\tabu@box=\box62
-\tabu@arstrutbox=\box63
-\tabu@hleads=\box64
-\tabu@vleads=\box65
-\tabu@cellskip=\skip66
+\tabu@box=\box63
+\tabu@arstrutbox=\box64
+\tabu@hleads=\box65
+\tabu@vleads=\box66
+\tabu@cellskip=\skip67
 )
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/threeparttable/threepa
 rttable.sty
 Package: threeparttable 2003/06/13  v 3.0
-\@tempboxb=\box66
+\@tempboxb=\box67
 )
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/threeparttablex/threep
 arttablex.sty
@@ -502,23 +517,23 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\TPTL@width=\skip67
+\TPTL@width=\skip68
 ) (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box67
-\UL@hyphenbox=\box68
-\UL@skip=\skip68
+\UL@box=\box68
+\UL@hyphenbox=\box69
+\UL@skip=\skip69
 \UL@hook=\toks35
-\UL@height=\dimen189
-\UL@pe=\count296
-\UL@pixel=\dimen190
-\ULC@box=\box69
+\UL@height=\dimen193
+\UL@pe=\count299
+\UL@pixel=\dimen194
+\ULC@box=\box70
 Package: ulem 2019/11/18
-\ULdepth=\dimen191
+\ULdepth=\dimen195
 ) (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/makecell/makecell.st
 y
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen192
-\c@nlinenum=\count297
+\rotheadsize=\dimen196
+\c@nlinenum=\count300
 \TeXr@lab=\toks36
 ) (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -541,8 +556,8 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pd
 fmode.def
 File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count298
-\l__pdf_internal_box=\box70
+\l__kernel_color_stack_int=\count301
+\l__pdf_internal_box=\box71
 ) (./Environmental-Correlates-of-COVID19-Spain.aux
 
 LaTeX Warning: Label `tab:descriptive-statistics' multiply defined.
@@ -553,26 +568,26 @@ LaTeX Warning: Label `tab:summary-best-model' multiply defined.
 )
 \openout1 = `Environmental-Correlates-of-COVID19-Spain.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 86
-.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 12
+6.
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -587,8 +602,8 @@ ys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box71
-Package hyperref Info: Link coloring OFF on input line 86.
+\AtBeginShipoutBox=\box72
+Package hyperref Info: Link coloring OFF on input line 126.
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
@@ -598,83 +613,89 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 tlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count299
+\c@section@level=\count302
 )
-LaTeX Info: Redefining \ref on input line 86.
-LaTeX Info: Redefining \pageref on input line 86.
-LaTeX Info: Redefining \nameref on input line 86.
+LaTeX Info: Redefining \ref on input line 126.
+LaTeX Info: Redefining \pageref on input line 126.
+LaTeX Info: Redefining \nameref on input line 126.
 (./Environmental-Correlates-of-COVID19-Spain.out) (./Environmental-Correlates-o
 f-COVID19-Spain.out)
-\@outlinefile=\write4
-\openout4 = `Environmental-Correlates-of-COVID19-Spain.out'.
+\@outlinefile=\write5
+\openout5 = `Environmental-Correlates-of-COVID19-Spain.out'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--139
+Underfull \hbox (badness 10000) in paragraph at lines 153--179
 
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-41.
+81.
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-41.
+81.
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-141.
+181.
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-141.
+181.
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 141.
+(Font)              <8> on input line 181.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 141.
+(Font)              <6> on input line 181.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 141.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 141
+(Font)              <5> on input line 181.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 181
 .
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 141
+LaTeX Font Info:    Trying to load font information for U+msb on input line 181
 .
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-41.
+81.
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 141.
+(Font)              <10> on input line 181.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 141.
+(Font)              <7> on input line 181.
 [1
 
 
 {/Users/fernandoair/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.ma
 p}] [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 291--291
+Underfull \hbox (badness 10000) in paragraph at lines 331--331
 [][][]\T1/lmr/m/n/8 https://www.mitma.gob.es/ministerio/covid-19/evolucion-movi
 lidad-big-
  []
 
 [4]
 
-LaTeX Warning: Reference `plotfer1' on page 5 undefined on input line 320.
+LaTeX Warning: Reference `plotfer1' on page 5 undefined on input line 361.
+
+
+Overfull \hbox (5.41551pt too wide) in paragraph at lines 368--377
+[]\T1/lmr/m/n/10 The per capita GDP (GDPpc) also can gen-er-ate dif-fer-ences b
+e-tween provinces.
+ []
 
 [5]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
-05.
+53.
 (/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [6pdfTeX warning (ext4): destination with the same identifier (name{table.1})
@@ -682,110 +703,83 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.428 
+l.476 
       ] [7] [8]
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/weekly-average-in
-cidence-map-1.pdf, id=139, 436.63126pt x 643.40375pt>
+cidence-map-1.pdf, id=138, 436.63126pt x 643.40375pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/weekly-avera
 ge-incidence-map-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/weekly-averag
 e-incidence-map-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/weekly-average-incidence-map-1.pdf  used on input line 593.
+-latex/weekly-average-incidence-map-1.pdf  used on input line 641.
 (pdftex.def)             Requested size: 345.0pt x 508.38156pt.
 
-LaTeX Warning: Float too large for page by 1.38156pt on input line 597.
+LaTeX Warning: Float too large for page by 1.38156pt on input line 645.
 
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/descriptives-temp
-erature-1.pdf, id=141, 454.69875pt x 491.8375pt>
+erature-1.pdf, id=140, 454.69875pt x 491.8375pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/descriptives
 -temperature-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/descriptives-
 temperature-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/descriptives-temperature-1.pdf  used on input line 615.
+-latex/descriptives-temperature-1.pdf  used on input line 663.
 (pdftex.def)             Requested size: 345.0pt x 373.18498pt.
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/control-map-1.pdf
-, id=142, 207.77625pt x 630.355pt>
+, id=141, 207.77625pt x 630.355pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/control-map-
 1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/control-map-1
 .pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/control-map-1.pdf  used on input line 625.
+-latex/control-map-1.pdf  used on input line 673.
 (pdftex.def)             Requested size: 207.77573pt x 630.38231pt.
 
-LaTeX Warning: Float too large for page by 101.88231pt on input line 628.
+LaTeX Warning: Float too large for page by 101.88231pt on input line 676.
 
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/plotfer1-1.pdf, i
-d=143, 460.72125pt x 165.61874pt>
+d=142, 450.68375pt x 319.1925pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/plotfer1-1.p
 df Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/plotfer1-1.pd
 f>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/plotfer1-1.pdf  used on input line 632.
-(pdftex.def)             Requested size: 345.0pt x 124.01915pt.
+-latex/plotfer1-1.pdf  used on input line 680.
+(pdftex.def)             Requested size: 345.0pt x 244.3568pt.
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/daily-correlation
-s-1.pdf, id=145, 449.68pt x 303.1325pt>
+s-1.pdf, id=144, 449.68pt x 303.1325pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/daily-correl
 ations-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/daily-correla
 tions-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/daily-correlations-1.pdf  used on input line 649.
+-latex/daily-correlations-1.pdf  used on input line 697.
 (pdftex.def)             Requested size: 345.0pt x 232.57555pt.
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/goodness-of-fit-1
-.pdf, id=147, 453.695pt x 304.13625pt>
+.pdf, id=146, 453.695pt x 304.13625pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/goodness-of-
 fit-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/goodness-of-f
 it-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/goodness-of-fit-1.pdf  used on input line 663.
+-latex/goodness-of-fit-1.pdf  used on input line 711.
 (pdftex.def)             Requested size: 345.0pt x 231.27124pt.
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/delta-time-1.pdf,
- id=149, 453.695pt x 313.17pt>
+ id=148, 453.695pt x 313.17pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/delta-time-1
 .pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/delta-time-1.
 pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/delta-time-1.pdf  used on input line 706.
-(pdftex.def)             Requested size: 345.0pt x 238.14069pt.
-<Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-intercept-ti
-me-1.pdf, id=151, 453.695pt x 313.17pt>
-File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-interce
-pt-time-1.pdf Graphic file (type pdf)
-<use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-intercep
-t-time-1.pdf>
-Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/beta-intercept-time-1.pdf  used on input line 716.
-(pdftex.def)             Requested size: 345.0pt x 238.14069pt.
-<Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-density-time
--1.pdf, id=153, 453.695pt x 313.17pt>
-File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-density
--time-1.pdf Graphic file (type pdf)
-<use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-density-
-time-1.pdf>
-Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/beta-density-time-1.pdf  used on input line 725.
-(pdftex.def)             Requested size: 345.0pt x 238.14069pt.
-<Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-transit-time
--1.pdf, id=155, 453.695pt x 313.17pt>
-File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-transit
--time-1.pdf Graphic file (type pdf)
-<use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-transit-
-time-1.pdf>
-Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/beta-transit-time-1.pdf  used on input line 735.
+-latex/delta-time-1.pdf  used on input line 754.
 (pdftex.def)             Requested size: 345.0pt x 238.14069pt.
 [9] [10pdfTeX warning (ext4): destination with the same identifier (name{figure
 .1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.738 \end{figure}
+l.757 \end{figure}
                    <./Environmental-Correlates-of-COVID19-Spain_files/figure-la
 tex/weekly-average-incidence-map-1.pdf>] [11pdfTeX warning (ext4): destination 
 with the same identifier (name{figure.2}) has been already used, duplicate igno
@@ -793,99 +787,301 @@ red
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.738 \end{figure}
+l.757 \end{figure}
                    <./Environmental-Correlates-of-COVID19-Spain_files/figure-la
 tex/descriptives-temperature-1.pdf>] [12pdfTeX warning (ext4): destination with
  the same identifier (name{figure.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.738 \end{figure}
+l.757 \end{figure}
                    <./Environmental-Correlates-of-COVID19-Spain_files/figure-la
 tex/control-map-1.pdf>] [13pdfTeX warning (ext4): destination with the same ide
 ntifier (name{figure.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.738 \end{figure}
-                  pdfTeX warning (ext4): destination with the same identifier (
-name{figure.5}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.738 \end{figure}
-                   <./Environmental-Correlates-of-COVID19-Spain_files/figure-la
-tex/plotfer1-1.pdf> <./Environmental-Correlates-of-COVID19-Spain_files/figure-l
-atex/daily-correlations-1.pdf>] [14pdfTeX warning (ext4): destination with the 
-same identifier (name{figure.6}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.738 \end{figure}
+l.757 \end{figure}
                   pdfTeX warning (ext4): destination with the same identifier (
 name{table.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.738 \end{figure}
+l.757 \end{figure}
                    <./Environmental-Correlates-of-COVID19-Spain_files/figure-la
-tex/goodness-of-fit-1.pdf>]
+tex/plotfer1-1.pdf>] [14pdfTeX warning (ext4): destination with the same identi
+fier (name{figure.5}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.757 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{figure.6}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.757 \end{figure}
+                   <./Environmental-Correlates-of-COVID19-Spain_files/figure-la
+tex/daily-correlations-1.pdf> <./Environmental-Correlates-of-COVID19-Spain_file
+s/figure-latex/goodness-of-fit-1.pdf>]
+<Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-intercept-ti
+me-1.pdf, id=237, 453.695pt x 313.17pt>
+File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-interce
+pt-time-1.pdf Graphic file (type pdf)
+<use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-intercep
+t-time-1.pdf>
+Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
+-latex/beta-intercept-time-1.pdf  used on input line 764.
+(pdftex.def)             Requested size: 345.0pt x 238.14069pt.
+<Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-density-time
+-1.pdf, id=239, 453.695pt x 313.17pt>
+File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-density
+-time-1.pdf Graphic file (type pdf)
+<use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-density-
+time-1.pdf>
+Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
+-latex/beta-density-time-1.pdf  used on input line 773.
+(pdftex.def)             Requested size: 345.0pt x 238.14069pt.
+<Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-transit-time
+-1.pdf, id=241, 453.695pt x 313.17pt>
+File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-transit
+-time-1.pdf Graphic file (type pdf)
+<use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-transit-
+time-1.pdf>
+Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
+-latex/beta-transit-time-1.pdf  used on input line 783.
+(pdftex.def)             Requested size: 345.0pt x 238.14069pt.
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-humidity-tim
-e-1.pdf, id=245, 453.695pt x 313.17pt>
+e-1.pdf, id=243, 453.695pt x 313.17pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-humidit
 y-time-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-humidity
 -time-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/beta-humidity-time-1.pdf  used on input line 745.
+-latex/beta-humidity-time-1.pdf  used on input line 793.
 (pdftex.def)             Requested size: 345.0pt x 238.14069pt.
 
-Overfull \hbox (8.84105pt too wide) in paragraph at lines 750--752
+Overfull \hbox (8.84105pt too wide) in paragraph at lines 798--800
 []\T1/lmr/m/n/10 Figure []12[] shows the tem-po-ral evo-lu-tion of the co-ef-fi
 -cient for $[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 Temperature\OT1/lmr/m/n/10 )$\T
 1/lmr/m/n/10 . 
  []
 
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-temperature-
-time-1.pdf, id=247, 453.695pt x 313.17pt>
+time-1.pdf, id=245, 453.695pt x 313.17pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-tempera
 ture-time-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-temperat
 ure-time-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/beta-temperature-time-1.pdf  used on input line 755.
+-latex/beta-temperature-time-1.pdf  used on input line 803.
 (pdftex.def)             Requested size: 345.0pt x 238.14069pt.
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-sunshine-tim
-e-1.pdf, id=249, 453.695pt x 313.17pt>
+e-1.pdf, id=247, 453.695pt x 313.17pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-sunshin
 e-time-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-sunshine
 -time-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/beta-sunshine-time-1.pdf  used on input line 765.
+-latex/beta-sunshine-time-1.pdf  used on input line 813.
 (pdftex.def)             Requested size: 345.0pt x 238.14069pt.
+
+Package xcolor Warning: Incompatible color definition on input line 818.
+
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 820.
+
+Package xcolor Warning: Incompatible color definition on input line 826.
+
+
+Package xcolor Warning: Incompatible color definition on input line 826.
+
+
+Overfull \hbox (17.24895pt too wide) in paragraph at lines 838--838
+[]\T1/lmtt/m/n/10 ##                                       Direct   Indirect   
+   Total[] 
+ []
+
+
+Overfull \hbox (17.24895pt too wide) in paragraph at lines 838--838
+[]\T1/lmtt/m/n/10 ## log(GDPpc)_1                       0.6769737  0.6361932  1
+.3131669[] 
+ []
+
+
+Overfull \hbox (17.24895pt too wide) in paragraph at lines 838--838
+[]\T1/lmtt/m/n/10 ## log(Older)_1                      -0.8042340 -0.7557874 -1
+.5600214[] 
+ []
+
+
+Overfull \hbox (17.24895pt too wide) in paragraph at lines 838--838
+[]\T1/lmtt/m/n/10 ## log(Density)_1                     0.1670754  0.1570109  0
+.3240864[] 
+ []
+
 [15pdfTeX warning (ext4): destination with the same identifier (name{figure.7})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.793   L
-         os datos oficiales (que tampoco son fiables) son reportados a nivel <.
-/Environmental-Correlates-of-COVID19-Spain_files/figure-latex/delta-time-1.pdf>
-] [16pdfTeX warning (ext4): destination with the same identifier (name{figure.8
-}) has been already used, duplicate ignored
+l.838 \end{verbatim}
+                     <./Environmental-Correlates-of-COVID19-Spain_files/figure-
+latex/delta-time-1.pdf>]
+Overfull \hbox (17.24895pt too wide) in paragraph at lines 838--838
+[]\T1/lmtt/m/n/10 ## Transit_1                          0.3430969  0.3224289  0
+.6655259[] 
+ []
+
+
+Overfull \hbox (17.24895pt too wide) in paragraph at lines 838--838
+[]\T1/lmtt/m/n/10 ## log(Humidity_lag11)_1             -1.5656410 -1.4713276 -3
+.0369685[] 
+ []
+
+
+Overfull \hbox (17.24895pt too wide) in paragraph at lines 838--838
+[]\T1/lmtt/m/n/10 ## log(Mean_Temp_lag11)_1            -1.7452380 -1.6401057 -3
+.3853437[] 
+ []
+
+
+Overfull \hbox (17.24895pt too wide) in paragraph at lines 838--838
+[]\T1/lmtt/m/n/10 ## log(Sunshine_Hours_lag11 + 0.1)_1 -0.2818768 -0.2648967 -0
+.5467734[] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 840.
+
+
+Package xcolor Warning: Incompatible color definition on input line 844.
+
+
+Package xcolor Warning: Incompatible color definition on input line 844.
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 854--854
+[]\T1/lmtt/m/n/10 ##                                        Direct    Indirect 
+     Total[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 854--854
+[]\T1/lmtt/m/n/10 ## log(Density)_2                     0.06263494  0.04033489 
+ 0.1029698[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 854--854
+[]\T1/lmtt/m/n/10 ## Transit_2                          0.44110065  0.28405466 
+ 0.7251553[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 854--854
+[]\T1/lmtt/m/n/10 ## log(Humidity_lag11)_2             -1.06494878 -0.68579283 
+-1.7507416[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 854--854
+[]\T1/lmtt/m/n/10 ## log(Mean_Temp_lag11)_2            -1.48108018 -0.95376810 
+-2.4348483[] 
+ []
+
+
+Overfull \hbox (27.74892pt too wide) in paragraph at lines 854--854
+[]\T1/lmtt/m/n/10 ## log(Sunshine_Hours_lag11 + 0.1)_2 -0.19117818 -0.12311261 
+-0.3142908[] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 856.
+
+
+Package xcolor Warning: Incompatible color definition on input line 860.
+
+
+Package xcolor Warning: Incompatible color definition on input line 860.
+
+
+Overfull \hbox (32.9989pt too wide) in paragraph at lines 870--870
+[]\T1/lmtt/m/n/10 ##                                        Direct    Indirect 
+      Total[] 
+ []
+
+
+Overfull \hbox (32.9989pt too wide) in paragraph at lines 870--870
+[]\T1/lmtt/m/n/10 ## log(Density)_3                     0.02434857  0.01918949 
+ 0.04353807[] 
+ []
+
+
+Overfull \hbox (32.9989pt too wide) in paragraph at lines 870--870
+[]\T1/lmtt/m/n/10 ## Transit_3                          0.43185937  0.34035519 
+ 0.77221456[] 
+ []
+
+
+Overfull \hbox (32.9989pt too wide) in paragraph at lines 870--870
+[]\T1/lmtt/m/n/10 ## log(Humidity_lag11)_3             -0.97725083 -0.77018681 
+-1.74743764[] 
+ []
+
+[16pdfTeX warning (ext4): destination with the same identifier (name{figure.8})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.814   N
-         o se ha controlado por el sistema sanitario de cada provincia. Uno de 
-<./Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-intercept-
-time-1.pdf>] [17pdfTeX warning (ext4): destination with the same identifier (na
-me{figure.9}) has been already used, duplicate ignored
+l.870 \end{verbatim}
+                     <./Environmental-Correlates-of-COVID19-Spain_files/figure-
+latex/beta-intercept-time-1.pdf>]
+Overfull \hbox (32.9989pt too wide) in paragraph at lines 870--870
+[]\T1/lmtt/m/n/10 ## log(Mean_Temp_lag11)_3            -1.39946579 -1.10294110 
+-2.50240689[] 
+ []
+
+
+Overfull \hbox (32.9989pt too wide) in paragraph at lines 870--870
+[]\T1/lmtt/m/n/10 ## log(Sunshine_Hours_lag11 + 0.1)_3 -0.09717791 -0.07658744 
+-0.17376535[] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 872.
+
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
+878.
+(/Users/fernandoair/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+
+Package xcolor Warning: Incompatible color definition on input line 880.
+
+
+Package xcolor Warning: Incompatible color definition on input line 880.
+
+<Environmental-Correlates-of-COVID19-Spain_files/figure-latex/impacts-1.pdf, id
+=278, 440.64626pt x 219.82124pt>
+File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/impacts-1.pd
+f Graphic file (type pdf)
+<use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/impacts-1.pdf
+>
+Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
+-latex/impacts-1.pdf  used on input line 882.
+(pdftex.def)             Requested size: 345.0pt x 172.11394pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 882--883
+[][] 
+ []
+
+[17pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.839 ...{Acknowledgments}\label{acknowledgments}}
+l.885 ...uding Remarks}\label{concluding-remarks}}
                                                    <./Environmental-Correlates-
 of-COVID19-Spain_files/figure-latex/beta-density-time-1.pdf>] [18pdfTeX warning
  (ext4): destination with the same identifier (name{figure.10}) has been alread
@@ -893,38 +1089,39 @@ y used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.869 \leavevmode
-                 \hypertarget{ref-Angulo2020spsur}{}% <./Environmental-Correlat
-es-of-COVID19-Spain_files/figure-latex/beta-transit-time-1.pdf>] [19pdfTeX warn
-ing (ext4): destination with the same identifier (name{figure.11}) has been alr
-eady used, duplicate ignored
+l.901   I
+         dem para la humedad y horas de sol <./Environmental-Correlates-of-COVI
+D19-Spain_files/figure-latex/beta-transit-time-1.pdf> <./Environmental-Correlat
+es-of-COVID19-Spain_files/figure-latex/impacts-1.pdf>] [19pdfTeX warning (ext4)
+: destination with the same identifier (name{figure.11}) has been already used,
+ duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.910 \leavevmode
-                 \hypertarget{ref-Casanova2010effects}{}% <./Environmental-Corr
-elates-of-COVID19-Spain_files/figure-latex/beta-humidity-time-1.pdf>] [20pdfTeX
- warning (ext4): destination with the same identifier (name{figure.12}) has bee
-n already used, duplicate ignored
+l.928   N
+         o se ha controlado por el sistema sanitario de cada provincia. Uno de 
+<./Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-humidity-t
+ime-1.pdf>] [20pdfTeX warning (ext4): destination with the same identifier (nam
+e{figure.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.951 
-       <./Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-tem
-perature-time-1.pdf>] [21pdfTeX warning (ext4): destination with the same ident
-ifier (name{figure.13}) has been already used, duplicate ignored
+l.948 \end{itemize}
+                    <./Environmental-Correlates-of-COVID19-Spain_files/figure-l
+atex/beta-temperature-time-1.pdf>] [21pdfTeX warning (ext4): destination with t
+he same identifier (name{figure.13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.987 \leavevmode
-                 \hypertarget{ref-Lauer2020incubation}{}% <./Environmental-Corr
-elates-of-COVID19-Spain_files/figure-latex/beta-sunshine-time-1.pdf>] [22]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1100.
-[23]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1100.
+l.982 
+       <./Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-sun
+shine-time-1.pdf>] [22] [23] [24]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1224.
+[25]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1224.
 (./Environmental-Correlates-of-COVID19-Spain.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1100.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1100.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1224.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1224.
 
 Package rerunfilecheck Info: File `Environmental-Correlates-of-COVID19-Spain.ou
 t' has not changed.
@@ -935,22 +1132,22 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1100.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1224.
  ) 
 Here is how much of TeX's memory you used:
- 12524 strings out of 482530
- 184123 string characters out of 5949701
- 439052 words of memory out of 5000000
- 27770 multiletter control sequences out of 15000+600000
- 594748 words of font info for 69 fonts, out of 8000000 for 9000
+ 13023 strings out of 482530
+ 192119 string characters out of 5949701
+ 449968 words of memory out of 5000000
+ 28251 multiletter control sequences out of 15000+600000
+ 595371 words of font info for 71 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  38i,12n,37p,455b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{
-/Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/Us
-ers/fernandoair/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/U
-sers/fernandoair/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/
-Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{
-/Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</U
+{/Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}
+{/Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/U
+sers/fernandoair/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/User
+s/fernandoair/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/Use
+rs/fernandoair/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Us
+ers/fernandoair/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</U
 sers/fernandoair/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></
 Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx7.pfb></
 Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb><
@@ -968,13 +1165,15 @@ Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><
 /Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy5.pfb><
 /Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><
 /Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><
-/Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-</Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt8.pfb>
-Output written on Environmental-Correlates-of-COVID19-Spain.pdf (23 pages, 2873
-152 bytes).
+/Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb>
+</Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb
+></Users/fernandoair/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt8.pfb
+>
+Output written on Environmental-Correlates-of-COVID19-Spain.pdf (25 pages, 3362
+061 bytes).
 PDF statistics:
- 502 PDF objects out of 1000 (max. 8388607)
- 406 compressed objects within 5 object streams
- 123 named destinations out of 1000 (max. 500000)
- 170 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 528 PDF objects out of 1000 (max. 8388607)
+ 426 compressed objects within 5 object streams
+ 127 named destinations out of 1000 (max. 500000)
+ 175 words of extra memory for PDF output out of 10000 (max. 10000000)
 
