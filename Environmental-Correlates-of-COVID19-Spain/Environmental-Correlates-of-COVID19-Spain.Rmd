@@ -143,12 +143,9 @@ The first variable that we consider is GDP per capita. Much has been said about 
 
 The percentaje of older adults (over 65) is the second variable that we consider as a control. Early evidence suggest that the case rate mortality is higher at older ages [e.g. @Novel2020epidemiological]. It is not clear that presence of older adults necessarily translates into higher transmission in the population. The public health tool of choice in containing the spread of the disease has been social distancing. In this respect, the evidence from the field of transportation is that older adults tend to travel less frequently, for shorter distances, and have higher rates of immobility [e.g., @Roorda2010trip; @Morency2011distance; @Sikder2012immobility]. In other words, older adults are, by preference or necessity, already in a form of social isolation. Social distancing during the pandemic may actually reinforce that condition for older adults, as the analysis of age-structured social contact in India, China, and Italy of Sing and Adhikari [-@Singh2020age] suggests. Accordingly, our expectation is that in the provinces with higher proportions of older adults will tend to have similarl levels of lower social contact, particularly since age-structured social contact matrix in Spain is similar to Italy [@Prem2017projecting].
 
-The structure of population is a key variable on the incidence. Several papers related the relationship between a fast trasnmision of COVID-19 and population density (e.g. cumulative incidence in urban areas like NYC) and therefore a positive sign will be expected. Note that our analysis is at provincial level - not a urban level - and therefore is necessary to rethinking the relationship. In Spain the population is concentrate (with some exception) in the mediterranean coast (@Goerlich2013population), in general with high temperature and high humidity. So, positive or negative sign will be expected in the model.
+The third population variable the we consider is population density, since it directly affects the contact patterns and contact rates between individuals in a population [@Hu2013scaling]. The evidence available suggests a positive relationship between the transmission of COVID-19 and population density (e.g. cumulative incidence in urban areas like NYC). For this reason, we anticipate a positive relationship between population density and the incidence of the disease.
 
-All those variables will we include in log to capture non-linar realtionship.
-
-Transit.
-
+The last control variable is the presence of mass transit systems in a province. Every province in Spain offers some form of public transportation, however only five provinces have higher order systems of mass mobility, namely Barcelona, Madrid, Sevilla, Valencia, and Bizkaia. Public transportation has been hypothesized to relate to the spread of contagious disease by some researchers using agent-based approaches [@Perez2009agent; @Wang2010gis], and while we find scant evidence of a link in the literature, the idea is intuitively appealing. After all, unlike the isolation that a car offers to travellers, most mass transit system are cauldrons of social contact.
 
 ## Data
 
@@ -335,7 +332,7 @@ We begin with the exploratory analysis of the data.
 
 Figure \ref{fig:weekly-average-incidence-map} shows the geographical variation in the incidence of the disease, as well as its temporal progression in weekly averages. Our analysis begins on March 13, which is the first date when every province had reported at least one case of COVID-19. It can be seen that the highest incidence at this early date was in the provice of Álava, in the North of Spain. While not the most populous province, with a population of only 331,549, Álava has the highest GDP per capita of all provinces. Vitoria, its main city, is the capital of the Basque country and has been the focus of efforts to develop a "Global Basque City" [@Meijers2008strategic], along with San Sebastian and Bilbao. The other early focus of the pandemic in Spain was Madrid, which is the most populous province in the country and has the second highest GDP per capita after Álava. The early outbreaks in these two provinces can be traced throughout the progression of the pandemic over time, although by the end of the period under consideration, other provinces had matched and even surpased their incidence rates, including Segovia and Soria to the north of Madrid, and Ciudad Real and Albacete to the south.
 
-```{r weekly-average-incidence-map, echo=FALSE, fig.height= 9, fig.cap="\\label{fig:weekly-average-incidence-map}Mean weekly incidence of COVID-19 by province, in reported cases by 100,000 people (map omits Islas Canarias)", warning=FALSE, cache = TRUE}
+```{r weekly-average-incidence-map, echo=FALSE, fig.height= 9, fig.cap="\\label{fig:weekly-average-incidence-map}Mean weekly incidence of COVID-19 by province, in reported cases by 100,000 people", warning=FALSE, cache = TRUE}
 # Retrieve the coordinates of Madrid
 madrid_xy <-  st_centroid(provinces_spain %>% filter(province == "Madrid")) %>% st_coordinates()
 
@@ -506,7 +503,7 @@ ggplot(data = env.summary,
              scales = "free_y")
 ```
 
-```{r map-controls, cache=TRUE, echo=FALSE, fig.height= 9, fig.cap="\\label{fig:map-controls}Spatial distribution of control variables by province (maps omits Islas Canarias)", cache = TRUE}
+```{r map-controls, cache=TRUE, echo=FALSE, fig.height= 9, fig.cap="\\label{fig:map-controls}Spatial distribution of control variables by province", warning=FALSE, cache = TRUE}
 # GDP per capita:
 q <- quantile(provinces_spain$GDPpc)
 gdppc.plot <- provinces_spain %>%
@@ -784,16 +781,16 @@ data.frame(Model1 = sur.slm_lag8$R2,
   pivot_longer(cols = starts_with("M"), names_to = "Model", values_to = "R2") %>%
   mutate(Model = factor(Model, 
                         levels = c("Model1", "Model2", "Model3"),
-                        labels = c("Model 1", "Model 2", "Model 3"))) %>%
+                        labels = c("Model 1: lag8", "Model 2: lag11", "Model 3: lag11w"))) %>%
   ggplot(aes(x = Date, y = R2, color = Model, shape = Model)) +
   geom_point(size = 2) +
-  scale_color_manual(values = c("Model 1" = "blue", "Model 2" = "orange", "Model 3" = "green") ) + 
+  scale_color_manual(values = c("Model 1: lag8" = "blue", "Model 2: lag11" = "orange", "Model 3: lag11w" = "green") ) + 
   annotate(geom = "text", 
-           label = c(paste("Model 1: pooled-R2=", 
+           label = c(paste("pooled-R2 (Model 1: lag8)=", 
                            round(sur.slm_lag8$R2[1], 4)),
-                     paste("Model 2: pooled-R2=", 
+                     paste("pooled-R2 (Model 2: lag11)=", 
                            round(sur.slm_lag11$R2[1], 4)),
-                     paste("Model 3: pooled-R2=", 
+                     paste("pooled-R2 (Model 3: lag11w)=", 
                            round(sur.slm_lag11w$R2[1], 4))),
            x = as_date("2020-04-01"),
            y = c(0.3, 0.27, 0.24),
@@ -1001,7 +998,7 @@ data.frame(Date = seq(ymd("2020-03-13"),
   theme_tufte()
 ```
 
-```{r impacts}
+```{r impacts, echo=FALSE}
 Wsur <- as(spdep::listw2mat(listw), "CsparseMatrix")
 trsur <- spatialreg::trW(Wsur, type = "MC")
 impacts.sur.slm_lag11 <- impactspsur(sur.slm_lag11, tr = trsur,R = 1000)
