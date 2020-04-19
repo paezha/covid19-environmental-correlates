@@ -951,6 +951,11 @@ Concluding Remarks
   
 More words go here.
 
+* La temperatura puedes ser un factor pero cabría esperar que no tuviera un impacto lineal. Quizás una temperatua mantenida superior a X grados sea la mejor forma de incorporarla al modelo. En nuestro modelo en incremento en un grado de la temp de 2 a 3 grados (en una provincia fria al norte de España) tiene el mismo impacto que un incremento de 25 a 26 grados (en una provincia en las Islas Canarias)
+* En carácter insular de las Islas Canarias y de las Islas baleares no se ha tenido en cuenta
+* Baleares se ha linkado artificialmente con 3 provincias y debia de haberse dejado aislada para respetar su carácter insular.
+* La incidencia depende de un estado inicial
+* No se ha controlado por el sistema sanitario de cada provincia. Uno de los principales focos de cintagio han sido los hospitales y los centros de salud. En aquellas provincias donde se ha promovido "NO IR AL MEDICO" han presentado menor incidencia.
 
 Acknowledgments {#acknowledgments .unnumbered}
 ==========
