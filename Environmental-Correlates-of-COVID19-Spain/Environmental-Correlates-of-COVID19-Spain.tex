@@ -382,20 +382,24 @@ adults will tend to have similarl levels of lower social contact,
 particularly since age-structured social contact matrix in Spain is
 similar to Italy (Prem et al., 2017).
 
-The structure of population is a key variable on the incidence. Several
-papers related the relationship between a fast trasnmision of COVID-19
+The third population variable the we consider is population density,
+since it directly affects the contact patterns and contact rates between
+individuals in a population (Hu et al., 2013). The evidence available
+suggests a positive relationship between the transmission of COVID-19
 and population density (e.g.~cumulative incidence in urban areas like
-NYC) and therefore a positive sign will be expected. Note that our
-analysis is at provincial level - not a urban level - and therefore is
-necessary to rethinking the relationship. In Spain the population is
-concentrate (with some exception) in the mediterranean coast (Goerlich
-and Cantarino (2013)), in general with high temperature and high
-humidity. So, positive or negative sign will be expected in the model.
+NYC). For this reason, we anticipate a positive relationship between
+population density and the incidence of the disease.
 
-All those variables will we include in log to capture non-linar
-realtionship.
-
-Transit.
+The last control variable is the presence of mass transit systems in a
+province. Every province in Spain offers some form of public
+transportation, however only five provinces have higher order systems of
+mass mobility, namely Barcelona, Madrid, Sevilla, Valencia, and Bizkaia.
+Public transportation has been hypothesized to relate to the spread of
+contagious disease by some researchers using agent-based approaches
+(Perez and Dragicevic, 2009; Wang et al., 2010), and while we find scant
+evidence of a link in the literature, the idea is intuitively appealing.
+After all, unlike the isolation that a car offers to travellers, most
+mass transit system are cauldrons of social contact.
 
 \hypertarget{data}{%
 \subsection{Data}\label{data}}
@@ -650,8 +654,7 @@ to the south.
 \centering
 \includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/weekly-average-incidence-map-1.pdf}
 \caption{\label{fig:weekly-average-incidence-map}Mean weekly incidence
-of COVID-19 by province, in reported cases by 100,000 people (map omits
-Islas Canarias)}
+of COVID-19 by province, in reported cases by 100,000 people}
 \end{figure}
 
 To visualize the distribution of temperature and humidity we aggregate
@@ -678,22 +681,11 @@ have been sorted by latitude, with communities to the left being the
 northermost, and to the right the southernmost}
 \end{figure}
 
-\begin{verbatim}
-## Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
-## give correct results for longitude/latitude data
-
-## Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
-## give correct results for longitude/latitude data
-
-## Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
-## give correct results for longitude/latitude data
-\end{verbatim}
-
 \begin{figure}
 \centering
 \includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/map-controls-1.pdf}
 \caption{\label{fig:map-controls}Spatial distribution of control
-variables by province (maps omits Islas Canarias)}
+variables by province}
 \end{figure}
 
 Figure \ref{fig:daily-correlations} shows the distribution of daily
@@ -1074,11 +1066,6 @@ statistic: Detecting and evaluating emerging clusters. Applied Geography
 Fernandes, N., 2020. Economic effects of coronavirus outbreak (covid-19)
 on the world economy. Available at SSRN 3557504.
 
-\leavevmode\hypertarget{ref-Goerlich2013population}{}%
-Goerlich, F.J., Cantarino, I., 2013. A population density grid for
-spain. International Journal of Geographical Information Science 27,
-2247--2263.
-
 \leavevmode\hypertarget{ref-Gong2020balance}{}%
 Gong, B., Zhang, S., Yuan, L., Chen, K.Z., 2020. A balance act:
 Minimizing economic loss while controlling novel coronavirus pneumonia.
@@ -1099,6 +1086,12 @@ in: Regional Convergence in the European Union. Springer, pp. 53--76.
 Harbert, R.S., Cunningham, S.W., Tessler, M., 2020. Spatial modeling
 cannot currently differentiate sars-cov-2 coronavirus and human
 distributions on the basis of climate in the united states. medRxiv.
+
+\leavevmode\hypertarget{ref-Hu2013scaling}{}%
+Hu, H., Nigmatulina, K., Eckhoff, P., 2013. The scaling of contact rates
+with population density for the infectious disease models. Mathematical
+Biosciences 244, 125--134.
+doi:\href{https://doi.org/https://doi.org/10.1016/j.mbs.2013.04.013}{https://doi.org/10.1016/j.mbs.2013.04.013}
 
 \leavevmode\hypertarget{ref-Jaakkola2014decline}{}%
 Jaakkola, K., Saukkoriipi, A., Jokelainen, J., Juvonen, R., Kauppila,
@@ -1212,6 +1205,11 @@ Pebesma, E., Mailund, T., Hiebert, J., 2016. Measurement units in R. R
 Journal 8, 486--494.
 doi:\href{https://doi.org/10.32614/RJ-2016-061}{10.32614/RJ-2016-061}
 
+\leavevmode\hypertarget{ref-Perez2009agent}{}%
+Perez, L., Dragicevic, S., 2009. An agent-based approach for modeling
+dynamics of contagious disease spread. International journal of health
+geographics 8, 50.
+
 \leavevmode\hypertarget{ref-Prem2017projecting}{}%
 Prem, K., Cook, A.R., Jit, M., 2017. Projecting social contact matrices
 in 152 countries using contact surveys and demographic data. PLoS
@@ -1248,6 +1246,11 @@ coronavirus diseases (covid-19)---china, 2020. China CDC Weekly 2,
 Van Wagner, E., 2008. Toward a dialectical understanding of networked
 disease in the global city: Vulnerability, connectivity, topologies.
 Networked disease: Emerging infections in the global city 13--26.
+
+\leavevmode\hypertarget{ref-Wang2010gis}{}%
+Wang, J., Xiong, J., Yang, K., Peng, S., Xu, Q., 2010. Use of gis and
+agent-based modeling to simulate the spread of influenza, in: 2010 18th
+International Conference on Geoinformatics. IEEE, pp. 1--6.
 
 \leavevmode\hypertarget{ref-Wickham2019}{}%
 Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L.D., François,
