@@ -33,6 +33,46 @@
 % use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
 \bibliographystyle{elsarticle-harv}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{graphicx}
 % We will generate all images so they have a width \maxwidth. This means
 % that they will get their normal width if they fit onto the page, but
@@ -322,15 +362,25 @@ lockdown. On the other hand, it is also possible the less wealthy
 regions have a higher proportion of workers in manual occupations that
 cannot telework.
 
-The percentaje of older adults (over 65) is the second variable related
-with the population structure include like control variable. Unlike the
-population density the older people in Spain is concentrate in the core
-of the Iberian Peninsula (see figure \ref{plotfer1}). Our hypothesis is
-that in the provinces with more older adults the social contact is lower
-(Prem et al. (2017)) and therefore the a negative correlation will be
-expected. This hypotesis is based in the idea that the agee-structured
-social contact matrix in Spain is similar to Italy (see Singh and
-Adhikari (2020) Fig 1 pag 3)
+The percentaje of older adults (over 65) is the second variable that we
+consider as a control. Early evidence suggest that the case rate
+mortality is higher at older ages (e.g.~The Novel Coronavirus Pneumonia
+Emergency Response Epidemiology Team, 2020). It is not clear that
+presence of older adults necessarily translates into higher transmission
+in the population. The public health tool of choice in containing the
+spread of the disease has been social distancing. In this respect, the
+evidence from the field of transportation is that older adults tend to
+travel less frequently, for shorter distances, and have higher rates of
+immobility (e.g., Roorda et al., 2010; Morency et al., 2011; Sikder and
+Pinjari, 2012). In other words, older adults are, by preference or
+necessity, already in a form of social isolation. Social distancing
+during the pandemic may actually reinforce that condition for older
+adults, as the analysis of age-structured social contact in India,
+China, and Italy of Sing and Adhikari (2020) suggests. Accordingly, our
+expectation is that in the provinces with higher proportions of older
+adults will tend to have similarl levels of lower social contact,
+particularly since age-structured social contact matrix in Spain is
+similar to Italy (Prem et al., 2017).
 
 The structure of population is a key variable on the incidence. Several
 papers related the relationship between a fast trasnmision of COVID-19
@@ -628,18 +678,22 @@ have been sorted by latitude, with communities to the left being the
 northermost, and to the right the southernmost}
 \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/control-map-1.pdf}
-\caption{\label{fig:control-map}Spatial distribution of control
-variables by province (maps omits Islas Canarias)}
-\end{figure}
+\begin{verbatim}
+## Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
+## give correct results for longitude/latitude data
+
+## Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
+## give correct results for longitude/latitude data
+
+## Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
+## give correct results for longitude/latitude data
+\end{verbatim}
 
 \begin{figure}
 \centering
-\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/plotfer1-1.pdf}
-\caption{\label{Fig-quantile} Spatial distribution of Spanish density
-population}
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/map-controls-1.pdf}
+\caption{\label{fig:map-controls}Spatial distribution of control
+variables by province (maps omits Islas Canarias)}
 \end{figure}
 
 Figure \ref{fig:daily-correlations} shows the distribution of daily
@@ -775,6 +829,72 @@ coefficient for \(\log(Sunshine + 0.1)\).
 for log(Sunshine + 0.1)}
 \end{figure}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Wsur <-}\StringTok{ }\KeywordTok{as}\NormalTok{(spdep}\OperatorTok{::}\KeywordTok{listw2mat}\NormalTok{(listw), }\StringTok{"CsparseMatrix"}\NormalTok{)}
+\NormalTok{trsur <-}\StringTok{ }\NormalTok{spatialreg}\OperatorTok{::}\KeywordTok{trW}\NormalTok{(Wsur, }\DataTypeTok{type =} \StringTok{"MC"}\NormalTok{)}
+\NormalTok{impacts.sur.slm_lag11 <-}\StringTok{ }\KeywordTok{impactspsur}\NormalTok{(sur.slm_lag11, }\DataTypeTok{tr =}\NormalTok{ trsur,}\DataTypeTok{R =} \DecValTok{1000}\NormalTok{)}
+
+\NormalTok{impacts.sur.slm_lag11[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Impact measures (lag, trace):
+##                                       Direct   Indirect      Total
+## log(GDPpc)_1                       0.6736035  0.6395634  1.3131669
+## log(Older)_1                      -0.8002302 -0.7597912 -1.5600214
+## log(Density)_1                     0.1662437  0.1578427  0.3240864
+## Transit_1                          0.3413888  0.3241370  0.6655259
+## log(Humidity_lag11)_1             -1.5578465 -1.4791220 -3.0369685
+## log(Mean_Temp_lag11)_1            -1.7365494 -1.6487943 -3.3853437
+## log(Sunshine_Hours_lag11 + 0.1)_1 -0.2804735 -0.2663000 -0.5467734
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{impacts.sur.slm_lag11[[}\DecValTok{2}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Impact measures (lag, trace):
+##                                        Direct    Indirect      Total
+## log(Density)_2                     0.06248795  0.04048188  0.1029698
+## Transit_2                          0.44006548  0.28508982  0.7251553
+## log(Humidity_lag11)_2             -1.06244958 -0.68829202 -1.7507416
+## log(Mean_Temp_lag11)_2            -1.47760442 -0.95724386 -2.4348483
+## log(Sunshine_Hours_lag11 + 0.1)_2 -0.19072953 -0.12356126 -0.3142908
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{impacts.sur.slm_lag11[[}\DecValTok{3}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Impact measures (lag, trace):
+##                                        Direct    Indirect       Total
+## log(Density)_3                     0.02426235  0.01927572  0.04353807
+## Transit_3                          0.43033000  0.34188455  0.77221455
+## log(Humidity_lag11)_3             -0.97379005 -0.77364759 -1.74743764
+## log(Mean_Temp_lag11)_3            -1.39450981 -1.10789707 -2.50240689
+## log(Sunshine_Hours_lag11 + 0.1)_3 -0.09683377 -0.07693158 -0.17376535
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myimpact <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DataTypeTok{ncol =} \DecValTok{5}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{29}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{2}\OperatorTok{:}\DecValTok{30}\NormalTok{)\{}
+\NormalTok{  myimpact[i}\DecValTok{-1}\NormalTok{,] <-}\StringTok{ }\NormalTok{impacts.sur.slm_lag11[[i]]}\OperatorTok{$}\NormalTok{res}\OperatorTok{$}\NormalTok{direct}
+\NormalTok{\}}
+\KeywordTok{matplot}\NormalTok{(myimpact, }\DataTypeTok{type=}\StringTok{'l'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Environmental-Correlates-of-COVID19-Spain_files/figure-latex/impacts-1.pdf}
+
 \hypertarget{concluding-remarks}{%
 \section{Concluding Remarks}\label{concluding-remarks}}
 
@@ -842,6 +962,13 @@ Limitaciones
 \end{itemize}
 
 *IDEM para la humedad. idem para sunshine
+
+\begin{itemize}
+\tightlist
+\item
+  HACE FALTA INCLUIR UN PLOT CON LAS CORRELACIONES DE LOS RESIDUOS PARA
+  DARLE RELEVANCIA A LA ESTIMACION SUR
+\end{itemize}
 
 \hypertarget{acknowledgments}{%
 \section*{Acknowledgments}\label{acknowledgments}}
@@ -947,7 +1074,7 @@ statistic: Detecting and evaluating emerging clusters. Applied Geography
 Fernandes, N., 2020. Economic effects of coronavirus outbreak (covid-19)
 on the world economy. Available at SSRN 3557504.
 
-\leavevmode\hypertarget{ref-goerlich2013population}{}%
+\leavevmode\hypertarget{ref-Goerlich2013population}{}%
 Goerlich, F.J., Cantarino, I., 2013. A population density grid for
 spain. International Journal of Geographical Information Science 27,
 2247--2263.
@@ -1062,6 +1189,12 @@ Mínguez, R., López, F., Mur, J., 2019. ML versus iv estimates of spatial
 sur models: Evidence from the case of airbnb in madrid urban area. The
 Annals of Regional Science 1--35.
 
+\leavevmode\hypertarget{ref-Morency2011distance}{}%
+Morency, C., Páez, A., Roorda, M.J., Mercado, R.G., Farber, S., 2011.
+Distance traveled in three canadian cities: Spatial analysis from the
+perspective of vulnerable population segments. Journal of Transport
+Geography 19, 39--50.
+
 \leavevmode\hypertarget{ref-National2020rapid}{}%
 National Academies of Sciences, Engineering and Medicine, 2020. Rapid
 expert consultation on sars-cov-2 survival in relation to temperature
@@ -1079,7 +1212,7 @@ Pebesma, E., Mailund, T., Hiebert, J., 2016. Measurement units in R. R
 Journal 8, 486--494.
 doi:\href{https://doi.org/10.32614/RJ-2016-061}{10.32614/RJ-2016-061}
 
-\leavevmode\hypertarget{ref-prem2017projecting}{}%
+\leavevmode\hypertarget{ref-Prem2017projecting}{}%
 Prem, K., Cook, A.R., Jit, M., 2017. Projecting social contact matrices
 in 152 countries using contact surveys and demographic data. PLoS
 computational biology 13, e1005697.
@@ -1088,10 +1221,28 @@ computational biology 13, e1005697.
 Rey, S.J., Montouri, B.D., 1999. US regional income convergence: A
 spatial econometric perspective. Regional studies 33, 143--156.
 
-\leavevmode\hypertarget{ref-singh2020age}{}%
+\leavevmode\hypertarget{ref-Roorda2010trip}{}%
+Roorda, M.J., Paez, A., Morency, C., Mercado, R., Farber, S., 2010. Trip
+generation of vulnerable populations in three canadian cities: A spatial
+ordered probit approach. Transportation 37, 525--548.
+doi:\href{https://doi.org/10.1007/s11116-010-9263-3}{10.1007/s11116-010-9263-3}
+
+\leavevmode\hypertarget{ref-Sikder2012immobility}{}%
+Sikder, S., Pinjari, A.R., 2012. Immobility levels and mobility
+preferences of the elderly in the united states evidence from 2009
+national household travel survey. Transportation Research Record
+137--147. doi:\href{https://doi.org/10.3141/2318-16}{10.3141/2318-16}
+
+\leavevmode\hypertarget{ref-Singh2020age}{}%
 Singh, R., Adhikari, R., 2020. Age-structured impact of social
 distancing on the covid-19 epidemic in india. arXiv preprint
 arXiv:2003.12055.
+
+\leavevmode\hypertarget{ref-Novel2020epidemiological}{}%
+The Novel Coronavirus Pneumonia Emergency Response Epidemiology Team,
+2020. The epidemiological characteristics of an outbreak of 2019 novel
+coronavirus diseases (covid-19)---china, 2020. China CDC Weekly 2,
+113--122.
 
 \leavevmode\hypertarget{ref-vanWagner2008toward}{}%
 Van Wagner, E., 2008. Toward a dialectical understanding of networked
