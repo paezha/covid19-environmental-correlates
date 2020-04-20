@@ -1,0 +1,118 @@
+\documentclass[]{elsarticle} %review=doublespace preprint=single 5p=2 column
+%%% Begin My package additions %%%%%%%%%%%%%%%%%%%
+\usepackage[hyphens]{url}
+
+  \journal{Geographical Analysis} % Sets Journal name
+
+
+\usepackage{lineno} % add
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{graphicx}
+\usepackage{booktabs} % book-quality tables
+%%%%%%%%%%%%%%%% end my additions to header
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \usepackage{fontspec}
+  \ifxetex
+    \usepackage{xltxtra,xunicode}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\bibliographystyle{elsarticle-harv}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={A spatio-temporal analysis of the environmental correlates of COVID-19 incidence in Spain},
+            colorlinks=false,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+\setcounter{secnumdepth}{5}
+% Pandoc toggle for numbering sections (defaults to be off)
+
+
+% Pandoc header
+
+
+
+\begin{document}
+\begin{frontmatter}
+
+  \title{A spatio-temporal analysis of the environmental correlates of COVID-19
+incidence in Spain}
+    \author[McMaster University]{Antonio Paez\corref{1}}
+   \ead{paezha@mcmaster.ca} 
+    \author[Universidad Politecnica de Cartagena]{Fernando A. Lopez}
+   \ead{fernando.lopez@upct.es} 
+    \author[Departamento de Economia]{Tatiane Menezes}
+   \ead{tatiane.menezes@ufpe.br} 
+    \author[Nucleo de Pesquisa]{Renata Cavalcanti}
+   \ead{renata.vcsantos@gmail.com} 
+    \author[Nucleo de Pesquisa]{Maira Galdino da Rocha Pitta}
+   \ead{mgrpitta@ufpe.br} 
+      \address[McMaster University]{School of Geography and Earth Sciences, McMaster University, 1281 Main
+St W, Hamilton, ON, L8S 4K1, Canada}
+    \address[Universidad Politecnica de Cartagena]{Departamento de Metodos Cuantitativos, Ciencias Juridicas, y Lenguas
+Modernas, Universidad Politecnica de Cartagena, Calle Real Numero 3,
+30201, Cartagena, Murcia, Spain}
+    \address[Departamento de Economia]{Departamento de Economia, Universidade Federal de Pernambuco, Av dos
+Economistas, s/n - Cidade Universitária, Recife - PE, 50670-901, Brasil}
+    \address[Nucleo de Pesquisa]{Núcleo de Pesquisa em Inovação Terapêutica NUPIT / UFPE, Av.
+Prof.~Moraes Rego, 1235 - Cidade Universitária, Recife, PE, CEP
+50670-901, Brazil}
+      \cortext[1]{Corresponding Author}
+  
+  \begin{abstract}
+  Early in 2020 the novel SARS-CoV2 swept the globe, disrupting health
+  systems and the economy. Public health interventions have slowed the
+  spread of the virus, albeit at a high cost. How and when to ease
+  restrictions to movement hinges in part on whether SARS-CoV2 will
+  display seasonality due to variations in temperature, humidity, and
+  hours of sunshine. Here, we address this by means of a spatio-temporal
+  analysis of the incidence of COVID-19 in Spain. Use of spatial Seemingly
+  Unrelated Regressions (SUR) allows us to model the incidence of reported
+  cases of the disease per 100,000 population as an interregional
+  contagion process, in addition to a function of temperature, humidity,
+  and sunshine. In the analysis we also control for GDP per capita,
+  percentage of older adults in the population, population density, and
+  presence of mass transit systems. The results support the hypothesis
+  that incidence of the disease is lower at higher temperatures and higher
+  levels of humidity. Sunshine, in contrast, displays a positive
+  association with incidence of the disease. Our control variables also
+  yield interesting insights. Higher incidence is associated with higher
+  GDP per capita and presence of mass transit systems in the province; in
+  contrast, population density and percentage of older adults display
+  negative associations with incidence of COVID-19.
+  \end{abstract}
+  
+ \end{frontmatter}
+
+
+
+
+\end{document}
+
+
