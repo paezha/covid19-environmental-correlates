@@ -97,26 +97,21 @@ incidence in Spain}
       \cortext[1]{Corresponding Author}
   
   \begin{abstract}
-  Spreading with astonishing speed, the novel SARS-CoV2 has swept the
-  globe, causing enormous stress to health systems and prompting social
-  distance guidelines and mandates to arrest its progress. While there is
-  encouraging evidence that early public health interventions have slowed
-  the spread of the virus, this has come at a high cost as the global
-  economy is brought to its knees. How and when to ease restrictions to
-  movement hinges in part on the question whether SARS-CoV2 will display
-  seasonality associated with variations in temperature, humidity, and
-  hours of sunshine. In this research, we address this question by means
-  of a spatial analysis of the incidence of COVID-19 in the provinces in
-  Spain. Use of a spatial Seemingly Unrelated Regressions (SUR) approach
-  allows us to model the incidence of reported cases of the disease per
-  100,000 population, as a function of temperature and humidity, while
-  controlling for GDP per capita, population density, percentage of older
-  adults in the population, and presence of mass transit systems. An
-  interesting aspect of the spatial SUR approach is that it models
-  incidence as a contagion process. Our results indicate that incidence of
-  the disease is lower at higher temperatures and higher levels of
-  humidity, although coefficients for this variable are significant only
-  in some equations. Sunshine, in contrast, displays a positive
+  Early in 2020 the novel SARS-CoV2 swept the globe, disrupting health
+  systems and the economy. Public health interventions have slowed the
+  spread of the virus, albeit at a high cost. How and when to ease
+  restrictions to movement hinges in part on whether SARS-CoV2 will
+  display seasonality due to variations in temperature, humidity, and
+  hours of sunshine. Here, we address this by means of a spatio-temporal
+  analysis of the incidence of COVID-19 in Spain. Use of spatial Seemingly
+  Unrelated Regressions (SUR) allows us to model the incidence of reported
+  cases of the disease per 100,000 population as an interregional
+  contagion process, in addition to a function of temperature, humidity,
+  and sunshine. In the analysis we also control for GDP per capita,
+  percentage of older adults in the population, population density, and
+  presence of mass transit systems. The results support the hypothesis
+  that incidence of the disease is lower at higher temperatures and higher
+  levels of humidity. Sunshine, in contrast, displays a positive
   association with incidence of the disease. Our control variables also
   yield interesting insights. Higher incidence is associated with higher
   GDP per capita and presence of mass transit systems in the province; in
@@ -500,10 +495,10 @@ E[\epsilon_t \epsilon'_{t'}]=\sigma_{tt'}
 
 Note that this specification is very flexible, in that it allows changes
 in the coefficients \(\beta_{it}\) in order to modulate the effect of
-\(X^i_{.t}\) on \(y_t\). This flexibility can be reduced and it is
-posible to impose restrinctions considering some \(\beta\) coefficients
-as being constant over time. In this case, we can reformulate the
-coefficients expression
+independent varaibles on \(y_t\). This flexibility can be reduced and it
+is posible to impose restrinctions considering some \(\beta\)
+coefficients as being constant over time. In this case, we can
+reformulate the coefficients expression
 \(\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})\)
 to restrict the first \(r\) coefficients to be constant across
 equations. This is equivalent to specifying some effects to be invariant
@@ -523,7 +518,7 @@ Using the Kronecker product notation (\(\otimes\)), the error matrix
 structure is expressed concisely as:
 
 \begin{equation}
-E[\epsilon \epsilon']=\Sigma \otimes I_N ; \ \Sigma=(\sigma_{tt'})
+E[\epsilon \epsilon']=\bf{\Sigma} \otimes \bf{I_N} ; \ \bf{\Sigma}=(\sigma_{tt'})
 \end{equation}
 
 As is the case with cross-sectional data, it is possible to test the
@@ -879,14 +874,17 @@ the magnitude of the spatial autocorrelation coefficient \(\rho\)
 declines over the period under analysis, and is not significant for some
 days. This is an interesting result: immediately prior to the
 declaration of the state of emergency, there appears to have been a
-strong inter-provincial contagion effect. This situation persisted for a
-few days after the lockdown, and became less strong over time. At the
-end of the period under examination, the strength of this effect was
-much diminished. We would expect that under full compliance with strict
-lockdown conditions (meaning no inter-provincial mobility) the spatial
-contagion effect would be zero. The fact that it is not is evidence of
-some weak contagion effect due to restrictions to the movement between
-provinces.
+strong inter-provincial contagion effect. Keeping in mind that the
+incubation period ranges between 2 and 11 days with a median of 5, it is
+reasonable to expect that the effect of the lockdown will be observed
+with some delay. Indeed, as seen in the figure, the autocorrelation
+coefficient remains high for three days, then declines on March 16, and
+continues to weaken over time. At the end of the period under
+examination, the strength of this effect is much diminished. We would
+expect that under full compliance with strict lockdown conditions
+(meaning no inter-provincial mobility) the spatial contagion effect
+would be zero. The fact that it is not is evidence of some weak
+contagion effect due to restrictions to the movement between provinces.
 
 The intercept (right panel in Figure \ref{fig:results-time-1}) is
 indicative of the variation of the incidence of COVID-19, other things

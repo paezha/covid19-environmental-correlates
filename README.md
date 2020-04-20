@@ -158,9 +158,9 @@ pandemic.
 Please note that this paper is prepared as a reproducible research
 document. The source R Markdown document, as well as all data and code
 needed to reproduce/review/extend the analysis can be obtained from the
-following repository:
+following anonymous Drive folder:
 
-<https://github.com/paezha/covid19-environmental-correlates/tree/master/Environmental-Correlates-of-COVID19-Spain>
+<https://drive.google.com/open?id=1d_40N_QXo2Fl14r3T3CHs84IED-B1rV_>
 
 # Context and Data
 
@@ -788,7 +788,7 @@ The classical SUR model without spatial effects (from here, SUR-SIM) is
 a stack of equations as follows:
 
 <!--
-\begin{equation}
+  \begin{equation}
 \label{eq:sur-sim}
 \begin{bmatrix}
 y_1 \\ y_2 \\ \vdots \\ y_T
@@ -810,7 +810,7 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t$ is a $N \times k_t$ matrix of the $k_t$ independent variables, with associated vector of coefficients $\beta_t$,; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals.
 -->
 
-<!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
+<!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/ -->
 
 ![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-sim%7D%20%5Cbegin%7Bbmatrix%7D%20y_1%20%5C%5C%20y_2%20%5C%5C%20%5Cvdots%20%5C%5C%20y_T%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20X_1%20%26%200%20%26%20%5Ccdots%20%26%200%20%5C%5C%200%20%26%20X_2%20%26%20%5Ccdots%20%26%200%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%200%20%26%200%20%26%20%5Ccdots%20%26%20X_T%20%5Cend%7Bbmatrix%7D%20%5C%20%5Cbegin%7Bbmatrix%7D%20%5Cbeta_1%20%5C%5C%20%5Cbeta_1%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cbeta_T%20%5Cend%7Bbmatrix%7D%20%2B%20%5Cbegin%7Bbmatrix%7D%20%5Cepsilon_1%20%5C%5C%20%5Cepsilon_2%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cepsilon_T%20%5Cend%7Bbmatrix%7D%20%5Cend%7Bequation%7D)
 
@@ -845,7 +845,7 @@ vectors of residuals, namely:
 E[\epsilon_t \epsilon'_{t'}]=\sigma_{tt'}
 \end{equation} 
 
-Note that this specification is very flexible, in that it allows changes in the coefficients $\beta_{it}$ in order to modulate the effect of $X^i_{.t}$ on $y_t$. This flexibility can be reduced and it is posible to impose restrinctions considering some $\beta$ coefficients as being constant over time. In this case, we can reformulate the coefficients expression $\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})$ to restrict the first $r$ coefficients to be constant across equations. This is equivalent to specifying some effects to be invariant over time.
+Note that this specification is very flexible, in that it allows changes in the coefficients $\beta_{it}$ in order to modulate the effect of the independent variables on $y_t$. This flexibility can be reduced and it is posible to impose restrictions considering some $\beta$ coefficients as being constant over time. In this case, we can reformulate the coefficients expression $\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})$ to restrict the first $r$ coefficients to be constant across equations. This is equivalent to specifying some effects to be invariant over time.
 -->
 
 ![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-err%7D%20E%5B%5Cepsilon_t%20%5Cepsilon'_%7Bt'%7D%5D%3D%5Csigma_%7Btt'%7D%20%5Cend%7Bequation%7D%20)
@@ -853,12 +853,10 @@ Note that this specification is very flexible, in that it allows changes in the 
 Note that this specification is very flexible, in that it allows changes
 in the coefficients
 ![\(\beta_{it}\)](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_%7Bit%7D%24)
-in order to modulate the effect of
-![\(X^i_{.t}\)](https://render.githubusercontent.com/render/math?math=%24X%5Ei_%7B.t%7D%24)
-on
+in order to modulate the effect of the independent variables on
 ![\(y_t\)](https://render.githubusercontent.com/render/math?math=%24y_t%24).
 This flexibility can be reduced and it is posible to impose restrictions
-to consider some
+considering some
 ![\(\beta\)](https://render.githubusercontent.com/render/math?math=%24%5Cbeta%24)
 coefficients as being constant over time. In this case, we can
 reformulate the coefficients expression
@@ -880,28 +878,9 @@ Equation () can be rewriten in compact form:
 (with $K = \sum_t{k_t}$) and $\epsilon$ is an $NT \times 1$ vector. Using the Kronecker product notation ($\otimes$), the error matrix structure is expressed concisely as:
 
 \begin{equation}
-E[\epsilon \epsilon']=\Sigma \otimes I_N ; \ \Sigma=(\sigma_{tt'})
+E[\epsilon \epsilon']=\bf{\Sigma} \otimes \bf{I_N} ; \ \bf{\Sigma}=(\sigma_{tt'})
 \end{equation}
 -->
-
-![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20y%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5Cend%7Bequation%7D)
-
-where
-![\(\bf{Y}\)\](<https://render.githubusercontent.com/render/math?math=%24%5Cbf%7BY%7D%24>)
-is now a vector of dimension
-![\(NT \times 1\)](https://render.githubusercontent.com/render/math?math=%24NT%20%5Ctimes%201%24),
-\!\[\(\bf{X}\)\](<https://render.githubusercontent.com/render/math?math=%24%5Cbf%7BX%7D%24>)
-is a block-diagonal matrix
-![\(NT \times K\)](https://render.githubusercontent.com/render/math?math=%24NT%20%5Ctimes%20K%24)
-(with
-\!\[\(K = \sum_t{k_t}\)](https://render.githubusercontent.com/render/math?math=%24K%20%3D%20%5Csum_t%7Bk_t%7D%24))
-and
-![\(\epsilon\)](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%24)
-is an
-![\(NT \times 1\)](https://render.githubusercontent.com/render/math?math=%24NT%20%5Ctimes%201%24)
-vector. Using the Kronecker product notation
-(![\(\otimes\)](https://render.githubusercontent.com/render/math?math=%24%5Cotimes%24)),
-the error matrix structure is expressed concisely as:
 
 ![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20E%5B%5Cepsilon%20%5Cepsilon'%5D%3D%5CSigma%20%5Cotimes%20I_N%20%3B%20%5C%20%5CSigma%3D\(%5Csigma_%7Btt'%7D\)%20%5Cend%7Bequation%7D)
 
@@ -939,7 +918,7 @@ variable (SUR-SLM) is as follows:
 
 \noindent where $\bf{A} =I_{TN}-\bf{\Gamma} \otimes W$ is the spatially lagged dependent variable, and $\bf{\Gamma} = diag(\rho_1, \cdots, \rho_T)$.
 
-This specification assumes that outcome ($y_{st}$) at location $s$ and time $t$ is partially determined by the weighted average ($Wy_{st}$) of the outcome in neighboring provinces, with neighborhood defined by matrix $W$ of spatial weights. In other words, the spatially lagged dependent variable represents a process of contagion, where the disease in neighboring provinces can spillover in a spatial way. The coefficients of the spatially lagged variable are estimated for each time period $\rho_t$ and identify the intensity and the sign of the contagion effect. It is possible test the null hypothesis of identical levels of spatial dependence ($\rho_i=\rho_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`.
+This specification assumes that outcome ($y_{st}$) at location $s$ and time $t$ is partially determined by the weighted average ($Wy_{st}$) of the outcome in neighboring provinces, with neighborhood defined by matrix $W$ of spatial weights. In other words, the spatially lagged dependent variable represents a process of contagion, where the disease in neighboring provinces can spillover in a spatial way. The coefficients of the spatially lagged variable are estimated for each time period $\rho_t$ and identify the intensity and the sign of the contagion effect. It is possible test the null hypothesis of identical levels of spatial dependence ($\rho_i=\rho_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`. 
 -->
 
 ![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbegin%7Baligned%7D%20%5Cbf%7BAY%7D%20%3D%20%5Cbf%7BX%7D%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN\(0%2C%5Cbf%7B%5CSigma%7D\)%20%5Cend%7Baligned%7D%20%5Cend%7Bequation%7D)
@@ -974,6 +953,37 @@ The correspond Wald test is available in the `R` package `spsur`.
 The SUR-SLM model can be estimated using maximum likelihood (López, Mur,
 and Angulo (2014)) or instrumental variables (Mínguez, López, and Mur
 (2019)).
+
+A note regarding the interpretation of the model is in order. It is
+well-known that coefficients in linear regression models are partial
+derivatives of the dependent variable with respect to the independent
+variables, and therefore directly give the marginal effects or rates of
+change. Spatially lagged models, however, are no longer linear. The
+intuition behind the non-linearity is that the spatial lag expands the
+information set to include information from neighbouring regions: in
+other words, the value of an explanatory variable in a spatial unit can
+have influence in other spatial units via the spatial lag. This makes
+interpretation of the coefficients less straightforward but also richer
+(Golgher and Voss 2016). The results of LeSage (2009) for
+cross-sectional spatial lag models can be extended to the spatial SUR
+framework. Note that, according to Elhorst (2014), the partial
+derivatives have the following interpretation: if an explanatory
+variable (\(X_k\)) in a particular province changes, not only the
+incidence rate in that province changes, also incidence rates in other
+provinces change via the contagion effect. Therefore, a change in
+\(X_k\) in a particular province has a *direct effect* on that province,
+but also an *indirect effect* on neighbouring provinces. In this way,
+the \(i\)th diagonal element of the matrix of partial derivatives
+represents the direct effect on the \(i\)th province, whereas the
+non-diagonal elements of \(i\)th row of the matrix of partial
+derivatives represent the indirect effects on other provinces. In order
+to obtain a global indicator, the direct effect is calculated as the
+mean of the diagonal elements and captures the average change in
+incidence ratio caused by the change in \(X_k\). Likewise, a global
+indicator of the indirect effects is calculated as the mean of the
+non-diagonal elements. The total effect is the sum of direct and
+indirect effects. Finally, note that if \(\rho_k = 0\), the indirect
+effects are 0 and the direct effects are equal to \(\beta_kt\).
 
 # Analysis
 
@@ -1110,7 +1120,13 @@ namely GDP per capita and percentage of older adults. We do not see an
 the correlation analysis in Figure  also suggest little temporal
 variation. In contrast, we let the spatial autocorrelation parameter, as
 well as the parameters of the rest of the independent variables
-(including the constant) to vary over time.
+(including the constant) to vary over time. This will be useful to
+detect whether there are behavioral adaptations at the population level
+over the course of the period examined. As an example of behavioral
+adaptations, the effect of density might weaken over time, in the
+measure that the effects of the lockdown are felt: at full compliance
+with the lockdown, with people practicing social avoidance, density
+might matter less than other factors.
 
 After estimation, we compare the goodness of fit of the three SUR
 models. Figure  shows the equation-level coefficient of determination
@@ -1137,7 +1153,39 @@ pooled](README_files/figure-gfm/goodness-of-fit-1.png)
 
 # Results and Discussion
 
-Table  presents a summary.
+Table  presents a summary of the results of Model 2 (*lag11*). Recall
+that two coefficients were constrained and are estimated only for the
+first equation of the system, and thus are assumed to be constant over
+time. These are the coefficients corresponding to GDP per capita and
+percentage of older adults. Both coefficients are significant at
+\(p\leq0.05\). The sign of the coefficient for GDP per capita is
+positive, which indicates that wealthier regions tend to have a higher
+incidence of COVID-19. This is in line with the idea that the epidemic
+started earlier in wealthier places due to their connections to a
+globalized world. The sign of the coefficient for percentage of older
+adults, on the other hand, is negative. As previously discussed, the
+level of social contact of older adults even under normal circumstances
+tends to be lower than for younger people. As a consequence, places with
+larger populations of older adults appear to have a natural level of
+social distancing in place. It is important to note that this does not
+detract from evidence that older adults are more vulnerable individually
+and in institutional settings, where their case mortality rates are
+perhaps the highest of all age groups. Instead, this result indicates
+that their presence in the community at large tends to depress
+transmission of the virus.
+
+Of the two other control variables, the coefficient of population
+density is significant at \(p\leq0.05\) in 11 equations, and not
+significant in 19. The coefficient for transit is significant at
+\(p\leq0.10\) in 22 equations, and of those, significant at
+\(p\leq0.05\) in 14 equations. The next four variables are environmental
+factors. The coefficient for humidity is significant at \(p\leq0.10\) in
+20 equations, and of those, significant at \(p\leq0.05\) in 19
+equations. Of the environmental variables, temperature is the only
+variable that has significant coefficients in every equation at
+\(p\leq0.05\). Finally, sunshine has significant coefficients at
+\(p\leq0.10\) in 18 equations, including 15 coefficients that are
+significant at \(p\leq0.05\).
 
 <table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 
@@ -1756,8 +1804,38 @@ equations
 
 </table>
 
-Figure  shows the temporal evolution of the spatial autocorrelation
-coefficient (\(\rho\)) and the intercept of the model.
+To better understand the results, we proceed to plot the coefficients in
+their temporal sequence. At this point it is worth recalling that the
+state of emergency went into effect on March 14. In the following
+figures, the periods of time indicated in yellow starting on March 14
+correspond to the state of emergency, with only essential travel and
+selected industrial activities allowed; the period of time in orange was
+the stricter lockdown when only essential travel was allowed.
+
+We begin our discussion with the evolution of the spatial
+autocorrelation coefficient (\(\rho\)) in Figure  (left panel). It is
+interesting to note that the magnitude of the spatial autocorrelation
+coefficient \(\rho\) declines over the period under analysis, and is not
+significant for some days. This is an interesting result: immediately
+prior to the declaration of the state of emergency, there appears to
+have been a strong inter-provincial contagion effect. Keeping in mind
+that the incubation period ranges between 2 and 11 days with a median of
+5, it is reasonable to expect that the effect of the lockdown will be
+observed with some delay. Indeed, as seen in the figure, the
+autocorrelation coefficient remains high for three days, then declines
+on March 16, and continues to weaken over time. At the end of the period
+under examination, the strength of this effect is much diminished. We
+would expect that under full compliance with strict lockdown conditions
+(meaning no inter-provincial mobility) the spatial contagion effect
+would be zero. The fact that it is not is evidence of some weak
+contagion effect due to restrictions to the movement between provinces.
+
+The intercept (right panel in Figure ) is indicative of the variation of
+the incidence of COVID-19, other things being equal. Here we see that at
+the incidence declines somewhat immediately after the state of
+emergency, only to begin increasing again over time. Then, the incidence
+declines again after the stricter lockdown and rebounds to a lower level
+by April 11.
 
 ![Temporal evolution of the spatial autocorrelation coefficient (rho)
 and the intercept of the model; dots are the point estimates and
@@ -1768,7 +1846,26 @@ allowed.](README_files/figure-gfm/results-time-1-1.png)
 
 Figure  shows the temporal evolution of the coefficients for the two
 control variables that were not fixed over time, i.e., \(\log(Density)\)
-and \(Transit\).
+(left panel) and \(Transit\) (right panel).
+
+In Section  we had anticipated a positive sign for the coefficient of
+this variable, and indeed, at the beginning of the period the
+coefficient is positive, albeit not significant, and then remains
+non-significant for the earlier part of the lockdown. We are somewhat
+surprised by the way this coefficient turns significant *and* negative
+in the later part of the lockdown, after April 1st. This effect, we
+surmise, is the result of risk compensation, a situation where people
+adapt their behavior according to the *perceived* level of risk,
+becoming more careful when the perceived risk is higher and viceversa
+(e.g., Noland 1995; Richens, Imrie, and Copas 2000; Phillips, Fyhri, and
+Sagberg 2011). Consequently, residents in high density regions may
+perceive the risk of infection as being higher, and adapt their behavior
+accordingly - while the opposite may be true of residents in low density
+regions. Anecdotally, this seems to have been the case with some
+governors in the US, who resisted stay-at-home orders citing their
+sparse  and rural populations. The coefficient for Transit is positive,
+as expected, but with very wide confidence intervals, and in fact not
+significant in the earlier part of the period.
 
 ![Temporal evolution of coefficient for the control variables; dots are
 the point estimates and vertical lines are 95% confidence intervals. In
@@ -1776,76 +1873,997 @@ yellow is the period after the declaration of the state of emergency,
 and in orange is the period when only essential activities were
 allowed.](README_files/figure-gfm/beta-controls-time-1.png)
 
-Figure  shows the temporal evolution of the coefficient for the three
-environmental variables.
+The evolution of the coefficients for the three environmental variables
+are shown in Figure . Despite a mostly positive simple correlation with
+incidence (see Figure ) once that we control for other factors, humidity
+has a negative association with incidence of COVID-19 in Spain
+(top-right panel). This is in line with the literature that describes
+the viability and transmission of different viruses at higher levels of
+humidity. The coefficients for temperature (top-right panel) are
+consistently negative and this variable is, besides the intercept, the
+only one with significant coefficients in all equations. The range of
+variation of this coefficient during the period examined is
+approximately between -1 and -2 - although it is important to recall
+that these values should not be interpreted directly as effects; more on
+this below. Finally the plot for the coefficients associated with hours
+of sunshine (bottom panel) is more ambiguous: prior to the lockdown, the
+coefficient was negative, but significant only at \(p\leq10\). At the
+beginning of the lockdown, the coefficient is no longer significative,
+before becoming *positive* and significant on March 23rd. This result
+stands in contrast to previous findings regarding influenza, where more
+hours of sunlight reduced the strength and duration of epidemic
+durations (Yu et al. 2013). A difference with previous studies is the
+temporal scale of the analysis: where Yu et al. (2013) use monthly
+averages, we use daily data for a much shorter period of time. The
+positive sign of sunshine may well be another instance of behavioral
+adaptations, whereby compliance with lockdown orders weakens on sunny
+days.
 
 ![Temporal evolution of coefficient for the environmental variables;
 dots are the point estimates and vertical lines are 95% confidence
 intervals. In yellow is the period after the declaration of the state of
 emergency, and in orange is the period when only essential activities
-were allowed.](README_files/figure-gfm/beta-environmenta-time-1.png)
+were allowed.](README_files/figure-gfm/beta-environmental-time-1.png)
+
+The preceding discussion helps to establish the inferential
+contributions of the analysis. The remaining question is, what are the
+implications. As discussed in Section  the question of the magnitude of
+the effects is not clear from the coefficients alone, since a change to
+a variable in a province influences, via the contagion effect, its
+neighbors. For this reason, the appropriate way to estimate the effects
+is to calculate both the own and contagion effects (in other words the
+direct and indirect effects, respectively), as well as their total. A
+summary of the different variable effects appears in Table . All effects
+in the table are interpreted as percentage change in the incidence of
+COVID-19 as a consequence of a one percent change in the variable. The
+exception is Transit (which was not log-transformed), and this variable
+represents the percentage change in incidence between provinces without
+and with mass transit systems.
+
+Two variables had temporally constrained coefficients. The estimated
+effect of GDP per capita is to increase the incidence of COVID-19 by
+0.675% for each percentual increase of this variable (in €1,000s). In
+our view, this is a measure of inertia, as provinces with higher GDP per
+capita where among the first to see exponential growth in the pandemia.
+Percentage of older adults has a negative effect, and each percentual
+increase in this variable is associated with a relatively small
+reduction of the incidence of less than 1%.
+
+The temporal variation of the effects for the rest of the variables is
+shown in Figure . The largest positive direct effect is Transit, and the
+largest direct negative effects are temperature and humidity. The direct
+effect of these variables is as follows: for each percentual point
+increase in temperature, there is between a 1% and 2% reduction in the
+incidence of the disease. This effect is amplified via contagion, as
+seen in the central panel in the figure, and the indirect effect can
+further reduce the incidence by up to 1.5%. The effect of humidity is
+also to reduce the incidence: each percentual point of increase in
+humidity is associated with a reduction of up to 1.5% in incidence. With
+the addition of the indirect effect, the total effect of a 1% increase
+in humidity is to reduce incidence by up to 3%. As seen in the figure,
+the indirect (i.e., contagion) effects are almost as strong as the
+direct effects immediately before and at the beginning of the lockdown
+period. However, by the end of the lockdown period, the indirect effects
+have weakened considerably. The effect of density goes from positive
+(+0.334) to negative (-0.244). It is crucial to keep in mind here that
+this is the effect of density over a period of *lockdown* and possibly
+subject to risk compensation, as discussed above. In other words, the
+lockdown seems to be more effective in places with higher density.
+Accordingly, cities should not rush to ease lockdowns, but rather
+efforts should be made to reduce or eliminate risk compensation in less
+densely populated regions.
+
+What do these effects mean? Under a situation of lockdown,
+inter-regional contagion is reduced, as expected, and the effect of
+temperature is estimated to reduce the incidence of COVID-19 by between
+one and two percent with each percentual increase of this variable.
+Without a lockdown, or a relaxed lockdown, the effect is even greater,
+but only because the disease is transmitted inter-regionally\! Imagine a
+region that is closed to its neighbors: increases in temperature are
+associated with smaller reductions in incidence - however, it does not
+import or export cases. A province that is not closed and not under
+lockdown will see a greater effect of temperature, but at the cost of
+importing/exporting cases.
+
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+
+<caption>
+
+Summary of direct, indirect, and total effects according to best model
+(lag11: lagged 11-day moving average)
+
+</caption>
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+Variable
+
+</th>
+
+<th style="text-align:right;">
+
+Min
+
+</th>
+
+<th style="text-align:right;">
+
+Mean
+
+</th>
+
+<th style="text-align:right;">
+
+Max
+
+</th>
+
+<th style="text-align:left;">
+
+Note
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr grouplength="7">
+
+<td colspan="5" style="border-bottom: 1px solid;">
+
+<strong>Direct Effects</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(GDPpc)
+
+</td>
+
+<td style="text-align:right;">
+
+0.679
+
+</td>
+
+<td style="text-align:right;">
+
+0.679
+
+</td>
+
+<td style="text-align:right;">
+
+0.679
+
+</td>
+
+<td style="text-align:left;">
+
+Constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Older)
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.807
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.807
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.807
+
+</td>
+
+<td style="text-align:left;">
+
+Constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Density)
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.220
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.096
+
+</td>
+
+<td style="text-align:right;">
+
+0.168
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+Transit
+
+</td>
+
+<td style="text-align:right;">
+
+0.344
+
+</td>
+
+<td style="text-align:right;">
+
+0.517
+
+</td>
+
+<td style="text-align:right;">
+
+0.584
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Humidity)
+
+</td>
+
+<td style="text-align:right;">
+
+\-1.571
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.545
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.031
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Temperature)
+
+</td>
+
+<td style="text-align:right;">
+
+\-2.019
+
+</td>
+
+<td style="text-align:right;">
+
+\-1.421
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.929
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Sunshine)
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.283
+
+</td>
+
+<td style="text-align:right;">
+
+0.095
+
+</td>
+
+<td style="text-align:right;">
+
+0.206
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr grouplength="7">
+
+<td colspan="5" style="border-bottom: 1px solid;">
+
+<strong>Indirect Effects</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(GDPpc)
+
+</td>
+
+<td style="text-align:right;">
+
+0.634
+
+</td>
+
+<td style="text-align:right;">
+
+0.634
+
+</td>
+
+<td style="text-align:right;">
+
+0.634
+
+</td>
+
+<td style="text-align:left;">
+
+Constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Older)
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.753
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.753
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.753
+
+</td>
+
+<td style="text-align:left;">
+
+Constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Density)
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.032
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.004
+
+</td>
+
+<td style="text-align:right;">
+
+0.156
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+Transit
+
+</td>
+
+<td style="text-align:right;">
+
+0.008
+
+</td>
+
+<td style="text-align:right;">
+
+0.089
+
+</td>
+
+<td style="text-align:right;">
+
+0.339
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Humidity)
+
+</td>
+
+<td style="text-align:right;">
+
+\-1.466
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.156
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.001
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Temperature)
+
+</td>
+
+<td style="text-align:right;">
+
+\-1.634
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.274
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.014
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Sunshine)
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.264
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.006
+
+</td>
+
+<td style="text-align:right;">
+
+0.028
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr grouplength="7">
+
+<td colspan="5" style="border-bottom: 1px solid;">
+
+<strong>Total Effects</strong>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(GDPpc)
+
+</td>
+
+<td style="text-align:right;">
+
+1.313
+
+</td>
+
+<td style="text-align:right;">
+
+1.313
+
+</td>
+
+<td style="text-align:right;">
+
+1.313
+
+</td>
+
+<td style="text-align:left;">
+
+Constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Older)
+
+</td>
+
+<td style="text-align:right;">
+
+\-1.560
+
+</td>
+
+<td style="text-align:right;">
+
+\-1.560
+
+</td>
+
+<td style="text-align:right;">
+
+\-1.560
+
+</td>
+
+<td style="text-align:left;">
+
+Constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Density)
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.244
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.100
+
+</td>
+
+<td style="text-align:right;">
+
+0.324
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+Transit
+
+</td>
+
+<td style="text-align:right;">
+
+0.500
+
+</td>
+
+<td style="text-align:right;">
+
+0.606
+
+</td>
+
+<td style="text-align:right;">
+
+0.772
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Humidity)
+
+</td>
+
+<td style="text-align:right;">
+
+\-3.037
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.701
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.032
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Temperature)
+
+</td>
+
+<td style="text-align:right;">
+
+\-3.385
+
+</td>
+
+<td style="text-align:right;">
+
+\-1.695
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.946
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+
+log(Sunshine)
+
+</td>
+
+<td style="text-align:right;">
+
+\-0.547
+
+</td>
+
+<td style="text-align:right;">
+
+0.089
+
+</td>
+
+<td style="text-align:right;">
+
+0.228
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
+</tbody>
+
+<tfoot>
+
+<tr>
+
+<td style="padding: 0; border: 0;" colspan="100%">
+
+<span style="font-style: italic;">Note: </span>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding: 0; border: 0;" colspan="100%">
+
+<sup></sup> Non-constrained: coefficient was allowed to vary across
+equations
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding: 0; border: 0;" colspan="100%">
+
+<sup></sup> Constrained: coefficient as constant across equations
+
+</td>
+
+</tr>
+
+</tfoot>
+
+</table>
+
+![Temporal evolution of direct, indirect, and total effects by
+date.](README_files/figure-gfm/plot-impacts-1.png)
 
 # Concluding Remarks
 
-More words go here.
+In this paper we have presented a spatio-temporal analysis of incidence
+of COVID-19 in Spain. The analysis covers a 30-day period that begins
+immediately before the state of emergency was declared in the country.
+The focus of the research has been on the environmental correlates of
+incidence of the disease. There is a need for more empirical evidence,
+as policy makers, public health practitioners, and the public begin
+planning for the months ahead at this early stage of the pandemic.
 
-Limitaciones
+Our results offer strong support for the hypothesis that incidence of
+COVID-19 at the population level is lower at higher temperatures and
+levels of humidity: the estiamated effect is a reduction in the
+neighborhood of 3% percent in incidence per each 1% increase in
+temperature, and a 3% reduction in incidence per 1% increase in humidity
+*under conditions of contagion*. These reductions are estimated to be
+lower when lockdown conditions are in place. The question here seems to
+be whether these environmental variables can yield a bigger reduction of
+*more* cases, or a smaller reduction of *fewer* cases. Our control
+variables also offer some interesting insights. In particular, there is
+evidence of behavioral adaptations in the form of risk compensation
+(density) and compliance with the lockdown (sunshine). These results
+offer a cautionary tale, with regards to the effectiveness of the
+lockdown in more dense areas, and also the implications for compliance
+with stay-at-home orders as the northern hemisphere moves towards summer
+and more hours of sunshine during the day.
 
-  - La temperatura puedes ser un factor pero cabría esperar que no
-    tuviera un impacto lineal. Por el contrario deberiamos esperar un
-    ‘punto de corte’: Una temperatua mantenida superior a X grados
-    durante siete días sea la mejor forma de incorporarla al modelo. En
-    nuestro modelo (log-log) en incremento en un 1% de la temperatura se
-    asocia con un incremento beta% en la incidencia. Esto es lo mismo si
-    la temperatura es baja que si es alta.
+A key aspect of the analysis using spatial SUR models is that we were
+able to model incidence of COVID-19 as an interregional contagion
+process. Here, we find that the strength of the contagion effect was
+dramatically reduced by the lockdown.
 
-  - Idem para la humedad y horas de sol
+Needless to say, the analysis presented here is ecological, and at the
+level of population health. For this reason, the analysis does not make
+any claims with respect to the effect of ultraviolet light on the virus,
+but rather about transmission of the virus in the population. In this
+way, the analysis does not say that the virus moves less effectively
+where more people live in close proximity to each other, but rather that
+humans are more contagious when they feel safe in less dense regions.
+Similarly, more sunshine does not mean that the virus thrives, but
+rather that humans are more contagious to each other when their behavior
+adapts to this environmental condition.
 
-  - Los datos son ‘provisionales’. Hay gran confusión sobre la
-    incidencia real. La ausencia de test de diagnóstico PCRs al inicio
-    de la pandemia (también ahora) puede desvirtuar el número de casos
-    dianosticados.
+It is important, in this respect, to highlight some limitations of this
+study.
 
-  - Los datos oficiales (que tampoco son fiables) son reportados a nivel
-    de Comunidades Autónomas. La recopilación de datos a nivel de
-    provincial son el resultado de un esfuerzo colaborativo de
-    recopilacion entre distintas fuentes (principalmente gobiernos
-    locales). Nuevamente puede haber sesgos importanes.
-
-  - En carácter insular de las Islas Canarias y de las Islas baleares no
-    se ha tenido en cuenta.
-
-  - Baleares se ha linkado artificialmente con 3/4 provincias y debería
-    de haberse dejado aislada para respetar su carácter insular al
-    definir la matriz W.
-
-  - La incidencia depende de un estado inicial. Al inicio del estudio
-    había provincias en las que la epidemia estaba muy desarrollada
-    (Madrid/Alava) mientras que en otras apenas habías casos. Este hecho
-    no ha sido considerado en el modelo. Decretar el confinamiento debe
-    tener distintos impactos entre provincias. QUIZAR METER UNA VARAIBLE
-    DUMMY CON COEF BETA CONSTANTE PARA CONTROLAR AQUELLAS PROVINCIAS CON
-    MAYOR NUEMRO DE CASOS AL INICIO DEL CONFINAMIENTO.
-
-  - No se ha controlado por el sistema sanitario de cada provincia. Uno
-    de los principales focos de contagio han sido los hospitales y los
-    centros de salud. En aquellas provincias donde se ha promovido el
-    mensaje “NO IR AL MEDICO” han presentado menor incidencia.
-
-  - ¿hasta que punto las variables de control no recojen también
-    factores climáticos? por ejemplo, la gente jóven vive en el sur de
-    España que ha tenido menos incidencia.
-
-  - Las estaciones meteorológicas para la obtencion de datos climáticos
-    has sido elegidas aleatoriamente (una para cada provincia). otra
-    seleccion puede dar otros resultados. AQUI SE PODRÍA HACER EL
-    ESFUERZO DE CONSIDERARLAS TODAS (1000) Y CALCULAR LA MEDIA DE LAS
-    VARAIBLES POR PROVINCIA
-
-\*IDEM para la humedad. idem para sunshine
-
-  - HACE FALTA INCLUIR UN PLOT CON LAS CORRELACIONES DE LOS RESIDUOS
-    PARA DARLE RELEVANCIA A LA ESTIMACION SUR
+First, the analysis was conducted under a situation of lockdown, and
+therefore, besides the results are the beginning of the period examined,
+one must exercise caution when trying to extrapolate the findings to
+other situations. Secondly, it is well known that there is in many
+countries substantial underreporting of cases of COVID-19 due to limited
+testing. However, we do not suspect systematic provincial bias in
+reporting, and as long as the underreporting is consistent across units
+of analysis, we do not expect biased results - even if we are aware that
+the number of true cases is likely higher. Thirdly, all environmental
+data are based on a single station in a province. Here, we made an
+effort to select the most representative station based on the
+distribution of the population. An alternative approach would be to
+calculate the environmental variables based on the average of multiple
+stations within each province: this would likely smooth to some extent
+these variables. Finally, we defined spatial neighborhoods based on
+adjacency. It would be interesting to compare other connectivity
+criteria, for instance based on domestic transportation instrastructure
+and services. We flag this as a matter for future research.
 
 # Acknowledgments
 
@@ -1989,11 +3007,26 @@ Statistic: Detecting and Evaluating Emerging Clusters.” Journal Article.
 
 </div>
 
+<div id="ref-Elhorst2014spatial">
+
+Elhorst, J Paul. 2014. *Spatial Econometrics: From Cross-Sectional Data
+to Spatial Panels*. Book. Vol. 479. Springer.
+
+</div>
+
 <div id="ref-Fernandes2020economic">
 
 Fernandes, Nuno. 2020. “Economic Effects of Coronavirus Outbreak
 (Covid-19) on the World Economy.” Journal Article. *Available at SSRN
 3557504*.
+
+</div>
+
+<div id="ref-Golgher2016interpret">
+
+Golgher, André Braz, and Paul R Voss. 2016. “How to Interpret the
+Coefficients of Spatial Models: Spillovers, Direct and Indirect
+Effects.” *Spatial Demography* 4 (3): 175–205.
 
 </div>
 
@@ -2121,6 +3154,13 @@ Spatial Heterogeneity of the European Convergence Process, 1980–1999.”
 
 </div>
 
+<div id="ref-LeSage2009introduction">
+
+LeSage, James, and Robert Kelley Pace. 2009. *Introduction to Spatial
+Econometrics*. Chapman; Hall/CRC.
+
+</div>
+
 <div id="ref-Lopez2017spatial">
 
 López, Fernando A, Pedro J Martínez-Ortiz, and Juan-Gabriel
@@ -2209,6 +3249,15 @@ and Humidity and Potential for Seasonality for the Covid-19 Pandemic
 
 </div>
 
+<div id="ref-Noland1995perceived">
+
+Noland, R. B. 1995. “Perceived Risk and Modal Choice - Risk Compensation
+in Transportation System.” Journal Article. *Accident Analysis and
+Prevention* 27 (4): 503–21.
+<https://doi.org/10.1016/0001-4575(94)00087-3>.
+
+</div>
+
 <div id="ref-Pebesma2018">
 
 Pebesma, Edzer. 2018. “Simple Features for R: Standardized Support for
@@ -2233,6 +3282,14 @@ for Modeling Dynamics of Contagious Disease Spread.” Journal Article.
 
 </div>
 
+<div id="ref-Phillips2011risk">
+
+Phillips, R. O., A. Fyhri, and F. Sagberg. 2011. “Risk Compensation and
+Bicycle Helmets.” Journal Article. *Risk Analysis* 31 (8): 1187–95.
+<https://doi.org/10.1111/j.1539-6924.2011.01589.x>.
+
+</div>
+
 <div id="ref-Prem2017projecting">
 
 Prem, Kiesha, Alex R Cook, and Mark Jit. 2017. “Projecting Social
@@ -2246,6 +3303,14 @@ Data.” *PLoS Computational Biology* 13 (9): e1005697.
 Rey, Sergio J, and Brett D Montouri. 1999. “US Regional Income
 Convergence: A Spatial Econometric Perspective.” *Regional Studies* 33
 (2): 143–56.
+
+</div>
+
+<div id="ref-Richens2000risk">
+
+Richens, J., J. Imrie, and A. Copas. 2000. “Condoms and Seat Belts: The
+Parallels and the Lessons.” Journal Article. *Lancet* 355 (9201):
+400–403. <https://doi.org/10.1016/s0140-6736(99)09109-6>.
 
 </div>
 
@@ -2334,6 +3399,16 @@ Weibing Wang. 2020. “No Association of Covid-19 Transmission with
 Temperature or Uv Radiation in Chinese Cities.” Journal Article.
 *European Respiratory Journal*, 2000517.
 <https://doi.org/10.1183/13993003.00517-2020>.
+
+</div>
+
+<div id="ref-Yu2013characterization">
+
+Yu, H. J., W. J. Alonso, L. Z. Feng, Y. Tan, Y. L. Shu, W. Z. Yang, and
+C. Viboud. 2013. “Characterization of Regional Influenza Seasonality
+Patterns in China and Implications for Vaccination Strategies:
+Spatio-Temporal Modeling of Surveillance Data.” Journal Article. *Plos
+Medicine* 10 (11): 16. <https://doi.org/10.1371/journal.pmed.1001552>.
 
 </div>
 

@@ -239,7 +239,7 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 
 \noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t$ is a $N \times k_t$ matrix of the $k_t$ independent variables, with associated vector of coefficients $\beta_t$,; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals. 
 
-<!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
+<!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/ -->
   <!--
   ![\begin{equation} \label{eq:sur-sim} \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_T \end{bmatrix} = \begin{bmatrix} X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & X_T \end{bmatrix} \ \begin{bmatrix} \beta_1 \\ \beta_1 \\ \vdots \\ \beta_T \end{bmatrix} + \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_T \end{bmatrix} \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-sim%7D%20%5Cbegin%7Bbmatrix%7D%20y_1%20%5C%5C%20y_2%20%5C%5C%20%5Cvdots%20%5C%5C%20y_T%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20X_1%20%26%200%20%26%20%5Ccdots%20%26%200%20%5C%5C%200%20%26%20X_2%20%26%20%5Ccdots%20%26%200%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%200%20%26%200%20%26%20%5Ccdots%20%26%20X_T%20%5Cend%7Bbmatrix%7D%20%5C%20%5Cbegin%7Bbmatrix%7D%20%5Cbeta_1%20%5C%5C%20%5Cbeta_1%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cbeta_T%20%5Cend%7Bbmatrix%7D%20%2B%20%5Cbegin%7Bbmatrix%7D%20%5Cepsilon_1%20%5C%5C%20%5Cepsilon_2%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cepsilon_T%20%5Cend%7Bbmatrix%7D%20%5Cend%7Bequation%7D)
   
@@ -253,12 +253,12 @@ A key feature of the SUR model is the dependence structure among the vectors of 
 E[\epsilon_t \epsilon'_{t'}]=\sigma_{tt'}
 \end{equation} 
 
-Note that this specification is very flexible, in that it allows changes in the coefficients $\beta_{it}$ in order to modulate the effect of independent varaibles on $y_t$. This flexibility can be reduced and it is posible to impose restrinctions considering some $\beta$ coefficients as being constant over time. In this case, we can reformulate the coefficients expression $\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})$ to restrict the first $r$ coefficients to be constant across equations. This is equivalent to specifying some effects to be invariant over time.
+Note that this specification is very flexible, in that it allows changes in the coefficients $\beta_{it}$ in order to modulate the effect of the independent variables on $y_t$. This flexibility can be reduced and it is posible to impose restrictions considering some $\beta$ coefficients as being constant over time. In this case, we can reformulate the coefficients expression $\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})$ to restrict the first $r$ coefficients to be constant across equations. This is equivalent to specifying some effects to be invariant over time.
 
 <!--
 ![\begin{equation} \label{eq:sur-err} E\[\epsilon_t \epsilon'_{t'}\]=\sigma_{tt'} \end{equation} ](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-err%7D%20E%5B%5Cepsilon_t%20%5Cepsilon'_%7Bt'%7D%5D%3D%5Csigma_%7Btt'%7D%20%5Cend%7Bequation%7D%20)
 
-Note that this specification is very flexible, in that it allows changes in the coefficients ![$\beta_{it}$](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_%7Bit%7D%24) in order to modulate the effect of ![$X^i_{.t}$](https://render.githubusercontent.com/render/math?math=%24X%5Ei_%7B.t%7D%24) on ![$y_t$](https://render.githubusercontent.com/render/math?math=%24y_t%24). This flexibility can be reduced and it is posible to impose restrictions to consider some ![$\beta$](https://render.githubusercontent.com/render/math?math=%24%5Cbeta%24) coefficients as being constant over time. In this case, we can reformulate the coefficients expression ![$\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})$](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_t%20%3D%20(%5Cbeta_%7B1%7D%2C%20%5Ccdots%2C%20%5Cbeta_%7Br-1%7D%2C%20%5Cbeta_%7Br%7D%2C%20%5Cbeta_%7Br%2B1%7D%2C%20%5Ccdots%2C%20%5Cbeta_%7BNt%7D)%24) to restrict the first ![$r$](https://render.githubusercontent.com/render/math?math=%24r%24) coefficients to be constant across equations. This is equivalent to specifying some effects to be invariant over time.
+Note that this specification is very flexible, in that it allows changes in the coefficients ![$\beta_{it}$](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_%7Bit%7D%24) in order to modulate the effect of the independent variables on ![$y_t$](https://render.githubusercontent.com/render/math?math=%24y_t%24). This flexibility can be reduced and it is posible to impose restrictions considering some ![$\beta$](https://render.githubusercontent.com/render/math?math=%24%5Cbeta%24) coefficients as being constant over time. In this case, we can reformulate the coefficients expression ![$\beta_t = (\beta_{1}, \cdots, \beta_{r-1}, \beta_{r}, \beta_{r+1}, \cdots, \beta_{Nt})$](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_t%20%3D%20(%5Cbeta_%7B1%7D%2C%20%5Ccdots%2C%20%5Cbeta_%7Br-1%7D%2C%20%5Cbeta_%7Br%7D%2C%20%5Cbeta_%7Br%2B1%7D%2C%20%5Ccdots%2C%20%5Cbeta_%7BNt%7D)%24) to restrict the first ![$r$](https://render.githubusercontent.com/render/math?math=%24r%24) coefficients to be constant across equations. This is equivalent to specifying some effects to be invariant over time.
 -->
 
 Equation (\ref{eq:sur-sim}) can be rewriten in compact form:
@@ -276,7 +276,7 @@ E[\epsilon \epsilon']=\bf{\Sigma} \otimes \bf{I_N} ; \ \bf{\Sigma}=(\sigma_{tt'}
 \end{equation}
 
 <!--
-![\begin{equation} y = X \beta + \epsilon \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20y%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5Cend%7Bequation%7D)
+![\begin{equation} y = X \beta + \epsilon ![E\[\epsilon \epsilon'\]=\bf{\Sigma} \otimes \bf{I_N} ; \ \bf{\Sigma}=(\sigma_{tt'})](https://render.githubusercontent.com/render/math?math=E%5B%5Cepsilon%20%5Cepsilon'%5D%3D%5Cbf%7B%5CSigma%7D%20%5Cotimes%20%5Cbf%7BI_N%7D%20%3B%20%5C%20%5Cbf%7B%5CSigma%7D%3D(%5Csigma_%7Btt'%7D))
   
 \noindent where ![$\bf{Y}$](https://render.githubusercontent.com/render/math?math=%24%5Cbf%7BY%7D%24) is now a vector of dimension ![$NT \times 1$](https://render.githubusercontent.com/render/math?math=%24NT%20%5Ctimes%201%24), ![$\bf{X}$](https://render.githubusercontent.com/render/math?math=%24%5Cbf%7BX%7D%24) is a block-diagonal matrix ![$NT \times K$](https://render.githubusercontent.com/render/math?math=%24NT%20%5Ctimes%20K%24) 
 (with ![$K = \sum_t{k_t}$](https://render.githubusercontent.com/render/math?math=%24K%20%3D%20%5Csum_t%7Bk_t%7D%24)) and ![$\epsilon$](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%24) is an ![$NT \times 1$](https://render.githubusercontent.com/render/math?math=%24NT%20%5Ctimes%201%24) vector. Using the Kronecker product notation (![$\otimes$](https://render.githubusercontent.com/render/math?math=%24%5Cotimes%24)), the error matrix structure is expressed concisely as:
@@ -1388,7 +1388,7 @@ First, the analysis was conducted under a situation of lockdown, and therefore, 
 
 Acknowledgments {#acknowledgments .unnumbered}
 ==========
-    
+
 Add acknowledgments as appropriate in final draft.
   
 The following `R` packages were used in the course of this investigation and the authors wish to acknowledge their developers: `aemet` [], `ggthemes` [@Arnold2019], `gridExtra` [@Auguie2017gridextra], `kableExtra` [@Zhu2019], `knitr` [@Xie2014; @Xie2015], `lubridate` [@Grolemund2011dates], `plm` [@Millo2017robust], `rticles` [@Allaire2020], `sf` [@Pebesma2018], `spdep` [@Bivand2013], spsur [@Angulo2020spsur] `tidyverse` [@Wickham2019], `units` [@Pebesma2016].
