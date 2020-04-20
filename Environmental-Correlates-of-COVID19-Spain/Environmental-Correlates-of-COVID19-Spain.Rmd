@@ -1,31 +1,19 @@
 ---
 title: A spatio-temporal analysis of the environmental correlates of COVID-19 incidence in Spain
 author:
-  - name: Antonio Paez
-    email: paezha@mcmaster.ca
-    affiliation: McMaster University
+  - name: Author A
+    email: author.a@example.com
+    affiliation: Some School
     footnote: 1
-  - name: Fernando A. Lopez
-    email: fernando.lopez@upct.es
-    affiliation: Universidad Politecnica de Cartagena
-  - name: Tatiane Menezes
-    email: tatiane.menezes@ufpe.br
-    affiliation: Departamento de Economia
-  - name: Renata Cavalcanti
-    email: renata.vcsantos@gmail.com
-    affiliation: Nucleo de Pesquisa
-  - name: Maira Galdino da Rocha Pitta
-    email: mgrpitta@ufpe.br
-    affiliation: Nucleo de Pesquisa
+  - name: Author B
+    email: author.b@example.com
+    affiliation: Some Institute
 address:
-  - code: McMaster University
-    address: School of Geography and Earth Sciences, McMaster University, 1281 Main St W, Hamilton, ON, L8S 4K1, Canada
-  - code: Universidad Politecnica de Cartagena
-    address: Departamento de Metodos Cuantitativos, Ciencias Juridicas, y Lenguas Modernas, Universidad Politecnica de Cartagena, Calle Real Numero 3, 30201, Cartagena, Murcia, Spain
+  - code: Some School
+    address: School of the Things
+  - code: Some Institute
+    address: Institute of Everything
   - code: Departamento de Economia
-    address: Departamento de Economia, Universidade Federal de Pernambuco, Av dos Economistas, s/n - Cidade Universitária, Recife - PE, 50670-901, Brasil  
-  - code: Nucleo de Pesquisa
-    address: Núcleo de Pesquisa em Inovação Terapêutica NUPIT / UFPE, Av. Prof. Moraes Rego, 1235 - Cidade Universitária, Recife, PE, CEP 50670-901, Brazil  
 footnote:
   - code: 1
     text: "Corresponding Author"
@@ -40,21 +28,16 @@ csl: elsevier-harvard.csl
 output: rticles::elsevier_article
 ---
 
-<!-- load cache -->
-<!-- whoppeR::load_knitr_cache('/Users/fernandoair/Dropbox/COVID-19/covid19-environmental-correlates/Environmental-Correlates-of-COVID19-Spain/Environmental-Correlates-of-COVID19-Spain_cache/latex/') -->
-  
 ```{r load-packages, include=FALSE}
-# The data package needs to be installed from github repository:
-# devtools::install_github("paezha/covid19-environmental-correlates/covid19env")
+# Download and install these two packages:
+# covid19env
+# spsur
 
-# This version of spsur may be needed:
-# Download spsur_1.0.1.3.tar.gz from https://github.com/paezha/covid19-environmental-correlates and install
 library(covid19env)
 library(ggthemes)
 library(gridExtra)
 library(kableExtra)
 library(lubridate)
-#library(meteoland) # Ask Fernando if this package was used in the end
 library(plm)
 library(sf)
 library(spdep)
@@ -124,9 +107,9 @@ With the above considerations in mind, our objective with this paper is to contr
 
 The results provide evidence of the effect of temperature, humidity, and sunshine on the incidence of COVID-19. The clearest result with respect to these variables is a lower incidence of COVID-19 at higher temperatures and levels of humidity, while the opposite happens with respect to hours of sunshine. Our control variables also provide some intriguing insights. Higher incidence is associated with higher GDP per capita and presence of mass transit systems in the province; in contrast, population density and percentage of older adults display negative associations with incidence of COVID-19. The results of this analysis provide support to the hypothesis of seasonality of the novel SARS-CoV2, and should be of interest to public health officials and policy makers grappling with the question of the trajectory of the pandemic.
 
-Please note that this paper is prepared as a reproducible research document. The source R Markdown document, as well as all data and code needed to reproduce/review/extend the analysis can be obtained from the following repository:
+Please note that this paper is prepared as a reproducible research document. The source R Markdown document, as well as all data and code needed to reproduce/review/extend the analysis can be obtained from the following anonymous Drive folder:
   
-https://github.com/paezha/covid19-environmental-correlates/tree/master/Environmental-Correlates-of-COVID19-Spain
+https://drive.google.com/open?id=1d_40N_QXo2Fl14r3T3CHs84IED-B1rV_
 
 Context and Data {#context-and-data}
 ============
@@ -929,9 +912,9 @@ data.frame(Model1 = sur.slm_lag8_all$R2,
 Results and Discussion {#results-and-discussion}
 ===================
 
-Table \ref{tab:summary-best-model} presents a summary of the results of Model 2 (*lag11*). Recall that two coefficients were constrained and are estimated only for the first equation of the system, and thus are assumed to be constant over time. These are the coefficients corresponding to GDP per capita and percentage of older adults. Both coefficients are significant at $p<=0.05$. The sign of the coefficient for GDP per capita is positive, which indicates that wealthier regions tend to have a higher incidence of COVID-19. This is in line with the idea that the epidemic started earlier in wealthier places due to their connections to a globalized world. The sign of the coefficient for percentage of older adults, on the other hand, is negative. As previously discussed, the level of social contact of older adults even under normal circumstances tends to be lower than for younger people. As a consequence, places with larger populations of older adults appear to have a natural level of social distancing in place. It is important to note that this does not detract from evidence that older adults are more vulnerable individually and in institutional settings, where their case mortality rates are perhaps the highest of all age groups. Instead, this result indicates that their presence in the community at large tends to depress transmission of the virus.
+Table \ref{tab:summary-best-model} presents a summary of the results of Model 2 (*lag11*). Recall that two coefficients were constrained and are estimated only for the first equation of the system, and thus are assumed to be constant over time. These are the coefficients corresponding to GDP per capita and percentage of older adults. Both coefficients are significant at $p\leq0.05$. The sign of the coefficient for GDP per capita is positive, which indicates that wealthier regions tend to have a higher incidence of COVID-19. This is in line with the idea that the epidemic started earlier in wealthier places due to their connections to a globalized world. The sign of the coefficient for percentage of older adults, on the other hand, is negative. As previously discussed, the level of social contact of older adults even under normal circumstances tends to be lower than for younger people. As a consequence, places with larger populations of older adults appear to have a natural level of social distancing in place. It is important to note that this does not detract from evidence that older adults are more vulnerable individually and in institutional settings, where their case mortality rates are perhaps the highest of all age groups. Instead, this result indicates that their presence in the community at large tends to depress transmission of the virus.
 
-Of the two other control variables, the coefficient of population density is significant at $p<=0.05$ in 11 equations, and not significant in 19. The coefficient for transit is significant at $p<=0.10$ in 22 equations, and of those, significant at $p<=0.05$ in 14 equations. The next four variables are environmental factors. The coefficient for humidity is significant at $p<=0.10$ in 20 equations, and of those, significant at $p<=0.05$ in 19 equations. Of the environmental variables, temperature is the only variable that has significant coefficients in every equation at $p<=0.05$. Finally, sunshine has significant coefficients at $p<=0.10$ in 18 equations, including 15 coefficients that are significant at $p<=0.05$.
+Of the two other control variables, the coefficient of population density is significant at $p\leq0.05$ in 11 equations, and not significant in 19. The coefficient for transit is significant at $p\leq0.10$ in 22 equations, and of those, significant at $p\leq0.05$ in 14 equations. The next four variables are environmental factors. The coefficient for humidity is significant at $p\leq0.10$ in 20 equations, and of those, significant at $p\leq0.05$ in 19 equations. Of the environmental variables, temperature is the only variable that has significant coefficients in every equation at $p\leq0.05$. Finally, sunshine has significant coefficients at $p\leq0.10$ in 18 equations, including 15 coefficients that are significant at $p\leq0.05$.
 
 ```{r summary-best-model, echo=FALSE, cache = TRUE}
 # Copy best model
@@ -1085,7 +1068,9 @@ plot_coeff <- function(model = model, n = n){
               ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "yellow", color = NA) +
     geom_rect(xmin = as_date("2020-03-30"), xmax = as_date("2020-04-12"),
               ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "orange", color = NA) +
-    geom_point(size = 1) +
+    geom_rect(xmin = as_date("2020-04-12"), xmax = as_date("2020-04-30"),
+              ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "yellow", color = NA) +
+  geom_point(size = 1) +
     geom_errorbar(aes(x = Date,
                       ymin = CI90low,
                       ymax = CI90up), 
@@ -1112,7 +1097,11 @@ g_legend<-function(a.gplot){
   return(legend)}
 ```
 
-To better understand the results, we proceed to plot the coefficients in their temporal sequence. We begin with the evolution of the spatial autocorrelation coefficient ($\rho$) and the intercept of the model, both of which are shown in Figure \ref{fig:results-time-1}.
+To better understand the results, we proceed to plot the coefficients in their temporal sequence. At this point it is worth recalling that the state of emergency went into effect on March 14. In the following figures, the periods of time indicated in yellow starting on March 14 correspond to the state of emergency, with only essential travel and selected industrial activities allowed; the period of time in orange was the stricter lockdown when only essential travel was allowed. 
+
+We begin our discussion with the evolution of the spatial autocorrelation coefficient ($\rho$) in Figure \ref{fig:results-time-1} (left panel). It is interesting to note that the magnitude of the spatial autocorrelation coefficient $\rho$ declines over the period under analysis, and is not significant for some days. This is an interesting result: immediately prior to the declaration of the state of emergency, there appears to have been a strong inter-provincial contagion effect. This situation persisted for a few days after the lockdown, and became less strong over time. At the end of the period under examination, the strength of this effect was much diminished. We would expect that under full compliance with strict lockdown conditions (meaning no inter-provincial mobility) the spatial contagion effect would be zero. The fact that it is not is evidence of some weak contagion effect due to restrictions to the movement between provinces.
+
+The intercept (right panel in Figure \ref{fig:results-time-1}) is indicative of the variation of the incidence of COVID-19, other things being equal. Here we see that at the incidence declines somewhat immediately after the state of emergency, only to begin increasing again over time. Then, the incidence declines again after the stricter lockdown and rebounds to a lower level by April 11.
 
 ```{r results-time-1, cache = TRUE, fig.height= 4, echo=FALSE, fig.cap="\\label{fig:results-time-1}Temporal evolution of the spatial autocorrelation coefficient (rho) and the intercept of the model; dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed."}
 rho.plot <- data.frame(Date = seq(ymd("2020-03-13"), 
@@ -1134,6 +1123,8 @@ rho.plot <- data.frame(Date = seq(ymd("2020-03-13"),
               ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "yellow", color = NA) +
   geom_rect(xmin = as_date("2020-03-30"), xmax = as_date("2020-04-12"),
             ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "orange", color = NA) +
+  geom_rect(xmin = as_date("2020-04-12"), xmax = as_date("2020-04-30"),
+              ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "yellow", color = NA) +
   geom_point(size = 1) +
   geom_errorbar(aes(x = Date,
                      ymin = CI90low,
@@ -1170,8 +1161,9 @@ grid.arrange(rho.plot, intercept.plot, common_legend,
              heights = c(5, 1))
 ```
 
-Figure \ref{fig:beta-controls-time} shows the temporal evolution of the coefficients for the two control variables that were not fixed over time, i.e., $\log(Density)$ and $Transit$. In Section \ref{variables} we had anticipated a positive sign for the coefficient of this variable. The negative sign in the results is therefore somewhat surprising. Upon reflection, however, it seems reasonable that the sign would be negative during the period under analysis. 
+Figure \ref{fig:beta-controls-time} shows the temporal evolution of the coefficients for the two control variables that were not fixed over time, i.e., $\log(Density)$ (left panel) and $Transit$ (right panel). 
 
+In Section \ref{variables} we had anticipated a positive sign for the coefficient of this variable, and indeed, at the beginning of the period the coefficient is positive, albeit not significant, and then remains non-significant for the earlier part of the lockdown. We are somewhat surprised by the way this coefficient turns significant _and_ negative in the later part of the lockdown, after April 1st. This effect, we surmise, is the result of risk compensation, a situation where people adapt their behavior according to the *perceived* level of risk, becoming more careful when the perceived risk is higher and viceversa [e.g., @Noland1995perceived; @Richens2000risk; @Phillips2011risk]. Consequently, residents in high density regions may perceive the risk of infection as being higher, and adapt their behavior accordingly - while the opposite may be true of residents in low density regions. Anecdotally, this seems to have been the case with some governors in the US, who resisted stay-at-home orders citing their sparse \footnote{https://www.inforum.com/lifestyle/health/5025620-South-Dakota-is-not-New-York-City-Noem-defends-lack-of-statewide-COVID-19-restrictions} and rural populations\footnote{https://www.inforum.com/lifestyle/health/5025620-South-Dakota-is-not-New-York-City-Noem-defends-lack-of-statewide-COVID-19-restrictions}. The coefficient for Transit is positive, as expected, but with very wide confidence intervals, and in fact not significant in the earlier part of the period.
 
 ```{r beta-controls-time, echo=FALSE,  fig.height= 4, fig.cap="\\label{fig:beta-controls-time}Temporal evolution of coefficient for the control variables; dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
 #Density:
@@ -1193,7 +1185,7 @@ grid.arrange(density.plot, transit.plot, common_legend,
              heights = c(5, 1))
 ```
 
-Figure \ref{fig:beta-environmental-time} shows the temporal evolution of the coefficient for the three environmental variables.
+The evolution of the coefficients for the three environmental variables are shown in Figure \ref{fig:beta-environmental-time}. Despite a mostly positive simple correlation with incidence (see Figure \ref{fig:daily-correlations}) once that we control for other factors, humidity has a negative association with incidence of COVID-19 in Spain (top-right panel). This is in line with the literature that describes the viability and transmission of different viruses at higher levels of humidity. The coefficients for temperature (top-right panel) are consistently negative and this variable is, besides the intercept, the only one with significant coefficients in all equations. The range of variation of this coefficient during the period examined is approximately between -1 and -2 - although it is important to recall that these values should not be interpreted directly as effects; more on this below. Finally the plot for the coefficients associated with hours of sunshine (bottom panel) is more ambiguous: prior to the lockdown, the coefficient was negative, but significant only at $p\leq10$. At the beginning of the lockdown, the coefficient is no longer significative, before becoming *positive* and significant on March 23rd. This result stands in contrast to previous findings regarding influenza, where more hours of sunlight reduced the strength and duration of epidemic durations [@Yu2013characterization]. A difference with previous studies is the temporal scale of the analysis: where Yu et al. [-@Yu2013characterization] use monthly averages, we use daily data for a much shorter period of time. The positive sign of sunshine may well be another instance of behavioral adaptations, whereby compliance with lockdown orders weakens on sunny days.
 
 ```{r beta-environmental-time, echo=FALSE, fig.height= 7, fig.cap="\\label{fig:beta-environmental-time}Temporal evolution of coefficient for the environmental variables; dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
 # Humidity
@@ -1300,7 +1292,13 @@ best_model.impacts <- data.frame(Impact = unlist(best_model.impacts)) %>%
                             "Total")))
 ```
 
-The effects of the different variables are summarized in Table \ref{tab:summary-impacts-best-model}.
+The preceding discussion helps to establish the inferential contributions of the analysis. The remaining question is, what are the implications. As discussed in Section \ref{methods} the question of the magnitude of the effects is not clear from the coefficients alone, since a change to a variable in a province influences, via the contagion effect, its neighbors. For this reason, the appropriate way to estimate the effects is to calculate both the own and contagion effects (in other words the direct and indirect effects, respectively), as well as their total. A summary of the different variable effects appears in Table \ref{tab:summary-impacts-best-model}. All effects in the table are interpreted as percentage change in the incidence of COVID-19 as a consequence of a one percent change in the variable. The exception is Transit (which was not log-transformed), and this variable represents the percentage change in incidence between provinces without and with mass transit systems. 
+
+Two variables had temporally constrained coefficients. The estimated effect of GDP per capita is to increase the incidence of COVID-19 by 0.675% for each percentual increase of this variable (in €1,000s). In our view, this is a measure of inertia, as provinces with higher GDP per capita where among the first to see exponential growth in the pandemia. Percentage of older adults has a negative effect, and each percentual increase in this variable is associated with a relatively small reduction of the incidence of less than 1%.
+
+The temporal variation of the effects for the rest of the variables is shown in Figure \ref{fig:plot-impacts}. The largest positive direct effect is Transit, and the largest direct negative effects are temperature and humidity. The direct effect of these variables is as follows: for each percentual point increase in temperature, there is between a 1% and 2% reduction in the incidence of the disease. This effect is amplified via contagion, as seen in the central panel in the figure, and the indirect effect can further reduce the incidence by up to 1.5%. The effect of humidity is also to reduce the incidence: each percentual point of increase in humidity is associated with a reduction of up to 1.5% in incidence. With the addition of the indirect effect, the total effect of a 1% increase in humidity is to reduce incidence by up to 3%. As seen in the figure, the indirect (i.e., contagion) effects are almost as strong as the direct effects immediately before and at the beginning of the lockdown period. However, by the end of the lockdown period, the indirect effects have weakened considerably. The effect of density goes from positive (+0.334) to negative (-0.244). It is crucial to keep in mind here that this is the effect of density over a period of *lockdown* and possibly subject to risk compensation, as discussed above. In other words, the lockdown seems to be more effective in places with higher density. Accordingly, cities should not rush to ease lockdowns, but rather efforts should be made to reduce or eliminate risk compensation in less densely populated regions.
+
+What do these effects mean? Under a situation of lockdown, inter-regional contagion is reduced, as expected, and the effect of temperature is estimated to reduce the incidence of COVID-19 by between one and two percent with each percentual increase of this variable. Without a lockdown, or a relaxed lockdown, the effect is even greater, but only because the disease is transmitted inter-regionally! Imagine a region that is closed to its neighbors: increases in temperature are associated with smaller reductions in incidence - however, it does not import or export cases. A province that is not closed and not under lockdown will see a greater effect of temperature, but at the cost of importing/exporting cases.
 
 ```{r summary-impacts-best-model, echo=FALSE}
 rbind(best_model.impacts %>%
@@ -1357,9 +1355,7 @@ rbind(best_model.impacts %>%
                        "Constrained: coefficient as constant across equations"))
 ```
 
-The temporal variation of the effects is shown in Figure \ref{fig:plot-impacts}.
-
-```{r plot-impacts, echo=FALSE, fig.cap="\\label{fig:plot-impacts}Temporal evolution of effects by date; the impact is percentage change in incidence as a result of a one percent change in value of variable."}
+```{r plot-impacts, echo=FALSE, fig.cap="\\label{fig:plot-impacts}Temporal evolution of direct, indirect, and total effects by date."}
 best_model.impacts %>%
   filter(Variable != "log(GDPpc)", 
          Variable != "log(Older)") %>%
@@ -1378,33 +1374,17 @@ best_model.impacts %>%
 Concluding Remarks {#conclusion}
 ===================
 
-More words go here.
+In this paper we have presented a spatio-temporal analysis of incidence of COVID-19 in Spain. The analysis covers a 30-day period that begins immediately before the state of emergency was declared in the country. The focus of the research has been on the environmental correlates of incidence of the disease. There is a need for more empirical evidence, as policy makers, public health practitioners, and the public begin planning for the months ahead at this early stage of the pandemic.
 
-Limitaciones
+Our results offer strong support for the hypothesis that incidence of COVID-19 at the population level is lower at higher temperatures and levels of humidity: the estiamated effect is a reduction in the neighborhood of 3% percent in incidence per each 1% increase in temperature, and a 3% reduction in incidence per 1% increase in humidity *under conditions of contagion*. These reductions are estimated to be lower when lockdown conditions are in place. The question here seems to be whether these environmental variables can yield a bigger reduction of *more* cases, or a smaller reduction of *fewer* cases. Our control variables also offer some interesting insights. In particular, there is evidence of behavioral adaptations in the form of risk compensation (density) and compliance with the lockdown (sunshine). These results offer a cautionary tale, with regards to the effectiveness of the lockdown in more dense areas, and also the implications for compliance with stay-at-home orders as the northern hemisphere moves towards summer and more hours of sunshine during the day.
 
-* La temperatura puedes ser un factor pero cabría esperar que no tuviera un impacto lineal. Por el contrario deberiamos esperar un 'punto de corte': Una temperatua mantenida superior a X grados durante siete días sea la mejor forma de incorporarla al modelo. En nuestro modelo (log-log) en incremento en un 1% de la temperatura se asocia con un incremento beta% en la incidencia. Esto es lo mismo si la temperatura es baja que si es alta.
+A key aspect of the analysis using spatial SUR models is that we were able to model incidence of COVID-19 as an interregional contagion process. Here, we find that the strength of the contagion effect was dramatically reduced by the lockdown.
 
-* Idem para la humedad y horas de sol
+Needless to say, the analysis presented here is ecological, and at the level of population health. For this reason, the analysis does not make any claims with respect to the effect of ultraviolet light on the virus, but rather about transmission of the virus in the population. In this way, the analysis does not say that the virus moves less effectively where more people live in close proximity to each other, but rather that humans are more contagious when they feel safe in less dense regions. Similarly, more sunshine does not mean that the virus thrives, but rather that humans are more contagious to each other when their behavior adapts to this environmental condition.
 
-* Los datos son 'provisionales'. Hay gran confusión sobre la incidencia real. La ausencia de test de diagnóstico PCRs al inicio de la pandemia (también ahora) puede desvirtuar el número de casos dianosticados. 
+It is important, in this respect, to highlight some limitations of this study. 
 
-* Los datos oficiales (que tampoco son fiables) son reportados a nivel de Comunidades Autónomas. La recopilación de datos a nivel de provincial son el resultado de un esfuerzo colaborativo de recopilacion entre distintas fuentes (principalmente gobiernos locales). Nuevamente puede haber sesgos importanes. 
-
-* En carácter insular de las Islas Canarias y de las Islas baleares no se ha tenido en cuenta. 
-
-* Baleares se ha linkado artificialmente con 3/4 provincias y debería de haberse dejado aislada para respetar su carácter insular al definir la matriz W.
-
-* La incidencia depende de un estado inicial. Al inicio del estudio había provincias en las que la epidemia estaba muy desarrollada (Madrid/Alava) mientras que en otras apenas habías casos. Este hecho no ha sido considerado en el modelo. Decretar el confinamiento debe tener distintos impactos entre provincias. QUIZAR METER UNA VARAIBLE DUMMY CON COEF BETA CONSTANTE PARA CONTROLAR AQUELLAS PROVINCIAS CON MAYOR NUEMRO DE CASOS AL INICIO DEL CONFINAMIENTO.
-
-* No se ha controlado por el sistema sanitario de cada provincia. Uno de los principales focos de contagio han sido los hospitales y los centros de salud. En aquellas provincias donde se ha promovido el mensaje "NO IR AL MEDICO" han presentado menor incidencia.
-
-* ¿hasta que punto las variables de control no recojen también factores climáticos? por ejemplo, la gente jóven vive en el sur de España que ha tenido menos incidencia.
-
-* Las estaciones meteorológicas para la obtencion de datos climáticos has sido elegidas aleatoriamente (una para cada provincia). otra seleccion puede dar otros resultados. AQUI SE PODRÍA HACER EL ESFUERZO DE CONSIDERARLAS TODAS (1000) Y CALCULAR LA MEDIA DE LAS VARAIBLES POR PROVINCIA
-
-*IDEM para la humedad. idem para sunshine 
-
-* HACE FALTA INCLUIR UN PLOT CON LAS CORRELACIONES DE LOS RESIDUOS PARA DARLE RELEVANCIA A LA ESTIMACION SUR
+First, the analysis was conducted under a situation of lockdown, and therefore, besides the results are the beginning of the period examined, one must exercise caution when trying to extrapolate the findings to other situations. Secondly, it is well known that there is in many countries substantial underreporting of cases of COVID-19 due to limited testing. However, we do not suspect systematic provincial bias in reporting, and as long as the underreporting is consistent across units of analysis, we do not expect biased results - even if we are aware that the number of true cases is likely higher. Thirdly, all environmental data are based on a single station in a province. Here, we made an effort to select the most representative station based on the distribution of the population. An alternative approach would be to calculate the environmental variables based on the average of multiple stations within each province: this would likely smooth to some extent these variables. Finally, we defined spatial neighborhoods based on adjacency. It would be interesting to compare other connectivity criteria, for instance based on domestic transportation instrastructure and services. We flag this as a matter for future research.
 
 Acknowledgments {#acknowledgments .unnumbered}
 ==========

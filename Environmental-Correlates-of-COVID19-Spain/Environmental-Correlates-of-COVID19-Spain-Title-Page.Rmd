@@ -1,0 +1,41 @@
+---
+title: A spatio-temporal analysis of the environmental correlates of COVID-19 incidence in Spain
+author:
+  - name: Antonio Paez
+    email: paezha@mcmaster.ca
+    affiliation: McMaster University
+    footnote: 1
+  - name: Fernando A. Lopez
+    email: fernando.lopez@upct.es
+    affiliation: Universidad Politecnica de Cartagena
+  - name: Tatiane Menezes
+    email: tatiane.menezes@ufpe.br
+    affiliation: Departamento de Economia
+  - name: Renata Cavalcanti
+    email: renata.vcsantos@gmail.com
+    affiliation: Nucleo de Pesquisa
+  - name: Maira Galdino da Rocha Pitta
+    email: mgrpitta@ufpe.br
+    affiliation: Nucleo de Pesquisa
+address:
+  - code: McMaster University
+    address: School of Geography and Earth Sciences, McMaster University, 1281 Main St W, Hamilton, ON, L8S 4K1, Canada
+  - code: Universidad Politecnica de Cartagena
+    address: Departamento de Metodos Cuantitativos, Ciencias Juridicas, y Lenguas Modernas, Universidad Politecnica de Cartagena, Calle Real Numero 3, 30201, Cartagena, Murcia, Spain
+  - code: Departamento de Economia
+    address: Departamento de Economia, Universidade Federal de Pernambuco, Av dos Economistas, s/n - Cidade Universitária, Recife - PE, 50670-901, Brasil  
+  - code: Nucleo de Pesquisa
+    address: Núcleo de Pesquisa em Inovação Terapêutica NUPIT / UFPE, Av. Prof. Moraes Rego, 1235 - Cidade Universitária, Recife, PE, CEP 50670-901, Brazil  
+footnote:
+  - code: 1
+    text: "Corresponding Author"
+abstract: |
+  Spreading with astonishing speed, the novel SARS-CoV2 has swept the globe, causing enormous stress to health systems and prompting social distance guidelines and mandates to arrest its progress. While there is encouraging evidence that early public health interventions have slowed the spread of the virus, this has come at a high cost as the global economy is brought to its knees. How and when to ease restrictions to movement hinges in part on the question whether SARS-CoV2 will display seasonality associated with variations in temperature, humidity, and hours of sunshine. In this research, we address this question by means of a spatial analysis of the incidence of COVID-19 in the provinces in Spain. Use of a spatial Seemingly Unrelated Regressions (SUR) approach allows us to model the incidence of reported cases of the disease per 100,000 population, as a function of temperature and humidity, while controlling for GDP per capita, population density, percentage of older adults in the population, and presence of mass transit systems. An interesting aspect of the spatial SUR approach is that it models incidence as a contagion process. Our results indicate that incidence of the disease is lower at higher temperatures and higher levels of humidity, although coefficients for this variable are significant only in some equations. Sunshine, in contrast, displays a positive association with incidence of the disease. Our control variables also yield interesting insights. Higher incidence is associated with higher GDP per capita and presence of mass transit systems in the province; in contrast, population density and percentage of older adults display negative associations with incidence of COVID-19.    
+journal: "Geographical Analysis"
+date: "`r Sys.Date()`"
+bibliography: References.bib
+#linenumbers: true
+numbersections: true
+csl: elsevier-harvard.csl
+output: rticles::elsevier_article
+---
