@@ -1,0 +1,18 @@
+---
+title: "Cover-Letter"
+author: "Author"
+date: "4/20/2020"
+output: pdf_document
+---
+
+Dear Prof. Franklin,
+
+We are pleased to submit the manuscript enclosed for publication consideration in Geographical Analysis. The title of the paper is *A spatio-temporal analysis of the environmental correlates of COVID-19 incidence in Spain*. In this research, we analyze the incidence of COVID-19 (in reported cases by 100,000 people) at the level of the provinces in Spain. Spain, as you are surely aware, is one the countries hardest hit by the pandemic.
+
+Our analysis covers a 30-day period that includes the totality of the lockdown to the date. In terms of methods, we adopt a spatial Seemingly Unrelated Regressions (SUR) approach. The inclusion of a lagged dependent variable allows us to model the incidence of COVID-19 as an interregional contagion effect. The focus of the paper is on some key environmental variables: temperature, humidity, and sunshine. These variables are the subject of considerable debate at the moment, because the potential seasonality of the pandemic will likely influence the decisions of many governments whether and when to ease restrictions to social distancing measures. In addition, our control variables produce some interesting insights as well. We find evidence of behavioral adaptations at the population level, regarding risk compensation and compliance with lockdown measures.
+
+In summary, the results presented here are novel, and can potentially have an impact both in terms of informing the science around the novel coronavirus, as well as policy towards the pandemic.
+
+Hoping that the paper will meet your approval, and that of your expert reviewers, we remain sincerely yours.
+
+The authors
