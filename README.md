@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# A spatial analysis of the environmental correlates of COVID-19 incidence in Spain
+# A spatio-temporal analysis of the environmental correlates of COVID-19 incidence in Spain
 
 Antonio Paez (McMaster University)  
 Fernando A. Lopez (Universidad Politecnica de Cartagena)  
@@ -165,9 +165,9 @@ document. The source R Markdown document, as well as all data and code
 needed to reproduce/review/extend the analysis can be obtained from the
 following repository:
 
-> <https://github.com/paezha/covid19-environmental-correlates>
+<https://github.com/paezha/covid19-environmental-correlates/tree/master/Environmental-Correlates-of-COVID19-Spain>
 
-# Context, Data, and Methods
+# Context and Data
 
 ## Covid-19 in Spain
 
@@ -196,19 +196,79 @@ within provinces as between .
 
 ## Selection of Variables
 
-Explain the rationale for selecting the variables.
+The global emergence of infectious diseases is mostly driven by
+environmental, ecological, and socio-economic factors (Jones et al.
+2008). In the case of SARS-CoV2, the ecological factors include the
+interaction between humans and wildlife. Once transmission of a disease
+begins to happen between humans, socio-economic and environmental
+factors become increasingly important. As noted in the introduction, the
+focus of the paper is on environmental variables, namely temperature,
+humidity, and sunshine. These variables have been implicated in the
+viability and ease of transmission of similar viruses. In addition to
+these variables, we also aim to use a set of controls, in the form of
+specific socio-economic and demographic characteristics of each
+province.
 
-For example: The literature about COVID-19 suggested that population
-density is the one of the most important proliferate cause of these
-viscous, however this ill spread with different intensity at big cities
-of the world. Controlling for socioeconomic characteristics the
-objective of this paper is observe the effect of clime on COVID-19
-proliferation.
+The first variable that we consider is GDP per capita. Much has been
+said about globalization and the spread of infectious disease. The
+growth in global connections has presented a challenge to spatial
+approaches in the initial stages of disease management, when the cause
+of a disease may still be unclear, but the plane has already departed
+(Zhou and Coleman 2016). In reference to the earlier outbreak of SARS,
+van Wagner (Van Wagner 2008) chronicles how Toronto’s status as a global
+city turned out to be a vulnerability in this respect. In our case, we
+think of GDP per capita as a marker of a region’s relative position in a
+network of global cities, and its potential to be further ahead in the
+trajectory of the pandemic. Furthermore, wealthier regions also tend to
+concentrate more activities that produce non-traded goods, including
+building and construction (Hallet 2002). Therefore, it is possible that
+wealthier regions remain relatively more active even during a lockdown.
+On the other hand, it is also possible that less wealthy regions have a
+higher proportion of workers in manual occupations that cannot telework,
+and therefore have more difficulties complying with shelter-in-place
+orders.
 
-Some questions are important to point out. Is not evident present a
-diary association between the temprature (resp. humidity) with declarate
-case. There is evidences (ref) that a time lag is necessary between the
-day that the individuo inffect and the case is diagnosticate
+The percentaje of older adults (over 65) is the second variable that we
+consider as a control. Early evidence regarding COVID-19 suggests that
+the case rate mortality is higher at older ages (e.g. The Novel
+Coronavirus Pneumonia Emergency Response Epidemiology Team 2020).
+However, it is not clear that a relatively large population of older
+adults necessarily translates into higher transmission of the infection.
+The tool of choice in containing the spread of the disease has been
+social distancing. In this respect, the evidence from the field of
+transportation is that older adults tend to travel less frequently, for
+shorter distances, and have higher rates of immobility (e.g., Roorda et
+al. 2010; Morency et al. 2011; Sikder and Pinjari 2012). In other words,
+many older adults are, whether by preference or otherwise, already in a
+form of social isolation. Social distancing during the pandemic may
+actually reinforce that condition for them, as suggested by the analysis
+of age-structured social contact in India, China, and Italy of Sing and
+Adhikari (2020). Accordingly, our expectation is that provinces with
+higher percentages of older adults will tend to have similarly low
+levels of social contact, particularly since the age-structured matrix
+of social contact in Spain is similar to Italy (Prem, Cook, and Jit
+2017).
+
+The third population variable the we consider is population density,
+since it directly affects the contact patterns and contact rates between
+individuals in a population (Hu, Nigmatulina, and Eckhoff 2013). The
+evidence available suggests a positive relationship between the
+transmission of COVID-19 and population density (e.g. cumulative
+incidence in urban areas like NYC). For this reason, we anticipate a
+positive relationship between population density and the incidence of
+the disease.
+
+The last control variable is the presence of mass transit systems in a
+province. Every province in Spain offers some form of public
+transportation, however only five provinces have higher order systems of
+mass mobility (e.g. metro or subway), namely Barcelona, Madrid, Sevilla,
+Valencia, and Bizkaia. Public transportation has been hypothesized to
+relate to the spread of contagious disease by some researchers using
+agent-based approaches and simulation (e.g., Perez and Dragicevic 2009;
+Wang et al. 2010), and while we find scant evidence of a link in the
+literature, the idea is intuitively appealing. After all, unlike the
+isolation that a car offers to travellers, most mass transit system are
+cauldrons of social contact.
 
 ## Data
 
@@ -220,17 +280,19 @@ excluding symptomatic cases diagnosed by a doctor without a Polymerase
 Chain Reaction (PCR) test. The Spanish National Government publishes
 periodic updates at the regional level (NUTII) and the information is
 also released at the provincial level as part of a collaborative project
-\[**by whom?**\]. This information is compiled from several sources,
-mainly the official web pages of the Spanish regional goverments. In
-addition, we consider two sets of explanatory variables. The first one,
-and the focus of this research, is set of two environmental variables,
-namely temperature and humidity, which are collected from official
-sources (i.g., AEMET, the state meteorology agency, and MAPA, the
-ministry of agriculture, fisheries, and food). The second set provides
-some relevant controls for multivariate analysis, and refers to economic
-and demographic attributes of the province (also collected from official
-sources, i.e., INE, the national statistics institute). Table  shows the
-descriptive statistics and the provenance of the data.
+by geovoluntarios.com, ProvidencialData19, and ESRI España. This
+information is compiled from several sources, mainly the official web
+pages of the Spanish regional goverments, as documented in Centro de
+Datos Covid-19. In addition, we consider two sets of explanatory
+variables. The first one, and the focus of this research, is set of two
+environmental variables, namely temperature and humidity, which are
+collected from official sources (i.g., *AEMET*, the state meteorology
+agency, and *MAPA*, the ministry of agriculture, fisheries, and food).
+The second set provides some relevant controls for multivariate
+analysis, and refers to economic and demographic attributes of the
+province (also collected from official sources, i.e., INE, the national
+statistics institute). Table  shows the descriptive statistics and the
+provenance of the data.
 
 The spatial and temporal coverage of the data is as follows. Our dataset
 begins on March 13, which is the first date when every province had
@@ -347,7 +409,7 @@ Incidence in reported cases of SARS-19 per 100,000 people
 
 <td style="text-align:left;width: 5em; ">
 
-Montera34
+ProvidencialData19
 
 </td>
 
@@ -647,8 +709,8 @@ MAPA
 
 <td style="padding: 0; border: 0;" colspan="100%">
 
-<sup></sup> Montera34:
-<https://code.montera34.com:4443/numeroteca/covid19/-/blob/master/README_providencialdata19.md>
+<sup></sup> ProvidencialData19:
+<https://www.datoscovid.es/pages/providencialdata19>
 
 </td>
 
@@ -711,7 +773,7 @@ environmental variables at date-minus-2 and date-minus-12 days are
 weighted as 0.041 and 0.009 respectively, whereas the environmental
 variables at date-minus-5 days are weighted as 0.194.
 
-## Methods: Spatial SUR
+# Methods: the Spatial SUR Model
 
 The Seemingly Unrelated Regression equations model (SUR hereafter) is a
 multivariate econometric model used in different fields when the
@@ -750,7 +812,7 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \end{bmatrix}
 \end{equation}
 
-\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t=(X^1,...,X^{k_t})$ is a $N \times k_t$ matrix of the $k_t$ independent variables, $X_i=(X^i_{st})$; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals.
+\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t$ is a $N \times k_t$ matrix of the $k_t$ independent variables, with associated vector of coefficients $\beta_t$,; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals.
 -->
 
 <!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/-->
@@ -811,20 +873,47 @@ to restrict the first
 coefficients to be constant across equations. This is equivalent to
 specifying some effects to be invariant over time.
 
-Equation ) can be rewriten in compact form:
+Equation () can be rewriten in compact form:
 
 <!--
 \begin{equation}
-y = X \beta + \epsilon
+\bf{Y} = \bf{X} \beta + \epsilon
+\label{eq:sur-sim-block}
+\end{equation}
+
+\noindent where $\bf{Y}$ is now a vector of dimension $NT \times 1$, $\bf{X}$ is a block-diagonal matrix $NT \times K$ 
+(with $K = \sum_t{k_t}$) and $\epsilon$ is an $NT \times 1$ vector. Using the Kronecker product notation ($\otimes$), the error matrix structure is expressed concisely as:
+
+\begin{equation}
+E[\epsilon \epsilon']=\Sigma \otimes I_N ; \ \Sigma=(\sigma_{tt'})
 \end{equation}
 -->
 
 ![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20y%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5Cend%7Bequation%7D)
 
+where
+![\(\bf{Y}\)\](<https://render.githubusercontent.com/render/math?math=%24%5Cbf%7BY%7D%24>)
+is now a vector of dimension
+![\(NT \times 1\)](https://render.githubusercontent.com/render/math?math=%24NT%20%5Ctimes%201%24),
+\!\[\(\bf{X}\)\](<https://render.githubusercontent.com/render/math?math=%24%5Cbf%7BX%7D%24>)
+is a block-diagonal matrix
+![\(NT \times K\)](https://render.githubusercontent.com/render/math?math=%24NT%20%5Ctimes%20K%24)
+(with
+\!\[\(K = \sum_t{k_t}\)](https://render.githubusercontent.com/render/math?math=%24K%20%3D%20%5Csum_t%7Bk_t%7D%24))
+and
+![\(\epsilon\)](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%24)
+is an
+![\(NT \times 1\)](https://render.githubusercontent.com/render/math?math=%24NT%20%5Ctimes%201%24)
+vector. Using the Kronecker product notation
+(![\(\otimes\)](https://render.githubusercontent.com/render/math?math=%24%5Cotimes%24)),
+the error matrix structure is expressed concisely as:
+
+![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20E%5B%5Cepsilon%20%5Cepsilon'%5D%3D%5CSigma%20%5Cotimes%20I_N%20%3B%20%5C%20%5CSigma%3D\(%5Csigma_%7Btt'%7D\)%20%5Cend%7Bequation%7D)
+
 As is the case with cross-sectional data, it is possible to test the
-residuals of Model  for spatial autocorrelation, and several tests have
-been developed to test the null hypothesis of spatial independence (see
-López, Mur, and Angulo 2014). When the null hypothesis is rejected,
+residuals of Model () for spatial autocorrelation, and several tests
+have been developed to test the null hypothesis of spatial independence
+(see López, Mur, and Angulo 2014). When the null hypothesis is rejected,
 several alternative specifications have been proposed to include spatial
 effects (Anselin 1988, see also 2016). In this paper we consider a
 spatial SUR model that incorporates a spatial lag of the dependent
@@ -841,90 +930,102 @@ appropriate to model incidence of COVID-19 geographically, since it
 accounts for potential spatial patterns that result from a process of
 contagion, as explained next.
 
-The stack expresion for the spatial lag SUR model (SUR-SLM) is as
-follows:
+The stack expresion for the SUR model with a spatially lagged dependent
+variable (SUR-SLM) is as follows:
 
 <!--
 \begin{equation}
 \label{eq:sur-slm}
-\bf{A}y = X \beta + \epsilon \\
-\epsilon =N(0,\Omega)
+\begin{aligned}
+\bf{AY} = \bf{X} \beta + \epsilon \\
+\epsilon =N(0,\bf{\Sigma})
+\end{aligned}
 \end{equation}
 
-\noindent where $A =I_{TN}-\bf{\Lambda} \otimes W$ with $\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)$.
+\noindent where $\bf{A} =I_{TN}-\bf{\Gamma} \otimes W$ is the spatially lagged dependent variable, and $\bf{\Gamma} = diag(\rho_1, \cdots, \rho_T)$.
 
-This specification assumes that incidence in a province ($y_st$) at time $t$ is partially determined by the weighted average ($Wy_{st}$) of incidence in neighbouring provinces. Coefficients for the spatially lagged variable are estimated for each time period $\lambda_t$ and identifies the intensity and the sign of the impacts of neighbourhood. It is possible test the null hypotheis of identtical levels of spatial dependence ($\lambda_i=\lambda_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`. 
+This specification assumes that outcome ($y_{st}$) at location $s$ and time $t$ is partially determined by the weighted average ($Wy_{st}$) of the outcome in neighboring provinces, with neighborhood defined by matrix $W$ of spatial weights. In other words, the spatially lagged dependent variable represents a process of contagion, where the disease in neighboring provinces can spillover in a spatial way. The coefficients of the spatially lagged variable are estimated for each time period $\rho_t$ and identify the intensity and the sign of the contagion effect. It is possible test the null hypothesis of identical levels of spatial dependence ($\rho_i=\rho_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`.
 -->
 
-![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbf%7BA%7Dy%20%3D%20X%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN\(0%2C%5COmega\)%20%5Cend%7Bequation%7D)
+![](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbegin%7Baligned%7D%20%5Cbf%7BAY%7D%20%3D%20%5Cbf%7BX%7D%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN\(0%2C%5Cbf%7B%5CSigma%7D\)%20%5Cend%7Baligned%7D%20%5Cend%7Bequation%7D)
 
-where ![\(A = I_{TN}-\bf{\Lambda} \otimes W\) with
-\(\bf{\Lambda} = diag(\lambda_1, \cdots, \lambda_T)\)](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20I_%7BTN%7D-%5Cbf%7B%5CLambda%7D%20%5Cotimes%20W%24%20with%20%24%5Cbf%7B%5CLambda%7D%20%3D%20diag\(%5Clambda_1%2C%20%5Ccdots%2C%20%5Clambda_T\)%24).
+where
+\!\[\(\bf{A} =I_{TN}-\bf{\Gamma} \otimes W\)\](<https://render.githubusercontent.com/render/math?math=%24%5Cbf%7BA%7D%20%3DI_%7BTN%7D-%5Cbf%7B%5CGamma%7D%20%5Cotimes%20W%24>)
+is the spatially lagged dependent variable, and
+![\(\bf{\Gamma} = diag(\rho_1, \cdots, \rho_T)\)](https://render.githubusercontent.com/render/math?math=%24%5Cbf%7B%5CGamma%7D%20%3D%20diag\(%5Crho_1%2C%20%5Ccdots%2C%20%5Crho_T\)%24).
 
-This specification assumes that incidence in a province
-(![\(y_st\)](https://render.githubusercontent.com/render/math?math=%24y_st%24))
-at time
+This specification assumes that outcome
+(![\(y_{st}\)](https://render.githubusercontent.com/render/math?math=%24y_%7Bst%7D%24))
+at location
+![\(s\)](https://render.githubusercontent.com/render/math?math=%24s%24)
+and time
 ![\(t\)](https://render.githubusercontent.com/render/math?math=%24t%24)
 is partially determined by the weighted average
-![(\(Wy_{st}\))](https://render.githubusercontent.com/render/math?math=\(%24Wy_%7Bst%7D%24\))
-of incidence in neighbouring provinces. Coefficients for the spatially
-lagged variable are estimated for each time period
-![\(\lambda_t\)](https://render.githubusercontent.com/render/math?math=%24%5Clambda_t%24)
-and identifies the intensity and the sign of the impacts of
-neighbourhood. It is possible test the null hypotheis of identtical
-levels of spatial dependence
-(![\(\lambda_i=\lambda_j, \forall i,j\)](https://render.githubusercontent.com/render/math?math=%24%5Clambda_i%3D%5Clambda_j%2C%20%5Cforall%20i%2Cj%24)).
+(![\(Wy_{st}\)](https://render.githubusercontent.com/render/math?math=%24Wy_%7Bst%7D%24))
+of the outcome in neighboring provinces, with neighborhood defined by
+matrix
+![\(W\)](https://render.githubusercontent.com/render/math?math=%24W%24)
+of spatial weights. In other words, the spatially lagged dependent
+variable represents a process of contagion, where the disease in
+neighboring provinces can spillover in a spatial way. The coefficients
+of the spatially lagged variable are estimated for each time period
+![\(\rho_t\)](https://render.githubusercontent.com/render/math?math=%24%5Crho_t%24)
+and identify the intensity and the sign of the contagion effect. It is
+possible test the null hypothesis of identical levels of spatial
+dependence
+(![\(\rho_i=\rho_j, \forall i,j\)](https://render.githubusercontent.com/render/math?math=%24%5Crho_i%3D%5Crho_j%2C%20%5Cforall%20i%2Cj%24)).
 The correspond Wald test is available in the `R` package `spsur`.
 
 The SUR-SLM model can be estimated using maximum likelihood (López, Mur,
 and Angulo (2014)) or instrumental variables (Mínguez, López, and Mur
-(2019)). Another alternative methodologies could be use. By example, a
-dynamic spatial panel methodology with fixed spatial an temporal effects
-(e.g. Elhorst 2014, Cap. 4), but those models are more dont take account
-correlation between errors. Therefore, a spatial SUR approach is more
-reasonable for our purpose.
+(2019)).
 
-# Analysis and Results
+# Analysis
 
 ## Exploratory Data Analysis
 
-We begin with the exploratory analysis of the data.
-
-Figure  shows the geographical variation in the incidence of the
-disease, as well as its temporal progression in weekly averages. Our
-analysis begins on March 13, which is the first date when every province
-had reported at least one case of COVID-19. It can be seen that the
-highest incidence at this early date was in the provice of Álava, in the
-North of Spain. While not the most populous province, with a population
-of only 331,549, Álava has the highest GDP per capita of all provinces.
-Vitoria, its main city, is the capital of the Basque country and has
-been the focus of efforts to develop a “Global Basque City” (Meijers,
-Hoekstra, and Aguado 2008), along with San Sebastian and Bilbao. The
-other early focus of the pandemic in Spain was Madrid, which is the most
-populous province in the country and has the second highest GDP per
-capita after Álava. The early outbreaks in these two provinces can be
-traced throughout the progression of the pandemic over time, although by
-the end of the period under consideration, other provinces had matched
-and even surpased their incidence rates, including Segovia and Soria to
-the north of Madrid, and Ciudad Real and Albacete to the south.
+Figure  shows the geographical variation in the incidence of COVID-19 in
+Spain, as well as the temporal progression of the disease in weekly
+averages. Our analysis begins on March 13, which is the first date when
+every province had reported at least one case of COVID-19. It can be
+seen that the highest incidence at this early date was in the provice of
+Álava, in the North of Spain. While not the most populous province, with
+a population of only 331,549, Álava has the highest GDP per capita of
+all provinces. Vitoria, its main city, is the capital of the Basque
+Country and has been the focus of efforts, along with San Sebastian and
+Bilbao, to develop a “Global Basque City” (Meijers, Hoekstra, and Aguado
+2008). The other early focus of the pandemic in Spain was Madrid, which
+is the most populous province in the country and has the second highest
+GDP per capita after Álava. The early outbreaks in these two provinces
+can be traced throughout the progression of the pandemic over time,
+although by the end of the period under consideration, other provinces
+had matched and even surpased their incidence rates, including Segovia
+and Soria to the north of Madrid, and Ciudad Real and Albacete to the
+south.
 
 ![Mean weekly incidence of COVID-19 by province, in reported cases by
-100,000 people (map omits Islas
-Canarias)](README_files/figure-gfm/weekly-average-incidence-map-1.png)
+100,000
+people](README_files/figure-gfm/weekly-average-incidence-map-1.png)
 
-To visualize the distribution of temperature and humidity we aggregate
-the provinces by Autonomous Community. In Figure  the communities have
-been sorted by latitude, so that Principado de Asturias is the
-northernmost community, and Canarias the southernmost. There is a
-relatively wide range of values both within and between provinces over
-the 30 day period examined. The top panel of the figure shows the
-distribution of mean temperature. The lowest mean temperature for a
-community on any given day is 2.8C, and the highest is 22.4C for a range
-of approximately 20 degrees. Likewise, there is a great deal of
-variability in humidity, as seen in the bottom panel of the figure,
-where the lowest mean humidity for any community is 48.3 and the highest
-is 99.6. The actual values for the provinces display somewhat more
-variability even.
+Figure  shows the distribution of the environmental variables in Spain.
+For ease of visualization we aggregate the provinces by Autonomous
+Community. Each box-and-whisker in the figure represents the
+distribution of the variable for a community over the 30-day period. In
+the plot, the communities have been sorted by latitude, so that
+Principado de Asturias is the northernmost community, and Canarias the
+southernmost. As seen in the figure, there is a relatively wide range of
+values both within and between provinces over the 30-day period
+examined. The top panel of the figure shows the distribution of mean
+temperatures. The lowest mean temperature for a community on any given
+day was 2.8C, and the highest 22.4C, for a range of approximately 20
+degrees. Likewise, there is a great deal of variability in humidity, as
+seen in the middle panel of the figure, where the lowest mean humidity
+for any community is 48.3 and the highest is 99.6. Finally, the bottom
+panel displays mean daily hours of sunshine in the community. This
+variable displays the most variability within communities over time, but
+remains relatively constant across communities. It is important to note
+that these are summaries by community, and the actual values of these
+variables for the provinces display somewhat more variability.
 
 ![ Distribution of mean temperatures and humidities in the Autonomous
 Communities in Spain between March 12, 2020 and April 11, 2020. The
@@ -932,17 +1033,44 @@ Autonomous Communities have been sorted by latitude, with communities to
 the left being the northermost, and to the right the
 southernmost](README_files/figure-gfm/descriptives-temperature-1.png)
 
-![Spatial distribution of control variables by province (maps omits
-Islas Canarias)](README_files/figure-gfm/control-map-1.png)
+Figure  includes three maps that display the spatial variation of our
+control variables, namely GDP per capita, percentage of older adults in
+province, population density, and presence of mass transit systems. As
+seen there, GDP per capita is higher in Madrid and the northeast part of
+the country, mainly in Pais Vasco and Cataluña. Percentage of older
+adults is somewhat more checkered, with high values in Madrid and other
+provinces in the center-west part of the country, but also in some
+provinces in the north. Outside of provinces with major cities (e.g.,
+Madrid; Bizkaia and Gipuzkoa in Pais Vasco; Pontevedra in Galicia),
+population density tends to be higher in provinces along the
+Mediterranean coast. The final panel in the figure shows the five
+provinces in the country that have higher order mass transit systems
+(e.g., metro).
 
-Figure  shows the distribution of daily correlations of the independent
-variables with incidence of COVID-19, after log-transforming all
-variables. It can be seen there that the correlation of GDPpc and
-temperature (in its three definitions) have the strongest positive and
-negative correlations with incidence, respectively. Percentage of older
-adults displays somewhat weaker negative correlations with incidence, as
-does density. It can be seen that the humidity variable, in its three
-forms, tends to be possitively correlated with incidence of COVID-19.
+![Spatial distribution of control variables by
+province](README_files/figure-gfm/map-controls-1.png)
+
+Figure  shows the distribution of daily simple correlations of incidence
+of COVID-19 with the independent variables (with the exception of
+Transit, which is a categorical variable). These correlations are
+calculated after log-transforming all variables. As previously
+discussed, the environmental variables have a temporal lag and were
+calculated different time windows.
+
+It can be seen in the figure that temperature (in its three forms) has
+the highest simple correlation with incidence of COVID-19. After
+temperature, GDP per capita has the highest positive correlation with
+the dependent variable. The distribution of these correlations is also
+quite tight over the 30-day period of the study. Hours of sunshine tends
+to have a moderately high correlation with incidence of COVID-19,
+however the distribution of these correlations is more spread, and in
+some cases strays into negative values. A similar thing happens with
+humidity, which also tends to display more day to day variation in the
+correlation with the dependent variable. The percentage of older adults
+shows a relatively tight distribution of day-to-day correlations, and is
+negative. Population density, in contrast, tends to be negative, but is
+relatively spread, and on some days, the simple correlation between
+density and incidence of COVID-19 is weakly positive.
 
 ![Distribution of daily correlations of the independent variables with
 daily incidence of COVID-19 (all variables have been
@@ -950,19 +1078,78 @@ log-transformed)](README_files/figure-gfm/daily-correlations-1.png)
 
 ## SUR Models
 
-The goodness of fit of the three systems of equations is shown in Figure
-.
+Correlation analysis in the preceding section provides some insights
+about the potential associations between incidence of COVID-19 and the
+various environmental and control variables. In this section we estimate
+three spatial SUR models to test the differences between the various
+temporal lags and weighting schemes for the environmental variables.
+Accordingly, we define three models: Model 1, which is estimated using
+the lagged 8-day averages of the environmental variables (*lag8*); Model
+2, which is estimated using the lagged 11-day averages of the
+environmental variables (*lag11*); and finally, Model 3, which is
+estimated using the lagged 11-day *weighted* averages of the
+environmental variables (*lag11w*).
+
+To implement the SUR approach, we must define a matrix of spatial
+weights \(W\). In this case, we consider neighborhoods based on
+adjacency, based on the well-known rook criterion (two provinces are
+adjacent if they share a boundary, but not if they touch only at a
+vertex). We modify this criterion in two cases. First, we make an
+allowance for adjacency between the two islands in the Autonomous
+Community of Canarias in the Pacific (Las Palmas and Santa Cruz de
+Tenerife), which we assume are adjacent between each other. And
+secondly, we assume that Islas Baleares in the Mediterranean are
+adjacent to three provinces in Pais Catalans (i.e., Barcelona,
+Tarragona, and Castello). After matrix \(W\) has been specified,
+estimation of the model can proceed as usual.
+
+For estimation, we log-transform the dependent and quantitative
+independent variables. The only variable that is not transformed is the
+categorical variable for transity systems. A log-log transformation is
+appropriate to capture non-linear relationships between variables and
+provides a straightforward interpretation of the coefficients as
+percentage change. Furthermore, we introduce restrictions so that the
+coefficients of two of our control variables are constant over time,
+namely GDP per capita and percentage of older adults. We do not see an
+*a priori* reason to let those two variables vary across equations, and
+the correlation analysis in Figure  also suggest little temporal
+variation. In contrast, we let the spatial autocorrelation parameter, as
+well as the parameters of the rest of the independent variables
+(including the constant) to vary over time.
+
+After estimation, we compare the goodness of fit of the three SUR
+models. Figure  shows the equation-level coefficient of determination
+\(R^2\), one for each time period/day. As well, the overall coefficient
+of determination for the system is reported for each model
+\(\text{pooled}-R^2\). The general trend is identical for the three
+models, with the goodness-of-fit improving over time and plateuing
+around a value of \(R^2\) of 0.6. Model 1 (*lag8*) performs somewhat
+better in the first few equations/days, when the goodness-of-fit is
+relatively poor, and then again in the last few equations/days. Model 3
+(*lag11w*), in contrast, does not perform well towards the end of the
+study period. The most balanced model in terms of equation-level
+goodness-of-fit appears to be Model 2 (*lag11*), and this impression is
+further supported by a slightly higher value of the
+\(\text{pooled}-R^2\). The analysis using a lagged moving average of the
+environmental variables is in line with the incubation period reported
+by Lauer et al. (2020), although the results do not support the use of a
+weighted average. For the remainder of the paper, we will adopt Model 2
+(*lag11*) as our best model. In the following section we discuss the
+results of the analysis in more depth.
 
 ![ Goodness of fit of the SUR systems: by date and
 pooled](README_files/figure-gfm/goodness-of-fit-1.png)
 
-Summary of best model.
+# Results and Discussion
+
+Table  presents a summary.
 
 <table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 
 <caption>
 
-Summary of estimation results best model (lagged 11-day moving average)
+Summary of estimation results of best model (lag11: lagged 11-day moving
+average)
 
 </caption>
 
@@ -1246,13 +1433,13 @@ log(Density)
 
 <td style="text-align:right;">
 
-1
+0
 
 </td>
 
 <td style="text-align:right;">
 
-10
+11
 
 </td>
 
@@ -1292,19 +1479,19 @@ Transit
 
 <td style="text-align:right;">
 
-10
+8
 
 </td>
 
 <td style="text-align:right;">
 
-9
+8
 
 </td>
 
 <td style="text-align:right;">
 
-11
+14
 
 </td>
 
@@ -1472,6 +1659,58 @@ Non-constrained
 
 </tr>
 
+<tr>
+
+<td style="text-align:left;">
+
+Spatially lagged y (rho)
+
+</td>
+
+<td style="text-align:right;">
+
+0.015
+
+</td>
+
+<td style="text-align:right;">
+
+0.142
+
+</td>
+
+<td style="text-align:right;">
+
+0.528
+
+</td>
+
+<td style="text-align:right;">
+
+12
+
+</td>
+
+<td style="text-align:right;">
+
+3
+
+</td>
+
+<td style="text-align:right;">
+
+15
+
+</td>
+
+<td style="text-align:left;">
+
+Non-constrained
+
+</td>
+
+</tr>
+
 </tbody>
 
 <tfoot>
@@ -1522,51 +1761,96 @@ equations
 
 </table>
 
-# Discussion
-
 Figure  shows the temporal evolution of the spatial autocorrelation
-coefficient (\(\lambda\)).
+coefficient (\(\rho\)) and the intercept of the model.
 
-![Temporal evolution of spatial autocorrelation
-coefficient](README_files/figure-gfm/delta-time-1.png)
+![Temporal evolution of the spatial autocorrelation coefficient (rho)
+and the intercept of the model; dots are the point estimates and
+vertical lines are 95% confidence intervals. In yellow is the period
+after the declaration of the state of emergency, and in orange is the
+period when only essential activities were
+allowed.](README_files/figure-gfm/results-time-1-1.png)
 
-Figure  shows the temporal evolution of the intercept.
+Figure  shows the temporal evolution of the coefficients for the two
+control variables that were not fixed over time, i.e., \(\log(Density)\)
+and \(Transit\).
 
-![Temporal evolution of
-intercept](README_files/figure-gfm/beta-intercept-time-1.png)
+![Temporal evolution of coefficient for the control variables; dots are
+the point estimates and vertical lines are 95% confidence intervals. In
+yellow is the period after the declaration of the state of emergency,
+and in orange is the period when only essential activities were
+allowed.](README_files/figure-gfm/beta-controls-time-1.png)
 
-Figure  shows the temporal evolution of the coefficient for
-\(\log(Density)\).
+Figure  shows the temporal evolution of the coefficient for the three
+environmental variables.
 
-![Temporal evolution of coefficient for
-log(Density)](README_files/figure-gfm/beta-density-time-1.png)
-
-Figure  shows the temporal evolution of the coefficient for \(Transit\).
-
-![Temporal evolution of coefficient for
-Transit](README_files/figure-gfm/beta-transit-time-1.png)
-
-Figure  shows the temporal evolution of the coefficient for
-\(\log(Humidity)\).
-
-![Temporal evolution of coefficient for
-log(Humidity)](README_files/figure-gfm/beta-humidity-time-1.png)
-
-Figure  shows the temporal evolution of the coefficient for
-\(\log(Temperature)\).
-
-![Temporal evolution of coefficient for
-log(Temperature)](README_files/figure-gfm/beta-temperature-time-1.png)
-
-Figure  shows the temporal evolution of the coefficient for
-\(\log(Sunshine + 0.1)\).
-
-![Temporal evolution of coefficient for log(Sunshine +
-0.1)](README_files/figure-gfm/beta-sunshine-time-1.png)
+![Temporal evolution of coefficient for the environmental variables;
+dots are the point estimates and vertical lines are 95% confidence
+intervals. In yellow is the period after the declaration of the state of
+emergency, and in orange is the period when only essential activities
+were allowed.](README_files/figure-gfm/beta-environmenta-time-1.png)
 
 # Concluding Remarks
 
 More words go here.
+
+Limitaciones
+
+  - La temperatura puedes ser un factor pero cabría esperar que no
+    tuviera un impacto lineal. Por el contrario deberiamos esperar un
+    ‘punto de corte’: Una temperatua mantenida superior a X grados
+    durante siete días sea la mejor forma de incorporarla al modelo. En
+    nuestro modelo (log-log) en incremento en un 1% de la temperatura se
+    asocia con un incremento beta% en la incidencia. Esto es lo mismo si
+    la temperatura es baja que si es alta.
+
+  - Idem para la humedad y horas de sol
+
+  - Los datos son ‘provisionales’. Hay gran confusión sobre la
+    incidencia real. La ausencia de test de diagnóstico PCRs al inicio
+    de la pandemia (también ahora) puede desvirtuar el número de casos
+    dianosticados.
+
+  - Los datos oficiales (que tampoco son fiables) son reportados a nivel
+    de Comunidades Autónomas. La recopilación de datos a nivel de
+    provincial son el resultado de un esfuerzo colaborativo de
+    recopilacion entre distintas fuentes (principalmente gobiernos
+    locales). Nuevamente puede haber sesgos importanes.
+
+  - En carácter insular de las Islas Canarias y de las Islas baleares no
+    se ha tenido en cuenta.
+
+  - Baleares se ha linkado artificialmente con 3/4 provincias y debería
+    de haberse dejado aislada para respetar su carácter insular al
+    definir la matriz W.
+
+  - La incidencia depende de un estado inicial. Al inicio del estudio
+    había provincias en las que la epidemia estaba muy desarrollada
+    (Madrid/Alava) mientras que en otras apenas habías casos. Este hecho
+    no ha sido considerado en el modelo. Decretar el confinamiento debe
+    tener distintos impactos entre provincias. QUIZAR METER UNA VARAIBLE
+    DUMMY CON COEF BETA CONSTANTE PARA CONTROLAR AQUELLAS PROVINCIAS CON
+    MAYOR NUEMRO DE CASOS AL INICIO DEL CONFINAMIENTO.
+
+  - No se ha controlado por el sistema sanitario de cada provincia. Uno
+    de los principales focos de contagio han sido los hospitales y los
+    centros de salud. En aquellas provincias donde se ha promovido el
+    mensaje “NO IR AL MEDICO” han presentado menor incidencia.
+
+  - ¿hasta que punto las variables de control no recojen también
+    factores climáticos? por ejemplo, la gente jóven vive en el sur de
+    España que ha tenido menos incidencia.
+
+  - Las estaciones meteorológicas para la obtencion de datos climáticos
+    has sido elegidas aleatoriamente (una para cada provincia). otra
+    seleccion puede dar otros resultados. AQUI SE PODRÍA HACER EL
+    ESFUERZO DE CONSIDERARLAS TODAS (1000) Y CALCULAR LA MEDIA DE LAS
+    VARAIBLES POR PROVINCIA
+
+\*IDEM para la humedad. idem para sunshine
+
+  - HACE FALTA INCLUIR UN PLOT CON LAS CORRELACIONES DE LOS RESIDUOS
+    PARA DARLE RELEVANCIA A LA ESTIMACION SUR
 
 # Acknowledgments
 
@@ -1742,12 +2026,29 @@ with lubridate.” *Journal of Statistical Software* 40 (3): 1–25.
 
 </div>
 
+<div id="ref-Hallet2002regional">
+
+Hallet, Martin. 2002. “Regional Specialisation and Concentration in the
+Eu.” Book Section. In *Regional Convergence in the European Union*,
+53–76. Springer.
+
+</div>
+
 <div id="ref-Harbert2020spatial">
 
 Harbert, Robert S, Seth W Cunningham, and Michael Tessler. 2020.
 “Spatial Modeling Cannot Currently Differentiate Sars-Cov-2
 Coronavirus and Human Distributions on the Basis of Climate in the
 United States.” Journal Article. *medRxiv*.
+
+</div>
+
+<div id="ref-Hu2013scaling">
+
+Hu, Hao, Karima Nigmatulina, and Philip Eckhoff. 2013. “The Scaling of
+Contact Rates with Population Density for the Infectious Disease
+Models.” Journal Article. *Mathematical Biosciences* 244 (2): 125–34.
+<https://doi.org/https://doi.org/10.1016/j.mbs.2013.04.013>.
 
 </div>
 
@@ -1758,6 +2059,15 @@ Jaana Kauppila, Olli Vainio, Thedi Ziegler, Esa Rönkkö, Jouni JK
 Jaakkola, and Tiina M Ikäheimo. 2014. “Decline in Temperature and
 Humidity Increases the Occurrence of Influenza in Cold Climate.” Journal
 Article. *Environmental Health* 13 (1): 22.
+
+</div>
+
+<div id="ref-Jones2008global">
+
+Jones, Kate E., Nikkita G. Patel, Marc A. Levy, Adam Storeygard, Deborah
+Balk, John L. Gittleman, and Peter Daszak. 2008. “Global Trends in
+Emerging Infectious Diseases.” Journal Article. *Nature* 451 (7181):
+990–93. <https://doi.org/10.1038/nature06536>.
 
 </div>
 
@@ -1885,6 +2195,15 @@ Madrid Urban Area.” *The Annals of Regional Science*, 1–35.
 
 </div>
 
+<div id="ref-Morency2011distance">
+
+Morency, C., A. Páez, M. J. Roorda, R. G. Mercado, and S. Farber. 2011.
+“Distance Traveled in Three Canadian Cities: Spatial Analysis from the
+Perspective of Vulnerable Population Segments.” Journal Article.
+*Journal of Transport Geography* 19 (1): 39–50.
+
+</div>
+
 <div id="ref-National2020rapid">
 
 National Academies of Sciences, Engineering and Medicine. 2020. *Rapid
@@ -1911,11 +2230,80 @@ Units in R.” *R Journal* 8 (2): 486–94.
 
 </div>
 
+<div id="ref-Perez2009agent">
+
+Perez, Liliana, and Suzana Dragicevic. 2009. “An Agent-Based Approach
+for Modeling Dynamics of Contagious Disease Spread.” Journal Article.
+*International Journal of Health Geographics* 8 (1): 50.
+
+</div>
+
+<div id="ref-Prem2017projecting">
+
+Prem, Kiesha, Alex R Cook, and Mark Jit. 2017. “Projecting Social
+Contact Matrices in 152 Countries Using Contact Surveys and Demographic
+Data.” *PLoS Computational Biology* 13 (9): e1005697.
+
+</div>
+
 <div id="ref-Rey1999us">
 
 Rey, Sergio J, and Brett D Montouri. 1999. “US Regional Income
 Convergence: A Spatial Econometric Perspective.” *Regional Studies* 33
 (2): 143–56.
+
+</div>
+
+<div id="ref-Roorda2010trip">
+
+Roorda, M. J., A. Paez, C. Morency, R. Mercado, and S. Farber. 2010.
+“Trip Generation of Vulnerable Populations in Three Canadian Cities: A
+Spatial Ordered Probit Approach.” Journal Article. *Transportation* 37
+(3): 525–48. <https://doi.org/10.1007/s11116-010-9263-3>.
+
+</div>
+
+<div id="ref-Sikder2012immobility">
+
+Sikder, S., and A. R. Pinjari. 2012. “Immobility Levels and Mobility
+Preferences of the Elderly in the United States Evidence from 2009
+National Household Travel Survey.” Journal Article. *Transportation
+Research Record*, no. 2318: 137–47. <https://doi.org/10.3141/2318-16>.
+
+</div>
+
+<div id="ref-Singh2020age">
+
+Singh, Rajesh, and R Adhikari. 2020. “Age-Structured Impact of Social
+Distancing on the Covid-19 Epidemic in India.” *arXiv Preprint
+arXiv:2003.12055*.
+
+</div>
+
+<div id="ref-Novel2020epidemiological">
+
+The Novel Coronavirus Pneumonia Emergency Response Epidemiology Team.
+2020. “The Epidemiological Characteristics of an Outbreak of 2019 Novel
+Coronavirus Diseases (Covid-19)—China, 2020.” Journal Article. *China
+CDC Weekly* 2 (8): 113–22.
+
+</div>
+
+<div id="ref-vanWagner2008toward">
+
+Van Wagner, Estair. 2008. “Toward a Dialectical Understanding of
+Networked Disease in the Global City: Vulnerability, Connectivity,
+Topologies.” Journal Article. *Networked Disease: Emerging Infections in
+the Global City*, 13–26.
+
+</div>
+
+<div id="ref-Wang2010gis">
+
+Wang, Jiasheng, Jianhong Xiong, Kun Yang, Shuangyun Peng, and Quanli Xu.
+2010. “Use of Gis and Agent-Based Modeling to Simulate the Spread of
+Influenza.” Conference Proceedings. In *2010 18th International
+Conference on Geoinformatics*, 1–6. IEEE.
 
 </div>
 
@@ -1959,6 +2347,14 @@ Temperature or Uv Radiation in Chinese Cities.” Journal Article.
 Zellner, Arnold. 1962. “An Efficient Method of Estimating Seemingly
 Unrelated Regressions and Tests for Aggregation Bias.” *Journal of the
 American Statistical Association* 57 (298): 348–68.
+
+</div>
+
+<div id="ref-Zhou2016accelerated">
+
+Zhou, Yanqiu Rachel, and William D Coleman. 2016. “Accelerated Contagion
+and Response: Understanding the Relationships Among Globalization, Time,
+and Disease.” Journal Article. *Globalizations* 13 (3): 285–99.
 
 </div>
 
