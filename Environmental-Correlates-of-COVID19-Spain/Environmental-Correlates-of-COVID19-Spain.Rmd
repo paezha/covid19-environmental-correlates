@@ -1017,7 +1017,15 @@ matplot(myimpact, type='l')
 
 Concluding Remarks
 ===================
-  
+
+**Direct, Indirect and Total effect**
+
+For classical regression model, the parameter interpretation is easy since parameters can be interpreted as the partial derivatives of the dependent variable relative to the explanatory variable. For spatial regression models, parameter interpretation becomes richer but more complicated  (@golgher2016interpret). Changes in the value of an explanatory variable in a province can have influence in other provinces. In essence, the idea is that spatial dependence expands the information set to include information from neighbouring regions. The results of @LeSage2009 can be extended to the spatial SUR framework. Note that,
+
+
+
+According to @elhors2014, these partial derivatives have the following interpretation: if an explanatory variable ($X_k$) in a particular province changes, not only the incidence rate in that province change, also incidence rates in other provinces change. Therefore, a change in $X_k$ in a particular province has a *direct effect* on that province, but also an *indirect effect* on neighbouring provinces. Note that the ith diagonal element of the matrix of partial derivatives represents the direct effect on the ith province and non-diagonal elements of ith row of the matrix of partial derivatives represent the indirect effects on other provinces. In order to obtain a global indicator, the direct effect is calculated as the mean of the diagonal elements and captures the average change in incidence ratio caused by the change in $X_k$. Likewise, a global indicator of the indirect effects is calculated as the mean of the non-diagonal elements. The total effect is the sum of direct and indirect effects. Finally, note that if $\lambda_k = 0$, the indirect effects are 0 and the direct effects are equal to $\beta_kt$.
+
 More words go here.
 
 Limitaciones
