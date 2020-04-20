@@ -158,9 +158,9 @@ pandemic.
 Please note that this paper is prepared as a reproducible research
 document. The source R Markdown document, as well as all data and code
 needed to reproduce/review/extend the analysis can be obtained from the
-following anonymous Drive folder:
+following link (this repository):
 
-<https://drive.google.com/open?id=1d_40N_QXo2Fl14r3T3CHs84IED-B1rV_>
+<https://github.com/paezha/covid19-environmental-correlates/tree/master/Environmental-Correlates-of-COVID19-Spain>
 
 # Context and Data
 
