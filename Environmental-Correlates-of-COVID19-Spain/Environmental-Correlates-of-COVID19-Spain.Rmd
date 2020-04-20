@@ -1,5 +1,5 @@
 ---
-title: A spatial analysis of the environmental correlates of COVID-19 incidence in Spain
+title: A spatio-temporal analysis of the environmental correlates of COVID-19 incidence in Spain
 author:
   - name: Antonio Paez
     email: paezha@mcmaster.ca
@@ -128,7 +128,7 @@ Please note that this paper is prepared as a reproducible research document. The
   
 https://github.com/paezha/covid19-environmental-correlates/tree/master/Environmental-Correlates-of-COVID19-Spain
 
-Context, Data, and Methods
+Context and Data
 ============
   
 ## Covid-19 in Spain
@@ -139,13 +139,13 @@ The first reported case of COVID-19 in Spain was on January 31th, when a German 
 
 The global emergence of infectious diseases is mostly driven by environmental, ecological, and socio-economic factors [@Jones2008global]. In the case of SARS-CoV2, the ecological factors include the interaction between humans and wildlife. Once transmission of a disease begins to happen between humans, socio-economic and environmental factors become increasingly important. As noted in the introduction, the focus of the paper is on environmental variables, namely temperature, humidity, and sunshine. These variables have been implicated in the viability and ease of transmission of similar viruses. In addition to these variables, we also aim to use a set of controls, in the form of specific socio-economic and demographic characteristics of each province.
 
-The first variable that we consider is GDP per capita. Much has been said about globalization and the spread of infectious disease\footnote{As the Globe and Mail, Canada's paper of record, put it in relation to the SARS outbreak in 2003: "Globalization means that if someone in China sneezes, someone in Toronto may one day catch a cold" (Editorial, March 28, 2003, p. A18)}. The growth in global connections has presented a challenge to spatial approaches in the initial stages of disease management, when its cause may still be unclear [@Zhou2016accelerated]. In reference to the earlier outbreak of SARS, van Wagner [@vanWagner2008toward] remarks how Toronto's status as a global city was a vulnerability. In our case, we think of GDP per capita as a marker of a region's relative position in a network of global cities, and their potential to be further ahead in the trajectory of the pandemic. Furthermore, wealthier regions also tend to concentrate more activities that produce non-traded goods, including building and construction [@Hallet2002regional]. Therefore, it is possible that wealthier regions remained relatively more active even during the lockdown. On the other hand, it is also possible the less wealthy regions have a higher proportion of workers in manual occupations that cannot telework.
+The first variable that we consider is GDP per capita. Much has been said about globalization and the spread of infectious disease\footnote{As the Globe and Mail, Canada's paper of record, put it in relation to the SARS outbreak in 2003: "Globalization means that if someone in China sneezes, someone in Toronto may one day catch a cold" (Editorial, March 28, 2003, p. A18)}. The growth in global connections has presented a challenge to spatial approaches in the initial stages of disease management, when the cause of a disease may still be unclear, but the plane has already departed [@Zhou2016accelerated]. In reference to the earlier outbreak of SARS, van Wagner [@vanWagner2008toward] chronicles how Toronto's status as a global city turned out to be a vulnerability in this respect. In our case, we think of GDP per capita as a marker of a region's relative position in a network of global cities, and its potential to be further ahead in the trajectory of the pandemic. Furthermore, wealthier regions also tend to concentrate more activities that produce non-traded goods, including building and construction [@Hallet2002regional]. Therefore, it is possible that wealthier regions remain relatively more active even during a lockdown. On the other hand, it is also possible that less wealthy regions have a higher proportion of workers in manual occupations that cannot telework, and therefore have more difficulties complying with shelter-in-place orders.
 
-The percentaje of older adults (over 65) is the second variable that we consider as a control. Early evidence suggest that the case rate mortality is higher at older ages [e.g. @Novel2020epidemiological]. It is not clear that presence of older adults necessarily translates into higher transmission in the population. The public health tool of choice in containing the spread of the disease has been social distancing. In this respect, the evidence from the field of transportation is that older adults tend to travel less frequently, for shorter distances, and have higher rates of immobility [e.g., @Roorda2010trip; @Morency2011distance; @Sikder2012immobility]. In other words, older adults are, by preference or necessity, already in a form of social isolation. Social distancing during the pandemic may actually reinforce that condition for older adults, as the analysis of age-structured social contact in India, China, and Italy of Sing and Adhikari [-@Singh2020age] suggests. Accordingly, our expectation is that in the provinces with higher proportions of older adults will tend to have similarl levels of lower social contact, particularly since age-structured social contact matrix in Spain is similar to Italy [@Prem2017projecting].
+The percentaje of older adults (over 65) is the second variable that we consider as a control. Early evidence regarding COVID-19 suggests that the case rate mortality is higher at older ages [e.g. @Novel2020epidemiological]. However, it is not clear that a relatively large population of older adults necessarily translates into higher transmission of the infection. The tool of choice in containing the spread of the disease has been social distancing. In this respect, the evidence from the field of transportation is that older adults tend to travel less frequently, for shorter distances, and have higher rates of immobility [e.g., @Roorda2010trip; @Morency2011distance; @Sikder2012immobility]. In other words, many older adults are, whether by preference or otherwise, already in a form of social isolation. Social distancing during the pandemic may actually reinforce that condition for them, as suggested by the analysis of age-structured social contact in India, China, and Italy of Sing and Adhikari [-@Singh2020age]. Accordingly, our expectation is that provinces with higher percentages of older adults will tend to have similarly low levels of social contact, particularly since the age-structured matrix of social contact in Spain is similar to Italy [@Prem2017projecting].
 
 The third population variable the we consider is population density, since it directly affects the contact patterns and contact rates between individuals in a population [@Hu2013scaling]. The evidence available suggests a positive relationship between the transmission of COVID-19 and population density (e.g. cumulative incidence in urban areas like NYC). For this reason, we anticipate a positive relationship between population density and the incidence of the disease.
 
-The last control variable is the presence of mass transit systems in a province. Every province in Spain offers some form of public transportation, however only five provinces have higher order systems of mass mobility, namely Barcelona, Madrid, Sevilla, Valencia, and Bizkaia. Public transportation has been hypothesized to relate to the spread of contagious disease by some researchers using agent-based approaches [@Perez2009agent; @Wang2010gis], and while we find scant evidence of a link in the literature, the idea is intuitively appealing. After all, unlike the isolation that a car offers to travellers, most mass transit system are cauldrons of social contact.
+The last control variable is the presence of mass transit systems in a province. Every province in Spain offers some form of public transportation, however only five provinces have higher order systems of mass mobility (e.g. metro or subway), namely Barcelona, Madrid, Sevilla, Valencia, and Bizkaia. Public transportation has been hypothesized to relate to the spread of contagious disease by some researchers using agent-based approaches and simulation [e.g., @Perez2009agent; @Wang2010gis], and while we find scant evidence of a link in the literature, the idea is intuitively appealing. After all, unlike the isolation that a car offers to travellers, most mass transit system are cauldrons of social contact.
 
 ## Data
 
@@ -228,7 +228,8 @@ data.frame(Variable = c("COVID-19 Incidence",
 
 An important aspect of working with environmental data such as temperature and humidity is the incubation period of the disease. Lauer et al. [-@Lauer2020incubation] report for the case of COVID-19 a median incubation period of 5.7 days (with a confidence interval between 4.9 to 7.8 days). The vast majority of cases (95%) develop symptoms between 2.6 days (CI, 2.1 to 3.7 days) and 12.5 days (CI, 8.2 to 17.7 days). For this reason, we judge it best to use lagged values of the environmental variables. We test different time lags as follows. We consider a lagged 8-day average, from date-minus-12 to date-minus-5 days (hereafter *lag8*). Secondly, we consider a lagged 11-day average, from date-minus-12 to date-minus-2 days (hereafter *lag11*). Finally, to account for the likely duration of incubation, we consider a lagged 11-day *weighted* average, from date-minus-12 to date-minus-2 days (hereafter *lag11w*). The weights for this variable are calculated using the parameters of the log-normal distribution reported by Lauer et al. [-@Lauer2020incubation], i.e., a log-mean of 1.621 and a log-standard deviation of 0.418. With these weights, the environmental variables at date-minus-2 and date-minus-12 days are weighted as 0.041 and 0.009 respectively, whereas the environmental variables at date-minus-5 days are weighted as 0.194.
 
-## Methods: Spatial SUR
+Methods: the Spatial SUR Model
+===================
 
 The Seemingly Unrelated Regression equations model (SUR hereafter) is a multivariate econometric model used in different fields when the structure of the data consisits of cross-sections for different time periods. The basis of this approach is well-known since the initial works of Zellner [-@Zellner1962efficient], and has become a popular methodology included in several econometrics textbook [e.g., @Greene2003econometric]. To our knowledge, Anselin [-@Anselin1988spatial] was the first author to discuss SUR from a spatial perspective. In his landmark text, Anselin discussed a model made of "an equation for each time period, which is estimated for a cross section of spatial units" (p. 141). From this milestone, a large body of research has developed to extend the classical SUR into a spatial framework [e.g., @Rey1999us; @Lauridsen2010spatiotemporal; @Legallo2006evaluating; @Lopez2017spatial].
 
@@ -314,28 +315,24 @@ The stack expresion for the SUR model with a spatially lagged dependent variable
 
 \noindent where $\bf{A} =I_{TN}-\bf{\Gamma} \otimes W$ is the spatially lagged dependent variable, and $\bf{\Gamma} = diag(\rho_1, \cdots, \rho_T)$.
 
+This specification assumes that outcome ($y_{st}$) at location $s$ and time $t$ is partially determined by the weighted average ($Wy_{st}$) of the outcome in neighboring provinces, with neighborhood defined by matrix $W$ of spatial weights. In other words, the spatially lagged dependent variable represents a process of contagion, where the disease in neighboring provinces can spillover in a spatial way. The coefficients of the spatially lagged variable are estimated for each time period $\rho_t$ and identify the intensity and the sign of the contagion effect. It is possible test the null hypothesis of identical levels of spatial dependence ($\rho_i=\rho_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`. 
+                                                                                                                
 <!--
 ![\begin{equation} \label{eq:sur-slm} \begin{aligned} \bf{AY} = \bf{X} \beta + \epsilon \\ \epsilon =N(0,\bf{\Sigma}) \end{aligned} \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-slm%7D%20%5Cbegin%7Baligned%7D%20%5Cbf%7BAY%7D%20%3D%20%5Cbf%7BX%7D%20%5Cbeta%20%2B%20%5Cepsilon%20%5C%5C%20%5Cepsilon%20%3DN(0%2C%5Cbf%7B%5CSigma%7D)%20%5Cend%7Baligned%7D%20%5Cend%7Bequation%7D)
 
 \noindent where ![$\bf{A} =I_{TN}-\bf{\Gamma} \otimes W$](https://render.githubusercontent.com/render/math?math=%24%5Cbf%7BA%7D%20%3DI_%7BTN%7D-%5Cbf%7B%5CGamma%7D%20%5Cotimes%20W%24) is the spatially lagged dependent variable, and ![$\bf{\Gamma} = diag(\rho_1, \cdots, \rho_T)$](https://render.githubusercontent.com/render/math?math=%24%5Cbf%7B%5CGamma%7D%20%3D%20diag(%5Crho_1%2C%20%5Ccdots%2C%20%5Crho_T)%24).
--->
-                                                                                                                  
-This specification assumes that outcome ($y_{st}$) at location $s$ and time $t$ is partially determined by the weighted average ($Wy_{st}$) of the outcome in neighboring provinces, with neighborhood defined by matrix $W$ of spatial weights. In other words, the spatially lagged dependent variable represents a process of contagion, where the disease in neighboring provinces can spillover in a spatial way. The coefficients of the spatially lagged variable are estimated for each time period $\rho_t$ and identify the intensity and the sign of the contagion effect. It is possible test the null hypothesis of identical levels of spatial dependence ($\rho_i=\rho_j, \forall i,j$). The correspond Wald test is available in the `R` package `spsur`. 
-                                                                                                                
-<!--
+
 This specification assumes that outcome (![$y_{st}$](https://render.githubusercontent.com/render/math?math=%24y_%7Bst%7D%24)) at location ![$s$](https://render.githubusercontent.com/render/math?math=%24s%24) and time ![$t$](https://render.githubusercontent.com/render/math?math=%24t%24) is partially determined by the weighted average (![$Wy_{st}$](https://render.githubusercontent.com/render/math?math=%24Wy_%7Bst%7D%24)) of the outcome in neighboring provinces, with neighborhood defined by matrix ![$W$](https://render.githubusercontent.com/render/math?math=%24W%24) of spatial weights. In other words, the spatially lagged dependent variable represents a process of contagion, where the disease in neighboring provinces can spillover in a spatial way. The coefficients of the spatially lagged variable are estimated for each time period ![$\rho_t$](https://render.githubusercontent.com/render/math?math=%24%5Crho_t%24) and identify the intensity and the sign of the contagion effect. It is possible test the null hypothesis of identical levels of spatial dependence (![$\rho_i=\rho_j, \forall i,j$](https://render.githubusercontent.com/render/math?math=%24%5Crho_i%3D%5Crho_j%2C%20%5Cforall%20i%2Cj%24)). The correspond Wald test is available in the `R` package `spsur`. 
 -->
   
-The SUR-SLM model can be estimated using maximum likelihood (@Lopez2014spatial) or instrumental variables (@Minguez2019). Another alternative methodologies could be use. By example, a dynamic spatial panel methodology with fixed spatial an temporal effects (e.g. Elhorst 2014, Cap. 4), but those models don't take account correlation between errors. Therefore, a spatial SUR approach is more reasonable for our purpose.
+The SUR-SLM model can be estimated using maximum likelihood (@Lopez2014spatial) or instrumental variables (@Minguez2019).
 
-Analysis and Results
+Analysis
 ===================
   
 ## Exploratory Data Analysis
   
-We begin with the exploratory analysis of the data. 
-
-Figure \ref{fig:weekly-average-incidence-map} shows the geographical variation in the incidence of the disease, as well as its temporal progression in weekly averages. Our analysis begins on March 13, which is the first date when every province had reported at least one case of COVID-19. It can be seen that the highest incidence at this early date was in the provice of Álava, in the North of Spain. While not the most populous province, with a population of only 331,549, Álava has the highest GDP per capita of all provinces. Vitoria, its main city, is the capital of the Basque country and has been the focus of efforts to develop a "Global Basque City" [@Meijers2008strategic], along with San Sebastian and Bilbao. The other early focus of the pandemic in Spain was Madrid, which is the most populous province in the country and has the second highest GDP per capita after Álava. The early outbreaks in these two provinces can be traced throughout the progression of the pandemic over time, although by the end of the period under consideration, other provinces had matched and even surpased their incidence rates, including Segovia and Soria to the north of Madrid, and Ciudad Real and Albacete to the south.
+Figure \ref{fig:weekly-average-incidence-map} shows the geographical variation in the incidence of COVID-19 in Spain, as well as the temporal progression of the disease in weekly averages. Our analysis begins on March 13, which is the first date when every province had reported at least one case of COVID-19. It can be seen that the highest incidence at this early date was in the provice of Álava, in the North of Spain. While not the most populous province, with a population of only 331,549, Álava has the highest GDP per capita of all provinces. Vitoria, its main city, is the capital of the Basque Country and has been the focus of efforts, along with San Sebastian and Bilbao, to develop a "Global Basque City" [@Meijers2008strategic]. The other early focus of the pandemic in Spain was Madrid, which is the most populous province in the country and has the second highest GDP per capita after Álava. The early outbreaks in these two provinces can be traced throughout the progression of the pandemic over time, although by the end of the period under consideration, other provinces had matched and even surpased their incidence rates, including Segovia and Soria to the north of Madrid, and Ciudad Real and Albacete to the south.
 
 ```{r weekly-average-incidence-map, echo=FALSE, fig.height= 9, fig.cap="\\label{fig:weekly-average-incidence-map}Mean weekly incidence of COVID-19 by province, in reported cases by 100,000 people", warning=FALSE, cache = TRUE}
 # Retrieve the coordinates of Madrid
@@ -350,7 +347,7 @@ week11.plot <- covid19_spain %>%
             by = c("ID_INE")) %>%
   st_as_sf() %>%
   ggplot() +
-  geom_sf(aes(fill = mean_weekly_incidence)) +
+  geom_sf(aes(fill = mean_weekly_incidence), color = "gray69") +
   scale_fill_distiller(name = "Mean Weekly Incidence", 
                        palette = "Reds", 
                        direction = 1) +
@@ -360,7 +357,7 @@ week11.plot <- covid19_spain %>%
         legend.position = "bottom",
         plot.margin = margin(0, 0, 0, 0, "cm")) +
   geom_sf_text(label = "Madrid", 
-               x = madrid_xy[1] - 8, 
+               x = madrid_xy[1] - 9, 
                y = madrid_xy[2] + 0.6,
                family = "serif") +
   geom_segment(x = madrid_xy[1] - 6, 
@@ -378,7 +375,7 @@ week12.plot <- covid19_spain %>%
             by = c("ID_INE")) %>%
   st_as_sf() %>%
   ggplot() +
-  geom_sf(aes(fill = mean_weekly_incidence)) +
+  geom_sf(aes(fill = mean_weekly_incidence), color = "gray69") +
   scale_fill_distiller(name = "Mean Weekly Incidence", 
                        palette = "Reds",
                        direction = 1) +
@@ -387,7 +384,7 @@ week12.plot <- covid19_spain %>%
   theme(axis.text = element_blank(),
         legend.position = "bottom",
         plot.margin = margin(0, 0, 0, 0, "cm")) +
-  geom_sf_text(label = "Madrid", x = madrid_xy[1] - 8, y = madrid_xy[2] + 0.6) +
+  geom_sf_text(label = "Madrid", x = madrid_xy[1] - 9, y = madrid_xy[2] + 0.6) +
   geom_segment(x = madrid_xy[1] - 6, y = madrid_xy[2] + 0.5, xend = madrid_xy[1], yend = madrid_xy[2])
 
 week13.plot <- covid19_spain %>%
@@ -399,7 +396,7 @@ week13.plot <- covid19_spain %>%
             by = c("ID_INE")) %>%
   st_as_sf() %>%
   ggplot() +
-  geom_sf(aes(fill = mean_weekly_incidence)) +
+  geom_sf(aes(fill = mean_weekly_incidence), color = "gray69") +
   scale_fill_distiller(name = "Mean Weekly Incidence", 
                        palette = "Reds", 
                        direction = 1) +
@@ -409,7 +406,7 @@ week13.plot <- covid19_spain %>%
         legend.position = "bottom",
         plot.margin = margin(0, 0, 0, 0, "cm")) +
   geom_sf_text(label = "Madrid",
-               x = madrid_xy[1] - 8, 
+               x = madrid_xy[1] - 9, 
                y = madrid_xy[2] + 0.6,
                family = "serif") +
   geom_segment(x = madrid_xy[1] - 6, 
@@ -426,7 +423,7 @@ week14.plot <- covid19_spain %>%
             by = c("ID_INE")) %>%
   st_as_sf() %>%
   ggplot() +
-  geom_sf(aes(fill = mean_weekly_incidence)) +
+  geom_sf(aes(fill = mean_weekly_incidence), color = "gray69") +
   scale_fill_distiller(name = "Mean Weekly Incidence", 
                        palette = "Reds", 
                        direction = 1) +
@@ -436,7 +433,7 @@ week14.plot <- covid19_spain %>%
         legend.position = "bottom",
         plot.margin = margin(0, 0, 0, 0, "cm")) +
   geom_sf_text(label = "Madrid", 
-               x = madrid_xy[1] - 8, 
+               x = madrid_xy[1] - 9, 
                y = madrid_xy[2] + 0.6,
                family = "serif") +
   geom_segment(x = madrid_xy[1] - 6, 
@@ -453,7 +450,7 @@ week15.plot <- covid19_spain %>%
             by = c("ID_INE")) %>%
   st_as_sf() %>%
   ggplot() +
-  geom_sf(aes(fill = mean_weekly_incidence)) +
+  geom_sf(aes(fill = mean_weekly_incidence), color = "gray69") +
   scale_fill_distiller(name = "Mean Weekly Incidence", 
                        palette = "Reds", 
                        direction = 1) +
@@ -463,7 +460,7 @@ week15.plot <- covid19_spain %>%
         legend.position = "bottom",
         plot.margin = margin(0, 0, 0, 0, "cm")) +
   geom_sf_text(label = "Madrid", 
-               x = madrid_xy[1] - 8, 
+               x = madrid_xy[1] - 9, 
                y = madrid_xy[2] + 0.6,
                family = "serif") +
   geom_segment(x = madrid_xy[1] - 6, 
@@ -471,10 +468,18 @@ week15.plot <- covid19_spain %>%
                xend = madrid_xy[1], 
                yend = madrid_xy[2])
 
-grid.arrange(week11.plot, week12.plot, week13.plot, week14.plot, week15.plot, nrow = 3)
+# Create grid layout
+lay = rbind(c(1, 1, 2, 2),
+        c(1, 1, 2, 2),
+        c(3, 3, 4, 4),
+        c(3, 3, 4, 4),
+        c(NA, 5, 5, NA),
+        c(NA, 5, 5, NA))
+
+grid.arrange(week11.plot, week12.plot, week13.plot, week14.plot, week15.plot, layout_matrix = lay)
 ```
 
-To visualize the distribution of temperature and humidity we aggregate the provinces by Autonomous Community. In Figure \ref{fig:descriptives-temperature} the communities have been sorted by latitude, so that Principado de Asturias is the northernmost community, and Canarias the southernmost. There is a relatively wide range of values both within and between provinces over the 30 day period examined. The top panel of the figure shows the distribution of mean temperature. The lowest mean temperature for a community on any given day is 2.8C, and the highest is 22.4C for a range of approximately 20 degrees. Likewise, there is a great deal of variability in humidity, as seen in the bottom panel of the figure, where the lowest mean humidity for any community is 48.3 and the highest is 99.6. The actual values for the provinces display somewhat more variability even.
+Figure \ref{fig:descriptives-temperature} shows the distribution of the environmental variables in Spain. For ease of visualization we aggregate the provinces by Autonomous Community. Each box-and-whisker in the figure represents the distribution of the variable for a community over the 30-day period. In the plot, the communities have been sorted by latitude, so that Principado de Asturias is the northernmost community, and Canarias the southernmost. As seen in the figure, there is a relatively wide range of values both within and between provinces over the 30-day period examined. The top panel of the figure shows the distribution of mean temperatures. The lowest mean temperature for a community on any given day was 2.8C, and the highest 22.4C, for a range of approximately 20 degrees. Likewise, there is a great deal of variability in humidity, as seen in the middle panel of the figure, where the lowest mean humidity for any community is 48.3 and the highest is 99.6. Finally, the bottom panel displays mean daily hours of sunshine in the community. This variable displays the most variability within communities over time, but remains relatively constant across communities. It is important to note that these are summaries by community, and the actual values of these variables for the provinces display somewhat more variability.
 
 ```{r descriptives-temperature, echo = FALSE, fig.height=7, fig.cap="\\label{fig:descriptives-temperature} Distribution of mean temperatures and humidities in the Autonomous Communities in Spain between March 12, 2020 and April 11, 2020. The Autonomous Communities have been sorted by latitude, with communities to the left being the northermost, and to the right the southernmost", cache = TRUE}
 # Summary of temperature by Autonomous Community
@@ -489,11 +494,18 @@ humidity.summary <- covid19_spain %>%
   summarize(Value = mean(Humidity)) %>%
   mutate(Variable = "Mean Humidity in Community")
 
+# Summary of hours of sunshine by Autonomous Community
+sunshine.summary <- covid19_spain %>% 
+  group_by(CCAA, Date) %>%
+  summarize(Value = mean(Sunshine_Hours)) %>%
+  mutate(Variable = "Mean Daily Hours of Sunshina in Community")
+
 # Bind tables
-env.summary <- rbind(temp.summary, humidity.summary) %>%
+env.summary <- rbind(temp.summary, humidity.summary, sunshine.summary) %>%
   mutate(Variable = factor(Variable, 
                            levels = c("Mean Temperature in Community",
-                                      "Mean Humidity in Community")))
+                                      "Mean Humidity in Community",
+                                      "Mean Daily Hours of Sunshina in Community")))
 
 # Plot
 ggplot(data = env.summary, 
@@ -504,9 +516,11 @@ ggplot(data = env.summary,
   theme(axis.text.x = element_text(angle = 90)) +
   xlab("Autonomous Community (sorted from north to south)") +
   ylab("Value") +
-  facet_wrap(~ Variable, nrow = 2, 
+  facet_wrap(~ Variable, nrow = 3, 
              scales = "free_y")
 ```
+
+Figure \ref{fig:map-controls} includes three maps that display the spatial variation of our control variables, namely GDP per capita, percentage of older adults in province, population density, and presence of mass transit systems. As seen there, GDP per capita is higher in Madrid and the northeast part of the country, mainly in Pais Vasco and Cataluña. Percentage of older adults is somewhat more checkered, with high values in Madrid and other provinces in the center-west part of the country, but also in some provinces in the north. Outside of provinces with major cities (e.g., Madrid; Bizkaia and Gipuzkoa in Pais Vasco; Pontevedra in Galicia), population density tends to be higher in provinces along the Mediterranean coast. The final panel in the figure shows the five provinces in the country that have higher order mass transit systems (e.g., metro).
 
 ```{r map-controls, cache=TRUE, echo=FALSE, fig.height= 9, fig.cap="\\label{fig:map-controls}Spatial distribution of control variables by province", warning=FALSE, cache = TRUE}
 # GDP per capita:
@@ -519,13 +533,14 @@ gdppc.plot <- provinces_spain %>%
                              GDPpc > q[4] ~ "4th")) %>%
   #filter(CCAA != "Canarias") %>%
   ggplot() +
-  geom_sf(aes(fill = GDPpc)) +
+  geom_sf(aes(fill = GDPpc), color = "gray69") +
   scale_fill_manual(name = "Quartile", values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D")) +
+  ggtitle("GDP per capita") +
   theme_bw(base_size = 9) +
   theme(axis.text = element_blank(),
         legend.position = "bottom") +
   geom_sf_text(label = "Madrid", 
-               x = madrid_xy[1] - 8, 
+               x = madrid_xy[1] - 9, 
                y = madrid_xy[2] + 0.6,
                family = "serif") +
   geom_segment(x = madrid_xy[1] - 6, 
@@ -543,13 +558,14 @@ older.plot <- provinces_spain %>%
                              Older > q[4] ~ "4th")) %>%
   #filter(CCAA != "Canarias") %>%
   ggplot() +
-  geom_sf(aes(fill = Older)) +
+  geom_sf(aes(fill = Older), color = "gray69") +
   scale_fill_manual(name = "Quartile", values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D")) +
+  ggtitle("Percentage of older adults") +
   theme_bw(base_size = 9) +
   theme(axis.text = element_blank(),
         legend.position = "bottom") +
   geom_sf_text(label = "Madrid", 
-               x = madrid_xy[1] - 8, 
+               x = madrid_xy[1] - 9, 
                y = madrid_xy[2] + 0.6,
                family = "serif") +
   geom_segment(x = madrid_xy[1] - 6, 
@@ -567,13 +583,14 @@ density.plot <- provinces_spain %>%
                              Density > q[4] ~ "4th")) %>%
   #filter(CCAA != "Canarias") %>%
   ggplot() +
-  geom_sf(aes(fill = Density)) +
+  geom_sf(aes(fill = Density), color = "gray69") +
   scale_fill_manual(name = "Quartile", values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D")) +
+  ggtitle("Population density") +
   theme_bw(base_size = 9) +
   theme(axis.text = element_blank(),
         legend.position = "bottom") +
   geom_sf_text(label = "Madrid", 
-               x = madrid_xy[1] - 8, 
+               x = madrid_xy[1] - 9, 
                y = madrid_xy[2] + 0.6,
                family = "serif") +
   geom_segment(x = madrid_xy[1] - 6, 
@@ -581,10 +598,39 @@ density.plot <- provinces_spain %>%
                xend = madrid_xy[1], 
                yend = madrid_xy[2])
 
-grid.arrange(gdppc.plot, older.plot, density.plot, nrow = 3)
+# Transit systems:
+transit.plot <- provinces_spain %>% 
+  mutate(Transit = factor(Transit, 
+                          levels = c(0, 1),
+                          labels = c("No",
+                                     "Yes"))) %>%
+  #filter(CCAA != "Canarias") %>%
+  ggplot() +
+  geom_sf(aes(fill = Transit), color = "gray69") +
+  scale_fill_manual(name = "Transit", values=c("#FFFEDE", "#D5610D")) +
+  ggtitle("Mass transit systems") +
+  theme_bw(base_size = 9) +
+  theme(axis.text = element_blank(),
+        legend.position = "bottom") +
+  geom_sf_text(label = "Madrid", 
+               x = madrid_xy[1] - 9, 
+               y = madrid_xy[2] + 0.6,
+               family = "serif") +
+  geom_segment(x = madrid_xy[1] - 6, 
+               y = madrid_xy[2] + 0.5, 
+               xend = madrid_xy[1], 
+               yend = madrid_xy[2])
+
+# Define layout for plot
+lay <- rbind(c(1, 2),
+             c(3, 4))
+
+grid.arrange(gdppc.plot, older.plot, density.plot, transit.plot, layout_matrix = lay)
 ```
 
-Figure \ref{fig:daily-correlations} shows the distribution of daily correlations of the independent variables with incidence of COVID-19, after log-transforming all variables. It can be seen there that the correlation of GDPpc and temperature (in its three definitions) have the strongest positive and negative correlations with incidence, respectively. Percentage of older adults displays somewhat weaker negative correlations with incidence, as does density. It can be seen that the humidity variable, in its three forms, tends to be possitively correlated with incidence of COVID-19.
+Figure \ref{fig:daily-correlations} shows the distribution of daily simple correlations of incidence of COVID-19 with the independent variables (with the exception of Transit, which is a categorical variable). These correlations are calculated after log-transforming all variables. As previously discussed, the environmental variables have a temporal lag and were calculated different time windows. 
+
+It can be seen in the figure that temperature (in its three forms) has the highest simple correlation with incidence of COVID-19. After temperature, GDP per capita has the highest positive correlation with the dependent variable. The distribution of these correlations is also quite tight over the 30-day period of the study. Hours of sunshine tends to have a moderately high correlation with incidence of COVID-19, however the distribution of these correlations is more spread, and in some cases strays into negative values. A similar thing happens with humidity, which also tends to display more day to day variation in the correlation with the dependent variable. The percentage of older adults shows a relatively tight distribution of day-to-day correlations, and is negative. Population density, in contrast, tends to be negative, but is relatively spread, and on some days, the simple correlation between density and incidence of COVID-19 is weakly positive.
 
 ```{r daily-correlations, echo=FALSE, fig.cap="\\label{fig:daily-correlations}Distribution of daily correlations of the independent variables with daily incidence of COVID-19 (all variables have been log-transformed)", cache = TRUE}
 covid19_spain %>% 
@@ -623,6 +669,12 @@ covid19_spain %>%
 ```
 
 ## SUR Models
+
+Correlation analysis in the preceding section provides some insights about the potential associations between incidence of COVID-19 and the various environmental and control variables. In this section we estimate three spatial SUR models to test the differences between the various temporal lags and weighting schemes for the environmental variables. Accordingly, we define three models: Model 1, which is estimated using the lagged 8-day averages of the environmental variables (*lag8*); Model 2, which is estimated using the lagged 11-day averages of the environmental variables (*lag11*); and finally, Model 3, which is estimated using the lagged 11-day *weighted* averages of the environmental variables (*lag11w*).
+
+To implement the SUR approach, we must define a matrix of spatial weights $W$. In this case, we consider neighborhoods based on adjacency, based on the well-known rook criterion (two provinces are adjacent if they share a boundary, but not if they touch only at a vertex). We modify this criterion in two cases. First, we make an allowance for adjacency between the two islands in the Autonomous Community of Canarias in the Pacific (Las Palmas and Santa Cruz de Tenerife), which we assume are adjacent between each other. And secondly, we assume that Islas Baleares in the Mediterranean are adjacent to three provinces in Pais Catalans (i.e., Barcelona, Tarragona, and Castello). After matrix $W$ has been specified, estimation of the model can proceed as usual.
+
+For estimation, we log-transform the dependent and quantitative independent variables. The only variable that is not transformed is the categorical variable for transity systems. A log-log transformation is appropriate to capture non-linear relationships between variables and provides a straightforward interpretation of the coefficients as percentage change. Furthermore, we introduce restrictions so that the coefficients of two of our control variables are constant over time, namely GDP per capita and percentage of older adults. We do not see an  *a priori* reason to let those two variables vary across equations, and the correlation analysis in Figure \ref{fig:daily-correlations} also suggest little temporal variation. In contrast, we let the spatial autocorrelation parameter, as well as the parameters of the rest of the independent variables (including the constant) to vary over time\footnote{We conducted sensitivity analysis letting all parameters vary over time, and while the results are qualitatively similar, the resulting models are less parsimonious. These results are available in the source R markdown document.}. 
 
 ```{r data-preparation-for-modelling, include=FALSE, cache = TRUE}
 # Organize data for SUR modelling 
@@ -750,6 +802,16 @@ sur.slm_lag8 <- spsur::spsurtime(formula = formula_lag8,
 #print(paste("Pooled R^2 = ", sur.slm_lag8$R2[1]))
 ```
 
+```{r model1-8-day-moving-average-all, include=FALSE, eval = FALSE}
+# Model with a lagged 8-day moving average of climatic variables - NO RESTRICTIONS TO THE COEFFICIENTS:
+sur.slm_lag8_all <- spsur::spsurtime(formula = formula_lag8, 
+                                 data=GPanel, 
+                                 time = GPanel$Date, 
+                                 type = "slm", 
+                                 fit_method = "3sls", 
+                                 listw=  listw)
+```
+
 ```{r model2-11-day-moving-average, include=FALSE, cache = TRUE}
 # Model with 11-day moving average of climatic variables:
 sur.slm_lag11 <- spsur::spsurtime(formula = formula_lag11, 
@@ -762,6 +824,16 @@ sur.slm_lag11 <- spsur::spsurtime(formula = formula_lag11,
                                   b = b2)
 #summary(sur.slm_lag11)
 #print(paste("Pooled R^2 = ", sur.slm_lag11$R2[1]))
+```
+
+```{r model2-11-day-moving-average-all, include=FALSE, cache = TRUE}
+# Model with 11-day moving average of climatic variables:
+sur.slm_lag11_all <- spsur::spsurtime(formula = formula_lag11, 
+                                  data=GPanel, 
+                                  time = GPanel$Date, 
+                                  type = "slm", 
+                                  fit_method = "3sls", 
+                                  listw=  listw)
 ```
 
 ```{r model3-11-day-weighted-moving-average, include=FALSE, cache = TRUE}
@@ -778,7 +850,17 @@ sur.slm_lag11w <- spsur::spsurtime(formula = formula_lag11w,
 #print(paste("Pooled R^2 = ", sur.slm_lag11w$R2[1]))
 ```
 
-The goodness of fit of the three systems of equations is shown in Figure \ref{fig:goodness-of-fit}.
+```{r model3-11-day-weighted-moving-average-all, include=FALSE, cache = TRUE}
+# Model with 11-day weighted moving average of climatic variables:
+sur.slm_lag11w_all <- spsur::spsurtime(formula = formula_lag11w, 
+                                   data=GPanel, 
+                                   time = GPanel$Date, 
+                                   type = "slm", 
+                                   fit_method = "3sls", 
+                                   listw=  listw)
+```
+
+After estimation, we compare the goodness of fit of the three SUR models. Figure \ref{fig:goodness-of-fit} shows the equation-level coefficient of determination $R^2$, one for each time period/day. As well, the overall coefficient of determination for the system is reported for each model $\text{pooled}-R^2$. The general trend is identical for the three models, with the goodness-of-fit improving over time and plateuing around a value of $R^2$ of 0.6. Model 1 (*lag8*) performs somewhat better in the first few equations/days, when the goodness-of-fit is relatively poor, and then again in the last few equations/days. Model 3 (*lag11w*), in contrast, does not perform well towards the end of the study period. The most balanced model in terms of equation-level goodness-of-fit appears to be Model 2 (*lag11*), and this impression is further supported by a slightly higher value of the $\text{pooled}-R^2$. The analysis using a lagged moving average of the environmental variables is in line with the incubation period reported by Lauer et al. [-@Lauer2020incubation], although the results do not support the use of a weighted average. For the remainder of the paper, we will adopt Model 2 (*lag11*) as our best model. In the following section we discuss the results of the analysis in more depth.
 
 ```{r goodness-of-fit, cache = TRUE, echo=FALSE, fig.cap="\\label{fig:goodness-of-fit} Goodness of fit of the SUR systems: by date and pooled"}
 data.frame(Model1 = sur.slm_lag8$R2, 
@@ -807,17 +889,58 @@ data.frame(Model1 = sur.slm_lag8$R2,
            y = c(0.3, 0.27, 0.24),
            family = "serif",
            size = 3.5) +
-  theme_tufte()
-
+  theme_bw() +
+  theme(legend.position = "bottom")
 ```
 
+```{r goodness-of-fit-all, eval=FALSE, echo=FALSE, fig.cap="\\label{fig:goodness-of-fit-all} Goodness of fit of the SUR systems NO RESTRICTION TO THE COEFFICIENTS: by date and pooled"}
+data.frame(Model1 = sur.slm_lag8_all$R2, 
+           Model2 = sur.slm_lag11_all$R2,
+           Model3 = sur.slm_lag11w_all$R2) %>%
+  slice(2:n()) %>%
+  rownames_to_column(var = "Equation") %>%
+  mutate(Date = seq(ymd("2020-03-13"), 
+                    ymd("2020-04-11"), 
+                    by = "days")) %>%
+  pivot_longer(cols = starts_with("M"), names_to = "Model", values_to = "R2") %>%
+  mutate(Model = factor(Model, 
+                        levels = c("Model1", "Model2", "Model3"),
+                        labels = c("Model 1: lag8", "Model 2: lag11", "Model 3: lag11w"))) %>%
+  ggplot(aes(x = Date, y = R2, color = Model, shape = Model)) +
+  geom_point(size = 2) +
+  scale_color_manual(values = c("Model 1: lag8" = "blue", "Model 2: lag11" = "orange", "Model 3: lag11w" = "green") ) + 
+  annotate(geom = "text", 
+           label = c(paste("pooled-R2 (Model 1: lag8)=", 
+                           round(sur.slm_lag8_all$R2[1], 4)),
+                     paste("pooled-R2 (Model 2: lag11)=", 
+                           round(sur.slm_lag11_all$R2[1], 4)),
+                     paste("pooled-R2 (Model 3: lag11w)=", 
+                           round(sur.slm_lag11w_all$R2[1], 4))),
+           x = as_date("2020-04-01"),
+           y = c(0.3, 0.27, 0.24),
+           family = "serif",
+           size = 3.5) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+```
 
-Summary of best model.
+Results and Discussion
+===================
+
+Table \ref{tab:summary-best-model} presents a summary.
+
 ```{r summary-best-model, echo=FALSE, cache = TRUE}
-data.frame(Coefficient = sur.slm_lag11$coefficients, 
-           pval = dnorm(abs(sur.slm_lag11$coefficients/sur.slm_lag11$rest.se))) %>%
+# Copy best model
+best_model <- sur.slm_lag11
+
+data.frame(Coefficient = c(best_model$coefficients, 
+                           best_model$deltas), 
+           sd = c(best_model$rest.se, 
+                  best_model$deltas.se)) %>%
   rownames_to_column(var = "Variable") %>%
-  mutate(Variable = c("Intercept", 
+  mutate(zscore = Coefficient/sd,
+         pval = 2 * pnorm(-abs(zscore)),
+         Variable = c("Intercept", 
                       "log(GDPpc)", 
                       "log(Older)",
                       "log(Density)",
@@ -831,7 +954,9 @@ data.frame(Coefficient = sur.slm_lag11$coefficients,
                             "log(Humidity)", 
                             "log(Temperature)",
                             "log(Sunshine)"),
-                          29)),
+                          29),
+                      rep("Spatially lagged y (rho)",
+                          30)),
          Variable = factor(Variable, 
                            levels = c("Intercept", 
                                       "log(GDPpc)", 
@@ -840,7 +965,8 @@ data.frame(Coefficient = sur.slm_lag11$coefficients,
                                       "Transit", 
                                       "log(Humidity)",
                                       "log(Temperature)",
-                                      "log(Sunshine)"))) %>%
+                                      "log(Sunshine)",
+                                      "Spatially lagged y (rho)"))) %>%
   group_by(Variable) %>%
   summarize(Min = min(Coefficient), 
             Mean = mean(Coefficient), 
@@ -855,13 +981,14 @@ data.frame(Coefficient = sur.slm_lag11$coefficients,
                   "Non-constrained",
                   "Non-constrained",
                   "Non-constrained",
+                  "Non-constrained",
                   "Non-constrained")) %>%
   kable("latex",
         #"html",
         booktabs = TRUE,
         digits = 3,
         col.names = c("Variable", "Min", "Mean", "Max", "p > 0.10", "0.10 <= p < 0.05", "p <= 0.05", "Note"),
-        caption = "\\label{tab:summary-best-model}Summary of estimation results best model (lagged 11-day moving average)") %>%
+        caption = "\\label{tab:summary-best-model}Summary of estimation results of best model (lag11: lagged 11-day moving average)") %>%
   kable_styling(latex_options = c("striped", "scale_down")) %>%
   #kable_styling(bootstrap_options = c("striped", "condensed")) %>%
   add_header_above(c(" " = 1, "Estimates" = 3, "Significance" = 3, " " = 1)) %>%
@@ -870,44 +997,68 @@ data.frame(Coefficient = sur.slm_lag11$coefficients,
                        "Constrained: coefficient as constant across equations"))
 ```
 
-Discussion
-===================
-  
-Figure \ref{fig:delta-time} shows the temporal evolution of the spatial autocorrelation coefficient ($\lambda$).
+```{r summary-best-model-all, include=FALSE, eval=FALSE}
+best_model_all <- sur.slm_lag11_all
 
-```{r delta-time, cache = TRUE, echo=FALSE, fig.cap="\\label{fig:delta-time}Temporal evolution of the spatial autocorrelation coefficient; dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed."}
-data.frame(Date = seq(ymd("2020-03-13"), 
-                      ymd("2020-04-11"), 
-                      by = "days"),
-           Beta = sur.slm_lag11$deltas,
-           sd = sur.slm_lag11$deltas.se) %>%
-  mutate(zscore = Beta/sd,
+data.frame(Coefficient = c(best_model_all$coefficients, 
+                           # Copy best model
+                           best_model_all$deltas), 
+           sd = c(best_model_all$rest.se, 
+                  best_model_all$deltas.se)) %>%
+  rownames_to_column(var = "Variable") %>%
+  mutate(zscore = Coefficient/sd,
          pval = 2 * pnorm(-abs(zscore)),
-           CI95low = Beta - qnorm(0.975, mean = 0, sd = 1) * sd,
-           CI95up = Beta + qnorm(0.975, mean = 0, sd = 1) * sd,
-           CI90low = Beta - qnorm(0.95, mean = 0, sd = 1) * sd,
-           CI90up = Beta + qnorm(0.95, mean = 0, sd = 1) * sd,
-         pval = case_when(pval <= 0.05 ~ "p <= 0.05",
-                          pval > 0.05 & pval <= 0.10 ~ "0.05 < p <= 0.10",
-                         TRUE ~ "p > 0.10")) %>%
-  ggplot(aes(x = Date, y = Beta, color = pval)) +
-  geom_rect(xmin = as_date("2020-03-14"), xmax = as_date("2020-03-30"),
-              ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "yellow", color = NA) +
-  geom_rect(xmin = as_date("2020-03-30"), xmax = as_date("2020-04-12"),
-            ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "orange", color = NA) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(x = Date,
-                     ymin = CI90low,
-                    ymax = CI90up), 
-                width = 0.5) +
-  geom_linerange(aes(x = Date,
-                     ymin = CI95low,
-                    ymax = CI95up),
-                 size = 0.5) +
-  scale_color_manual(values = c("0.05 < p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "gray")) +  
-  geom_hline(yintercept = 0) +
-  theme_bw()
+         Variable = c(rep(c("Intercept", 
+                            "log(GDPpc)", 
+                            "log(Older)",
+                            "log(Density)",
+                            "Transit",
+                            "log(Humidity)",
+                            "log(Temperature)",
+                            "log(Sunshine)"),
+                          30),
+                      rep("Spatially lagged y (rho)",
+                          30)),
+         Variable = factor(Variable, 
+                           levels = c("Intercept", 
+                                      "log(GDPpc)", 
+                                      "log(Older)", 
+                                      "log(Density)",
+                                      "Transit", 
+                                      "log(Humidity)",
+                                      "log(Temperature)",
+                                      "log(Sunshine)",
+                                      "Spatially lagged y (rho)"))) %>%
+  group_by(Variable) %>%
+  summarize(Min = min(Coefficient), 
+            Mean = mean(Coefficient), 
+            Max = max(Coefficient),
+            pns = sum(pval > 0.10), # Number of coefficients with p > 0.1
+            p10 = sum(pval <= 0.10) - sum(pval <= 0.05), # Number of coefficients with  0.1 <= pval < 0.05
+            p05 = sum(pval <= 0.05)) %>% # Number of coefficients with pval <=5 
+  mutate(Note = c("Non-constrained", 
+                  "Constrained", 
+                  "Constrained", 
+                  "Non-constrained", 
+                  "Non-constrained",
+                  "Non-constrained",
+                  "Non-constrained",
+                  "Non-constrained",
+                  "Non-constrained")) %>%
+  kable(#"latex",
+    "html",
+    booktabs = TRUE,
+    digits = 3,
+    col.names = c("Variable", "Min", "Mean", "Max", "p > 0.10", "0.10 <= p < 0.05", "p <= 0.05", "Note"),
+    caption = "\\label{tab:summary-best-model}Summary of estimation results of best model (lag11: lagged 11-day moving average)") %>%
+  #kable_styling(latex_options = c("striped", "scale_down")) %>%
+  kable_styling(bootstrap_options = c("striped", "condensed")) %>%
+  add_header_above(c(" " = 1, "Estimates" = 3, "Significance" = 3, " " = 1)) %>%
+  footnote(general = c("Significance: This is the number of coefficients with p-values as indicated",
+                       "Non-constrained: coefficient was allowed to vary across equations",
+                       "Constrained: coefficient as constant across equations"))
 ```
+
 ```{r function-for-plotting-coefficients, include=FALSE}
 # Define a function for plotting the coefficients over time including their confidence intervals and significance
 plot_coeff <- function(model = model, n = n){
@@ -930,82 +1081,156 @@ plot_coeff <- function(model = model, n = n){
               ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "yellow", color = NA) +
     geom_rect(xmin = as_date("2020-03-30"), xmax = as_date("2020-04-12"),
               ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "orange", color = NA) +
-    geom_point(size = 3) +
+    geom_point(size = 1) +
     geom_errorbar(aes(x = Date,
                       ymin = CI90low,
                       ymax = CI90up), 
-                  width = 0.5) +
+                  size = 0.6,
+                  width = 0.8) +
     geom_linerange(aes(x = Date,
                        ymin = CI95low,
                        ymax = CI95up),
-                   size = 0.5) +
+                   size = 0.4) +
     scale_color_manual(values = c("0.05 < p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "gray")) +  
     geom_hline(yintercept = 0) +
     theme_bw()
   }
 ```
+  
+```{r function-extract-legend, include=FALSE}
+# Define a function to extract a legend from a ggplot
+#extract legend
+#https://github.com/hadley/ggplot2/wiki/Share-a-legend-between-two-ggplot2-graphs
+g_legend<-function(a.gplot){
+  tmp <- ggplot_gtable(ggplot_build(a.gplot))
+  leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
+  legend <- tmp$grobs[[leg]]
+  return(legend)}
+```
 
-Figure \ref{fig:beta-intercept-time} shows the temporal evolution of the intercept.
+Figure \ref{fig:results-time-1} shows the temporal evolution of the spatial autocorrelation coefficient ($\rho$) and the intercept of the model.
 
-```{r beta-intercept-time, cache = TRUE, echo=FALSE, fig.cap="\\label{fig:beta-intercept-time}Temporal evolution of intercept; dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed."}
+```{r results-time-1, cache = TRUE, fig.height= 4, echo=FALSE, fig.cap="\\label{fig:results-time-1}Temporal evolution of the spatial autocorrelation coefficient (rho) and the intercept of the model; dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed."}
+rho.plot <- data.frame(Date = seq(ymd("2020-03-13"), 
+                      ymd("2020-04-11"), 
+                      by = "days"),
+           Beta = best_model$deltas,
+           sd = best_model$deltas.se) %>%
+  mutate(zscore = Beta/sd,
+         pval = 2 * pnorm(-abs(zscore)),
+           CI95low = Beta - qnorm(0.975, mean = 0, sd = 1) * sd,
+           CI95up = Beta + qnorm(0.975, mean = 0, sd = 1) * sd,
+           CI90low = Beta - qnorm(0.95, mean = 0, sd = 1) * sd,
+           CI90up = Beta + qnorm(0.95, mean = 0, sd = 1) * sd,
+         pval = case_when(pval <= 0.05 ~ "p <= 0.05",
+                          pval > 0.05 & pval <= 0.10 ~ "0.05 < p <= 0.10",
+                         TRUE ~ "p > 0.10")) %>%
+  ggplot(aes(x = Date, y = Beta, color = pval)) +
+  geom_rect(xmin = as_date("2020-03-14"), xmax = as_date("2020-03-30"),
+              ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "yellow", color = NA) +
+  geom_rect(xmin = as_date("2020-03-30"), xmax = as_date("2020-04-12"),
+            ymin = -Inf, ymax = Inf, alpha = 0.010, fill = "orange", color = NA) +
+  geom_point(size = 1) +
+  geom_errorbar(aes(x = Date,
+                     ymin = CI90low,
+                    ymax = CI90up),
+                 size = 0.6,
+                width = 0.8) +
+  geom_linerange(aes(x = Date,
+                     ymin = CI95low,
+                    ymax = CI95up),
+                 size = 0.4) +
+  scale_color_manual(values = c("0.05 < p <= 0.10" = "orange", "p <= 0.05" = "red", "p > 0.10" = "gray")) +  
+  geom_hline(yintercept = 0) +
+  theme_bw() +
+  ylab("rho") +
+  theme(legend.position = "bottom")
+
+common_legend <- g_legend(rho.plot)
+
+# Plot without legend
+rho.plot <- rho.plot +
+   theme(legend.position = "none") 
+
 #Intercept
-plot_coeff(model = sur.slm_lag11, n = 1) + 
-  ylab("Beta (Intercept)")
+intercept.plot <- plot_coeff(model = best_model, n = 1) + 
+  ylab("Beta (Intercept)") +
+  theme(legend.position = "none")
+
+# Define layout for plot
+lay <- rbind(c(1, 2),
+             c(3, 3))
+
+grid.arrange(rho.plot, intercept.plot, common_legend, 
+             layout_matrix = lay,
+             heights = c(5, 1))
 ```
 
-Figure \ref{fig:beta-density-time} shows the temporal evolution of the coefficient for $\log(Density)$.
+Figure \ref{fig:beta-controls-time} shows the temporal evolution of the coefficients for the two control variables that were not fixed over time, i.e., $\log(Density)$ and $Transit$.
 
-```{r beta-density-time, echo=FALSE, , fig.cap="\\label{fig:beta-density-time}Temporal evolution of coefficient for log(Density); dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
+```{r beta-controls-time, echo=FALSE,  fig.height= 4, fig.cap="\\label{fig:beta-controls-time}Temporal evolution of coefficient for the control variables; dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
 #Density:
-plot_coeff(model = sur.slm_lag11, n = 2) + 
-  ylab("Beta (log(Density))")
-```
+density.plot <- plot_coeff(model = best_model, n = 2) + 
+  ylab("Beta (log[Density]))") +
+  theme(legend.position = "none")
 
-Figure \ref{fig:beta-transit-time} shows the temporal evolution of the coefficient for $Transit$.
-
-```{r beta-transit-time, echo=FALSE, fig.cap="\\label{fig:beta-transit-time}Temporal evolution of coefficient for Transit; dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
 # Transit
-plot_coeff(model = sur.slm_lag11, n = 3) + 
-  ylab("Beta (Transit)")
+transit.plot <- plot_coeff(model = best_model, n = 3) + 
+  ylab("Beta (Transit)") +
+  theme(legend.position = "none")
+
+# Define layout for plot
+lay <- rbind(c(1, 2),
+             c(3, 3))
+
+grid.arrange(density.plot, transit.plot, common_legend, 
+             layout_matrix = lay,
+             heights = c(5, 1))
 ```
 
+Figure \ref{fig:beta-environmental-time} shows the temporal evolution of the coefficient for the three environmental variables.
 
-Figure \ref{fig:beta-humidity-time} shows the temporal evolution of the coefficient for $\log(Humidity)$.
+```{r beta-environmenta-time, echo=FALSE, fig.height= 7, fig.cap="\\label{fig:beta-environmental-time}Temporal evolution of coefficient for the environmental variables; dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
+# Humidity
+humidity.plot <- plot_coeff(model = best_model, n = 4) + 
+  ylab("Beta (log[Humidity])") +
+  theme(legend.position = "none")
 
-```{r beta-humidity-time, echo=FALSE, fig.cap="\\label{fig:beta-humidity-time}Temporal evolution of coefficient for log(Humidity); dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
-# Humidity:
-plot_coeff(model = sur.slm_lag11, n = 4) + 
-  ylab("Beta (log(Humidity))")
-```
-
-Figure \ref{fig:beta-temperature-time} shows the temporal evolution of the coefficient for $\log(Temperature)$.
-
-```{r beta-temperature-time, echo=FALSE, fig.cap="\\label{fig:beta-temperature-time}Temporal evolution of coefficient for log(Temperature); dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
 # Temperature
-plot_coeff(model = sur.slm_lag11, n = 5) + 
-  ylab("Beta (log(Temperature))")
-```
+temperature.plot <- plot_coeff(model = best_model, n = 5) + 
+  ylab("Beta (log[Temperature])") +
+  theme(legend.position = "none")
 
-Figure \ref{fig:beta-sunshine-time} shows the temporal evolution of the coefficient for $\log(Sunshine + 0.1)$.
-
-```{r beta-sunshine-time, echo=FALSE, fig.cap="\\label{fig:beta-sunshine-time}Temporal evolution of coefficient for log(Sunshine + 0.1); dots are the point estimates and vertical lines are 95% confidence intervals. In yellow is the period after the declaration of the state of emergency, and in orange is the period when only essential activities were allowed.", cache = TRUE}
 # Sunshine
-plot_coeff(model = sur.slm_lag11, n = 6) + 
-  ylab("Beta (log(Sunshine + 0.1))")
+sunshine.plot <- plot_coeff(model = best_model, n = 6) + 
+  ylab("Beta (log[Sunshine + 0.1])") +
+  theme(legend.position = "none")
+
+# Define layout for plot
+lay <- rbind(c(1, 1, 2, 2),
+             c(1, 1, 2, 2),
+             c(NA, 3, 3, NA),
+             c(NA, 3, 3, NA),
+             c(NA, 4, 4, NA))
+
+grid.arrange(humidity.plot, temperature.plot, sunshine.plot, common_legend, 
+             layout_matrix = lay,
+             heights = c(4, 4, 4, 4, 1))
+
 ```
 
 ```{r impacts, echo=FALSE, include=FALSE}
 Wsur <- as(spdep::listw2mat(listw), "CsparseMatrix")
 trsur <- spatialreg::trW(Wsur, type = "MC")
-impacts.sur.slm_lag11 <- impactspsur(sur.slm_lag11, tr = trsur,R = 1000)
+impacts.best_model <- impactspsur(best_model, tr = trsur,R = 1000)
 
-impacts.sur.slm_lag11[[1]]
-impacts.sur.slm_lag11[[2]]
-impacts.sur.slm_lag11[[3]]
+impacts.best_model[[1]]
+impacts.best_model[[2]]
+impacts.best_model[[3]]
 
 myimpact <- matrix(0,ncol = 5, nrow = 29)
 for (i in 2:30){
-  myimpact[i-1,] <- impacts.sur.slm_lag11[[i]]$res$direct
+  myimpact[i-1,] <- impacts.best_model[[i]]$res$direct
 }
 
 matplot(myimpact, type='l')
@@ -1035,11 +1260,7 @@ Limitaciones
 
 * No se ha controlado por el sistema sanitario de cada provincia. Uno de los principales focos de contagio han sido los hospitales y los centros de salud. En aquellas provincias donde se ha promovido el mensaje "NO IR AL MEDICO" han presentado menor incidencia.
 
-* HAY QUE INCLUIR INTERVALOS DE CONFIANZA EN LOS GRÁFICOS QUE HACEMOS DE LOS COEFICIENTES DEL MODELO
-
 * ¿hasta que punto las variables de control no recojen también factores climáticos? por ejemplo, la gente jóven vive en el sur de España que ha tenido menos incidencia.
-
-* TITULO: A spatial analysis of the environmental correlates ofCOVID-19 incidence in Spain ¿during the lookdown?
 
 * Las estaciones meteorológicas para la obtencion de datos climáticos has sido elegidas aleatoriamente (una para cada provincia). otra seleccion puede dar otros resultados. AQUI SE PODRÍA HACER EL ESFUERZO DE CONSIDERARLAS TODAS (1000) Y CALCULAR LA MEDIA DE LAS VARAIBLES POR PROVINCIA
 
