@@ -1,0 +1,319 @@
+---
+title: "Visualize contagion"
+output:
+  html_document:
+    df_print: paged
+---
+
+In this notebook I'd like to visualize the pattern of inter-provincial contagion. My idea is to get the fitted values of the model minus the effect of the covariates, to isolate the lagged dependent variable, and then do an animation with that.
+
+## Preliminaries
+
+Load packages:
+```{r load-packages, message=FALSE}
+# Download and install these two packages:
+# covid19env
+# spsur
+library(covid19env)
+library(gganimate)
+#library(ggthemes)
+#library(gridExtra)
+#library(kableExtra)
+library(lubridate)
+library(plm)
+#library(plotly)
+library(sf)
+library(spdep)
+library(spsur)
+library(tidyverse)
+library(units)
+```
+
+Load datasets:
+```{r load-data, cache=TRUE}
+# Load data from package `covid19env`
+data("covid19_spain")
+data("provinces_spain")
+```
+
+Preprocess the data:
+```{r data-preparation, cache=TRUE}
+# Convert GDP per capita to thousands of euros:
+provinces_spain <- provinces_spain %>%
+  mutate(GDPpc = GDPpc/1000)
+
+# Join provincial data to incidence data and convert to simple features:
+covid19_spain <- covid19_spain %>% 
+  left_join(provinces_spain %>% st_drop_geometry(),
+            by = c("province", "CCAA", "ID_INE"))
+```
+
+## The contagion effect
+
+Consider an estimated model of the following form:
+$$
+(I -  \hat{\rho}W)\hat{Y} = X\hat{\beta}
+$$
+
+Expand:
+$$
+\hat{Y} - \hat{\rho}W\hat{Y} = X\hat{\beta}
+$$
+
+Rearrange:
+$$
+\hat{\rho}W\hat{Y} = \hat{Y} - X\hat{\beta}
+$$
+
+\noindent where $\hat{Y}$ is the prediction of incidence in the provinces, and $X\hat{\beta}$ is the estimated impact on incidence due to all $X$ factors. The right-hand side of the equation is the estimated incidence discounted by its own factors.
+
+The term on the right hand side is the contribution to $\hat{Y}$ due to incidence in the neighboring provinces. In other words, this is the contagion effect.
+
+When the estimated incidence $\hat{Y}$ is greater than $X\hat{\beta}$, this means that the province has a greater incidence of the disease than what its own conditions explain. In this case $\hat{\rho}W\hat{Y}$ is positive, and contagion contributes to increase the incidence (the province tends to be on the receiving end of contagion).
+
+On the other hand, when the estimated incidence $\hat{Y}$ is less than $X\hat{\beta}$, the province has lower incidence than what its own conditions explain. Now, $\hat{\rho}W\hat{Y}$ is negative, which means that the incidence is reduced by lower rates of incidence in their neighborhood.
+
+Finally, when the estimated incidence $\hat{Y}$ is equal to $X\hat{\beta}$, the incidence in the province is explained completely by its own conditions.
+
+By mapping this term, we can explore how vulnerable to contagion, or contagious, the provinces were over time. Remember, positive means on the receiving end (or vulnerable) of contagion, red means contagious.
+
+## Model
+
+Organize data for SUR modelling: 
+```{r data-preparation-for-modelling, cache = TRUE}
+GPanel <- plm::pdata.frame(covid19_spain %>%
+                             select(province, 
+                                    Date,
+                                    Incidence, 
+                                    Median_Age,
+                                    Male2Female,
+                                    Older,
+                                    GDPpc,
+                                    Density,
+                                    Transit,
+                                    Mean_Temp_lag8,
+                                    Humidity_lag8,
+                                    Sunshine_Hours_lag8,
+                                    Mean_Temp_lag11,
+                                    Humidity_lag11,
+                                    Sunshine_Hours_lag11,
+                                    Mean_Temp_lag11w,
+                                    Humidity_lag11w,
+                                    Sunshine_Hours_lag11w),
+                           c("province","Date"))
+
+```
+
+Create spatial weights matrix: 
+```{r spatial-weights, cache = TRUE}
+
+Wmat <- provinces_spain %>%
+  #drop_na() %>%
+  as("Spatial") %>%
+  poly2nb(queen = FALSE) %>%
+  nb2mat(zero.policy = TRUE)
+
+Wmat <- (Wmat > 0) * 1
+
+# Join the two provinces in Canarias
+Wmat[which(provinces_spain$province == "Palmas(Las)"), 
+     which(provinces_spain$province == "Santa Cruz de Tenerife")] <- 1
+Wmat[which(provinces_spain$province == "Santa Cruz de Tenerife"), 
+     which(provinces_spain$province == "Palmas(Las)")] <- 1
+
+# 'Paises Catalans'
+#n = 8
+Wmat[which(provinces_spain$province == "Barcelona"), 
+     which(provinces_spain$province == "Baleares")] <- 1
+Wmat[which(provinces_spain$province == "Baleares"), 
+     which(provinces_spain$province == "Barcelona")] <- 1
+Wmat[which(provinces_spain$province == "Baleares"), 
+     which(provinces_spain$province == "Castellon/Castello")] <- 1 
+Wmat[which(provinces_spain$province == "Castellon/Castello"), 
+     which(provinces_spain$province == "Baleares")] <- 1
+Wmat[which(provinces_spain$province == "Baleares"), 
+     which(provinces_spain$province == "Tarragona")] <- 1 
+Wmat[which(provinces_spain$province == "Tarragona"), 
+     which(provinces_spain$province == "Baleares")] <- 1
+miW <- Wmat/rowSums(Wmat)
+
+# Convert to listw
+listw <- mat2listw(Wmat,style = "W")
+```
+
+Define formula for model:
+```{r formulas, cache = TRUE}
+formula_lag11 <- log(Incidence) ~ 
+  log(GDPpc) +
+  log(Older) +
+  log(Density) +
+  Transit +
+  log(Humidity_lag11) +
+  log(Mean_Temp_lag11) +
+  log(Sunshine_Hours_lag11 + 0.1)
+```
+
+Add restrictions to model for temporally fixed coefficients:
+```{r model-restrictions, cache = TRUE}
+T <- max(covid19_spain$Date) - min(covid19_spain$Date) + 1 # Recall that T is the number of days, i.e., time periods, i.e., equations; add 1 to include the starting day
+k <- 8 # Number of independent variables, including the constant
+coef_rest <- 2 # Number of restrictions
+
+# nrow is number of equations (time periods) minus 1, times the number of restrictions
+# ncol is number of variables times number of equations
+R2 <- matrix(0, nrow = (T - 1) * coef_rest, ncol = k * T)
+
+for (i in 1:(T-1)){
+  R2[i, 2] <- 1
+  R2[i, (2 + i * k)] <- -1
+  R2[(i + T - 1), 3] <- 1
+  R2[(i + T - 1), (3 + i * k)] <- -1
+  # Use if more restrictions are needed
+  #R2[(i + T - 1) * 2, 4] <- 1
+  #R2[(i + T - 1) * 2, (4 + i * k)] <- -1
+}
+b2 <- matrix(0, ncol = (T - 1) * coef_rest)
+```
+
+Estimate model:
+```{r model2-11-day-moving-average, cache = TRUE}
+# Model with 11-day moving average of climatic variables:
+sur.slm_lag11 <- spsur::spsurtime(formula = formula_lag11, 
+                                  data=GPanel, 
+                                  time = GPanel$Date, 
+                                  type = "slm", 
+                                  fit_method = "3sls", 
+                                  listw=  listw,
+                                  R = R2,
+                                  b = b2)
+#summary(sur.slm_lag11)
+#print(paste("Pooled R^2 = ", sur.slm_lag11$R2[1]))
+```
+
+## Prepare results for analysis
+
+To analyze the contagion effect we need to calculate it. This can be done in two different ways. Directly, by computing this term:
+
+$$
+\hat{\rho}W\hat{Y}
+$$
+
+The estimated autocorrelation coefficient $\hat{\rho}$ (by date) and the fitted values $\hat{Y}$ are part of the output of the estimation procedure.
+
+As an alternative, the contagion effect can be calculated indirectly, as:
+$$
+\hat{Y} - X\hat{\beta}
+$$
+
+The fitted values $\hat{Y}$ and the coefficients $\hat{\beta}$ (by date) are part of the output of the estimation procedure. Here, I take the second approach, which avoid having to work with matrix $W$ in the calculations.
+
+Extract and organize coefficients:
+```{r}
+Coefficients <- data.frame(Coefficients = sur.slm_lag11$coefficients,
+                           Variable = c(c("Intercept",
+                                        "b_GDPpc",
+                                        "b_Older",
+                                        "b_Density",
+                                        "b_Transit",
+                                        "b_Humidity",
+                                        "b_Temperature",
+                                        "b_Sunshine"),
+                                        rep(c("Intercept",
+                                              "b_Density",
+                                              "b_Transit",
+                                              "b_Humidity",
+                                              "b_Temperature",
+                                              "b_Sunshine"),
+                                            29)),
+                           Date = c(rep(ymd("2020-03-13"), 8),
+                                    rep(seq(ymd("2020-03-14"),
+                                        ymd("2020-04-11"),
+                                        by = "days"),
+                                        each = 6)))  %>%
+  pivot_wider(names_from = "Variable", 
+              values_from = "Coefficients")  %>%
+  mutate(b_GDPpc = max(sur.slm_lag11$coefficients[2]),
+         b_Older = max(sur.slm_lag11$coefficients[3]))
+```
+
+Join coefficients with data table:
+```{r}
+covid19_spain <- covid19_spain %>% left_join(Coefficients, by = "Date")
+```
+
+Calculate $\hat{Y}$ minus $X\hat{\beta}$:
+```{r}
+Contagion <- covid19_spain %>%
+  mutate(fitted.values = sur.slm_lag11$fitted.values,
+         X_beta = Intercept + 
+           b_GDPpc * log(GDPpc) + 
+           b_Older * log(Older) + 
+           b_Density * log(as.numeric(Density)) +
+           b_Transit * Transit +
+           b_Humidity * log(Humidity_lag11) +
+           b_Temperature * log(Mean_Temp_lag11) + 
+           b_Sunshine * log(Sunshine_Hours_lag11 + 0.01), 
+         Contagion = fitted.values - X_beta)
+```
+
+Select variables from `Contagion` dataframe:
+```{r}
+Contagion <- Contagion %>%
+  select(ID_INE, province, CCAA, Contagion, Date) %>%
+  mutate(Day = factor(rep(1:50, 30)))
+```
+
+Next, join geometry and convert to sf:
+```{r}
+Contagion <- Contagion %>%
+  left_join(provinces_spain %>% 
+              select(ID_INE, geometry),
+            by = "ID_INE") %>%
+  st_as_sf()
+```
+
+Create a choropleth plot of the provinces with the contagion effect ($\hat{\rho}W\hat{Y}$):
+```{r}
+p1 <- ggplot() + 
+  geom_sf(data = Contagion %>% 
+            filter(CCAA != "Canarias"), 
+          aes(fill = Contagion, 
+              group = interaction(factor(ID_INE), 
+                                  Date))) +
+  scale_fill_gradient2() + 
+  theme_bw()
+```
+
+Create an animation using `gganimate`:
+```{r}
+anim1 <-  p1 +
+  labs(title = "Date: {frame_time}") +
+  transition_time(Date)
+```
+
+Render animation:
+```{r cache=TRUE}
+animate(anim1, fps = 2, end_pause = 5)
+```
+
+What general trends to we see?
+
+Now plot the trajectory of the contagion term by province:
+```{r}
+ggplot(data = Contagion, aes(x = Date, y = Contagion, group = province)) +
+  geom_line(color = "gray") +
+  geom_line(data = Contagion %>% 
+              filter(province == "Araba/alava"), 
+            color = "orange",
+            size = 1) +
+  geom_line(data = Contagion %>% 
+              filter(province == "Madrid"), 
+            color = "purple",
+            size = 1) +
+  labs(title = "Contagion effect by province by date",
+              #subtitle = "Plot by date",
+              caption = "Alava is the orange line; Madrid is the purple line") +
+  theme_bw()
+```
+
+Where could this analysis be taken? LISA analysis by date? Spatial Markov Chains? Cluster membership?
