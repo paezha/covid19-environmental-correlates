@@ -1,0 +1,90 @@
+---
+title: "Download climatic data from AEMET"
+author: "Fernando"
+date: "4/23/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,collapse = TRUE,message = FALSE)
+```
+
+```{r libraries}
+library(meteoland)
+library(aemet)
+library(sf)
+library(kableExtra)
+library(ggplot2)
+```
+
+## First step: Get API
+
+Get the API key from AEMET open data service (is free). https://opendata.aemet.es/centrodedescargas/inicio
+
+## API key for AEMET
+```{r key}
+apikey <- "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmOGw1aDlAZ21haWwuY29tIiwianRpIjoiNzQ4NzU1ZTgtZDBjYi00MzE3LThmMTUtNzcwZDE0ZGNiNDg0IiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE1ODYxODI2MzIsInVzZXJJZCI6Ijc0ODc1NWU4LWQwY2ItNDMxNy04ZjE1LTc3MGQxNGRjYjQ4NCIsInJvbGUiOiIifQ.Ez8SgcBusQ-514k9vDtEXL29wbRi-cGIYkxnXl5AVv0"
+```
+
+## List of dates
+Select the set of dates 
+```{r}
+mydates <- seq(as.Date("2020/3/01"), as.Date("2020/4/20"), "day")
+```
+
+## Donwload Meteo Stations
+
+En  la AEMET se puede descargar shp de las estaciones meteorológicas. Están clasificadas en 4 tipos (automáticas, completas, termoétricas, plubiometricas). Aún no se la diferencia entre ellas.
+
+Hasta donde yo se ninguna ofrece datos de humedad.
+
+He utilizado el paquete **aemet** para descargarme información de las estaciones meteorológicas
+
+Para el papel seleccione aquella que me pareció mas correcta y que tuviera datos (hay algunas con muchos datos perdidos)
+
+```{r}
+stations <- aemet::aemet_stations(apikey)
+stations.sf <- st_as_sf(stations, coords = c("longitud", "latitud"), crs = 4326)
+stations.sf$Lon <- stations$longitud
+stations.sf$Lat <- stations$latitud
+```
+
+## Geometry of provinces
+
+```{r}
+load("/Users/fernandoair/Dropbox/COVID-19/covid19-environmental-correlates/covid19env/data/provinces_spain.RData")
+```
+
+
+## Geometry of Meteo Stations
+
+```{r plot-stations}
+ggplot(data = stations.sf) +
+  geom_sf(data = provinces_spain, aes()) +
+  geom_sf(data = stations.sf, aes(color = provincia), show.legend = FALSE) +
+  theme_bw(base_size=6)
+```
+
+## Domwload climatic data from each Meteo Station
+
+En el shp "provinces_spain".shp se incluye el campo "Meteo_Station" especificando el ID de la estación seleccionada en cada provincia.
+
+Hay que uncluir un lag temporal. Hay limitación de descargas por minuto.
+
+```{r}
+num_prov <- 5
+Tem <- list()
+for (i in 1:num_prov){
+  Tem[[i]] <- downloadAEMEThistorical(apikey, mydates, station_id=provinces_spain$Meteo_Station[i])[[1]]
+  print(i)
+  Sys.sleep(2)
+}
+```
+
+## Example: List information
+En la lista Tem se obtienen los valores climático
+
+```{r}
+kableExtra::kable(head(Tem[[1]]))
+```
+
