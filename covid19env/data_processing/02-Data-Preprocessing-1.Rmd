@@ -1,0 +1,635 @@
+---
+title: "COVID-19-Panel-Spain"
+author: "AP and FL"
+date: "4/11/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r library, collapse=TRUE, message=FALSE}
+#library(meteoland)
+#library(geosphere)
+library(ggthemes)
+library(lubridate)
+library(readr)
+library(sf)
+library(tidyverse)
+library(units)
+#library(aemet)
+#library(spdep)
+#library(spsur)
+#library(spatialreg)
+#library(systemfit)
+#library(plm)
+#library(splm)
+```
+
+# Data preprocessing
+
+## Read COVID-19 data Spain
+
+```{r}
+## Lectura de Datos COVID-19
+BD <- read.table(file="COVID-19-Diagnosticados-Extendido.csv",sep = ";",header = TRUE)
+BD$X <- NULL
+BD$X.1 <- NULL
+```
+
+Pivot table:
+```{r}
+BD <- BD %>%
+  rename(province = `ï..Provincia`)
+
+covid19_spain <- BD %>%
+  pivot_longer(starts_with("D"),
+               names_to = "Date",
+               values_to = "Cases") %>%
+  mutate(Date = rep(seq(dmy("13-03-2020"), 
+                        dmy("13-04-2020"), 
+                        by = "days"), 
+                    50))
+```
+
+## Read GDP per capita
+
+Read data
+```{r}
+## Read file
+GDPpc <- read_csv("PIBpc_Spain.csv", col_names = TRUE) %>%
+  select(ID_INE, gdppc16)
+```
+
+## Read population and demographic data
+
+```{r}
+population.sf <- st_read("Shp/Provincias.shp") %>%
+  st_drop_geometry()
+```
+
+## Join provincial data to table with COVID-19 cases
+
+Join the tables and convert to simple features:
+```{r}
+covid19_spain <- covid19_spain %>%
+  left_join(population.sf %>% 
+              select(ID_INE, POPULATION), 
+            by = "ID_INE")
+```
+
+Calculate the incidence of COVID-19 cases (cases 100,000 hab):
+```{r}
+covid19_spain <- covid19_spain %>%
+  mutate(Incidence = Cases * 100000/POPULATION) %>%
+  select(-POPULATION)
+```
+
+## Read sf with provinces
+
+```{r}
+provinces_spain <- sf::st_read("Shp/shapefiles_provincias_espana.shp") #
+```
+
+Join provincial-level data to sf:
+```{r}
+provinces_spain <- provinces_spain %>%
+  transmute(ID_INE = cartodb_id, geometry) %>%
+  left_join(covid19_spain %>% 
+              filter(Date == "2020-03-14") %>%
+              select(province, 
+                     CCAA, 
+                     ID_INE),
+            by = "ID_INE") %>%
+  left_join(population.sf,
+            by = "ID_INE") %>%
+  left_join(GDPpc, 
+            by = "ID_INE")
+```
+
+## Select and rename variables
+
+Rename dataframe:
+```{r}
+provinces_spain <- provinces_spain  %>%
+  mutate(Density = POPULATION/units::set_units(st_area(provinces_spain), km^2)) %>% 
+  select(province, 
+         CCAA,
+         ID_INE,
+         Population = POPULATION,
+         Density,
+         Older = MAY_65, 
+         Median_Age = EDAD_MED, 
+         Male2Female = HOM_MUJ,
+         GDPpc = gdppc16,
+         Transit = METRO,
+         Altitude = ALTITUD,
+         Coast = COSTA,
+         Meteo_Station = ESTACION_M,
+         Area = AREA,
+         geometry)
+```
+
+## Lectura datos climáticos
+
+* Se ha usado el paquete **meteoland** para obtener las temperaturas de distintas estaciones meteorológicas (el data frame stations lista las estaciones). Para cada provincia de ha elegido una estación meteorológica que fuera representativa y que contuviera datos de temperaturas (Max/Min/Media), Pluviosidad, y horas de sol. 
+
+En general estas estaciones no recogen información sobre la humedad relativa (HR). Para poder incluir en el modelo la HR se han considerado dos opciones. La primera alternativa es la estimación en base a las temperaturas máximas y mínimas (ver nota en 'COVID-19-Datos-Climáticos-Spain.R'). la segunda alternativa es recoger datos sobre la altitud de cada provincia (datos de la capital de provincia en wikipedia). La altitud es una proxy de la humedad ya que a mayor altitud el clima es más seco y el grado de humedad menor.
+
+## Process climate data
+
+Load climate data (ignore the humidity data in this file; it was a calculated variable):
+```{r}
+load("COVID-19-Datos_Climaticos_Spain-Extendido.RData")
+```
+
+Read humidity data
+```{r}
+## Read file
+Hum <- read_csv("COVID-19-Humedad-Spain.csv", col_names = TRUE) %>%
+  rename(provincia = Provincia) %>% 
+  select(provincia:D11Abr)
+```
+
+Prepare climatic factors:
+```{r}
+# Maximum temperature
+TMax <- TMax %>% select(-ID, -provincia) %>%
+  pivot_longer(starts_with("T"), 
+               names_to = "Date",
+               values_to = "Max_Temp") %>%
+  mutate(Date = rep(seq(dmy("01-03-2020"), 
+                        dmy("11-04-2020"), 
+                        by = "days"), 
+                    50))
+
+# Minimum temperature
+TMin <- TMin %>% select(-ID, -provincia) %>%
+  pivot_longer(starts_with("T"), 
+               names_to = "Date",
+               values_to = "Min_Temp") %>%
+  mutate(Date = rep(seq(dmy("01-03-2020"), 
+                        dmy("11-04-2020"), 
+                        by = "days"), 
+                    50))
+
+# Mean temperature
+TMed <- TMed %>% select(-ID, -provincia) %>%
+  pivot_longer(starts_with("T"), 
+               names_to = "Date",
+               values_to = "Mean_Temp") %>%
+  mutate(Date = rep(seq(dmy("01-03-2020"), 
+                        dmy("11-04-2020"), 
+                        by = "days"), 
+                    50))
+
+# Hours of sunshine 
+Sun <- Sun %>% select(-ID, -provincia) %>%
+  pivot_longer(starts_with("S"), 
+               names_to = "Date",
+               values_to = "Sunshine_Hours") %>%
+  mutate(Date = rep(seq(dmy("01-03-2020"), 
+                        dmy("11-04-2020"), 
+                        by = "days"), 
+                    50))
+
+# Precipitation 
+Plu <- Plu %>% select(-ID, -provincia) %>%
+  pivot_longer(c(starts_with("P")), 
+               names_to = "Date",
+               values_to = "Precipitation") %>%
+  mutate(Date = rep(seq(dmy("01-03-2020"), 
+                        dmy("11-04-2020"),
+                        by = "days"), 
+                    50)) %>%
+  replace_na(list(Precipitation = 0)) # Replace two missing values in Malaga on 2020-03-01 and 2020-03-02
+
+# Humidity 
+Hum <- Hum %>% select(-provincia) %>%
+  pivot_longer(c(starts_with("D")), 
+               names_to = "Date",
+               values_to = "Humidity") %>%
+  mutate(Date = rep(seq(dmy("01-03-2020"), 
+                        dmy("11-04-2020"),
+                        by = "days"), 
+                    50))
+```
+
+Join all climatic factors:
+```{r}
+climatic_vars <- TMax %>%
+  left_join(TMin, by = c("ID_INE", "Date")) %>%
+  left_join(TMed, by = c("ID_INE", "Date")) %>%
+  left_join(Sun, by = c("ID_INE", "Date")) %>%
+  left_join(Plu, by = c("ID_INE", "Date"))  %>%
+  left_join(Hum, by = c("ID_INE", "Date"))
+```
+
+It is important to note that someone who is diagnosed on day "date" was likely infected between 2 and 12 days earlier. Therefore, the climatic variables need to be with respect to the likely time of contagion. For this reason, we calculate a lagged average using the variable from date-minus-12 to date-minus-5 days. These variables are called "lag8".
+```{r}
+# Lagged mean temperature: 8 day average
+TMed_lag8 <- TMed %>% 
+  group_by(ID_INE) %>%
+  group_modify(~ {((lag(.x$Mean_Temp, 12) + 
+                      lag(.x$Mean_Temp, 11)+ 
+                      lag(.x$Mean_Temp, 10)+ 
+                      lag(.x$Mean_Temp, 9)+ 
+                      lag(.x$Mean_Temp, 8)+ 
+                      lag(.x$Mean_Temp, 7)+ 
+                      lag(.x$Mean_Temp, 6)+ 
+                      lag(.x$Mean_Temp, 5))/8) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(ID_INE, 
+            Date = rep(seq(dmy("01-03-2020"),
+                           dmy("11-04-2020"), 
+                           by = "days"), 
+                       50), 
+            Mean_Temp_lag8 = value)
+
+# Lagged sunshine hours: 8 day average
+Sun_lag8 <- Sun %>% 
+  group_by(ID_INE) %>%
+  group_modify(~ {((lag(.x$Sunshine_Hours, 12) + 
+                      lag(.x$Sunshine_Hours, 11)+ 
+                      lag(.x$Sunshine_Hours, 10)+ 
+                      lag(.x$Sunshine_Hours, 9)+ 
+                      lag(.x$Sunshine_Hours, 8)+ 
+                      lag(.x$Sunshine_Hours, 7)+ 
+                      lag(.x$Sunshine_Hours, 6)+ 
+                      lag(.x$Sunshine_Hours, 5))/8) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(ID_INE, 
+            Date = rep(seq(dmy("01-03-2020"),
+                           dmy("11-04-2020"), 
+                           by = "days"), 
+                       50), 
+            Sunshine_Hours_lag8 = value)
+
+# Lagged precipitation: 8 day average
+Plu_lag8 <- Plu %>% 
+  group_by(ID_INE) %>%
+  group_modify(~ {((lag(.x$Precipitation, 12) + 
+                      lag(.x$Precipitation, 11)+ 
+                      lag(.x$Precipitation, 10)+ 
+                      lag(.x$Precipitation, 9)+ 
+                      lag(.x$Precipitation, 8)+ 
+                      lag(.x$Precipitation, 7)+ 
+                      lag(.x$Precipitation, 6)+ 
+                      lag(.x$Precipitation, 5))/8) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(ID_INE, 
+            Date = rep(seq(dmy("01-03-2020"),
+                           dmy("11-04-2020"), 
+                           by = "days"), 
+                       50), 
+            Precipitation_lag8 = value)
+
+# Lagged humidity: 8 day average
+Hum_lag8 <- Hum %>% 
+  group_by(ID_INE) %>%
+  group_modify(~ {((lag(.x$Humidity, 12) + 
+                      lag(.x$Humidity, 11)+ 
+                      lag(.x$Humidity, 10)+ 
+                      lag(.x$Humidity, 9)+ 
+                      lag(.x$Humidity, 8)+ 
+                      lag(.x$Humidity, 7)+ 
+                      lag(.x$Humidity, 6)+ 
+                      lag(.x$Humidity, 5))/8) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(ID_INE, 
+            Date = rep(seq(dmy("01-03-2020"),
+                           dmy("11-04-2020"), 
+                           by = "days"), 
+                       50), 
+            Humidity_lag8 = value)
+```
+
+A variation of this is a lagged 11-day average, from date-minus-12 to date-minus-2 days. According to [this research](https://annals.org/aim/fullarticle/2762808/incubation-period-coronavirus-disease-2019-covid-19-from-publicly-reported) on the incubation period, this is the latency period of 95% of people who develop symptoms. Call this "lag11":
+```{r}
+# Lagged mean temperature: 8 day average
+TMed_lag11 <- TMed %>% 
+  group_by(ID_INE) %>%
+  group_modify(~ {((lag(.x$Mean_Temp, 12) + 
+                      lag(.x$Mean_Temp, 11) + 
+                      lag(.x$Mean_Temp, 10) + 
+                      lag(.x$Mean_Temp, 9) + 
+                      lag(.x$Mean_Temp, 8) + 
+                      lag(.x$Mean_Temp, 7) + 
+                      lag(.x$Mean_Temp, 6) + 
+                      lag(.x$Mean_Temp, 5)+ 
+                      lag(.x$Mean_Temp, 4)+ 
+                      lag(.x$Mean_Temp, 3)+ 
+                      lag(.x$Mean_Temp, 2))/11) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(ID_INE, 
+            Date = rep(seq(dmy("01-03-2020"),
+                           dmy("11-04-2020"), 
+                           by = "days"), 
+                       50), 
+            Mean_Temp_lag11 = value)
+
+# Lagged sunshine hours: 8 day average
+Sun_lag11 <- Sun %>% 
+  group_by(ID_INE) %>%
+  group_modify(~ {((lag(.x$Sunshine_Hours, 12) + 
+                      lag(.x$Sunshine_Hours, 11) + 
+                      lag(.x$Sunshine_Hours, 10) + 
+                      lag(.x$Sunshine_Hours, 9) + 
+                      lag(.x$Sunshine_Hours, 8) + 
+                      lag(.x$Sunshine_Hours, 7) + 
+                      lag(.x$Sunshine_Hours, 6) + 
+                      lag(.x$Sunshine_Hours, 5) + 
+                      lag(.x$Sunshine_Hours, 4) + 
+                      lag(.x$Sunshine_Hours, 3) + 
+                      lag(.x$Sunshine_Hours, 2))/11) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(ID_INE, 
+            Date = rep(seq(dmy("01-03-2020"),
+                           dmy("11-04-2020"), 
+                           by = "days"), 
+                       50), 
+            Sunshine_Hours_lag11 = value)
+
+# Lagged precipitation: 8 day average
+Plu_lag11 <- Plu %>% 
+  group_by(ID_INE) %>%
+  group_modify(~ {((lag(.x$Precipitation, 12) + 
+                      lag(.x$Precipitation, 11) + 
+                      lag(.x$Precipitation, 10) + 
+                      lag(.x$Precipitation, 9) + 
+                      lag(.x$Precipitation, 8) + 
+                      lag(.x$Precipitation, 7) + 
+                      lag(.x$Precipitation, 6) + 
+                      lag(.x$Precipitation, 5) + 
+                      lag(.x$Precipitation, 4) + 
+                      lag(.x$Precipitation, 3) + 
+                      lag(.x$Precipitation, 2))/11) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(ID_INE, 
+            Date = rep(seq(dmy("01-03-2020"),
+                           dmy("11-04-2020"), 
+                           by = "days"), 
+                       50), 
+            Precipitation_lag11 = value)
+
+# Lagged humidity: 8 day average
+Hum_lag11 <- Hum %>% 
+  group_by(ID_INE) %>%
+  group_modify(~ {((lag(.x$Humidity, 12) + 
+                      lag(.x$Humidity, 11) + 
+                      lag(.x$Humidity, 10) + 
+                      lag(.x$Humidity, 9) + 
+                      lag(.x$Humidity, 8) + 
+                      lag(.x$Humidity, 7) + 
+                      lag(.x$Humidity, 6) + 
+                      lag(.x$Humidity, 5) + 
+                      lag(.x$Humidity, 4) + 
+                      lag(.x$Humidity, 3) + 
+                      lag(.x$Humidity, 2))/11) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(ID_INE, 
+            Date = rep(seq(dmy("01-03-2020"),
+                           dmy("11-04-2020"), 
+                           by = "days"), 
+                       50), 
+            Humidity_lag11 = value)
+```
+
+Yet another variation of this is a weighted average 11-day lag, from date-minus-12 to date-minus-2 days, with the weights given by the distribution in Lauer et al. (2020). First, calculate the weights using the parameters reported by Lauer et al.:
+```{r}
+# Calculate the p-values for the temporal weights
+tweights <- data.frame(x = seq(2, 12, 1), p = dlnorm(seq(2, 12, 1), meanlog = 1.621, sdlog = 0.418))
+
+# Sum, to normalize to one
+ptotal <- sum(tweights$p)
+
+# Weights are the normalized p-values
+tweights <- tweights %>%
+  mutate(w = p/ptotal)
+
+tweights <- rbind(data.frame(x = 1, p = 0, w = 0), tweights)
+```
+
+Call this "lag11w":
+```{r}
+# Lagged mean temperature: 8 day average
+TMed_lag11w <- TMed %>% 
+  group_by(ID_INE) %>%
+  group_modify(~ {((lag(.x$Mean_Temp, 12) * tweights$w[12] + 
+                      lag(.x$Mean_Temp, 11) * tweights$w[11]+ 
+                      lag(.x$Mean_Temp, 10) * tweights$w[10]+ 
+                      lag(.x$Mean_Temp, 9) * tweights$w[9]+ 
+                      lag(.x$Mean_Temp, 8) * tweights$w[8]+ 
+                      lag(.x$Mean_Temp, 7) * tweights$w[7]+ 
+                      lag(.x$Mean_Temp, 6) * tweights$w[6]+ 
+                      lag(.x$Mean_Temp, 5) * tweights$w[5]+ 
+                      lag(.x$Mean_Temp, 4) * tweights$w[4]+ 
+                      lag(.x$Mean_Temp, 3) * tweights$w[3]+ 
+                      lag(.x$Mean_Temp, 2) * tweights$w[2])) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(ID_INE, 
+            Date = rep(seq(dmy("01-03-2020"),
+                           dmy("11-04-2020"), 
+                           by = "days"), 
+                       50), 
+            Mean_Temp_lag11w = value)
+
+# Lagged sunshine hours: 8 day average
+Sun_lag11w <- Sun %>% 
+  group_by(ID_INE) %>%
+  group_modify(~ {((lag(.x$Sunshine_Hours, 12) * tweights$w[12] + 
+                      lag(.x$Sunshine_Hours, 11) * tweights$w[11]+ 
+                      lag(.x$Sunshine_Hours, 10) * tweights$w[10]+ 
+                      lag(.x$Sunshine_Hours, 9) * tweights$w[9]+ 
+                      lag(.x$Sunshine_Hours, 8) * tweights$w[8]+ 
+                      lag(.x$Sunshine_Hours, 7) * tweights$w[7]+ 
+                      lag(.x$Sunshine_Hours, 6) * tweights$w[6]+ 
+                      lag(.x$Sunshine_Hours, 5) * tweights$w[5]+ 
+                      lag(.x$Sunshine_Hours, 4) * tweights$w[4]+ 
+                      lag(.x$Sunshine_Hours, 3) * tweights$w[3]+ 
+                      lag(.x$Sunshine_Hours, 2) * tweights$w[2])) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(ID_INE, 
+            Date = rep(seq(dmy("01-03-2020"),
+                           dmy("11-04-2020"), 
+                           by = "days"), 
+                       50), 
+            Sunshine_Hours_lag11w = value)
+
+# Lagged precipitation: 8 day average
+Plu_lag11w <- Plu %>% 
+  group_by(ID_INE) %>%
+  group_modify(~ {((lag(.x$Precipitation, 12) * tweights$w[12] + 
+                      lag(.x$Precipitation, 11) * tweights$w[11]+ 
+                      lag(.x$Precipitation, 10) * tweights$w[10]+ 
+                      lag(.x$Precipitation, 9) * tweights$w[9]+ 
+                      lag(.x$Precipitation, 8) * tweights$w[8]+ 
+                      lag(.x$Precipitation, 7) * tweights$w[7]+ 
+                      lag(.x$Precipitation, 6) * tweights$w[6]+ 
+                      lag(.x$Precipitation, 5) * tweights$w[5]+ 
+                      lag(.x$Precipitation, 4) * tweights$w[4]+ 
+                      lag(.x$Precipitation, 3) * tweights$w[3]+ 
+                      lag(.x$Precipitation, 2) * tweights$w[2])) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(ID_INE, 
+            Date = rep(seq(dmy("01-03-2020"),
+                           dmy("11-04-2020"), 
+                           by = "days"), 
+                       50), 
+            Precipitation_lag11w = value)
+
+# Lagged humidity: 8 day average
+Hum_lag11w <- Hum %>% 
+  group_by(ID_INE) %>%
+  group_modify(~ {((lag(.x$Humidity, 12) * tweights$w[12] + 
+                      lag(.x$Humidity, 11) * tweights$w[11]+ 
+                      lag(.x$Humidity, 10) * tweights$w[10]+ 
+                      lag(.x$Humidity, 9) * tweights$w[9]+ 
+                      lag(.x$Humidity, 8) * tweights$w[8]+ 
+                      lag(.x$Humidity, 7) * tweights$w[7]+ 
+                      lag(.x$Humidity, 6) * tweights$w[6]+ 
+                      lag(.x$Humidity, 5) * tweights$w[5]+ 
+                      lag(.x$Humidity, 4) * tweights$w[4]+ 
+                      lag(.x$Humidity, 3) * tweights$w[3]+ 
+                      lag(.x$Humidity, 2) * tweights$w[2])) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(ID_INE, 
+            Date = rep(seq(dmy("01-03-2020"),
+                           dmy("11-04-2020"), 
+                           by = "days"), 
+                       50), 
+            Humidity_lag11w = value)
+```
+
+Join lagged variables to climatic factors:
+```{r}
+climatic_vars <- climatic_vars %>%
+  left_join(TMed_lag8, by = c("ID_INE", "Date")) %>%
+  left_join(Sun_lag8, by = c("ID_INE", "Date")) %>%
+  left_join(Plu_lag8, by = c("ID_INE", "Date")) %>%
+  left_join(Hum_lag8, by = c("ID_INE", "Date")) %>%
+  left_join(TMed_lag11, by = c("ID_INE", "Date")) %>%
+  left_join(Sun_lag11, by = c("ID_INE", "Date")) %>%
+  left_join(Plu_lag11, by = c("ID_INE", "Date")) %>%
+  left_join(Hum_lag11, by = c("ID_INE", "Date")) %>%
+  left_join(TMed_lag11w, by = c("ID_INE", "Date")) %>%
+  left_join(Sun_lag11w, by = c("ID_INE", "Date")) %>%
+  left_join(Plu_lag11w, by = c("ID_INE", "Date")) %>%
+  left_join(Hum_lag11w, by = c("ID_INE", "Date"))
+```
+
+## Join COVID-19 cases and climatic variables
+
+Join the dataframes:
+```{r}
+covid19_spain <- covid19_spain %>%
+  full_join(climatic_vars, by = c("ID_INE", "Date"))
+```
+
+Summary of dataframe:
+```{r}
+summary(covid19_spain)
+```
+
+## Plot two control variables Ratio Male/Female; Median_Age
+
+Ratio of male to female in province:
+```{r}
+ggplot(data = provinces_spain) + 
+  geom_sf(aes(fill = Male2Female)) + 
+  scale_fill_distiller(palette = "Blues", direction = 1) + 
+  theme_tufte()
+```
+
+Median age of population in province:
+```{r}
+ggplot(data = provinces_spain) + 
+  geom_sf(aes(fill = Median_Age)) + 
+  scale_fill_distiller(palette = "Blues", direction = 1) + 
+  theme_tufte()
+```
+
+### Incidence progress
+
+Plot the progression of the incidence of COVID-19 cases by province:
+```{r}
+p1 <- ggplot(data = covid19_spain %>%
+               filter(Date == "2020-03-19") %>% 
+         left_join(provinces_spain, by = "ID_INE") %>% 
+         st_as_sf()) + 
+  geom_sf(aes(fill = Incidence)) + 
+  scale_fill_distiller(palette = "Reds", direction = 1) + 
+  theme_tufte() +
+  theme(axis.text = element_blank(),
+        legend.position = "bottom") + 
+  facet_wrap(~ Date, nrow = 3)
+
+p2 <- ggplot(data = covid19_spain %>%
+               filter(Date == "2020-03-28") %>% 
+         left_join(provinces_spain, by = "ID_INE") %>% 
+         st_as_sf()) + 
+  geom_sf(aes(fill = Incidence)) + 
+  scale_fill_distiller(palette = "Reds", direction = 1) + 
+  theme_tufte() +
+  theme(axis.text = element_blank(),
+        legend.position = "bottom") + 
+  facet_wrap(~ Date, nrow = 3)
+
+p3 <- ggplot(data = covid19_spain %>%
+               filter(Date == "2020-04-03") %>% 
+         left_join(provinces_spain, by = "ID_INE") %>% 
+         st_as_sf()) + 
+  geom_sf(aes(fill = Incidence)) + 
+  scale_fill_distiller(palette = "Reds", direction = 1) + 
+  theme_tufte() +
+  theme(axis.text = element_blank(),
+        legend.position = "bottom") +
+  facet_wrap(~ Date, nrow = 3)
+
+gridExtra::grid.arrange(p1, p2, p3, ncol = 3)
+```
+
+## Save data
+
+Filter missing records:
+```{r}
+covid19_spain_1 <- covid19_spain %>%
+  filter(!is.na(province)) %>% # Remove records that are missing data on the province
+  filter(!is.na(Max_Temp)) # Remove records that are missing climatic variables
+
+provinces_spain <- provinces_spain %>%
+  drop_na()
+```
+
+Summary after cleaning:
+```{r}
+summary(covid19_spain_1)
+```
+
+Summary after cleaning:
+```{r}
+summary(provinces_spain)
+```
+
+Save:
+```{r}
+# Dataframe
+save(covid19_spain_1, file = "covid19_spain_1.RData", compress = "xz")
+
+# Simple features for cartography
+save(provinces_spain, file = "provinces_spain.RData", compress = "xz")
+```
+

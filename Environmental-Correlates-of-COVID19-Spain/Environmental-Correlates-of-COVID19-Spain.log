@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.22)  20 APR 2020 15:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.22)  5 MAY 2020 20:19
 entering extended mode
 **./Environmental-Correlates-of-COVID19-Spain.tex
 (Environmental-Correlates-of-COVID19-Spain.tex
@@ -813,54 +813,48 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 
 {C:/Users/paezha/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-Overfull \hbox (5.97322pt too wide) in paragraph at lines 240--241
-[]\T1/lmr/m/n/10 (-20) https://drive.google.com/open?id=1d_40N_QXo2Fl14r3T3CHs8
-4IED-B1rV_ 
- []
-
-[3] [4] [5]
-Overfull \hbox (33.86638pt too wide) in paragraph at lines 416--416
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
+29.
+("C:\Program Files\MiKTeX 2.9\tex/latex/lm\ts1lmr.fd"
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [3] [4] [5]
+Overfull \hbox (33.86638pt too wide) in paragraph at lines 412--412
 []|\T1/lmr/m/n/10 (-20) ProvidencialData19|  
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
-16.
-("C:\Program Files\MiKTeX 2.9\tex/latex/lm\ts1lmr.fd"
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [6] [7pdfTeX warning (ext4): destination with the same identifier (name{table
-.1}) has been already used, duplicate ignored
+[6] [7pdfTeX warning (ext4): destination with the same identifier (name{table.1
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.488 A
-        key feature of the SUR model is the dependence structure among the] [8]
-[9]
+l.484 
+      ] [8] [9]
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/weekly-average-in
-cidence-map-1.pdf, id=150, 469.755pt x 650.43pt>
+cidence-map-1.pdf, id=152, 469.755pt x 650.43pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/weekly-avera
 ge-incidence-map-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/weekly-averag
 e-incidence-map-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/weekly-average-incidence-map-1.pdf  used on input line 633.
+-latex/weekly-average-incidence-map-1.pdf  used on input line 630.
 (pdftex.def)             Requested size: 345.0pt x 477.68813pt.
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/descriptives-temp
-erature-1.pdf, id=152, 469.755pt x 505.89pt>
+erature-1.pdf, id=154, 469.755pt x 505.89pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/descriptives
 -temperature-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/descriptives-
 temperature-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/descriptives-temperature-1.pdf  used on input line 661.
+-latex/descriptives-temperature-1.pdf  used on input line 658.
 (pdftex.def)             Requested size: 345.0pt x 371.5352pt.
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/map-controls-1.pd
-f, id=154, 469.755pt x 650.43pt>
+f, id=156, 469.755pt x 650.43pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/map-controls
 -1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/map-controls-
 1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/map-controls-1.pdf  used on input line 685.
+-latex/map-controls-1.pdf  used on input line 682.
 (pdftex.def)             Requested size: 345.0pt x 477.68813pt.
 [10] [11pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.1}) has been already used, duplicate ignored
@@ -885,7 +879,7 @@ l.711
        <./Environmental-Correlates-of-COVID19-Spain_files/figure-latex/map-cont
 rols-1.pdf>]
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/daily-correlation
-s-1.pdf, id=198, 469.755pt x 325.215pt>
+s-1.pdf, id=200, 469.755pt x 325.215pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/daily-correl
 ations-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/daily-correla
@@ -902,72 +896,63 @@ l.734
        <./Environmental-Correlates-of-COVID19-Spain_files/figure-latex/daily-co
 rrelations-1.pdf>] [15]
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/goodness-of-fit-1
-.pdf, id=218, 469.755pt x 325.215pt>
+.pdf, id=223, 469.755pt x 325.215pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/goodness-of-
 fit-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/goodness-of-f
 it-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/goodness-of-fit-1.pdf  used on input line 791.
+-latex/goodness-of-fit-1.pdf  used on input line 790.
 (pdftex.def)             Requested size: 345.0pt x 238.84406pt.
 [16pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.819 
+l.818 
        <./Environmental-Correlates-of-COVID19-Spain_files/figure-latex/goodness
 -of-fit-1.pdf>] [17pdfTeX warning (ext4): destination with the same identifier 
 (name{table.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.888 
+l.886 
       ]
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/results-time-1-1.
-pdf, id=239, 469.755pt x 289.08pt>
+pdf, id=244, 469.755pt x 289.08pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/results-time
 -1-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/results-time-
 1-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/results-time-1-1.pdf  used on input line 898.
+-latex/results-time-1-1.pdf  used on input line 896.
 (pdftex.def)             Requested size: 345.0pt x 212.30583pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 928--928
-[][][]\T1/lmr/m/n/8 (+2) https://www.inforum.com/lifestyle/health/5025620-South
--Dakota-is-not-New-York-City-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 930--930
-[][][]\T1/lmr/m/n/8 (+2) https://www.inforum.com/lifestyle/health/5025620-South
--Dakota-is-not-New-York-City-
- []
+LaTeX Warning: Reference `variables' on page 18 undefined on input line 910.
 
 [18pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.934 
+l.926 
        <./Environmental-Correlates-of-COVID19-Spain_files/figure-latex/results-
 time-1-1.pdf>]
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-controls-tim
-e-1.pdf, id=257, 469.755pt x 289.08pt>
+e-1.pdf, id=259, 469.755pt x 289.08pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-control
 s-time-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-controls
 -time-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/beta-controls-time-1.pdf  used on input line 937.
+-latex/beta-controls-time-1.pdf  used on input line 929.
 (pdftex.def)             Requested size: 345.0pt x 212.30583pt.
 [19pdfTeX warning (ext4): destination with the same identifier (name{figure.7})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.971 
+l.963 
        <./Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-con
 trols-time-1.pdf>]
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-environmenta
@@ -977,17 +962,16 @@ mental-time-1.pdf Graphic file (type pdf)
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-environm
 ental-time-1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/beta-environmental-time-1.pdf  used on input line 974.
+-latex/beta-environmental-time-1.pdf  used on input line 966.
 (pdftex.def)             Requested size: 345.0pt x 371.5352pt.
 [20] [21pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1031 W
-        hat do these effects mean? Under a situation of lockdown, <./Environmen
-tal-Correlates-of-COVID19-Spain_files/figure-latex/beta-environmental-time-1.pd
-f>]
+l.1031 
+        <./Environmental-Correlates-of-COVID19-Spain_files/figure-latex/beta-en
+vironmental-time-1.pdf>]
 <Environmental-Correlates-of-COVID19-Spain_files/figure-latex/plot-impacts-1.pd
 f, id=298, 469.755pt x 325.215pt>
 File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/plot-impacts
@@ -995,69 +979,73 @@ File: Environmental-Correlates-of-COVID19-Spain_files/figure-latex/plot-impacts
 <use Environmental-Correlates-of-COVID19-Spain_files/figure-latex/plot-impacts-
 1.pdf>
 Package pdftex.def Info: Environmental-Correlates-of-COVID19-Spain_files/figure
--latex/plot-impacts-1.pdf  used on input line 1087.
+-latex/plot-impacts-1.pdf  used on input line 1093.
 (pdftex.def)             Requested size: 345.0pt x 238.84406pt.
 [22pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1120 
+l.1108 
         <./Environmental-Correlates-of-COVID19-Spain_files/figure-latex/plot-im
 pacts-1.pdf>] [23pdfTeX warning (ext4): destination with the same identifier (n
 ame{table.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1120 
+l.1108 
        ] [24] [25] [26] [27] [28]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1523.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1528.
 [29]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1523.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1528.
 (Environmental-Correlates-of-COVID19-Spain.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1523.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1523.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1528.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1528.
 
 Package rerunfilecheck Info: File `Environmental-Correlates-of-COVID19-Spain.ou
 t' has not changed.
-(rerunfilecheck)             Checksum: 8248C491CCD396D8FC300C90EE2FB610;1728.
+(rerunfilecheck)             Checksum: BADFCD752E7E9C96AA12A6F2D564E190;1577.
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1523.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1528.
  ) 
 Here is how much of TeX's memory you used:
- 14882 strings out of 492453
- 216106 string characters out of 3129816
- 334514 words of memory out of 3000000
- 18678 multiletter control sequences out of 15000+200000
- 81892 words of font info for 138 fonts, out of 3000000 for 9000
+ 14888 strings out of 492453
+ 216166 string characters out of 3129816
+ 336482 words of memory out of 3000000
+ 18680 multiletter control sequences out of 15000+200000
+ 81975 words of font info for 139 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,12n,42p,507b,350s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/M
-iKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/d
-vips/lm/lm-mathsy.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit
-.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Program 
+ 39i,12n,42p,507b,344s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Fil
+es/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX 2.9/fonts/e
+nc/dvips/lm/lm-mathsy.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ma
+thex.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program 
 Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}<C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/l
 m/lmbx7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/P
 rogram Files/MiKTeX 2.9/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/lm/lmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr12.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/
-type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr
-i10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmri7.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/lm/lmri8.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
-ic/lm/lmsy5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy6.pfb><C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/lm/lmtt8.pfb>
-Output written on Environmental-Correlates-of-COVID19-Spain.pdf (29 pages, 2628
-194 bytes).
+/public/lm/lmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr10.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lm
+r8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/lm/lmri7.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/lm/lmri8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/lm/lmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt
+8.pfb>
+Output written on Environmental-Correlates-of-COVID19-Spain.pdf (29 pages, 2805
+700 bytes).
 PDF statistics:
- 528 PDF objects out of 1000 (max. 8388607)
- 151 named destinations out of 1000 (max. 500000)
+ 535 PDF objects out of 1000 (max. 8388607)
+ 153 named destinations out of 1000 (max. 500000)
  21142 words of extra memory for PDF output out of 24883 (max. 10000000)
 

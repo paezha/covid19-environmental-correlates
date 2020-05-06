@@ -1,0 +1,154 @@
+---
+title: "Download climatic data from AEMET"
+author: "Fernando"
+date: "4/23/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,collapse = TRUE,message = FALSE)
+```
+
+```{r libraries}
+library(meteoland)
+#devtools::install_github("SevillaR/aemet")
+library(aemet)
+library(lubridate)
+library(nngeo)
+library(sf)
+library(kableExtra)
+library(tidyverse)
+```
+
+## Load data:
+
+```{r}
+load("provinces_spain.RData")
+```
+
+
+## Geometry of Meteo Stations
+
+```{r plot-stations}
+ggplot(data = provinces_spain) +
+  geom_sf() +
+  theme_bw(base_size=6)
+```
+
+Load RData file (this is the outcome of the file `00-Download-meteo-data-from-AEMET.Rmd`; check that file for details on how these data were downloaded):
+```{r}
+load("meteo_data.RData")
+```
+
+Convert `meteo_data` to simple features:
+```{r}
+meteo_data.sf <- meteo_data %>% st_as_sf(coords = c("Lon", "Lat"), crs = 4326)
+```
+
+Join the provincial identifier to calculate the meteorological variables as the average of stations in province:
+```{r}
+meteo_data_joined = st_join(meteo_data.sf, provinces_spain["ID_INE"])
+```
+
+Number of stations per day per province:
+```{r}
+meteo_data_joined %>% 
+  group_by(ID_INE, date) %>% 
+  summarize(n = n()) %>%
+  summary()
+```
+
+Provincial averages will use between 1 and 11 stations.
+
+Obtain provincial averages:
+```{r}
+meteo_data_province <- meteo_data_joined %>% 
+  st_drop_geometry() %>%
+  group_by(ID_INE, date) %>%
+  summarize(Precipitation = mean(Precipitation, na.rm = TRUE),
+            MeanTemperature = mean(MeanTemperature, na.rm = TRUE),
+            MinTemperature = mean(MinTemperature, na.rm = TRUE),
+            MaxTemperature = mean(MaxTemperature, na.rm = TRUE),
+            SunshineHours = mean(SunshineHours, na.rm = TRUE))
+```
+
+Summarize the dataframe with the provincial daily averages of the meteo variables: 
+```{r}
+summary(meteo_data_province)
+```
+There are some NAs, due to some stations not having been read.
+
+Load the dataset that Fernando produced originally:
+```{r}
+load("COVID-19-Datos_Climaticos_Spain-Extendido.RData")
+```
+
+Arrange the hours of sunshine:
+```{r}
+# Hours of sunshine 
+Sun <- Sun %>% select(-ID, -provincia) %>%
+  pivot_longer(starts_with("S"), 
+               names_to = "Date",
+               values_to = "Sunshine_Hours") %>%
+  mutate(Date = rep(seq(dmy("01-03-2020"), 
+                        dmy("11-04-2020"), 
+                        by = "days"), 
+                    50))
+```
+
+Join to interpolated meteo variables:
+```{r}
+meteo_data_province <- meteo_data_province %>% 
+  left_join(Sun, by = c("ID_INE" = "ID_INE", "date" = "Date"))
+```
+
+Replace NAs with the values from Fernando's table:
+```{r}
+meteo_data_province <- meteo_data_province %>%
+  mutate(SunshineHours = ifelse(is.na(SunshineHours), Sunshine_Hours, SunshineHours))
+```
+
+Drop meteo data not assigned to a province:
+```{r}
+meteo_data_province <- meteo_data_province %>%
+  drop_na(ID_INE)
+```
+
+Summarize again after dropping stations that were not used for any province:
+```{r}
+summary(meteo_data_province)
+```
+
+Tidy up and save:
+```{r}
+meteo_data_province <- meteo_data_province %>%
+  select(-Sunshine_Hours)
+```
+
+```{r}
+summary(meteo_data_province)
+```
+
+What are the NAs in Precipitation?
+```{r}
+meteo_data_province %>%
+  filter(is.na(Precipitation))
+```
+
+Replace the NAs by zeros:
+```{r}
+meteo_data_province <- meteo_data_province %>%
+  mutate(Precipitation = ifelse(is.na(Precipitation), 0, Precipitation))
+```
+
+What are the NAs in Sunshine? These are dates that we are not using so we can ignore.
+```{r}
+meteo_data_province %>%
+  filter(is.na(SunshineHours))
+```
+
+```{r}
+
+save(meteo_data_province, file = "meteo_data_province.RData", compress = "xz")
+```
+

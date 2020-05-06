@@ -292,7 +292,7 @@ anim1 <-  p1 +
 ```
 
 Render animation:
-```{r cache=TRUE}
+```{r cache=TRUE, eval=FALSE}
 animate(anim1, fps = 2, end_pause = 5)
 ```
 
@@ -317,3 +317,141 @@ ggplot(data = Contagion, aes(x = Date, y = Contagion, group = province)) +
 ```
 
 Where could this analysis be taken? LISA analysis by date? Spatial Markov Chains? Cluster membership?
+
+## LISA analysis of contagion
+
+Here I calculate LISA statistics for `Contagion` on each date:
+```{r}
+junk <- Contagion %>%
+  group_by(Date) %>%
+  summarize(Ii =, 
+            P_Ii = )
+localmoran(Contagion$Contagion[Contagion$Date == "2020-03-13"], listw)[,5]
+```
+
+LISA statistic calculated for each cross-section
+```{r}
+Ii <- Contagion %>% 
+  group_by(Date) %>%
+  group_modify(~ {(localmoran(.x$Contagion, listw)[,1]) %>%
+      enframe()}) %>%
+  ungroup()  %>%
+  transmute(Date,
+            ID_INE = rep(c(1:50), 30),
+            Ii = value)
+```
+
+LISA's p-value:
+```{r}
+P_Ii <- Contagion %>% 
+  group_by(Date) %>%
+  group_modify(~ {(localmoran(.x$Contagion, listw)[,5]) %>%
+      enframe()}) %>%
+  ungroup() %>%
+  transmute(Date,
+            ID_INE = rep(c(1:50), 30),
+            P_Ii = value)
+```
+
+Join the results of the LISA analysis to the dataframe:
+```{r}
+Contagion <- Contagion %>%
+  left_join(Ii, by = c("Date" = "Date", "ID_INE" = "ID_INE")) %>%
+  left_join(P_Ii, by = c("Date" = "Date", "ID_INE" = "ID_INE"))
+```
+
+Label provinces by whether they are positive or negative, and whether they are significant or not:
+```{r}
+Contagion <- Contagion %>%
+  mutate(LISA = case_when(Ii <= 0 & P_Ii <= 0.05 ~ "Hot Spot",
+                          Ii <= 0 & P_Ii > 0.05 ~ "NS (Hot)",
+                          Ii > 0 & P_Ii <= 0.05 ~ "Cold Spot",
+                          Ii > 0 & P_Ii > 0.05 ~ "NS (Cold)"),
+         LISA = factor(LISA, 
+                       levels = c("Hot Spot",
+                                  "NS (Hot)",
+                                  "NS (Cold)",
+                                  "Cold Spot"),
+                       ordered = TRUE))
+```
+
+Create a choropleth plot of the provinces based on the results of the LISA analysis:
+```{r}
+p2 <- ggplot() + 
+  geom_sf(data = Contagion %>% 
+            filter(CCAA != "Canarias"), 
+          aes(fill = LISA, 
+              group = interaction(factor(ID_INE), 
+                                  Date))) +
+  scale_fill_manual(values = c("Hot Spot" = "red", 
+                               "NS (Hot)" = "pink", 
+                               "NS (Cold)" = "royalblue", 
+                               "Cold Spot" = "royalblue4")) + 
+  theme_bw()
+```
+
+Create an animation using `gganimate`:
+```{r}
+anim2 <-  p2 +
+  labs(title = "Date: {frame_time}") +
+  transition_time(Date)
+```
+
+Render animation:
+```{r cache=TRUE, eval=FALSE}
+animate(anim2, fps = 2, end_pause = 5)
+```
+
+## Spatial Markov Chains
+
+I used to have Matlab code for spatial markov chains (SMC). It is gone. Here' I will try to reproduce it but now in `R`.
+
+The first step to implement SMC is to discretize the variable of interest. This can be done in two ways: within period quantiles, and pooled quantiles for the whole time series. According to [Rey and Kang](https://pysal.org/notebooks/explore/giddy/Markov_Based_Methods.html), these two forms of doing the analysis give different interpretations: pooled quantiles are absolute trends, whereas within period quantiles are relative dynamics.
+
+Here, we label each case by their pooled quintile (`q_p`):
+```{r}
+Contagion <- Contagion %>%
+  mutate(q_p = cut(Contagion, 
+                   quantile(Contagion, c(0, 0.2, 0.4, 0.6, 0.8, 1)), 
+                   labels = c("High Contagion", 
+                              "Medium-High Contagion", 
+                              "Medium Contagion", 
+                              "Medium-Low Contagion", 
+                              "Low Contagion"))) %>%
+  replace_na(replace = list(q_p = "High Contagion"))
+```
+
+To label each case by their within day quintile (`q_d`) we need to summarize the quintiles by date:
+```{r}
+quintiles_by_date <- Contagion %>%
+  st_drop_geometry() %>%
+  group_by(Date) %>%
+  summarize(x20 = quantile(Contagion, 0.2),
+            x40 = quantile(Contagion, 0.4),
+            x60 = quantile(Contagion, 0.6),
+            x80 = quantile(Contagion, 0.8))
+```
+
+Join the quintiles by date to the dataframe:
+```{r}
+Contagion <- Contagion %>%
+  left_join(quintiles_by_date, by = "Date")
+```
+
+Label the observations according to their values of `Contagion` and the quintiles by date:
+```{r}
+Contagion <- Contagion %>%
+  mutate(q_d = case_when(Contagion <= x20 ~ "High Contagion",
+                         Contagion > x20 & Contagion <= x40 ~ "Medium-High Contagion",
+                         Contagion > x40 & Contagion <= x60 ~ "Medium Contagion",
+                         Contagion > x60 & Contagion <= x80 ~ "Medium-Low Contagion",
+                         Contagion > x80 ~ "Low Contagion"),
+         q_d = factor(q_d, 
+                      levels = c("High Contagion", 
+                              "Medium-High Contagion", 
+                              "Medium Contagion", 
+                              "Medium-Low Contagion", 
+                              "Low Contagion"),
+                      ordered = TRUE))
+```
+
