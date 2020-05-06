@@ -103,7 +103,7 @@ Section 4.1 is well-written.
 
 Figure 1 needs to be improved.  The class breaks in the legends are inconsistent, making it difficult to compare incidence rates.  The projection seems to be a bit odd.  Mainland Spain should be much larger, while the Canary Islands should be in separate insets, or remove altogether.  Finally, the black line for the Madrid label masks many provinces.
 
-> *We changed the scale for the colors to be consistent for all maps. We tested the insets for the Canary Islands, but they crowded the figures and added relatively little information. We have decided instead to exclude them from the maps. Once this is done, the line for Madrid is less obtrusive, and overall the figures are easier to read.*
+> *We changed the scale for the colors to be consistent for all maps. After your comment about the connectivity of the islands, we decided to exclude them, and therefore the maps now show only the coterminous provinces. After this, the line for Madrid is less obtrusive, and overall the figures are easier to read.*
 
 Suggest caption for Figure 2 should be “Autonomous Communities in Spain (sorted from north to south)”
 
