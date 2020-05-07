@@ -76,11 +76,13 @@ p2 <- ggplot(data = cat.sf) +
 
 # gridExtra::grid.arrange(p1,p2,nrow=1)
 ```
-** Cataluña 30 de Marzo**
+
+**Cataluña 30 de Marzo**
 ```{r cat-p1}
 p1
 ```
-** Cataluña 30 de Abril**
+
+**Cataluña 30 de Abril**
 ```{r cat-p2}
 p2
 ```
@@ -116,11 +118,12 @@ p2 <- ggplot(data = pv.sf) +
 # gridExtra::grid.arrange(p1,p2,nrow=1)
 ```
 
-** País Vasco 20 de Marzo - 20 Abril**
+**País Vasco 20 de Marzo**
 ```{r pv-p1}
 p1
 ```
-** País Vasco 26 de Abril**
+
+**País Vasco 20 de Abril**
 ```{r pv-p2}
 p2
 ```
@@ -154,10 +157,12 @@ p2 <- ggplot(data = madrid.sf) +
   theme_bw(base_size=6) +
   scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
 ```
+
 **Madrid de 8 de Abril**
 ```{r mad-p1}
 p1
 ```
+
 **Madrid de 4 de Mayo**
 ```{r mad-p2}
 p2
