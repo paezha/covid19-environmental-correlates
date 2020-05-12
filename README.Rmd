@@ -14,6 +14,8 @@ Tatiane Menezes (Universidade Federal de Pernambuco)
 Renata Cavalcanti (Universidade Federal de Pernambuco)  
 Maira Galdino da Rocha Pitta (Universidade Federal de Pernambuco)  
 
+**Forthcoming in Geographical Analysis**
+
 ## Abstract
 
 The novel SARS-CoV2 has disrupted health systems and the economy and public health interventions to slow its spread have been costly. How and when to ease restrictions to movement hinges in part on whether SARS-CoV2 will display seasonality due to variations in temperature, humidity, and hours of sunshine. Here, we address this question by means of a spatio-temporal analysis in Spain of the incidence of  COVID-19, the disease caused by the virus. Use of spatial Seemingly Unrelated Regressions (SUR) allows us to model the incidence of reported cases of the disease per 100,000 population as an interregional contagion process, in addition to a function of temperature, humidity, and sunshine. In the analysis we also control for GDP per capita, percentage of older adults in the population, population density, and presence of mass transit systems. The results support the hypothesis that incidence of the disease is lower at higher temperatures and higher levels of humidity. Sunshine, in contrast, displays a positive association with incidence of the disease. Our control variables also yield interesting insights. Higher incidence is associated with higher GDP per capita and presence of mass transit systems in the province; in contrast, population density and percentage of older adults display negative associations with incidence of COVID-19.   
@@ -233,8 +235,8 @@ The Seemingly Unrelated Regression equations model (SUR hereafter) is a multivar
 
 The classical SUR model without spatial effects (from here, SUR-SIM) is a stack of equations as follows:
   
-  <!--
-  \begin{equation}
+<!--
+\begin{equation}
 \label{eq:sur-sim}
 \begin{bmatrix}
 y_1 \\ y_2 \\ \vdots \\ y_T
@@ -253,12 +255,11 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \end{bmatrix}
 \end{equation}
 
-\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t$ is a $N \times k_t$ matrix of the $k_t$ independent variables, with associated vector of coefficients $\beta_t$,; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals. 
--->
+\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t$ is a $N \times k_t$ matrix of the $k_t$ independent variables, with associated vector of coefficients $\beta_t$,; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals.
+--> 
 
 <!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/ -->
-
-  ![\begin{equation} \label{eq:sur-sim} \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_T \end{bmatrix} = \begin{bmatrix} X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & X_T \end{bmatrix} \ \begin{bmatrix} \beta_1 \\ \beta_1 \\ \vdots \\ \beta_T \end{bmatrix} + \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_T \end{bmatrix} \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-sim%7D%20%5Cbegin%7Bbmatrix%7D%20y_1%20%5C%5C%20y_2%20%5C%5C%20%5Cvdots%20%5C%5C%20y_T%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20X_1%20%26%200%20%26%20%5Ccdots%20%26%200%20%5C%5C%200%20%26%20X_2%20%26%20%5Ccdots%20%26%200%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%200%20%26%200%20%26%20%5Ccdots%20%26%20X_T%20%5Cend%7Bbmatrix%7D%20%5C%20%5Cbegin%7Bbmatrix%7D%20%5Cbeta_1%20%5C%5C%20%5Cbeta_1%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cbeta_T%20%5Cend%7Bbmatrix%7D%20%2B%20%5Cbegin%7Bbmatrix%7D%20%5Cepsilon_1%20%5C%5C%20%5Cepsilon_2%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cepsilon_T%20%5Cend%7Bbmatrix%7D%20%5Cend%7Bequation%7D)
+![\begin{equation} \label{eq:sur-sim} \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_T \end{bmatrix} = \begin{bmatrix} X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & X_T \end{bmatrix} \ \begin{bmatrix} \beta_1 \\ \beta_1 \\ \vdots \\ \beta_T \end{bmatrix} + \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_T \end{bmatrix} \end{equation}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bequation%7D%20%5Clabel%7Beq%3Asur-sim%7D%20%5Cbegin%7Bbmatrix%7D%20y_1%20%5C%5C%20y_2%20%5C%5C%20%5Cvdots%20%5C%5C%20y_T%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20X_1%20%26%200%20%26%20%5Ccdots%20%26%200%20%5C%5C%200%20%26%20X_2%20%26%20%5Ccdots%20%26%200%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%200%20%26%200%20%26%20%5Ccdots%20%26%20X_T%20%5Cend%7Bbmatrix%7D%20%5C%20%5Cbegin%7Bbmatrix%7D%20%5Cbeta_1%20%5C%5C%20%5Cbeta_1%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cbeta_T%20%5Cend%7Bbmatrix%7D%20%2B%20%5Cbegin%7Bbmatrix%7D%20%5Cepsilon_1%20%5C%5C%20%5Cepsilon_2%20%5C%5C%20%5Cvdots%20%5C%5C%20%5Cepsilon_T%20%5Cend%7Bbmatrix%7D%20%5Cend%7Bequation%7D)
   
 \noindent where ![$y_{t}=(y_{1t},...,y_{Nt})$](https://render.githubusercontent.com/render/math?math=%24y_%7Bt%7D%3D(y_%7B1t%7D%2C...%2Cy_%7BNt%7D)%24) is an ![$N \times 1$](https://render.githubusercontent.com/render/math?math=%24N%20%5Ctimes%201%24) vector, and in our case ![$y_{st}$](https://render.githubusercontent.com/render/math?math=%24y_%7Bst%7D%24) is the incidence ratio in the province ![$s\text{ }(s=1,...,N)$](https://render.githubusercontent.com/render/math?math=%24s%5Ctext%7B%20%7D(s%3D1%2C...%2CN)%24) the day ![$t\text{ }(t=1,...,T)$](https://render.githubusercontent.com/render/math?math=%24t%5Ctext%7B%20%7D(t%3D1%2C...%2CT)%24); ![$X_t=(X^1,...,X^{k_t})$](https://render.githubusercontent.com/render/math?math=%24X_t%3D(X%5E1%2C...%2CX%5E%7Bk_t%7D)%24) is a ![$N \times k_t$](https://render.githubusercontent.com/render/math?math=%24N%20%5Ctimes%20k_t%24) matrix of the ![$k_t$](https://render.githubusercontent.com/render/math?math=%24k_t%24) independent variables, ![$X_i=(X^i_{st})$](https://render.githubusercontent.com/render/math?math=%24X_i%3D(X%5Ei_%7Bst%7D)%24); ![$\beta_t=(\beta_{1t},...,\beta_{Nt})$](https://render.githubusercontent.com/render/math?math=%24%5Cbeta_t%3D(%5Cbeta_%7B1t%7D%2C...%2C%5Cbeta_%7BNt%7D)%24) is a vector of coefficients and ![$\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon_t%3D(%5Cepsilon_%7B1t%7D%2C...%2C%5Cepsilon_%7BNt%7D)%24) is the vector of residuals.
 
@@ -1436,7 +1437,7 @@ rbind(best_model.impacts %>%
                   "Non-constrained",
                   "Non-constrained"))) %>%
   kable(#"latex",
-       "html",
+        "html",
         booktabs = TRUE,
         digits = 3,
         col.names = c("Variable", "Min", "Mean", "Max", "Note"),

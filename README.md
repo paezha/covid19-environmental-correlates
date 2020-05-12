@@ -9,6 +9,8 @@ Tatiane Menezes (Universidade Federal de Pernambuco)
 Renata Cavalcanti (Universidade Federal de Pernambuco)  
 Maira Galdino da Rocha Pitta (Universidade Federal de Pernambuco)
 
+**Forthcoming in Geographical Analysis**
+
 ## Abstract
 
 The novel SARS-CoV2 has disrupted health systems and the economy and
@@ -836,7 +838,7 @@ The classical SUR model without spatial effects (from here, SUR-SIM) is
 a stack of equations as follows:
 
 <!--
-  \begin{equation}
+\begin{equation}
 \label{eq:sur-sim}
 \begin{bmatrix}
 y_1 \\ y_2 \\ \vdots \\ y_T
@@ -855,7 +857,7 @@ X_1 & 0 & \cdots & 0 \\ 0 & X_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdot
 \end{bmatrix}
 \end{equation}
 
-\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t$ is a $N \times k_t$ matrix of the $k_t$ independent variables, with associated vector of coefficients $\beta_t$,; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals. 
+\noindent where $y_{t}=(y_{1t},...,y_{Nt})$ is a $N \times 1$ vector, and in our case $y_{st}$ is the incidence ratio in the province $s$ ($s=1,...,N$) the day $t$ $(t=1,...,T)$; $X_t$ is a $N \times k_t$ matrix of the $k_t$ independent variables, with associated vector of coefficients $\beta_t$,; $\beta_t=(\beta_{1t},...,\beta_{Nt})$ is a vector of coefficients and $\epsilon_t=(\epsilon_{1t},...,\epsilon_{Nt})$ is the vector of residuals.
 -->
 
 <!--Equation for README.md generated using this app https://alexanderrodin.com/github-latex-markdown/ -->
@@ -1337,19 +1339,19 @@ Intercept
 
 <td style="text-align:right;">
 
-5.344
+6.172
 
 </td>
 
 <td style="text-align:right;">
 
-8.491
+9.441
 
 </td>
 
 <td style="text-align:right;">
 
-11.548
+14.071
 
 </td>
 
@@ -1389,19 +1391,19 @@ log(GDPpc)
 
 <td style="text-align:right;">
 
-0.482
+0.449
 
 </td>
 
 <td style="text-align:right;">
 
-0.482
+0.449
 
 </td>
 
 <td style="text-align:right;">
 
-0.482
+0.449
 
 </td>
 
@@ -1441,19 +1443,25 @@ log(Older)
 
 <td style="text-align:right;">
 
-\-0.398
+\-0.676
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.398
+\-0.676
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.398
+\-0.676
+
+</td>
+
+<td style="text-align:right;">
+
+0
 
 </td>
 
@@ -1466,12 +1474,6 @@ log(Older)
 <td style="text-align:right;">
 
 1
-
-</td>
-
-<td style="text-align:right;">
-
-0
 
 </td>
 
@@ -1493,19 +1495,19 @@ log(Density)
 
 <td style="text-align:right;">
 
-\-0.228
+\-0.212
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.118
+\-0.105
 
 </td>
 
 <td style="text-align:right;">
 
-0.129
+0.143
 
 </td>
 
@@ -1517,13 +1519,13 @@ log(Density)
 
 <td style="text-align:right;">
 
-1
+3
 
 </td>
 
 <td style="text-align:right;">
 
-14
+12
 
 </td>
 
@@ -1545,37 +1547,37 @@ Transit
 
 <td style="text-align:right;">
 
-0.358
+0.341
 
 </td>
 
 <td style="text-align:right;">
 
-0.579
+0.528
 
 </td>
 
 <td style="text-align:right;">
 
-0.640
+0.606
 
 </td>
 
 <td style="text-align:right;">
 
-7
+10
 
 </td>
 
 <td style="text-align:right;">
 
-4
+2
 
 </td>
 
 <td style="text-align:right;">
 
-19
+18
 
 </td>
 
@@ -1597,37 +1599,37 @@ log(Humidity)
 
 <td style="text-align:right;">
 
-\-1.434
+\-1.935
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.383
+\-0.435
 
 </td>
 
 <td style="text-align:right;">
 
-0.105
+0.054
 
 </td>
 
 <td style="text-align:right;">
 
-13
+11
 
 </td>
 
 <td style="text-align:right;">
 
-3
+4
 
 </td>
 
 <td style="text-align:right;">
 
-14
+15
 
 </td>
 
@@ -1649,19 +1651,19 @@ log(Temperature)
 
 <td style="text-align:right;">
 
-\-1.718
+\-1.904
 
 </td>
 
 <td style="text-align:right;">
 
-\-1.101
+\-1.236
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.753
+\-0.817
 
 </td>
 
@@ -1701,25 +1703,25 @@ log(Sunshine)
 
 <td style="text-align:right;">
 
-\-0.112
+\-0.187
 
 </td>
 
 <td style="text-align:right;">
 
-0.121
+0.099
 
 </td>
 
 <td style="text-align:right;">
 
-0.227
+0.189
 
 </td>
 
 <td style="text-align:right;">
 
-5
+6
 
 </td>
 
@@ -1731,7 +1733,7 @@ log(Sunshine)
 
 <td style="text-align:right;">
 
-25
+24
 
 </td>
 
@@ -1753,37 +1755,37 @@ Spatially lagged y (rho)
 
 <td style="text-align:right;">
 
-\-0.069
+0.014
 
 </td>
 
 <td style="text-align:right;">
 
-0.018
+0.154
 
 </td>
 
 <td style="text-align:right;">
 
-0.226
+0.348
 
 </td>
 
 <td style="text-align:right;">
 
-28
+14
 
 </td>
 
 <td style="text-align:right;">
 
-1
+3
 
 </td>
 
 <td style="text-align:right;">
 
-1
+13
 
 </td>
 
@@ -2081,19 +2083,19 @@ log(GDPpc)
 
 <td style="text-align:right;">
 
-0.485
+0.457
 
 </td>
 
 <td style="text-align:right;">
 
-0.485
+0.457
 
 </td>
 
 <td style="text-align:right;">
 
-0.485
+0.457
 
 </td>
 
@@ -2115,19 +2117,19 @@ log(Older)
 
 <td style="text-align:right;">
 
-\-0.401
+\-0.689
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.401
+\-0.689
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.401
+\-0.689
 
 </td>
 
@@ -2149,19 +2151,19 @@ log(Density)
 
 <td style="text-align:right;">
 
-\-0.229
+\-0.213
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.118
+\-0.106
 
 </td>
 
 <td style="text-align:right;">
 
-0.130
+0.145
 
 </td>
 
@@ -2183,19 +2185,19 @@ Transit
 
 <td style="text-align:right;">
 
-0.361
+0.349
 
 </td>
 
 <td style="text-align:right;">
 
-0.579
+0.532
 
 </td>
 
 <td style="text-align:right;">
 
-0.641
+0.608
 
 </td>
 
@@ -2217,19 +2219,19 @@ log(Humidity)
 
 <td style="text-align:right;">
 
-\-1.445
+\-1.971
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.384
+\-0.440
 
 </td>
 
 <td style="text-align:right;">
 
-0.106
+0.054
 
 </td>
 
@@ -2251,19 +2253,19 @@ log(Temperature)
 
 <td style="text-align:right;">
 
-\-1.718
+\-1.940
 
 </td>
 
 <td style="text-align:right;">
 
-\-1.102
+\-1.245
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.753
+\-0.825
 
 </td>
 
@@ -2285,19 +2287,19 @@ log(Sunshine)
 
 <td style="text-align:right;">
 
-\-0.112
+\-0.191
 
 </td>
 
 <td style="text-align:right;">
 
-0.121
+0.099
 
 </td>
 
 <td style="text-align:right;">
 
-0.227
+0.190
 
 </td>
 
@@ -2329,19 +2331,19 @@ log(GDPpc)
 
 <td style="text-align:right;">
 
-0.103
+0.165
 
 </td>
 
 <td style="text-align:right;">
 
-0.103
+0.165
 
 </td>
 
 <td style="text-align:right;">
 
-0.103
+0.165
 
 </td>
 
@@ -2363,19 +2365,19 @@ log(Older)
 
 <td style="text-align:right;">
 
-\-0.086
+\-0.248
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.086
+\-0.248
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.086
+\-0.248
 
 </td>
 
@@ -2397,19 +2399,19 @@ log(Density)
 
 <td style="text-align:right;">
 
-\-0.021
+\-0.075
 
 </td>
 
 <td style="text-align:right;">
 
-0.001
+\-0.015
 
 </td>
 
 <td style="text-align:right;">
 
-0.028
+0.052
 
 </td>
 
@@ -2431,19 +2433,19 @@ Transit
 
 <td style="text-align:right;">
 
-\-0.037
+0.008
 
 </td>
 
 <td style="text-align:right;">
 
-0.010
+0.097
 
 </td>
 
 <td style="text-align:right;">
 
-0.123
+0.239
 
 </td>
 
@@ -2465,19 +2467,19 @@ log(Humidity)
 
 <td style="text-align:right;">
 
-\-0.308
+\-0.711
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.023
+\-0.104
 
 </td>
 
 <td style="text-align:right;">
 
-0.018
+0.001
 
 </td>
 
@@ -2499,19 +2501,19 @@ log(Temperature)
 
 <td style="text-align:right;">
 
-\-0.277
+\-0.700
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.026
+\-0.238
 
 </td>
 
 <td style="text-align:right;">
 
-0.083
+\-0.013
 
 </td>
 
@@ -2533,19 +2535,19 @@ log(Sunshine)
 
 <td style="text-align:right;">
 
-\-0.024
+\-0.069
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.001
+0.016
 
 </td>
 
 <td style="text-align:right;">
 
-0.015
+0.063
 
 </td>
 
@@ -2577,19 +2579,19 @@ log(GDPpc)
 
 <td style="text-align:right;">
 
-0.589
+0.622
 
 </td>
 
 <td style="text-align:right;">
 
-0.589
+0.622
 
 </td>
 
 <td style="text-align:right;">
 
-0.589
+0.622
 
 </td>
 
@@ -2611,19 +2613,19 @@ log(Older)
 
 <td style="text-align:right;">
 
-\-0.487
+\-0.937
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.487
+\-0.937
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.487
+\-0.937
 
 </td>
 
@@ -2645,19 +2647,19 @@ log(Density)
 
 <td style="text-align:right;">
 
-\-0.250
+\-0.265
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.117
+\-0.121
 
 </td>
 
 <td style="text-align:right;">
 
-0.158
+0.198
 
 </td>
 
@@ -2679,19 +2681,19 @@ Transit
 
 <td style="text-align:right;">
 
-0.438
+0.466
 
 </td>
 
 <td style="text-align:right;">
 
-0.589
+0.629
 
 </td>
 
 <td style="text-align:right;">
 
-0.690
+0.847
 
 </td>
 
@@ -2713,19 +2715,19 @@ log(Humidity)
 
 <td style="text-align:right;">
 
-\-1.753
+\-2.683
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.406
+\-0.543
 
 </td>
 
 <td style="text-align:right;">
 
-0.099
+0.055
 
 </td>
 
@@ -2747,19 +2749,19 @@ log(Temperature)
 
 <td style="text-align:right;">
 
-\-1.783
+\-2.640
 
 </td>
 
 <td style="text-align:right;">
 
-\-1.128
+\-1.483
 
 </td>
 
 <td style="text-align:right;">
 
-\-0.736
+\-0.870
 
 </td>
 
@@ -2781,19 +2783,19 @@ log(Sunshine)
 
 <td style="text-align:right;">
 
-\-0.136
+\-0.259
 
 </td>
 
 <td style="text-align:right;">
 
-0.121
+0.116
 
 </td>
 
 <td style="text-align:right;">
 
-0.229
+0.235
 
 </td>
 
