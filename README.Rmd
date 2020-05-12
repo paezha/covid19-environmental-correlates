@@ -1487,7 +1487,7 @@ Acknowledgments {#acknowledgments .unnumbered}
 
 Add acknowledgments as appropriate in final draft.
   
-The following `R` packages were used in the course of this investigation and the authors wish to acknowledge their developers: `aemet` [], `ggthemes` [@Arnold2019], `gridExtra` [@Auguie2017gridextra], `kableExtra` [@Zhu2019], `knitr` [@Xie2014; @Xie2015], `lubridate` [@Grolemund2011dates], `plm` [@Millo2017robust], `rticles` [@Allaire2020], `sf` [@Pebesma2018], `spdep` [@Bivand2013], spsur [@Angulo2020spsur] `tidyverse` [@Wickham2019], `units` [@Pebesma2016].
+The following `R` packages were used in the course of this investigation and the authors wish to acknowledge their developers: `aemet` [@Rodriguez2018aemet], `ggthemes` [@Arnold2019], `gridExtra` [@Auguie2017gridextra], `kableExtra` [@Zhu2019], `knitr` [@Xie2014; @Xie2015], `lubridate` [@Grolemund2011dates], `plm` [@Millo2017robust], `rticles` [@Allaire2020], `sf` [@Pebesma2018], `spdep` [@Bivand2013], spsur [@Angulo2020spsur] `tidyverse` [@Wickham2019], `units` [@Pebesma2016].
   
 References {#references .unnumbered}
 ==========

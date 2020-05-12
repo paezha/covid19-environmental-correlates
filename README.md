@@ -2909,13 +2909,13 @@ pollution. These other factors should be incorporated in future studies.
 Add acknowledgments as appropriate in final draft.
 
 The following `R` packages were used in the course of this investigation
-and the authors wish to acknowledge their developers: `aemet` \[\],
-`ggthemes` (Arnold 2019), `gridExtra` (Auguie 2017), `kableExtra` (Zhu
-2019), `knitr` (Xie 2014, 2015), `lubridate` (Grolemund and Wickham
-2011), `plm` (Millo 2017), `rticles` (Allaire et al. 2020), `sf`
-(Pebesma 2018), `spdep` (Bivand, Pebesma, and Gomez-Rubio 2013), spsur
-(Angulo et al. 2020) `tidyverse` (Wickham et al. 2019), `units`
-(Pebesma, Mailund, and Hiebert 2016).
+and the authors wish to acknowledge their developers: `aemet`
+(Rodriguez-Sanchez, Balao, and Gámez 2018), `ggthemes` (Arnold 2019),
+`gridExtra` (Auguie 2017), `kableExtra` (Zhu 2019), `knitr` (Xie 2014,
+2015), `lubridate` (Grolemund and Wickham 2011), `plm` (Millo 2017),
+`rticles` (Allaire et al. 2020), `sf` (Pebesma 2018), `spdep` (Bivand,
+Pebesma, and Gomez-Rubio 2013), spsur (Angulo et al. 2020) `tidyverse`
+(Wickham et al. 2019), `units` (Pebesma, Mailund, and Hiebert 2016).
 
 # References
 
@@ -3359,6 +3359,14 @@ Convergence: A Spatial Econometric Perspective.” *Regional Studies* 33
 Richens, J., J. Imrie, and A. Copas. 2000. “Condoms and Seat Belts: The
 Parallels and the Lessons.” Journal Article. *Lancet* 355 (9201):
 400–403. <https://doi.org/10.1016/s0140-6736(99)09109-6>.
+
+</div>
+
+<div id="ref-Rodriguez2018aemet">
+
+Rodriguez-Sanchez, Francisco, Francisco Balao, and David Gámez. 2018.
+*Aemet: Obtain Climatic and Meteorological Data from Spanish
+Meteorological Agency (Aemet)*. <https://github.com/SevillaR/aemet>.
 
 </div>
 
