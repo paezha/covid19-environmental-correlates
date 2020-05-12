@@ -1,0 +1,169 @@
+---
+title: "COVID-19 Municipalities"
+author: "Fernando"
+date: "5/4/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libraries, collapse=TRUE, message=FALSE}
+library(sf)
+library(ggplot2)
+library(gridExtra)
+```
+## leer datos y geometrias
+
+### lectura geometrias
+Geometría de España por municipios
+```{r, message=FALSE}
+dir <-"/Users/fernandoair/Dropbox/COVID-19/covid19-environmental-correlates/"
+municipios.sf <- st_read(paste0(dir,"Municipios_ETRS89_30N.shp"))
+municipios.sf$CODIGO <- as.numeric(as.character(municipios.sf$CODIGO))
+```
+
+Extraer shp para regiones
+```{r}
+# Regional-Shp
+cat.sf <- municipios.sf[municipios.sf$COD_CCAA=="09",]
+pv.sf <- municipios.sf[municipios.sf$COD_CCAA=="16",]
+```
+
+Geometría de Madrid
+
+El municipio de Madrid está dividido en distritos
+```{r geometria_madrid}
+madrid.sf <- st_read(paste0(dir,"municipios_y_distritos_madrid.shp"))
+madrid.sf$cod <- as.numeric(as.character(madrid.sf$cod))
+```
+
+
+### leer datos. Casos diarios por municipios
+
+Diferentes periodos para cada region
+
+```{r}
+cat <- read.csv(file=paste0(dir,"COVID-19-Municipios (Cataluña).csv"),header = TRUE,sep=";")
+pv <- read.csv(file=paste0(dir,"COVID-19-Municipios (Pais Vasco).csv"),header = TRUE,sep=";")
+mad <- read.csv(file=paste0(dir,"COVID-19-Municipios (Madrid).csv"),header = TRUE,sep=";")
+names(mad)[1]<-"cod"
+```
+
+## Cataluña
+
+```{r}
+cat.sf <- merge(cat.sf,cat,id.x=CODIGO,id.y=CODIGO,all.x=TRUE)
+Inc <- sf::st_drop_geometry(cat.sf[,14:78])*100000/cat.sf$Pob
+names(Inc) <- gsub("D","I",names(Inc))
+Inc$CODIGO <- cat.sf$CODIGO
+cat.sf <- merge(cat.sf,Inc,id.x="CODIGO",id.y="CODIGO",id.all=TRUE)
+
+q <- quantile(cat.sf$I30Mar)
+cat.sf$Quantile<- as.factor((cat.sf$I30Mar > q[2]) + (cat.sf$I30Mar > q[3]) +(cat.sf$I30Mar >= q[4]) + 1)
+p1 <- ggplot(data = cat.sf) +
+  geom_sf(aes(fill = Quantile),color = "black",size=.2) +
+  theme_bw(base_size=6) +
+  scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
+
+q <- quantile(cat.sf$I30Abr)
+cat.sf$Quantile<- as.factor((cat.sf$I30Abr > q[2]) + (cat.sf$I30Abr > q[3]) +(cat.sf$I30Abr >= q[4]) + 1)
+p2 <- ggplot(data = cat.sf) +
+  geom_sf(aes(fill = Quantile),color = "black",size=.2) +
+  theme_bw(base_size=6) +
+  scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
+
+# gridExtra::grid.arrange(p1,p2,nrow=1)
+```
+
+**Cataluña 30 de Marzo**
+```{r cat-p1}
+p1
+```
+
+**Cataluña 30 de Abril**
+```{r cat-p2}
+p2
+```
+
+## País Vasco
+
+**Fechas 20 Marzo - 26 Abril**
+```{r}
+# lincar la geometría con la base de datos de casos
+pv.sf <- merge(pv.sf,pv,id.x=CODIGO,id.y=CODIGO,all.x=TRUE)
+# Calcular la incidencia
+Inc <- sf::st_drop_geometry(pv.sf[,14:51])*100000/pv.sf$Pob
+names(Inc) <- gsub("D","I",names(Inc))
+Inc$CODIGO <- pv.sf$CODIGO
+# lincar la incidencia con la geometría
+pv.sf <- merge(pv.sf,Inc,id.x="CODIGO",id.y="CODIGO",id.all=TRUE)
+```
+
+```{r}
+q <- quantile(pv.sf$I20Mar)
+pv.sf$Quantile<- as.factor((pv.sf$I20Mar > q[2]) + (pv.sf$I20Mar > q[3]) +(pv.sf$I20Mar >= q[4]) + 1)
+p1 <- ggplot(data = pv.sf) +
+  geom_sf(aes(fill = Quantile),color = "black",size=.2) +
+  theme_bw(base_size=6) +
+  scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
+
+q <- quantile(pv.sf$I20Abr)
+pv.sf$Quantile<- as.factor((pv.sf$I20Abr > q[2]) + (pv.sf$I20Abr > q[3]) +(pv.sf$I20Abr >= q[4]) + 1)
+p2 <- ggplot(data = pv.sf) +
+  geom_sf(aes(fill = Quantile),color = "black",size=.2) +
+  theme_bw(base_size=6) +
+  scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
+# gridExtra::grid.arrange(p1,p2,nrow=1)
+```
+
+**País Vasco 20 de Marzo**
+```{r pv-p1}
+p1
+```
+
+**País Vasco 20 de Abril**
+```{r pv-p2}
+p2
+```
+
+## Madrid
+
+**Fechas 8 Abril - 04 Mayo**
+```{r}
+# lincar la geometría con la base de datos de casos
+madrid.sf <- merge(madrid.sf,mad,id.x=CODIGO,id.y=CODIGO,all.x=TRUE)
+# Calcular la incidencia
+Inc <- sf::st_drop_geometry(madrid.sf[,12:38])*100000/pv.sf$Pob
+names(Inc) <- gsub("D","I",names(Inc))
+Inc$CODIGO <- madrid.sf$CODIGO
+# lincar la incidencia con la geometría
+madrid.sf <- merge(madrid.sf,Inc,id.x="CODIGO",id.y="CODIGO",id.all=TRUE)
+```
+
+```{r}
+q <- quantile(madrid.sf$I08Abr)
+madrid.sf$Quantile<- as.factor((madrid.sf$I08Abr > q[2]) + (madrid.sf$I08Abr > q[3]) +(madrid.sf$I08Abr >= q[4]) + 1)
+p1 <- ggplot(data = madrid.sf) +
+  geom_sf(aes(fill = Quantile),color = "black",size=.2) +
+  theme_bw(base_size=6) +
+  scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
+
+q <- quantile(madrid.sf$I04May)
+madrid.sf$Quantile<- as.factor((madrid.sf$I04May > q[2]) + (madrid.sf$I04May > q[3]) +(madrid.sf$I04May >= q[4]) + 1)
+p2 <- ggplot(data = madrid.sf) +
+  geom_sf(aes(fill = Quantile),color = "black",size=.2) +
+  theme_bw(base_size=6) +
+  scale_fill_manual(values=c("#FFFEDE","#FFDFA2", "#FFA93F", "#D5610D"))
+```
+
+**Madrid de 8 de Abril**
+```{r mad-p1}
+p1
+```
+
+**Madrid de 4 de Mayo**
+```{r mad-p2}
+p2
+```
