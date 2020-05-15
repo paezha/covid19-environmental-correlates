@@ -107,7 +107,7 @@ With the above considerations in mind, our objective with this paper is to inves
 
 The results provide evidence of the effect of temperature, humidity, and sunshine on the incidence of COVID-19. The clearest result with respect to these variables is a lower incidence of COVID-19 at higher temperatures and levels of humidity, while the opposite happens with respect to hours of sunshine. Our control variables also provide some intriguing insights. Higher incidence is associated with higher GDP per capita and presence of mass transit systems in the province; in contrast, population density and percentage of older adults display negative associations with incidence of COVID-19. The results of this analysis provide support to the hypothesis of seasonality of the novel SARS-CoV2, and should be of interest to public health officials and policy makers grappling with the question of the trajectory of the pandemic.
 
-Please note that this paper is prepared as a reproducible research document. The source `R` markdown document, as well as all data and code needed to reproduce/review/extend the analysis can be obtained from a public repository\footnote{\url{https://drive.google.com/drive/u/1/folders/1d_40N_QXo2Fl14r3T3CHs84IED-B1rV_}}.
+Please note that this paper is prepared as a reproducible research document. The source `R` markdown document, as well as all data and code needed to reproduce/review/extend the analysis can be obtained from a public repository\footnote{\url{https://github.com/paezha/covid19-environmental-correlates}}.
 
 Background {#background}
 ============
@@ -1480,9 +1480,7 @@ Some directions for future research include investigating other modelling framew
 Acknowledgments {#acknowledgments .unnumbered}
 ==========
 
-Add acknowledgments as appropriate in final draft.
-  
-The following `R` packages were used in the course of this investigation and the authors wish to acknowledge their developers: `aemet` [@Rodriguez2018aemet], `ggthemes` [@Arnold2019], `gridExtra` [@Auguie2017gridextra], `kableExtra` [@Zhu2019], `knitr` [@Xie2014; @Xie2015], `lubridate` [@Grolemund2011dates], `plm` [@Millo2017robust], `rticles` [@Allaire2020], `sf` [@Pebesma2018], `spdep` [@Bivand2013], spsur [@Angulo2020spsur] `tidyverse` [@Wickham2019], `units` [@Pebesma2016].
+Fernando A. López is supported by the program Groups of Excellence of the Region of Murcia, Fundación Séneca, Science and Technology Agency of the region of Murcia project 19884/GERM/15. Tatiane Menezes, Renata Cavalcanti, and Maira Galdino da Rocha Pitta are supported by Brazil's Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq) and Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (Fundação Capes). Antonio Páez is not supported by Canada's Research Councils. The following `R` packages were used in the course of this investigation and the authors wish to acknowledge their developers: `aemet` [@Rodriguez2018aemet], `ggthemes` [@Arnold2019], `gridExtra` [@Auguie2017gridextra], `kableExtra` [@Zhu2019], `knitr` [@Xie2014; @Xie2015], `lubridate` [@Grolemund2011dates], `plm` [@Millo2017robust], `rticles` [@Allaire2020], `sf` [@Pebesma2018], `spdep` [@Bivand2013], spsur [@Angulo2020spsur] `tidyverse` [@Wickham2019], `units` [@Pebesma2016].
   
 References {#references .unnumbered}
 ==========
