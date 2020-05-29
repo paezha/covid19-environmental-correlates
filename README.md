@@ -170,13 +170,9 @@ and came to the conclusion that neither temperature nor ultraviolet
 indices had an association with transmission of COVID-19. This is
 despite previous research that has linked less exposure to UVB radiation
 to higher prevalence and severity of acute respiratory tract infections
-(<span class="citeproc-not-found" data-reference-id="Zittermann2016vitamin">**???**</span>;
-<span class="citeproc-not-found" data-reference-id="Dąbrowska2018vitamin">**???**</span>;
-<span class="citeproc-not-found" data-reference-id="Dinlen2016association">**???**</span>;
-<span class="citeproc-not-found" data-reference-id="Mathyssen2017vitamin">**???**</span>;
-<span class="citeproc-not-found" data-reference-id="Esposito2015vitamin">**???**</span>;
-<span class="citeproc-not-found" data-reference-id="Jat2017vitamin">**???**</span>;
-<span class="citeproc-not-found" data-reference-id="Moriyama2020seasonality">**???**</span>).
+(Zittermann et al. 2016; Dąbrowska-Leonik et al. 2018; Dinlen et al.
+2016; Mathyssen et al. 2017; Esposito and Lelii 2015; Jat 2017;
+Moriyama, Hugentobler, and Iwasaki 2020).
 
 In addition to the environmental variables above, from a population
 health perspective it is also important to account for potential
@@ -2910,10 +2906,15 @@ pollution. These other factors should be incorporated in future studies.
 
 # Acknowledgments
 
-Add acknowledgments as appropriate in final draft.
-
-The following `R` packages were used in the course of this investigation
-and the authors wish to acknowledge their developers: `aemet`
+Fernando A. López is supported by the program Groups of Excellence of
+the Region of Murcia, Fundación Séneca, Science and Technology Agency of
+the region of Murcia project 19884/GERM/15. Tatiane Menezes, Renata
+Cavalcanti, and Maira Galdino da Rocha Pitta are supported by Brazil’s
+Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq) and
+Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (Fundação
+Capes). Antonio Páez is not supported by Canada’s Research Councils. The
+following `R` packages were used in the course of this investigation and
+the authors wish to acknowledge their developers: `aemet`
 (Rodriguez-Sanchez, Balao, and Gámez 2018), `ggthemes` (Arnold 2019),
 `gridExtra` (Auguie 2017), `kableExtra` (Zhu 2019), `knitr` (Xie 2014,
 2015), `lubridate` (Grolemund and Wickham 2011), `plm` (Millo 2017),
@@ -3041,6 +3042,17 @@ Global Scale.” Journal Article. *medRxiv*.
 
 </div>
 
+<div id="ref-Dąbrowska2018vitamin">
+
+Dąbrowska-Leonik, Nel, Ewa Bernatowska, Małgorzata Pac, Wiktor Filipiuk,
+Jan Mulawka, Barbara Pietrucha, Edyta Heropolitańska-Pliszka, Katarzyna
+Bernat-Sitarz, Beata Wolska-Kuśnierz, and Bożena Mikołuć. 2018. “Vitamin
+d Deficiency in Children with Recurrent Respiratory Infections, with or
+Without Immunoglobulin Deficiency.” Journal Article. *Advances in
+Medical Sciences* 63 (1): 173–78.
+
+</div>
+
 <div id="ref-Desjardins2020rapid">
 
 Desjardins, MR, A Hohl, and EM Delmelle. 2020. “Rapid Surveillance of
@@ -3050,10 +3062,28 @@ Statistic: Detecting and Evaluating Emerging Clusters.” Journal Article.
 
 </div>
 
+<div id="ref-Dinlen2016association">
+
+Dinlen, Nurdan, Aysegul Zenciroglu, Serdar Beken, Arzu Dursun, Dilek
+Dilli, and Nurullah Okumus. 2016. “Association of Vitamin d Deficiency
+with Acute Lower Respiratory Tract Infections in Newborns.” Journal
+Article. *The Journal of Maternal-Fetal & Neonatal Medicine* 29 (6):
+928–32.
+
+</div>
+
 <div id="ref-Elhorst2014spatial">
 
 Elhorst, J Paul. 2014. *Spatial Econometrics: From Cross-Sectional Data
 to Spatial Panels*. Book. Vol. 479. Springer.
+
+</div>
+
+<div id="ref-Esposito2015vitamin">
+
+Esposito, Susanna, and Mara Lelii. 2015. “Vitamin d and Respiratory
+Tract Infections in Childhood.” Journal Article. *BMC Infectious
+Diseases* 15 (1): 487.
 
 </div>
 
@@ -3130,6 +3160,15 @@ Jaana Kauppila, Olli Vainio, Thedi Ziegler, Esa Rönkkö, Jouni JK
 Jaakkola, and Tiina M Ikäheimo. 2014. “Decline in Temperature and
 Humidity Increases the Occurrence of Influenza in Cold Climate.” Journal
 Article. *Environmental Health* 13 (1): 22.
+
+</div>
+
+<div id="ref-Jat2017vitamin">
+
+Jat, Kana Ram. 2017. “Vitamin d Deficiency and Lower Respiratory Tract
+Infections in Children: A Systematic Review and Meta-Analysis of
+Observational Studies.” Journal Article. *Tropical Doctor* 47 (1):
+77–84.
 
 </div>
 
@@ -3238,6 +3277,15 @@ Gdp Has the Coronavirus Reduced?” Journal Article. *Available at SSRN
 
 </div>
 
+<div id="ref-Mathyssen2017vitamin">
+
+Mathyssen, Carolien, Ghislaine Gayan-Ramirez, Roger Bouillon, and Wim
+Janssens. 2017. “Vitamin d Supplementation in Respiratory Diseases:
+Evidence from Randomized Controlled Trials.” Journal Article. *Polish
+Archives of Internal Medicine* 127 (11): 775–84.
+
+</div>
+
 <div id="ref-Makinen2009cold">
 
 Mäkainen, Tiina M, Raija Juvonen, Jari Jokelainen, Terttu H Harju, Ari
@@ -3288,6 +3336,14 @@ Morency, C., A. Páez, M. J. Roorda, R. G. Mercado, and S. Farber. 2011.
 “Distance Traveled in Three Canadian Cities: Spatial Analysis from the
 Perspective of Vulnerable Population Segments.” Journal Article.
 *Journal of Transport Geography* 19 (1): 39–50.
+
+</div>
+
+<div id="ref-Moriyama2020seasonality">
+
+Moriyama, Miyu, Walter J Hugentobler, and Akiko Iwasaki. 2020.
+“Seasonality of Respiratory Viral Infections.” Journal Article.
+*Annual Review of Virology* 7.
 
 </div>
 
@@ -3502,6 +3558,14 @@ and Disease.” Journal Article. *Globalizations* 13 (3): 285–99.
 
 Zhu, Hao. 2019. *KableExtra: Construct Complex Table with ’Kable’ and
 Pipe Syntax*. <https://CRAN.R-project.org/package=kableExtra>.
+
+</div>
+
+<div id="ref-Zittermann2016vitamin">
+
+Zittermann, Armin, Stefan Pilz, Harald Hoffmann, and Winfried März.
+2016. “Vitamin d and Airway Infections: A European Perspective.” Journal
+Article. *European Journal of Medical Research* 21 (1): 14.
 
 </div>
 
