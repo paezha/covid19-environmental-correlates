@@ -13,7 +13,7 @@ Maira Galdino da Rocha Pitta (Universidade Federal de Pernambuco)
 
 ## Abstract
 
-The novel SARS-CoV2 has disrupted health systems and the economy and
+The novel SARS-CoV2 has disrupted health systems and the economy, and
 public health interventions to slow its spread have been costly. How and
 when to ease restrictions to movement hinges in part on whether
 SARS-CoV2 will display seasonality due to variations in temperature,
@@ -170,9 +170,13 @@ and came to the conclusion that neither temperature nor ultraviolet
 indices had an association with transmission of COVID-19. This is
 despite previous research that has linked less exposure to UVB radiation
 to higher prevalence and severity of acute respiratory tract infections
-(Zittermann et al. 2016; Dąbrowska-Leonik et al. 2018; Dinlen et
-al. 2016; Mathyssen et al. 2017; Esposito and Lelii 2015; Jat 2017;
-Moriyama, Hugentobler, and Iwasaki 2020).
+(<span class="citeproc-not-found" data-reference-id="Zittermann2016vitamin">**???**</span>;
+<span class="citeproc-not-found" data-reference-id="Dąbrowska2018vitamin">**???**</span>;
+<span class="citeproc-not-found" data-reference-id="Dinlen2016association">**???**</span>;
+<span class="citeproc-not-found" data-reference-id="Mathyssen2017vitamin">**???**</span>;
+<span class="citeproc-not-found" data-reference-id="Esposito2015vitamin">**???**</span>;
+<span class="citeproc-not-found" data-reference-id="Jat2017vitamin">**???**</span>;
+<span class="citeproc-not-found" data-reference-id="Moriyama2020seasonality">**???**</span>).
 
 In addition to the environmental variables above, from a population
 health perspective it is also important to account for potential
