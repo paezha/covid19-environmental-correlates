@@ -1,19 +1,31 @@
 ---
 title: A spatio-temporal analysis of the environmental correlates of COVID-19 incidence in Spain
 author:
-  - name: Author A
-    email: author.a@example.com
-    affiliation: Some School
+  - name: Antonio Paez
+    email: paezha@mcmaster.ca
+    affiliation: McMaster University
     footnote: 1
-  - name: Author B
-    email: author.b@example.com
-    affiliation: Some Institute
+  - name: Fernando A. Lopez
+    email: fernando.lopez@upct.es
+    affiliation: Universidad Politecnica de Cartagena
+  - name: Tatiane Menezes
+    email: tatiane.menezes@ufpe.br
+    affiliation: Departamento de Economia
+  - name: Renata Cavalcanti
+    email: renata.vcsantos@gmail.com
+    affiliation: Nucleo de Pesquisa
+  - name: Maira Galdino da Rocha Pitta
+    email: mgrpitta@ufpe.br
+    affiliation: Nucleo de Pesquisa
 address:
-  - code: Some School
-    address: School of the Things
-  - code: Some Institute
-    address: Institute of Everything
+  - code: McMaster University
+    address: School of Geography and Earth Sciences, McMaster University, 1281 Main St W, Hamilton, ON, L8S 4K1, Canada
+  - code: Universidad Politecnica de Cartagena
+    address: Departamento de Metodos Cuantitativos, Ciencias Juridicas, y Lenguas Modernas, Universidad Politecnica de Cartagena, Calle Real Numero 3, 30201, Cartagena, Murcia, Spain
   - code: Departamento de Economia
+    address: Departamento de Economia, Universidade Federal de Pernambuco, Av dos Economistas, s/n - Cidade Universitária, Recife - PE, 50670-901, Brasil  
+  - code: Nucleo de Pesquisa
+    address: Núcleo de Pesquisa em Inovação Terapêutica NUPIT / UFPE, Av. Prof. Moraes Rego, 1235 - Cidade Universitária, Recife, PE, CEP 50670-901, Brazil  
 footnote:
   - code: 1
     text: "Corresponding Author"
