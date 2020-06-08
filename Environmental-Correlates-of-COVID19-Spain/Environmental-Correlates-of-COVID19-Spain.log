@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.22)  8 JUN 2020 10:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.22)  8 JUN 2020 11:30
 entering extended mode
 **./Environmental-Correlates-of-COVID19-Spain.tex
 (Environmental-Correlates-of-COVID19-Spain.tex
@@ -809,6 +809,12 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 135.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 135.
+
+Overfull \hbox (6.14583pt too wide) has occurred while \output is active
+\T1/lmr/m/it/8 Preprint submitted to Geographical Analysis (https://doi.org/10.
+1111/gean.12241) June 8, 2020
+ []
+
 [1
 
 
@@ -1012,7 +1018,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1586.
 Here is how much of TeX's memory you used:
  14895 strings out of 492453
  216357 string characters out of 3129816
- 337676 words of memory out of 3000000
+ 337713 words of memory out of 3000000
  18680 multiletter control sequences out of 15000+200000
  81848 words of font info for 138 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1039,7 +1045,7 @@ KTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt
 8.pfb>
 Output written on Environmental-Correlates-of-COVID19-Spain.pdf (30 pages, 2696
-494 bytes).
+872 bytes).
 PDF statistics:
  550 PDF objects out of 1000 (max. 8388607)
  162 named destinations out of 1000 (max. 500000)
